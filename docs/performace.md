@@ -189,7 +189,7 @@
 |方案|优点|缺点|瓶颈|
 |:-:|:-|:-|:-|
 |DOM对象|<ul><li>前端代码简单</li><li>自动加载</li><li>自动渲染</li></ul>|<ul><li>较长的加载时间</li><li>DOM的维护较为缓慢</li><li>渲染缓慢</li><li>绘制时间相对较长</li></ul>|DOM维护、decode|
-|Canvas+base64|<ul><li>加载的工作交给btoa</li><li>内存消耗小</li><li>渲染、绘制时间较短</li></ul>|<ul><li>脚本时间过长</li><li>一次encode和一次decode过程</li></ul>|一次encode(btoa)一次encode(drawImage)|
+|Canvas+base64|<ul><li>加载的工作交给btoa</li><li>内存消耗小</li><li>渲染、绘制时间较短</li></ul>|<ul><li>脚本时间过长</li><li>一次encode和一次decode过程</li></ul>|一次encode(btoa)一次decode(drawImage)|
 |Canvas+blob|<ul><li>加载的工作交给blob</li><li>渲染、绘制时间最短</li><li>脚本时间较短</li></ul>|<ul><li>内存消耗十分大</li><li>大量时间用于GC</li></ul>|GC|
 
 ## 选择
