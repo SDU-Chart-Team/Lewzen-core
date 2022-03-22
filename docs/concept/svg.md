@@ -37,15 +37,19 @@
 
 ## 路径点 WayPoint
 
-可识别的二维点。继承自二维点，增加了wp_id和wp_name属性。
+可识别的二维点。继承自二维点，增加了wp_id和wp_name等属性。
+
+## 适量图定义 SVGDefine
+
+一些预定义内容。需要返回一个xml。
 
 ## 填充样式 FillStyle
 
-结构化的css。
+继承SVGDefine，结构化的css。
 
 ## 线条样式 StrokeStyle
 
-结构化的css。
+继承SVGDefine，结构化的css。
 
 ## 矢量图元素 SVGElement
 
