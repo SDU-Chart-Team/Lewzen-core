@@ -4,15 +4,8 @@
 
 namespace Lewzen {
     class SVGDefine {
-
-    }
-
-    class FillStyle: public SVGDefine {
-
-    }
-
-    class StrokeStyle: public SVGDefine {
-        
+    public:
+        virtual 
     }
 }
 #endif

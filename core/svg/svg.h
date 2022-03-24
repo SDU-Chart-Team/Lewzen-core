@@ -1,6 +1,6 @@
 #include <unordered_map>
 #include <map>
-#include <string>
+#include <std::string>
 #include "point.h"
 #include "svg_element.h"
 #include "svg_define.h"
@@ -9,121 +9,25 @@
 
 namespace Lewzen {
     /**
-    * The SVG element.
-    */
-    class SVGElement {
-    private:
-        std::map<double, WayPoint *> _way_points;
-        FillStyle *_fill_style;
-        StrokeStyle *_stroke_style;
-    public:
-         /**
-        * Constructor of SVG Element.
-        */
-        SVGElement();
-        /**
-        * Destructor of SVG Element.
-        */
-        ~SVG();
-
-        /// Way Points
-        /**
-        * Get all way points in way point list.
-        *
-        * @return the pointer list of the way points.
-        */
-        std::vector<WayPoint *> get_way_points();
-        /**
-        * Convert the rank in way point list to way point's number.
-        *
-        * @param rank the rank in way point list.
-        * @return way point's number.
-        */
-        double rank_to_num(int rank);
-        /**
-        * Convert way point's number to the rank in way point list.
-        *
-        * @param num way point's number.
-        * @return the rank in way point list.
-        */
-        double num_to_rank(double num);
-        /**
-        * Get a way point in way point list.
-        *
-        * @param rank the rank in way point list.
-        * @return the pointer of the way point; NULL for non-exist.
-        */
-        WayPoint *get_way_point(int rank);
-        /**
-        * Get a way point in way point list.
-        *
-        * @param num way point's number.
-        * @return the pointer of the way point; NULL for non-exist.
-        */
-        WayPoint *get_way_point(double num);
-        /**
-        * Add a new way point to way point list.
-        *
-        * @param way_point the pointer of way point to be added.
-        */
-        void add_way_point(WayPoint *way_point);
-        /**
-        * Remove a SVG element from SVG.
-        *
-        * @param num way point's number.
-        * @return true for successful removal.
-        */
-        bool remove_way_point(double num);
-
-        /// Styles
-        /**
-        * Get the fill style of the SVG element.
-        *
-        * @return the pointer of the SVG element.
-        */
-        FillStyle *get_fill_style();
-        /**
-        * Copy and set the fill style of the SVG element.
-        *
-        * @param fill_style_to_copy the fill style to copy.
-        */
-        FillStyle *set_fill_style(FillStyle &fill_style_to_copy);
-        /**
-        * Get the stroke style of the SVG element.
-        *
-        * @return the pointer of the SVG element.
-        */
-        StrokeStyle *get_stroke_style();
-        /**
-        * Copy and set the stroke style of the SVG element.
-        *
-        * @param stroke_style_to_copy the stroke style to copy.
-        */
-        StrokeStyle *set_stroke_style(StrokeStyle &stroke_style_to_copy);
-
-        /// Functional
-        /**
-        * Parse this SVG element object to XML.
-        */
-        string to_XML();
-        /**
-        * Determine if a point is inside this SVG element.
-        *
-        * @param point the point, must in Component Coordinate System or Component Relative Coordinate System.
-        * @return true for the point being in this SVG element.
-        */
-        bool is_in(const Point2D &point);
-    }
-
-    /**
     * The SVG context, consisting of SVG elements and SVG defines.
     */
     class SVG {
     private:
-        // SVG element map
-        std::unordered_map<const std::string &, const SVGElement *> _elements;
-        // SVG public defines
-        std::unordered_map<const std::string &, const SVGDefine *> _defines;
+        // SVG element id maps to SVG element
+        std::unordered_map<const std::string, const SVGElement *> _elements;
+        // SVG element maps to SVG element id
+        std::unordered_map<const SVGElement *, const std::string> _elements_r;
+
+        // z_index  maps to SVG element id
+        std::map<int, const std::string> _z_index;
+        // SVG element id maps to z_index
+        std::unordered_map<const std::string, int> _z_index_r;
+
+        // SVG public define id maps to SVG define
+        std::unordered_map<const std::string, const SVGDefine *> _defines;
+        // SVG public define maps to SVG public define id
+        std::unordered_map<const SVGElement *, const std::string> _elements_r;
+
     public:
          /**
         * Constructor of SVG.
@@ -140,8 +44,9 @@ namespace Lewzen {
         *
         * @param id the id of SVG element in this SVG.
         * @param element the SVG element.
+        * @param z_index z_index of the SVG element. -1 means automatic allocation.
         */
-        void add_element(const SVGElement *element);
+        void add_element(const std::string &id, SVGElement *element, int z_index = -1);
         /**
         * Remove a SVG element from SVG.
         *
@@ -149,7 +54,7 @@ namespace Lewzen {
         * @param destory whether to destory SVG element object.
         * @return true for successful removal.
         */
-        bool remove_element(const string &id, const bool destory);
+        bool remove_element(const std::string &id, const bool &destory);
 
         /**
         * Get a SVG element in SVG.
@@ -157,20 +62,49 @@ namespace Lewzen {
         * @param id the id of SVG element in this SVG.
         * @return the pointer of the SVG element; NULL for non-exist.
         */
-        SVGElement *get_element(const string &id);
+        SVGElement *get_element(const std::string &id) const;
+        /**
+        * Get a SVG element in SVG, where the point locates, with z_index the largest.
+        *
+        * @param id the id of SVG element in this SVG.
+        * @return the pointer of the SVG element; NULL for non-exist.
+        */
+        SVGElement *get_element(const Point2D &point) const;
         /**
         * Get all SVG elements in SVG.
         *
         * @return the pointer list of the SVG elements.
         */
-        std::vector<SVGElement *> get_elements();
+        const std::vector<SVGElement *> get_elements() const;
         /**
         * Get SVG elements in SVG, where the point locates.
         *
         * @param id the id of SVG element in this SVG.
         * @return the pointer list of the SVG elements.
         */
-        std::vector<SVGElement *> get_elements(const Point2D &point);
+        const std::vector<SVGElement *> get_elements(const Point2D &point) const;
+
+        /**
+        * Get id of a SVG element.
+        *
+        * @return the pointer list of the SVG elements.
+        */
+        const std::string &get_element_id(const SVGElement *element) const;
+        /**
+        * Get id list of SVG elements.
+        *
+        * @return the list of the SVG elements' id.
+        */
+        const std::vector<const std::string &> get_elements_id() const;
+        
+        /// Z-Index
+        /**
+        * Get z_index of a SVG element.
+        *
+        * @param id the id of SVG element in this SVG.
+        * @return the z_index of the SVG element.
+        */
+        int get_z_index(const std::string &id) const;
 
         /// Defines
         /**
@@ -179,7 +113,7 @@ namespace Lewzen {
         * @param id the id of SVG define in this SVG.
         * @param define the SVG define.
         */
-        void add_define(const SVGDefine *define);
+        void add_define(const std::string &id, SVGDefine *define);
         /**
         * Remoev a SVG define in SVG.
         *
@@ -187,27 +121,40 @@ namespace Lewzen {
         * @param destory whether to destory SVG define object.
         * @return true for successfully removal.
         */
-        bool remove_define(const string &id, const bool destory);
+        bool remove_define(const std::string &id, const bool destory);
         /**
         * Get a SVG define in SVG.
         *
         * @param id the id of SVG define in this SVG.
         * @return the pointer of the SVG define; NULL for non-exist.
         */
-        SVGdefine *get_define(const string &id);
+        SVGDefine *get_define(const std::string &id) const;
+        
+        /**
+        * Get id of a SVG element.
+        *
+        * @return the pointer list of the SVG elements.
+        */
+        const std::string &get_define_id(const SVGElement *element) const;
+        /**
+        * Get id list of SVG elements.
+        *
+        * @return the list of the SVG elements' id.
+        */
+        const std::vector<const std::string&> get_defines_id() const;
 
         /// Functional
         /**
         * Parse this SVG object to XML.
         */
-        string to_XML();
+        std::string to_XML() const;
         /**
         * Determine if a point is inside this SVG.
         *
         * @param point the point, must in Component Coordinate System or Component Relative Coordinate System.
         * @return true for the point being in this SVG.
         */
-        bool is_in(const Point2D &point);
+        bool is_in(const Point2D &point) const;
     }
 }
 #endif
