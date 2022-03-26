@@ -1,58 +1,79 @@
 # 文本矢量图
 
-## 文本坐标系
+## 文本元素`TextElement`
 
-| 坐标系         | 说明                                     |
-| -------------- | ---------------------------------------- |
-| 画布坐标系     | 画布的绝对坐标系                         |
-| 文本组件坐标系 | 以文本外接矩形框左上角点构建的二维坐标系 |
-| 文本相对坐标系 | 从文本源代码构建SVG时遵循的坐标系        |
+维护纯文本中的单个字符及其样式，并根据规则生成图形
+
+- 继承自`SVGElement`
+
+### 成员
+
+- 文本字符`TextContent`
+
+  纯文本源代码拆分后得到的单个纯文本字符；或者代表markdown/katex语法的字符串
+
+- 填充样式
+
+- 线条样式
+
+- 解析器`TextParser`
+
+  描述文本类型、提供解析方法
+
+### 接口
+
+- 生成SVG XML
+- 修改填充样式
+- 修改线条样式
 
 ## 文本类Text
 
 表示文本的类，根据文本源代码解析生成基于文本矢量图
 
+- 根据文本类型决定解析方式
+
+  当文本类型为纯文本时，将文本拆分为字符并生成`TextElement`；当文本类型为markdown/katex时，不进行拆分，生成单个`TextElement`
+
 - 维护文本源代码、文本类型、样式及其解析方法
 
 ### 成员
 
--  文本源代码SourceText
+- 文本源代码`SourceCode`
 
-  文本的原始字符串，需要根据文本类型以相应的规则翻译为SVG
+- 文本元素列表 `TextElementList`
 
-- 文本样式TextStyle
+- 文本类型
 
-  文本的样式
+- 文本样式表
 
-  - 纯文本：字体、颜色、大小
-  - markdown：待定义
-  - katex公式：待定义
-
-- 解析器textParser
-
-  提供解析文本源代码到SVG的规则
-
-- SVG生成器SVGGenerator
+  - 对于纯文本，包含每个文本字符的样式
+  - 对于markdown/katex，存在唯一样式
+  
+- SVG生成器 `SVGGenerator`
 
   
 
 ### 接口
 
+- 创建过程
+
+  创建对象时传入文本源代码，然后根据文本源代码生成文本元素列表
+
 - 获取到文本源代码并修改
 
-- 获取到SVG
-
-  对源代码进行解析，并根据样式定义生成SVG
+  修改后，重新生成文本元素列表
 
 - 修改样式
 
-  修改样式定义，重新解析并生成SVG
+  修改样式定义
+  
+- 生成SVG
+
+  生成包含外接矩形框的文本SVG
 
 ### 子类
 
 继承自文本类的特殊文本类型
-
-
 
 | 文本类型     | 说明                                |
 | ------------ | ----------------------------------- |
@@ -60,46 +81,16 @@
 | markdown语句 | 以markdown语法定义的特殊文本字符串  |
 | katex公式    | 以latex公式语法定义的特殊文本字符串 |
 
-### 代码示例
-
-```cpp
-class TextFactory{
-	textComponent createTextComponent(int type, string str);
-}
-
-class Text {
-	string str;//original text or markdown/latex code
-	void setStr(string str);
-	virtual string getSVG();//return the xml code of svg
-}
-
-class PureText: public Text{}
-
-class MarkdownText: public Text{}
-
-class KatexText: public Text{}
-```
-
-- `textComponentFactory.createTextComponent(int type, string str)`
-
-  创建文本（纯文本、markdown或latex公式）组件
-
-  - type：文本组件类型标识符
-  - str：纯文本内容或markdown/latex公式
-
-- `textComponenet.getSVG()`
-
-  获取到文本组件对应的SVG代码
-
 ## 文本矢量图类TextSVG
 
 使用组件坐标系的矢量图，是文本的装饰器
 
 - 将文本映射到组件坐标系
+- 文本框
 
 ### 成员
 
-- 文本
+- 文本 `Text`
 
 - 坐标映射
 
@@ -107,13 +98,29 @@ class KatexText: public Text{}
 
   考虑到一个组件中可以插入多个文本，同一个组件每个文本矢量图的坐标原点应当彼此不同。
 
-- SVG生成器SVGGenerator
+  - 成员
+
+    组件相对坐标系原点
 
 ### 接口
 
+- 创建过程
+
+  构造对象的过程
+
+  - 坐标初始化过程
+
+    在创建文本框时确定文本框在画布坐标系中的坐标
+
+  - 元素初始化过程
+
+    在输入文本内容结束后。创建文本`Text`对象
+
+- 检测坐标是否在文本外接矩形框内，从而选定文本并修改
+
 - 更新
 
-  对文本源代码进行更新，并重新解析获取到文本SVG
+  对文本进行更新，重新生成文本对象，然后获取到新的SVGXML
 
 ## 组件文本矢量图类ComponentTextSVG
 
@@ -124,7 +131,7 @@ class KatexText: public Text{}
 
 ### 成员
 
-- 文本矢量图
+- 文本矢量图集合
 
 - 布局
 
@@ -137,11 +144,12 @@ class KatexText: public Text{}
 
 ### 接口
 
+- 获取到特定文本，从而对其进行更新
+  - 当获取到画布上一个点的坐标时，首先判断是否存在于当前文本组件的范围中；若是，则进一步计算该坐标点属于哪个文本矢量图
+
 - 更新
 
-  每次更新（文本源代码）时，从内到外重新逐层解析及映射。
-
-  其中在从组件坐标系到画布坐标系映射（即组件层的映射）时，需要根据布局实现。
+  更新布局时，重新生成SVGXML
 
 - 绘制
 
