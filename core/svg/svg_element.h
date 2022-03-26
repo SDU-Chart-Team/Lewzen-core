@@ -1,15 +1,21 @@
 #include <string>
+#include <memory>
 #ifndef __LZ_SVG_ELEMENT__
 #define __LZ_SVG_ELEMENT__
 
 namespace Lewzen {
     /**
-    * The SVG element.
+    * A SVG element in SVG context.
     */
     class SVGElement {
     private:
-        std::map<double, WayPoint *> _way_points;
+        // id
+        std::string _id;
+        // point number maps to way point
+        std::map<double, shared_ptr<WayPoint>> _way_points;
+        // fill style
         SVGFillStyle *_fill_style;
+        // stroke style
         SVGStrokeStyle *_stroke_style;
     public:
          /**
@@ -21,13 +27,27 @@ namespace Lewzen {
         */
         ~SVG();
 
+        /// ID
+        /**
+        * Get element's id.
+        *
+        * @return element's id.
+        */
+        const std::string &get_id() const;
+        /**
+        * Set element's id.
+        *
+        * @param id element's id.
+        */
+        void set_id(const std::string &id);
+
         /// Way Points
         /**
         * Get all way points in way point list.
         *
         * @return the pointer list of the way points.
         */
-        const std::vector<WayPoint *> get_way_points() const;
+        const std::vector<shared_ptr<WayPoint>> get_way_points() const;
         /**
         * Convert the rank in way point list to way point's number.
         *
@@ -48,20 +68,20 @@ namespace Lewzen {
         * @param rank the rank in way point list.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        WayPoint *get_way_point(const int &rank) const;
+        shared_ptr<WayPoint> get_way_point(const int &rank) const;
         /**
         * Get a way point in way point list.
         *
         * @param num way point's number.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        WayPoint *get_way_point(const double &num) const;
+        shared_ptr<WayPoint> get_way_point(const double &num) const;
         /**
         * Add a new way point to way point list.
         *
         * @param way_point the pointer of way point to be added.
         */
-        void add_way_point(WayPoint *way_point);
+        void add_way_point(shared_ptr<WayPoint> way_point);
         /**
         * Remove a SVG element from SVG.
         *
@@ -104,7 +124,7 @@ namespace Lewzen {
         /**
         * Determine if a point is inside this SVG element.
         *
-        * @param point the point, must in Component Coordinate System or Component Relative Coordinate System.
+        * @param point a point, in Component Coordinate System or Component Relative Coordinate System.
         * @return true for the point being in this SVG element.
         */
         virtual bool is_in(const Point2D &point) const;
