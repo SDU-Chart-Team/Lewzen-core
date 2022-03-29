@@ -19,7 +19,7 @@ namespace Lewzen {
     public:
         enum class  FillRule { DEFAULT, NONEZERO, EVEN_ODD };
 
-         /**
+        /**
         * Constructor of fill style.
         */
         SVGFillStyle();

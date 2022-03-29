@@ -21,14 +21,15 @@ namespace Lewzen {
     void Point2D::set_y(const double &y) {
         _y = y;
     }
-
-    Point2D Point2DFunction::operator() (const Point2D &point) {
-        auto cd = Coordinate("abc");
-        return Point2D(0, 1, cd);
+    void Point2D::move(const double &dx, const double &dy) {
+        _x += dx;
+        _y += dy;
     }
-
-    Point2D Point2DTransform::operator() (const Point2D &point, const bool &reversed) {
-        auto cd = Coordinate("abc");
-        return Point2D(0, 1, cd);
+    Point2D operator() (const Coordinate &coordinate) {
+        
+    }
+    Point2D& operator=(const Point2D& point) {
+        //_x = point.get_x();
+        //_y = point.get_y();
     }
 }
