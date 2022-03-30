@@ -70,17 +70,47 @@ namespace Lewzen {
         void move(const double &dx, const double &dy);
 
         /**
+        * Compare two points. Compare x, y and coordinate.
+        *
+        * @relatesalso Point
+        */
+        bool operator== (const Point2D &point);
+        /**
+        * Let this point equals to another point. Two points should be in the same coordinate.
+        *
+        * @relatesalso Point
+        */
+        Point2D &operator=(const Point2D &point);
+        /**
+        * Add another point to this point. Two points should be in the same coordinate.
+        *
+        * @relatesalso Point
+        */
+        Point2D &operator+=(const Point2D &point);
+        /**
+        * Substract another point from this point. Two points should be in the same coordinate.
+        *
+        * @relatesalso Point
+        */
+        Point2D &operator-=(const Point2D &point);
+        /**
+        * Point addition. Two points should be in the same coordinate.
+        *
+        * @relatesalso Point
+        */
+        Point2D &operator+(const Point2D &point);
+        /**
+        * Point substraction. Two points should be in the same coordinate.
+        *
+        * @relatesalso Point
+        */
+        Point2D &operator-(const Point2D &point);
+        /**
         * Convert this point to another coordianate.
         *
         * @relatesalso Coordinate
         */
         Point2D operator() (const Coordinate &coordinate);
-        /**
-        * Assign another point to this point and do coordinate conversion automatically .
-        *
-        * @relatesalso Coordinate
-        */
-        Point2D& operator=(const Point2D& point);
     };
 }
 #endif

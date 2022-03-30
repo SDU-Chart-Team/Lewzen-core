@@ -28,6 +28,18 @@ namespace Lewzen {
         * @return coordinate type.
         */
         const std::string &get_type() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        virtual bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        virtual bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -39,6 +51,18 @@ namespace Lewzen {
         * Constructor of Canvas Coordinate.
         */
         CanvasCoordinate();
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -47,20 +71,32 @@ namespace Lewzen {
     class ComponentCoordinate: public Coordinate {
     private:
         // component
-        shared_ptr<Component> _component;
+        std::shared_ptr<Component> _component;
     public:
         /**
         * Constructor of Component Coordinate. Unit is equal to Canvas Coordinate.
         *
         * @param component the component of component coordinate.
         */
-        ComponentCoordinate(const shared_ptr<Component> &component);
+        ComponentCoordinate(const std::shared_ptr<Component> &component);
         /**
         * Get component of Component Coordinate.
         *
         * @return the component of component coordinate.
         */
-        const shared_ptr<Component> &get_component();
+        const std::shared_ptr<Component> &get_component() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -69,20 +105,32 @@ namespace Lewzen {
     class ComponentRelativeCoordinate: public Coordinate {
     private:
         // component
-        shared_ptr<Component> _component;
+        std::shared_ptr<Component> _component;
     public:
         /**
         * Constructor of Component Relative Coordinate. Top-left and bottom-right of component's box is (-1, -1) to (1, 1).
         *
         * @param component the component of component relative coordinate.
         */
-        ComponentRelativeCoordinate(const shared_ptr<Component> &component);
+        ComponentRelativeCoordinate(const std::shared_ptr<Component> &component);
         /**
         * Get component of Component Relative Coordinate.
         *
         * @return the component of component relative coordinate.
         */
-        const shared_ptr<Component> &get_component();
+        const std::shared_ptr<Component> &get_component() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -91,20 +139,32 @@ namespace Lewzen {
     class PointCoordinate: public Coordinate {
     private:
         // origin
-        shared_ptr<Point2D> _origin;
+        std::shared_ptr<Point2D> _origin;
     public:
         /**
         * Constructor of Point Coordinate. Unit is equal to Canvas Coordinate.
         *
         * @param origin the origin of point coordinate. 
         */
-        PointCoordinate(const shared_ptr<Point2D> &origin);
+        PointCoordinate(const std::shared_ptr<Point2D> &origin);
         /**
         * Get origin of Point Coordinate.
         *
         * @return the origin of point coordinate.
         */
-        const shared_ptr<Point2D> &get_origin();
+        const std::shared_ptr<Point2D> &get_origin() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -113,9 +173,9 @@ namespace Lewzen {
     class PointRelativeCoordinate: public Coordinate {
     private:
         // origin
-        shared_ptr<Point2D> _origin;
+        std::shared_ptr<Point2D> _origin;
         // vertex
-        shared_ptr<Point2D> _vertex;
+        std::shared_ptr<Point2D> _vertex;
     public:
         /**
         * Constructor of Point Relative Coordinate.
@@ -123,30 +183,42 @@ namespace Lewzen {
         * @param origin the origin of point relative coordinate.
         * @param vertex the (1, 1) of point relative coordinate.
         */
-        PointRelativeCoordinate(const shared_ptr<Point2D> &origin, const shared_ptr<Point2D> &vertex);
+        PointRelativeCoordinate(const std::shared_ptr<Point2D> &origin, const std::shared_ptr<Point2D> &vertex);
         /**
         * Get origin of Point Relative Coordinate.
         *
         * @return the origin of point relative coordinate.
         */
-        const shared_ptr<Point2D> &get_origin();
+        const std::shared_ptr<Point2D> &get_origin() const;
         /**
         * Get vertex of Point Relative Coordinate.
         *
         * @return the vertex of point relative coordinate.
         */
-        const shared_ptr<Point2D> &get_vertex();
+        const std::shared_ptr<Point2D> &get_vertex() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
     * Vector coordinate information.
     */
-    class VectorRelativeCoordinate: public Coordinate {
+    class VectorCoordinate: public Coordinate {
     private:
         // origin
-        shared_ptr<Point2D> _A;
+        std::shared_ptr<Point2D> _A;
         // vertex
-        shared_ptr<Point2D> _B;
+        std::shared_ptr<Point2D> _B;
     public:
         /**
         * Constructor of Vector Coordinate. Unit is equal to Canvas Coordinate.
@@ -154,19 +226,31 @@ namespace Lewzen {
         * @param A the origin of vector coordinate.
         * @param B vector AB means x-axis of point coordinate, .
         */
-        VectorCoordinate(const shared_ptr<Point2D> &A, const shared_ptr<Point2D> &B);
+        VectorCoordinate(const std::shared_ptr<Point2D> &A, const std::shared_ptr<Point2D> &B);
         /**
         * Get Aof Vector Coordinate.
         *
         * @return A point of vector coordinate.
         */
-        const shared_ptr<Point2D> &get_A();
+        const std::shared_ptr<Point2D> &get_A() const;
         /**
         * Get B of Vector Coordinate.
         *
         * @return B point of vector coordinate.
         */
-        const shared_ptr<Point2D> &get_B();
+        const std::shared_ptr<Point2D> &get_B() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 
     /**
@@ -175,9 +259,9 @@ namespace Lewzen {
     class VectorRelativeCoordinate: public Coordinate {
     private:
         // origin
-        shared_ptr<Point2D> _A;
+        std::shared_ptr<Point2D> _A;
         // vertex
-        shared_ptr<Point2D> _B;
+        std::shared_ptr<Point2D> _B;
     public:
         /**
         * Constructor of Vector Relative Coordinate.
@@ -185,19 +269,31 @@ namespace Lewzen {
         * @param A the origin of vector relative coordinate.
         * @param B vector AB means x-axis of point relative coordinate, and B means (1, 0) in this coordinate.
         */
-        VectorRelativeCoordinate(const shared_ptr<Point2D> &A, const shared_ptr<Point2D> &B);
+        VectorRelativeCoordinate(const std::shared_ptr<Point2D> &A, const std::shared_ptr<Point2D> &B);
         /**
         * Get origin of Vector Relative Coordinate.
         *
         * @return the origin of vector relative coordinate.
         */
-        const shared_ptr<Point2D> &get_A();
+        const std::shared_ptr<Point2D> &get_A() const;
         /**
         * Get unit (1, 0) of Vector Relative Coordinate.
         *
         * @return the unit (1, 0) of vector relative coordinate.
         */
-        const shared_ptr<Point2D> &get_B();
+        const std::shared_ptr<Point2D> &get_B() const;
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator== (const Coordinate &coordianate);
+        /**
+        * Compare two coordinates.
+        *
+        * @relatesalso Coordinate
+        */
+        bool operator!= (const Coordinate &coordianate);
     };
 }
 #endif

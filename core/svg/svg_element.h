@@ -12,7 +12,7 @@ namespace Lewzen {
         // id
         std::string _id;
         // point number maps to way point
-        std::map<double, shared_ptr<WayPoint>> _way_points;
+        std::map<double, std::shared_ptr<WayPoint>> _way_points;
         // fill style
         SVGFillStyle *_fill_style;
         // stroke style
@@ -47,7 +47,7 @@ namespace Lewzen {
         *
         * @return the pointer list of the way points.
         */
-        const std::vector<shared_ptr<WayPoint>> get_way_points() const;
+        const std::vector<std::shared_ptr<WayPoint>> get_way_points() const;
         /**
         * Convert the rank in way point list to way point's number.
         *
@@ -68,20 +68,20 @@ namespace Lewzen {
         * @param rank the rank in way point list.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        shared_ptr<WayPoint> get_way_point(const int &rank) const;
+        std::shared_ptr<WayPoint> get_way_point(const int &rank) const;
         /**
         * Get a way point in way point list.
         *
         * @param num way point's number.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        shared_ptr<WayPoint> get_way_point(const double &num) const;
+        std::shared_ptr<WayPoint> get_way_point(const double &num) const;
         /**
         * Add a new way point to way point list.
         *
         * @param way_point the pointer of way point to be added.
         */
-        void add_way_point(shared_ptr<WayPoint> way_point);
+        void add_way_point(std::shared_ptr<WayPoint> way_point);
         /**
         * Remove a SVG element from SVG.
         *

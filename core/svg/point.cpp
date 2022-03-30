@@ -25,11 +25,45 @@ namespace Lewzen {
         _x += dx;
         _y += dy;
     }
-    Point2D operator() (const Coordinate &coordinate) {
-        
+    bool operator== (const Point2D &point) {
+        return _x == point.get_x() && _y == point.get_y() && _coordinate == point.get_coordinate();
     }
     Point2D& operator=(const Point2D& point) {
-        //_x = point.get_x();
-        //_y = point.get_y();
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x = point.get_x();
+        _y = point.get_y();
+    }
+    Point2D& operator+= (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x += point.get_x();
+        _y += point.get_y();
+        return *this;
+    }
+    Point2D& operator-= (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x -= point.get_x();
+        _y -= point.get_y();
+        return *this;
+    }
+    Point2D operator+ (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        return Point2D(_x + point.get_x(), _y + point.get_y(), p.get_coordinate());
+    }
+    Point2D operator- (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        return Point2D(_x - point.get_x(), _y - point.get_y(), p.get_coordinate());
+    }
+    Point2D operator() (const Coordinate &coordinate) {
+        
     }
 }

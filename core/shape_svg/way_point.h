@@ -9,7 +9,7 @@ namespace Lewzen {
         std::string _el_id;
         double _el_num;
         bool _is_candidate;
-        CriticalPoint (* on_elected) (const shared_ptr<WayPoint> &p);
+        CriticalPoint (* on_elected) (const std::shared_ptr<WayPoint> &p);
     public:
 
     }
