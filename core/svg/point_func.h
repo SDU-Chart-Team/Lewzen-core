@@ -113,5 +113,6 @@ namespace Lewzen {
     */
     Point2D weight_balance(const std::vector<std::shared_ptr<Point2D>> &p_list, const std::vector<double> &weights);
 
-    /// Coordiante Conversion
+    /// Coordinate Conversion
+    Point2D coordinate_convert(const Point &p, const Coordinate &coordinate);
 }

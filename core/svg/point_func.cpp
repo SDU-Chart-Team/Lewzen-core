@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <cmath>
 #include "point_func.h"
+#include "coordinate.h"
 #ifndef __LZ_POINT_FUNC__
 #define __LZ_POINT_FUNC__
 
 namespace Lewzen {
+    /// Transformations
     Point2D linear_transform(const double &m0, const double &m1, const double &m2, const double &m3, const Point &p) {
         return Point2D(m0 * p.get_x() + m1 * p.get_y(), m2 * p.get_x() + m3 * p.get_y(), p.get_coordinate()); 
     }
@@ -58,6 +60,7 @@ namespace Lewzen {
         return d + c;
     }
 
+    /// Centroids
     Point2D geometry_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list) {
         double SX, SY;
         for (int i = 0; i < p_list.size(); i++) {
@@ -87,7 +90,7 @@ namespace Lewzen {
         A /= 2;
         return Point2D(SX / A / 6, SY / A / 6, p_list[0]->get_coordinate());
     }
-    
+
     const int MOVE_LOSS_RATE = 0.618;
     Point2D weight_balance(const std::vector<std::shared_ptr<Point2D>> &p_list, const std::vector<double> &weights) {
         if (p_list.size() != weights.size()) {
@@ -114,5 +117,72 @@ namespace Lewzen {
             l *= MOVE_LOSS_RATE;
         }
         return Point2D(x, y, p_list[0]->get_coordinate());
+    }
+
+    /// Coordinate Conversion
+    bool is_basic_coordinate(const Coordinate &c) {
+        return c.get_type() == "CAN" || c.get_type() == "COM" || c.get_type() == "COMR";
+    }
+
+    Point2D _can_to_com(const Point &p, const ComponentCoordinate &c) {
+        return p;
+    }
+    Point2D _com_to_can(const Point &p, const ComponentCoordinate &c) {
+        return p;
+    }
+
+    Point2D _com_to_comr(const Point &p) {
+        return p;
+    }
+    Point2D _comr_to_com(const Point &p) {
+        return p;
+    }
+    
+    Point2D _poi_to_poir(const Point &p) {
+        return p;
+    }
+    Point2D _poir_to_poi(const Point &p) {
+        return p;
+    }
+
+    Point2D _vec_to_vecr(const Point &p) {
+        return p;
+    }
+    Point2D _vecr_to_vec(const Point &p) {
+        return p;
+    }
+    
+    Point2D _recurse_upto_can(const Point &p) { // p.coordinate -> can
+        return p;
+    }
+    Point2D _recurse_downfrom_can(const Point &p, const Coordinate &coordinate) { // can -> coordinate
+        if (p.get_coordinate().get_type() != "CAN") {
+            throw "Point should be in Canvas Coordinate";
+        }
+        return p;
+    }
+
+    Point2D coordinate_convert(const Point &p, const Coordinate &coordinate) {
+        bool s = is_basic_coordinate(p.get_coordinate()), t = is_basic_coordinate(coordinate);
+        const string &cs = p.get_coordinate().get_type();
+        const string &ct = coordinate.get_type();
+        if (cs == ct) return p;
+        else if (s && t) {
+            if (cs == "CAN" && ct == "COM") return _can_to_com(p, static_cast<const ComponentCoordinate &>(coordianate));
+            else if (cs == "COM" && ct == "CAN") return _com_to_can(p, static_cast<const ComponentCoordinate &>(p.get_coordinate()));
+            else if (cs == "COM" && ct == "COMR") return _com_to_comr(p);
+            else if (cs == "COMR" && ct == "COM") return _comr_to_com(p);
+            else if (cs == "CAN" && ct == "COMR") return _com_to_comr(_can_to_com(p, static_cast<const ComponentCoordinate &>(coordianate)));
+            else if (cs == "COMR" && ct == "CAN") return _com_to_can(_comr_to_com(p), static_cast<const ComponentCoordinate &>(p.get_coordinate()));
+        } else if (s) { // s -> can -> coordinate
+            Point2D cp = coordinate_convert(p, CanvasCoordinate());
+            return _recurse_downfrom_can(cp, coordianate);
+        } else if (t) { // p.coordinate -> can -> t
+            Point2D cp = _recurse_upto_can(p);
+            return coordinate_convert(cp, coordianate)
+        } else {
+            Point2D cp = coordinate_convert(p, CanvasCoordinate());
+        }
+        return Point2D(p.get_x(), p.get_y(), Coordinate("NULL"));
     }
 }

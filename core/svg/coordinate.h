@@ -1,4 +1,5 @@
 #include <string>
+#include <memory>
 #include "../component.h"
 #ifndef __LZ_Coordinate__
 #define __LZ_Coordinate__
@@ -33,13 +34,13 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        virtual bool operator== (const Coordinate &coordianate);
+        virtual bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        virtual bool operator!= (const Coordinate &coordianate);
+        virtual bool operator!= (const Coordinate &coordianate) const;
     };
 
     /**
@@ -56,13 +57,13 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
     };
 
     /**
@@ -90,13 +91,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Component Relative Coordinate.
+        *
+        * @return corresponding component relative coordinate.
+        */
+        ComponentRelativeCoordinate to_relative() const;
     };
 
     /**
@@ -124,13 +131,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Component Coordinate.
+        *
+        * @return corresponding component coordinate.
+        */
+        ComponentCoordinate to_absolute() const;
     };
 
     /**
@@ -148,6 +161,13 @@ namespace Lewzen {
         */
         PointCoordinate(const std::shared_ptr<Point2D> &origin);
         /**
+        * Constructor of Point Coordinate. Unit is equal to Canvas Coordinate.
+        *
+        * @param origin the origin of point coordinate. 
+        * @param vertex the (1, 1) of point relative coordinate. default: (origin.x + 1, origin.y + 1).
+        */
+        PointCoordinate(const std::shared_ptr<Point2D> &origin, const std::shared_ptr<Point2D> &vertex);
+        /**
         * Get origin of Point Coordinate.
         *
         * @return the origin of point coordinate.
@@ -158,13 +178,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Point Relative Coordinate.
+        *
+        * @return corresponding point relative coordinate.
+        */
+        PointRelativeCoordinate to_relative() const;
     };
 
     /**
@@ -201,13 +227,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Point Coordinate.
+        *
+        * @return corresponding point coordinate.
+        */
+        PointCoordinate to_absolute() const;
     };
 
     /**
@@ -244,13 +276,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Vector Relative Coordinate.
+        *
+        * @return corresponding vector relative coordinate.
+        */
+        VectorRelativeCoordinate to_relative() const;
     };
 
     /**
@@ -287,13 +325,19 @@ namespace Lewzen {
         *
         * @relatesalso Coordinate
         */
-        bool operator== (const Coordinate &coordianate);
+        bool operator== (const Coordinate &coordianate) const;
         /**
         * Compare two coordinates.
         *
         * @relatesalso Coordinate
         */
-        bool operator!= (const Coordinate &coordianate);
+        bool operator!= (const Coordinate &coordianate) const;
+        /**
+        * Get corresponding Vector Coordinate.
+        *
+        * @return corresponding Vector coordinate.
+        */
+        VectorCoordinate to_absolute() const;
     };
 }
 #endif
