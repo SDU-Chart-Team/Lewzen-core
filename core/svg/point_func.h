@@ -75,7 +75,7 @@ namespace Lewzen {
     *
     * @param p the point.
     * @param c rotate center, in the same coordinate with point p.
-    * @param theta rotate radian.
+    * @param theta rotate radian in clockwise direction.
     * 
     * @return center zoom point of p.
     */

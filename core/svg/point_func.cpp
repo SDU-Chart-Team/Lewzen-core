@@ -56,7 +56,7 @@ namespace Lewzen {
     }
 
     Point2D center_rotate(const Point &p, const Point &c, double theta) {
-        Point2D d = linear_transform(std::cos(theta), -std::sin(theta), std::sin(theta), std::cos(theta), p - c);
+        Point2D d = linear_transform(std::cos(theta), std::sin(theta), -std::sin(theta), std::cos(theta), p - c); // p + (p - c) * mat^{-1}
         return d + c;
     }
 
@@ -120,8 +120,18 @@ namespace Lewzen {
     }
 
     /// Coordinate Conversion
-    bool is_basic_coordinate(const Coordinate &c) {
+    bool is_PIC(const Coordinate &c) {
         return c.get_type() == "CAN" || c.get_type() == "COM" || c.get_type() == "COMR";
+    }
+    const Coordinate &_PRC_parent(const Coordinate &c) {
+        if (c.get_type() == "POI")
+            return static_cast<const PointCoordinate &>(c).get_origin().get_coordinate();
+        if (c.get_type() == "POIR")
+            return static_cast<const PointRelativeCoordinate &>(c).get_origin().get_coordinate();
+        if (c.get_type() == "VEC")
+            return static_cast<const VectorCoordinate &>(c).get_A().get_coordinate();
+        if (c.get_type() == "VECR")
+            return static_cast<const VectorRelativeCoordinate &>(c).get_A().get_coordinate();
     }
 
     Point2D _can_to_com(const Point &p, const ComponentCoordinate &c) {
@@ -130,21 +140,18 @@ namespace Lewzen {
     Point2D _com_to_can(const Point &p, const ComponentCoordinate &c) {
         return p;
     }
-
     Point2D _com_to_comr(const Point &p) {
         return p;
     }
     Point2D _comr_to_com(const Point &p) {
         return p;
     }
-    
     Point2D _poi_to_poir(const Point &p) {
         return p;
     }
     Point2D _poir_to_poi(const Point &p) {
         return p;
     }
-
     Point2D _vec_to_vecr(const Point &p) {
         return p;
     }
@@ -152,36 +159,92 @@ namespace Lewzen {
         return p;
     }
     
-    Point2D _recurse_upto_can(const Point &p) { // p.coordinate -> can
-        return p;
-    }
-    Point2D _recurse_downfrom_can(const Point &p, const Coordinate &coordinate) { // can -> coordinate
-        if (p.get_coordinate().get_type() != "CAN") {
-            throw "Point should be in Canvas Coordinate";
+    Point2D PIC_convert(const Point &p, const Coordinate &c) {
+        const string &cs = p.get_coordinate().get_type();
+        const string &ct = c.get_type();
+        if (cs == "CAN" && ct == "COM") return _can_to_com(p, static_cast<const ComponentCoordinate &>(c));
+        else if (cs == "COM" && ct == "CAN") return _com_to_can(p, static_cast<const ComponentCoordinate &>(p.get_coordinate()));
+        else if (cs == "COM" && ct == "COMR") return _com_to_comr(p);
+        else if (cs == "COMR" && ct == "COM") return _comr_to_com(p);
+        else if (cs == "CAN" && ct == "COMR") return _com_to_comr(_can_to_com(p, static_cast<const ComponentCoordinate &>(c)));
+        else if (cs == "COMR" && ct == "CAN") return _com_to_can(_comr_to_com(p), static_cast<const ComponentCoordinate &>(p.get_coordinate()));
+        else {
+            throw "Not PIC coordinate";
         }
-        return p;
+    }
+    Point2D _PRC_convert_up(const Point &p) { // p.coordinate -> p.coordinate.o.coordinate
+        const string &cs = p.get_coordinate().get_type();
+        const Coordinate &pc = _PRC_parent(p.get_coordinate());
+        if (cs == "POI") {
+            auto c = static_cast<const PointCoordinate &>(p.get_coordinate());
+            return Point2D(p.get_x() + c.get_origin().get_x(), p.get_y() + c.get_origin().get_y(), pc); // p + origin
+        } else if (cs == "POIR") {
+            auto c = static_cast<const PointRelativeCoordinate &>(p.get_coordinate());
+            double dx = c.get_vertex().get_x() - c.get_origin().get_x(), dy = c.get_vertex().get_y() - c.get_origin().get_y(); 
+            return Point2D(p.get_x() * dx + c.get_origin().get_x(), p.get_y() * dx + c.get_origin().get_y(), pc); // p * d + origin
+        } else if (cs == "VEC") {
+            auto c = static_cast<const VectorCoordinate &>(p.get_coordinate());
+            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            double cos = dx / l, sin = dy / l;
+            Point2D d = linear_transform(cos, -sin, sin, cos, p);
+            return Point2D(d.get_x() + c.get_A().get_x(), d.get_y() + c.get_A().get_y(), pc); // mat * p + origin
+        } else if (cs == "VECR") {
+            auto c = static_cast<const VectorCoordinate &>(p.get_coordinate());
+            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            double cos = dx / l, sin = dy / l;
+            Point2D d = linear_transform(cos, -sin, sin, cos, p);
+            return Point2D(d.get_x() * l + c.get_A().get_x(), d.get_y() * l + c.get_A().get_y(), pc); // mat * p * l + origin
+        }
+    }
+    Point2D _PRC_convert_down(const Point &p, const Coordinate &_c) { // p.coordinate = c.o.coordinate; p.coordinate -> c
+        const string &cs = c.get_type();
+        const Coordinate &pc = _PRC_parent(c);
+        if (pc != c) {
+            throw "Point and origin are not in the same coordinate";
+        }
+        if (cs == "POI") {
+            auto c = static_cast<const PointCoordinate &>(_c);
+            return Point2D(p.get_x() - c.get_origin().get_x(), p.get_y() - c.get_origin().get_y(), c); // p - origin
+        } else if (cs == "POIR") {
+            auto c = static_cast<const PointRelativeCoordinate &>(_c);
+            double dx = c.get_vertex().get_x() - c.get_origin().get_x(), dy = c.get_vertex().get_y() - c.get_origin().get_y(); 
+            return Point2D((p.get_x() - c.get_origin().get_x()) / dx, (p.get_y() - c.get_origin().get_y()) / dy, c); // (p - origin) / d
+        } else if (cs == "VEC") {
+            auto c = static_cast<const VectorCoordinate &>(_c));
+            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            double cos = dx / l, sin = dy / l;
+            Point2D d = linear_transform(cos, sin, -sin, cos, p - c.get_A());
+            return Point2D(d.get_x(), d.get_y(), c); //  (p - origin) * mat^{-1}
+        } else if (cs == "VECR") {
+            auto c = static_cast<const VectorCoordinate &>(_c);
+            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            double cos = dx / l, sin = dy / l;
+            Point2D d = linear_transform(cos, -sin, sin, cos, p - c.get_A());
+            return Point2D(d.get_x() / l, d.get_y() / l, c); // (p - origin) mat^{-1} / l
+        }
+    }
+    Point2D _recurse_up_PIC(const Point &p) { // p.coordinate -> PIC
+        if (is_PIC(p.get_coordinate()))
+            return p;
+        return _recurse_up_PIC(_PRC_convert_up(p));
+    }
+    Point2D _recurse_down_PIC(const Point &p, const Coordinate &c) { // p.coordinate = PIC, p.coordinate  -> c
+        if (is_PIC(c))
+            return PIC_convert(p, c);
+        const Point2D &rp =  _recurse_down_PIC(p, pc);
+        return _PRC_convert_down(rp, c);
     }
 
     Point2D coordinate_convert(const Point &p, const Coordinate &coordinate) {
-        bool s = is_basic_coordinate(p.get_coordinate()), t = is_basic_coordinate(coordinate);
-        const string &cs = p.get_coordinate().get_type();
-        const string &ct = coordinate.get_type();
-        if (cs == ct) return p;
-        else if (s && t) {
-            if (cs == "CAN" && ct == "COM") return _can_to_com(p, static_cast<const ComponentCoordinate &>(coordianate));
-            else if (cs == "COM" && ct == "CAN") return _com_to_can(p, static_cast<const ComponentCoordinate &>(p.get_coordinate()));
-            else if (cs == "COM" && ct == "COMR") return _com_to_comr(p);
-            else if (cs == "COMR" && ct == "COM") return _comr_to_com(p);
-            else if (cs == "CAN" && ct == "COMR") return _com_to_comr(_can_to_com(p, static_cast<const ComponentCoordinate &>(coordianate)));
-            else if (cs == "COMR" && ct == "CAN") return _com_to_can(_comr_to_com(p), static_cast<const ComponentCoordinate &>(p.get_coordinate()));
-        } else if (s) { // s -> can -> coordinate
-            Point2D cp = coordinate_convert(p, CanvasCoordinate());
-            return _recurse_downfrom_can(cp, coordianate);
-        } else if (t) { // p.coordinate -> can -> t
-            Point2D cp = _recurse_upto_can(p);
-            return coordinate_convert(cp, coordianate)
+        bool s = is_PIC(p.get_coordinate()), t = is_PIC(coordinate);
+        if (s && t) {
+            PIC_convert();
+        } else if (s) {
+            return _recurse_down_PIC(p, coordianate);
+        } else if (t) {
+            return PIC_convert(_recurse_up_PIC(p), coordianate);
         } else {
-            Point2D cp = coordinate_convert(p, CanvasCoordinate());
+            return _recurse_down_PIC(_recurse_up_PIC(p), coordianate);
         }
         return Point2D(p.get_x(), p.get_y(), Coordinate("NULL"));
     }
