@@ -6,7 +6,7 @@ namespace Lewzen {
     /**
     * Fill style for SVG element.
     */
-    class SVGFillStyle {
+    class SVGFill                                                                                                                        Style {
     private:
         enum class  FillRule;
         

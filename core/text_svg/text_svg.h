@@ -5,23 +5,27 @@
 
 namespace Lewzen
 {
+
+    /**
+     * @brief  the translater between Component Coordinate System and Component Relative Coordinate System
+     *
+     */
+    class CoordinateTranslater
+    {
+    private:
+        Point2D _origin;
+
+    public:
+        Point2D COM2COMR(Point2D COM_pos);
+        Point2D COMR2COM(Point2D COMR_pos);
+    };
+
     /**
      * @brief The decorator of text, containing the coordinate
      *
      */
-
     class TextSVG
     {
-        /**
-         * @brief  the translater between Component Coordinate System and Component Relative Coordinate System
-         *
-         */
-        class CoordinateTranslater
-        {
-        private:
-            Point2D _origin;
-        };
-
     private:
         Text _text;
         CoordinateTranslater _tanslater;

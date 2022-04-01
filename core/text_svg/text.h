@@ -16,12 +16,7 @@ namespace Lewzen
     class Text : SVG
     {
         // the types of text SVG
-        enum class TextType
-        {
-            PURETEXT,
-            MARKDOWN,
-            KATEX
-        } text_types;
+        enum class TextType;
 
     private:
         // The input string of a text SVG
