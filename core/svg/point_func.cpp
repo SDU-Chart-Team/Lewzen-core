@@ -31,11 +31,8 @@ namespace Lewzen {
 
         double A = dy, B = -dx, C = a.get_y() * dx - a.get_x() * dy;
         double D = dx * dx + dy * dy, E = A * p.get_x() + B * p.get_y() + C;
-        double E_ = (E < 0) ? -E : E;
-        dx = 2 * E_ * A / D, dy = 2 * E_ * (-B) / D;
-        if (E < 0) dy = -dy;
-        else dx = -dx;
-        return Point2D(p.get_x() + dx, p.get_y() + dy, p.get_coordinate());
+        dx = -2 * E * A / D, dy = -2 * E * B / D;
+        return Point2D(p.get_x() + dx, p.get_y() + dy);
     }
     Point2D line_symmetric(const Point &p, const Point &a, double dx, double dy) {
         return line_symmetric(p, a, Point2D(a.get_x() + dx, a.get_y() + dy));
@@ -61,13 +58,18 @@ namespace Lewzen {
     }
 
     /// Centroids
-    Point2D geometry_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list) {
-        double SX, SY;
+    void _check_coords(const std::vector<std::shared_ptr<Point2D>> &p_list) {
         for (int i = 0; i < p_list.size(); i++) {
             const std::shared_ptr<Point2D> p = p_list[i];
             if (p->get_coordinate() != p_list[0]->get_coordinate()) {
                 throw "Points are not in the same coordinate";
-            }
+        }
+    }
+    Point2D geometry_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list) {
+        _check_coords(p_list);
+        double SX, SY;
+        for (int i = 0; i < p_list.size(); i++) {
+            const std::shared_ptr<Point2D> p = p_list[i];
             SX += p->get_x();
             SY += p->get_y();
         }
@@ -75,13 +77,11 @@ namespace Lewzen {
     }
 
     Point2D polygon_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list) {
+        _check_coords(p_list);
         double SX, SY, S, A;
         for (int i = 0; i < p_list.size() - 1; i++) {
             const std::shared_ptr<Point2D> p0 = p_list[i];
             const std::shared_ptr<Point2D> p1 = p_list[i + 1];
-            if (p1->get_coordinate() != p_list[0]->get_coordinate()) {
-                throw "Points are not in the same coordinate";
-            }
             S = p0->get_x() * p1->get_y() - p1->get_x() * p0->get_y();
             SX += (p0->get_x() + p1->get_x()) * S;
             SY += (p0->get_y() + p1->get_y()) * S;
@@ -102,8 +102,8 @@ namespace Lewzen {
             const std::shared_ptr<Point2D> p = p_list[i];
             l = std::max(l, std::sqrt((p->get_x() - c->get_x()) * (p->get_x() - c->get_x()) + (p->get_y() - c->get_y()) * (p->get_y() - c->get_y())));
         }
-        l *= 2;
-        while (l > 1e-4) {
+        l *= 2; // max radius
+        while (l > 1e-4) { // iterations
             sx = 0, sy = 0;
             for (int i = 0; i < p_list.size(); i++) {
                 const std::shared_ptr<Point2D> p = p_list[i];
@@ -120,6 +120,7 @@ namespace Lewzen {
     }
 
     /// Coordinate Conversion
+    /*
     bool is_PIC(const Coordinate &c) {
         return c.get_type() == "CAN" || c.get_type() == "COM" || c.get_type() == "COMR";
     }
@@ -134,7 +135,7 @@ namespace Lewzen {
             return static_cast<const VectorRelativeCoordinate &>(c).get_A().get_coordinate();
     }
 
-    Point2D _can_to_com(const Point &p, const ComponentCoordinate &c) {
+    Point2D _can_to_com(const Point &p, const ComponentCoordinate &c) { // TO BE CONTINUE, UNTIL COMPONENT REALIZATION
         return p;
     }
     Point2D _com_to_can(const Point &p, const ComponentCoordinate &c) {
@@ -146,19 +147,6 @@ namespace Lewzen {
     Point2D _comr_to_com(const Point &p) {
         return p;
     }
-    Point2D _poi_to_poir(const Point &p) {
-        return p;
-    }
-    Point2D _poir_to_poi(const Point &p) {
-        return p;
-    }
-    Point2D _vec_to_vecr(const Point &p) {
-        return p;
-    }
-    Point2D _vecr_to_vec(const Point &p) {
-        return p;
-    }
-    
     Point2D PIC_convert(const Point &p, const Coordinate &c) {
         const string &cs = p.get_coordinate().get_type();
         const string &ct = c.get_type();
@@ -172,6 +160,7 @@ namespace Lewzen {
             throw "Not PIC coordinate";
         }
     }
+
     Point2D _PRC_convert_up(const Point &p) { // p.coordinate -> p.coordinate.o.coordinate
         const string &cs = p.get_coordinate().get_type();
         const Coordinate &pc = _PRC_parent(p.get_coordinate());
@@ -196,31 +185,31 @@ namespace Lewzen {
             return Point2D(d.get_x() * l + c.get_A().get_x(), d.get_y() * l + c.get_A().get_y(), pc); // mat * p * l + origin
         }
     }
-    Point2D _PRC_convert_down(const Point &p, const Coordinate &_c) { // p.coordinate = c.o.coordinate; p.coordinate -> c
+    Point2D _PRC_convert_down(const Point &p, const Coordinate &c) { // p.coordinate = c.o.coordinate; p.coordinate -> c
         const string &cs = c.get_type();
         const Coordinate &pc = _PRC_parent(c);
-        if (pc != c) {
+        if (pc != p.get_coordinate()) {
             throw "Point and origin are not in the same coordinate";
         }
         if (cs == "POI") {
-            auto c = static_cast<const PointCoordinate &>(_c);
-            return Point2D(p.get_x() - c.get_origin().get_x(), p.get_y() - c.get_origin().get_y(), c); // p - origin
+            auto _c = static_cast<const PointCoordinate &>(c);
+            return Point2D(p.get_x() - _c.get_origin().get_x(), p.get_y() - _c.get_origin().get_y(), c); // p - origin
         } else if (cs == "POIR") {
-            auto c = static_cast<const PointRelativeCoordinate &>(_c);
-            double dx = c.get_vertex().get_x() - c.get_origin().get_x(), dy = c.get_vertex().get_y() - c.get_origin().get_y(); 
-            return Point2D((p.get_x() - c.get_origin().get_x()) / dx, (p.get_y() - c.get_origin().get_y()) / dy, c); // (p - origin) / d
+            auto _c = static_cast<const PointRelativeCoordinate &>(c);
+            double dx = _c.get_vertex().get_x() - _c.get_origin().get_x(), dy = _c.get_vertex().get_y() - _c.get_origin().get_y(); 
+            return Point2D((p.get_x() - _c.get_origin().get_x()) / dx, (p.get_y() - _c.get_origin().get_y()) / dy, _c); // (p - origin) / d
         } else if (cs == "VEC") {
-            auto c = static_cast<const VectorCoordinate &>(_c));
-            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            auto _c = static_cast<const VectorCoordinate &>(c));
+            double dx = _c.get_B().get_x() - _c.get_A().get_x(), dy = _c.get_B().get_y() - _c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
             double cos = dx / l, sin = dy / l;
-            Point2D d = linear_transform(cos, sin, -sin, cos, p - c.get_A());
-            return Point2D(d.get_x(), d.get_y(), c); //  (p - origin) * mat^{-1}
+            Point2D d = linear_transform(cos, sin, -sin, cos, p - _c.get_A());
+            return Point2D(d.get_x(), d.get_y(), _c); // mat^{-1} * (p - origin)
         } else if (cs == "VECR") {
-            auto c = static_cast<const VectorCoordinate &>(_c);
-            double dx = c.get_B().get_x() - c.get_A().get_x(), dy = c.get_B().get_y() - c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
+            auto _c = static_cast<const VectorCoordinate &>(c);
+            double dx = _c.get_B().get_x() - _c.get_A().get_x(), dy = _c.get_B().get_y() - _c.get_A().get_y(), l = std::sqrt(dx * dx + dy * dy);
             double cos = dx / l, sin = dy / l;
-            Point2D d = linear_transform(cos, -sin, sin, cos, p - c.get_A());
-            return Point2D(d.get_x() / l, d.get_y() / l, c); // (p - origin) mat^{-1} / l
+            Point2D d = linear_transform(cos, -sin, sin, cos, p - _c.get_A());
+            return Point2D(d.get_x() / l, d.get_y() / l, _c); // mat^{-1} * (p - origin) / l
         }
     }
     Point2D _recurse_up_PIC(const Point &p) { // p.coordinate -> PIC
@@ -231,7 +220,7 @@ namespace Lewzen {
     Point2D _recurse_down_PIC(const Point &p, const Coordinate &c) { // p.coordinate = PIC, p.coordinate  -> c
         if (is_PIC(c))
             return PIC_convert(p, c);
-        const Point2D &rp =  _recurse_down_PIC(p, pc);
+        const Point2D &rp =  _recurse_down_PIC(p, _PRC_parent(c));
         return _PRC_convert_down(rp, c);
     }
 
@@ -247,5 +236,5 @@ namespace Lewzen {
             return _recurse_down_PIC(_recurse_up_PIC(p), coordianate);
         }
         return Point2D(p.get_x(), p.get_y(), Coordinate("NULL"));
-    }
+    }*/
 }
