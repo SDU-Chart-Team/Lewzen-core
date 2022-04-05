@@ -21,14 +21,49 @@ namespace Lewzen {
     void Point2D::set_y(const double &y) {
         _y = y;
     }
-
-    Point2D Point2DFunction::operator() (const Point2D &point) {
-        auto cd = Coordinate("abc");
-        return Point2D(0, 1, cd);
+    void Point2D::move(const double &dx, const double &dy) {
+        _x += dx;
+        _y += dy;
     }
-
-    Point2D Point2DTransform::operator() (const Point2D &point, const bool &reversed) {
-        auto cd = Coordinate("abc");
-        return Point2D(0, 1, cd);
+    bool operator== (const Point2D &point) {
+        return _x == point.get_x() && _y == point.get_y() && _coordinate == point.get_coordinate();
+    }
+    Point2D& operator=(const Point2D& point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x = point.get_x();
+        _y = point.get_y();
+    }
+    Point2D& operator+= (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x += point.get_x();
+        _y += point.get_y();
+        return *this;
+    }
+    Point2D& operator-= (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        _x -= point.get_x();
+        _y -= point.get_y();
+        return *this;
+    }
+    Point2D operator+ (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        return Point2D(_x + point.get_x(), _y + point.get_y(), p.get_coordinate());
+    }
+    Point2D operator- (const Point2D &point) {
+        if (p.get_coordinate() != c.get_coordinate()) {
+            throw "Two points are not in the same coordinate";
+        }
+        return Point2D(_x - point.get_x(), _y - point.get_y(), p.get_coordinate());
+    }
+    Point2D operator() (const Coordinate &coordinate) {
+        
     }
 }

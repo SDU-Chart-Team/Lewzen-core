@@ -38,23 +38,7 @@ namespace Lewzen {
         /**
         * Parse this SVG object to XML.
         */
-        virtual to_XML();
-    }
-
-    // Define for patterns: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns
-    /**
-    * A pattern define in SVG context.
-    */
-    class SVGPattern: public SVGDefine {
-
-    }
-
-    // Define for gradients: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Gradients
-    /**
-    * A gradient define in SVG context.
-    */
-    class SVGGradient: public SVGDefine {
-
+        virtual std::string to_XML() const;
     }
 }
 #endif
