@@ -1,4 +1,5 @@
 #include <string>
+#include "../utils.h"
 #ifndef __LZ_SVG_DEFINE__
 #define __LZ_SVG_DEFINE__
 
@@ -15,10 +16,6 @@ namespace Lewzen {
         * Constructor of stroke style.
         */
         SVGDefine();
-        /**
-        * Destructor of stroke style.
-        */
-        ~SVGDefine();
 
         /// ID
         /**
@@ -36,9 +33,9 @@ namespace Lewzen {
         
         /// Functional
         /**
-        * Parse this SVG object to XML.
+        * Parse this SVG object to XML. (Unimplemented)
         */
-        virtual std::string to_XML() const;
+        virtual std::string to_XML() const = 0;
     }
 }
 #endif

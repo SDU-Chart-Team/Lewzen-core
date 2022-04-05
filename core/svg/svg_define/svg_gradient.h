@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <memory>
 #include "../svg_define.h"
 #include "svg_stop.h"
 #ifndef __LZ_SVG_GRADIENT__
@@ -25,7 +26,7 @@ namespace Lewzen {
         *
         * @return the list of the stop points.
         */
-        const std::vector<SVGStop> get_stops() const;
+        const std::vector<SVGStop> &get_stops() const;
         /**
         * Add a new stop point.
         *

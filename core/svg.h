@@ -2,9 +2,9 @@
 #include <map>
 #include <string>
 #include <memory>
-#include "point.h"
-#include "svg_element.h"
-#include "svg_define.h"
+#include "svg/point.h"
+#include "svg/svg_element.h"
+#include "svg/svg_define.h"
 #ifndef __LZ_SVG__
 #define __LZ_SVG__
 

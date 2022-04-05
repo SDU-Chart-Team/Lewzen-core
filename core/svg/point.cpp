@@ -1,4 +1,5 @@
 #include "point.h"
+#include "point_func.h"
 #include <iostream>
 
 namespace Lewzen {
@@ -64,6 +65,6 @@ namespace Lewzen {
         return Point2D(_x - point.get_x(), _y - point.get_y(), p.get_coordinate());
     }
     Point2D operator() (const Coordinate &coordinate) {
-        
+        return coordinate_convert(*this, coordinate);
     }
 }

@@ -10,8 +10,8 @@ namespace Lewzen {
     */
     class SVGPattern: public SVGDefine {
     public:
-        enum class PatternContentUnits { OBJECT_BOUNDING_BOX, USER_SPACT_ON_USE };
-        enum class PatternUnits { OBJECT_BOUNDING_BOX, USER_SPACT_ON_USE };
+        enum class PatternContentUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
+        enum class PatternUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
     private:
         double _x;
         double _y;
@@ -19,6 +19,7 @@ namespace Lewzen {
         double _height;
         PatternContentUnits _pattern_content_units;
         PatternUnits _pattern_units;
+        std::string _inner_XML;
     public:
         /**
         * Constructor of pattern.
@@ -97,6 +98,24 @@ namespace Lewzen {
         * @param pattern_units the pattern units.
         */
         void set_pattern_units(const PatternUnits &pattern_units);
+        /**
+        * Get inner XML.
+        *
+        * @return inner XML.
+        */
+        const std::string &get_inner_XML() const;
+        /**
+        * Set inner XML.
+        *
+        * @param inner_XML inner XML.
+        */
+        void set_inner_XML(const std::string &inner_XML);
+
+        /// Functional
+        /**
+        * Parse this gradient to XML.
+        */
+        std::string to_XML() const;
     }
 }
 #endif
