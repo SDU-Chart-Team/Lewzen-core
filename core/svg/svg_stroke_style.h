@@ -7,10 +7,10 @@ namespace Lewzen {
     * Stroke style for SVG element.
     */
     class SVGStrokeStyle {
+    public:
+        enum class StrokeLinecap { DEFAULT, BUTT, SQUARE, ROUND };
+        enum class StrokeLinejoin { DEFAULT, MITER, ROUND, BEVEL };
     private:
-        enum class  StrokeLinecap;
-        enum class  StrokeLinejoin;
-
         // stroke content, eg: 'red', '#FFFFFF'.
         std::string _stroke;
         // stroke width
@@ -28,17 +28,10 @@ namespace Lewzen {
         // stroke dashoffset
         double _stroke_dashoffset;
     public:
-        enum class  StrokeLinecap { DEFAULT, BUTT, SQUARE, ROUND };
-        enum class  StrokeLinejoin { DEFAULT, MITER, ROUND, BEVEL };
-
          /**
         * Constructor of stroke style.
         */
         SVGStrokeStyle();
-        /**
-        * Destructor of stroke style.
-        */
-        ~SVGStrokeStyle();
 
         /// Properties
         /**
@@ -58,7 +51,7 @@ namespace Lewzen {
         *
         * @return the stroke width.
         */
-        double &get_stroke_width() const;
+        double get_stroke_width() const;
         /**
         * Set the stroke width.
         *
@@ -70,7 +63,7 @@ namespace Lewzen {
         *
         * @return the stroke opacity.
         */
-        double &get_stroke_opacity() const;
+        double get_stroke_opacity() const;
         /**
         * Set the stroke opacity.
         *
@@ -118,7 +111,7 @@ namespace Lewzen {
         *
         * @return the stroke dashoffset.
         */
-        double &get_stroke_dashoffset() const;
+        double get_stroke_dashoffset() const;
         /**
         * Set the stroke dashoffset.
         *

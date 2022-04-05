@@ -1,5 +1,7 @@
 #include <string>
+#include <vector>
 #include "../svg_define.h"
+#include "svg_stop.h"
 #ifndef __LZ_SVG_GRADIENT__
 #define __LZ_SVG_GRADIENT__
 
@@ -10,119 +12,46 @@ namespace Lewzen {
     */
     class SVGGradient: public SVGDefine {
     private:
-        enum class  SpreadMethod;
-        enum class GradientUnits;
-
-        double cx;
-        double cy;
-        double r;
-        double fx;
-        double fy;
-        SpreadMethod _spread_method;
-        GradientUnits _gradient_units;
+        std::vector<SVGStop> _stops;
     public:
-        enum class  SpreadMethod { PAD, REFLECT, REPEAT };
-        enum class GradientUnits { OBJECT_BOUNDING_BOX, USER_SPACT_ON_USE };
         /**
         * Constructor of gradient.
         */
         SVGGradient();
-        /**
-        * Destructor of gradient.
-        */
-        ~SVGGradient();
 
-        /// Properties
+        /// Stops
         /**
-        * Get x of center point.
+        * Get all stop points in gradient.
         *
-        * @return x of center point.
+        * @return the list of the stop points.
         */
-        double &get_cx() const;
+        const std::vector<SVGStop> get_stops() const;
         /**
-        * Set x of center point.
+        * Add a new stop point.
         *
-        * @param cx x of center point.
+        * @param stop a stop point of gradient.
         */
-        void set_cx(double cx);
+        void add_stop(SVGStop stop);
         /**
-        * Get y of center point.
+        * Remove a stop point by its content.
         *
-        * @return y of center point.
+        * @param stop a stop point of gradient.
+        * @return true for successful removal.
         */
-        double &get_cy() const;
+        bool remove_stop(SVGStop stop);
         /**
-        * Set y of center point.
+        * Remove a stop point by index.
         *
-        * @param cy y of center point.
+        * @param index index of stop point.
+        * @return true for successful removal.
         */
-        void set_cy(double cy);
-        /**
-        * Get the radius.
-        *
-        * @return the radius.
-        */
-        double &get_r() const;
-        /**
-        * Set the radius.
-        *
-        * @param r the radius.
-        */
-        void set_r(double r);
-        /**
-        * Get x of focal point.
-        *
-        * @return x of focal point.
-        */
-        double &get_fx() const;
-        /**
-        * Set x of focal point.
-        *
-        * @param fx x of focal point.
-        */
-        void set_fx(double fx);
-        /**
-        * Get y of focal point.
-        *
-        * @return y of focal point.
-        */
-        double &get_fy() const;
-        /**
-        * Set y of focal point.
-        *
-        * @param fy y of focal point.
-        */
-        void set_fy(double fy);
-        /**
-        * Get the spread method.
-        *
-        * @return the spread method.
-        */
-        const SpreadMethod &get_spread_method() const;
-        /**
-        * Set the spread method.
-        *
-        * @param spread_method the spread method.
-        */
-        void set_spread_method(const SpreadMethod &spread_method);
-        /**
-        * Get the gradient units.
-        *
-        * @return the gradient units.
-        */
-        const GradientUnits &get_gradient_units() const;
-        /**
-        * Set the gradient units.
-        *
-        * @param gradient_units the gradient units.
-        */
-        void set_gradient_units(const GradientUnits &gradient_units);
+        bool remove_stop(const int &index);
 
         /// Functional
         /**
         * Parse this gradient to XML.
         */
-        std::string to_XML() const;
+        virtual std::string to_XML() const;
     }
 }
 #endif
