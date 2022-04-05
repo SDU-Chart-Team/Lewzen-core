@@ -64,7 +64,7 @@ namespace Lewzen {
         /**
         * Parse this fill style to XML properties.
         */
-        virtual std::string to_properties() const;
+        std::string to_properties() const;
     }
 }
 #endif  

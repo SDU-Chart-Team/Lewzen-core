@@ -1,5 +1,4 @@
 #include <string>
-#include "../svg_define.h"
 #ifndef __LZ_SVG_STOP__
 #define __LZ_SVG_STOP__
 
@@ -7,7 +6,7 @@ namespace Lewzen {
     /**
     * A gradient stop define in SVG context.
     */
-    class SVGStop: public SVGDefine {
+    class SVGStop {
     private:
         double _offset;
         std::string _stop_color;

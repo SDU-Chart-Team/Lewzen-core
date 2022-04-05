@@ -11,7 +11,7 @@ namespace Lewzen {
     class SVGRadialGradient: public SVGGradient {
     public:
         enum class SpreadMethod { PAD, REFLECT, REPEAT };
-        enum class GradientUnits { OBJECT_BOUNDING_BOX, USER_SPACT_ON_USE };
+        enum class GradientUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
     private:
         double _cx;
         double _cy;
