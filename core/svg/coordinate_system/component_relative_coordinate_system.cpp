@@ -7,13 +7,13 @@ namespace Lewzen {
     const std::shared_ptr<Component> &ComponentRelativeCoordinateSystem::get_component() const {
         return _component;
     }
-    bool ComponentRelativeCoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        if (!A::operator==(coordianate)) return false;
-        return _component == static_cast<const ComponentRelativeCoordinateSystem &>(coordianate).get_component();
+    bool ComponentRelativeCoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        if (!A::operator==(coordinate)) return false;
+        return _component == static_cast<const ComponentRelativeCoordinateSystem &>(coordinate).get_component();
     }
-    bool ComponentRelativeCoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        if (A::operator==(coordianate)) return false;
-        return !_component == static_cast<const ComponentRelativeCoordinateSystem &>(coordianate).get_component();
+    bool ComponentRelativeCoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        if (A::operator==(coordinate)) return false;
+        return !_component == static_cast<const ComponentRelativeCoordinateSystem &>(coordinate).get_component();
     }
     Point2D to_absolute(const Point2D &p) const {
         

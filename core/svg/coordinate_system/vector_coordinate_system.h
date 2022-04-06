@@ -40,13 +40,13 @@ namespace Lewzen {
         *
         * @relatesalso CoordinateSystem
         */
-        bool operator== (const CoordinateSystem &coordianate_system) const override;
+        bool operator== (const CoordinateSystem &coordinate_system) const override;
         /**
         * Compare two coordinate systems.
         *
         * @relatesalso CoordinateSystem
         */
-        bool operator!= (const CoordinateSystem &coordianate_system) const override;
+        bool operator!= (const CoordinateSystem &coordinate_system) const override;
         /**
         * Get point in corresponding relative coordinate system.
         *
@@ -58,6 +58,7 @@ namespace Lewzen {
         *
         * @param p a point in CanvasCoordinateSystem.
         * @return a point in this coordinate system.
+        * @throws Lewzen::coordinate_system_mismatch: thrown if point p is not in CanvasCoordinateSystem.
         */
         Point2D from_canvas(const Point2D &p) const override;
         /**
@@ -65,6 +66,7 @@ namespace Lewzen {
         *
         * @param p a point in this coordinate system.
         * @return a point in CanvasCoordinateSystem.
+        * @throws Lewzen::coordinate_system_mismatch: thrown if point p is not in this coordinate system.
         */
         Point2D to_canvas(const Point2D &p) const override;
     };

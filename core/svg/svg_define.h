@@ -1,5 +1,5 @@
 #include <string>
-#include "../utils.h"
+#include "xml_element.h"
 #ifndef __LZ_SVG_DEFINE__
 #define __LZ_SVG_DEFINE__
 
@@ -7,7 +7,7 @@ namespace Lewzen {
     /**
     * A SVG define in SVG context.
     */
-    class SVGDefine {
+    class SVGDefine: public XMLElement {
     private:
         // id
         std::string _id;
@@ -35,7 +35,7 @@ namespace Lewzen {
         /**
         * Parse this SVG object to XML. (Unimplemented)
         */
-        virtual std::string to_XML() const = 0;
+        virtual const std::string &to_XML() const override = 0;
     }
 }
 #endif

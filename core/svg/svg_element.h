@@ -1,7 +1,7 @@
 #include <string>
 #include <memory>
 #include "point.h"
-#include "../utils.h"
+#include "xml_element.h"
 #include 
 #ifndef __LZ_SVG_ELEMENT__
 #define __LZ_SVG_ELEMENT__
@@ -10,12 +10,12 @@ namespace Lewzen {
     /**
     * A SVG element in SVG context.
     */
-    class SVGElement {
+    class SVGElement: public XMLElement {
     private:
         // id
         std::string _id;
         // point number maps to way point
-        ordered_map<double, Point2D> _way_points;
+        ordered_map<double, std::shared_ptr<Point2D>> _way_points;
         // fill style
         SVGFillStyle _fill_style;
         // stroke style
@@ -46,7 +46,7 @@ namespace Lewzen {
         *
         * @return the pointer list of the way points.
         */
-        const std::vector<const Point2D &> get_way_points() const;
+        const std::vector<std::shared_ptr<Point2D>> get_way_points() const;
         /**
         * Convert the rank in way point list to way point's number.
         *
@@ -67,20 +67,20 @@ namespace Lewzen {
         * @param rank the rank in way point list.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        const Point2D &get_way_point(const int &rank) const;
+       std::shared_ptr<Point2D> get_way_point(const int &rank) const;
         /**
         * Get a way point in way point list.
         *
         * @param num way point's number.
         * @return the pointer of the way point; NULL for non-exist.
         */
-        const Point2D &get_way_point(const double &num) const;
+       std::shared_ptr<Point2D> get_way_point(const double &num) const;
         /**
         * Add a new way point to way point list.
         *
         * @param way_point the pointer of way point to be added.
         */
-        void add_way_point(const double &num, const Point2D &way_point);
+        void add_way_point(const double &num, std::shared_ptr<Point2D> way_point);
         /**
         * Remove a SVG element from SVG.
         *
@@ -119,7 +119,7 @@ namespace Lewzen {
         /**
         * Parse this SVG element object to XML. (Unimplemented)
         */
-        virtual std::string to_XML(const CoordinateSystem &coordianate_system_system) const = 0;
+        virtual const std::string &to_XML(const CoordinateSystem &coordinate_system_system) const = 0;
     }
 }
 #endif

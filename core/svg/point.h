@@ -106,7 +106,7 @@ namespace Lewzen {
         */
         Point2D &operator-(const Point2D &point);
         /**
-        * Convert this point to another coordianate.
+        * Convert this point to another coordinate.
         *
         * @relatesalso CoordinateSystem
         */

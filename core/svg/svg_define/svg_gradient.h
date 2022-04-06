@@ -13,7 +13,7 @@ namespace Lewzen {
     */
     class SVGGradient: public SVGDefine {
     private:
-        std::vector<SVGStop> _stops;
+        std::vector<std::shared_ptr<SVGStop>> _stops;
     public:
         /**
         * Constructor of gradient.
@@ -26,7 +26,7 @@ namespace Lewzen {
         *
         * @return the list of the stop points.
         */
-        const std::vector<SVGStop> &get_stops() const;
+        const std::vector<std::shared_ptr<SVGStop>> &get_stops() const;
         /**
         * Add a new stop point.
         *
@@ -52,7 +52,7 @@ namespace Lewzen {
         /**
         * Parse this gradient to XML.
         */
-        virtual std::string to_XML() const override;
+        virtual const std::string &to_XML() const override;
     }
 }
 #endif

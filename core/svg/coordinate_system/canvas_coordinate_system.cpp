@@ -4,11 +4,11 @@ namespace Lewzen {
     CanvasCoordinateSystem::CanvasCoordinateSystem(): {
         new (this)CoordinateSystem("CAN");
     }
-    bool CanvasCoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        return A::operator==(coordianate)
+    bool CanvasCoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        return A::operator==(coordinate)
     }
-    bool CanvasCoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        return !A::operator==(coordianate)
+    bool CanvasCoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        return !A::operator==(coordinate)
     }
     Point2D from_canvas(const Point2D &p) const override {
        if (p.get_coordinate_system().get_type() != "CAN") {

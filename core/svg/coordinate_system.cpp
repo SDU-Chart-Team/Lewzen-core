@@ -8,11 +8,11 @@ namespace Lewzen {
     const std::string &CoordinateSystem::get_type() const {
         return _coordinate_system_type;
     }
-    bool CoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        return _coordinate_system_type == coordianate.get_type();
+    bool CoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        return _coordinate_system_type == coordinate.get_type();
     }
-    bool CoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        return _coordinate_system_type != coordianate.get_type();
+    bool CoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        return _coordinate_system_type != coordinate.get_type();
     }
     Point2D from_canvas(const Point2D &p) const override {
         if (p.get_coordinate_system().get_type() != "CAN") {

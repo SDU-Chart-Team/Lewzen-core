@@ -48,7 +48,7 @@ namespace Lewzen {
     void set_inner_XML(const std::string &inner_XML) {
         _inner_XML = inner_XML;
     }
-    std::string to_XML() const override {
+    const std::string &to_XML() const override {
         std::stringstream ss;
         ss << "<pattern";
         ss << " class=\".pattern ." <<  _id << "\"";

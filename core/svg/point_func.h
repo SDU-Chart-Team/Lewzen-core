@@ -34,6 +34,9 @@ namespace Lewzen {
     * @param b another point in line, in the same coordinate system with point p. 
     * 
     * @return line symmetric point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if three points are not in the same coordinate system.
+    * @throws logic_error: if a equals to b, which can not define a straight line.
     */
     Point2D line_symmetric(const Point &p, const Point &a, const Point &b);
     /**
@@ -45,6 +48,9 @@ namespace Lewzen {
     * @param dy y rate of line.
     * 
     * @return line symmetric point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if three points are not in the same coordinate system.
+    * @throws logic_error: if a equals to b, which can not define a straight line.
     */
     Point2D line_symmetric(const Point &p, const Point &a, double dx, double dy);
 
@@ -55,6 +61,8 @@ namespace Lewzen {
     * @param c symmetric center, in the same coordinate system with point p.
     * 
     * @return center symmetric point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if two points are not in the same coordinate system.
     */
     Point2D center_symmetric(const Point &p, const Point &c);
 
@@ -66,6 +74,8 @@ namespace Lewzen {
     * @param lambda zoom rate.
     * 
     * @return center zoom point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if two points are not in the same coordinate system.
     */
     Point2D center_zoom(const Point &p, const Point &c, double lambda);
 
@@ -77,6 +87,8 @@ namespace Lewzen {
     * @param theta rotate radian in clockwise direction.
     * 
     * @return center zoom point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if two points are not in the same coordinate system.
     */
     Point2D center_rotate(const Point &p, const Point &c, double theta);
 
@@ -87,6 +99,8 @@ namespace Lewzen {
     * @param p_list the list of 2D points' pointers, in the same coordinate system.
     * 
     * @return geometry centroid.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if points are not in the same coordinate system.
     */
     Point2D geometry_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list) {
         Point2D d = linear_transform(cos(theta), -sin(theta), sin(theta), cos(theta), p - c);
@@ -99,6 +113,8 @@ namespace Lewzen {
     * @param p_list the list of vertices' pointers, in the same coordinate system.
     * 
     * @return polygon centroid.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if points are not in the same coordinate system.
     */
     Point2D polygon_centroid(const std::vector<std::shared_ptr<Point2D>> &p_list);
 
@@ -109,9 +125,19 @@ namespace Lewzen {
     * @param weights the list of weights.
     * 
     * @return weight balance point.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if points are not in the same coordinate system.
     */
     Point2D weight_balance(const std::vector<std::shared_ptr<Point2D>> &p_list, const std::vector<double> &weights);
 
     /// CoordinateSystem Conversion
+    /**
+    * Convert point p to another coordinate sysytem.
+    *
+    * @param p.the point.
+    * @param coordinate_system  the target coordinate system.
+    * 
+    * @return weight balance point.
+    */
     Point2D coordinate system_convert(const Point &p, const CoordinateSystem &coordinate_system);
 }

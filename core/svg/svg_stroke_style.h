@@ -1,4 +1,5 @@
 #include <string>
+#include "xml_property.h"
 #ifndef __LZ_SVG_STROKE_STYLE__
 #define __LZ_SVG_STROKE_STYLE__
 
@@ -8,8 +9,8 @@ namespace Lewzen {
     */
     class SVGStrokeStyle {
     public:
-        enum class StrokeLinecap { DEFAULT, BUTT, SQUARE, ROUND };
-        enum class StrokeLinejoin { DEFAULT, MITER, ROUND, BEVEL };
+        enum class StrokeLinecap { BUTT, SQUARE, ROUND };
+        enum class StrokeLinejoin { MITER, ROUND, BEVEL };
     private:
         // stroke content, eg: 'red', '#FFFFFF'.
         std::string _stroke;
@@ -95,6 +96,18 @@ namespace Lewzen {
         */
         void set_stroke_linejoin(const StrokeLinejoin &stroke_linejoin);
         /**
+        * Get the stroke miterlimit.
+        *
+        * @return the stroke miterlimit.
+        */
+        double get_stroke_miterlimit() const;
+        /**
+        * Set the stroke miterlimit.
+        *
+        * @param stroke_miterlimit the stroke miterlimit.
+        */
+        void set_stroke_miterlimit(const double &stroke_miterlimit);
+        /**
         * Get string of stroke dasharray, eg: '2', '2.2 1.6'.
         *
         * @return string of stroke dasharray.
@@ -123,7 +136,7 @@ namespace Lewzen {
         /**
         * Parse this stroke style to XML properties.
         */
-        std::string to_properties() const;
+        const std::string &to_properties() const override;
     }
 }
 #endif  

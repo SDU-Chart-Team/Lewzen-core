@@ -1,4 +1,5 @@
 #include <string>
+#include "xml_element.h"
 #ifndef __LZ_SVG_STOP__
 #define __LZ_SVG_STOP__
 
@@ -6,7 +7,7 @@ namespace Lewzen {
     /**
     * A gradient stop define in SVG context.
     */
-    class SVGStop {
+    class SVGStop: public XMLElement {
     private:
         double _offset;
         std::string _stop_color;
@@ -60,7 +61,7 @@ namespace Lewzen {
         /**
         * Parse this stop to XML.
         */
-        std::string to_XML() const;
+        const std::string &to_XML() const override;
     }
 }
 #endif

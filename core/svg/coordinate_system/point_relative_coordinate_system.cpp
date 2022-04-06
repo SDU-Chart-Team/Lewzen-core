@@ -14,15 +14,15 @@ namespace Lewzen {
     const std::shared_ptr<Point2D> &PointRelativeCoordinateSystem::get_vertex() const {
         return _vertex;
     }
-    bool PointRelativeCoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        if (!A::operator==(coordianate)) return false;
-        return _component == static_cast<const PointRelativeCoordinateSystem &>(coordianate).get_origin()
-               && _component == static_cast<const PointRelativeCoordinateSystem &>(coordianate).get_vertex();
+    bool PointRelativeCoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        if (!A::operator==(coordinate)) return false;
+        return _component == static_cast<const PointRelativeCoordinateSystem &>(coordinate).get_origin()
+               && _component == static_cast<const PointRelativeCoordinateSystem &>(coordinate).get_vertex();
     }
-    bool PointRelativeCoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        if (A::operator==(coordianate)) return false;
-        return !_component == static_cast<const PointRelativeCoordinateSystem &>(coordianate).get_origin()
-                   || !_component == static_cast<const PointRelativeCoordinateSystem &>(coordianate).get_vertex();
+    bool PointRelativeCoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        if (A::operator==(coordinate)) return false;
+        return !_component == static_cast<const PointRelativeCoordinateSystem &>(coordinate).get_origin()
+                   || !_component == static_cast<const PointRelativeCoordinateSystem &>(coordinate).get_vertex();
     }
     Point2D to_absolute(const Point2D &p) const {
        if (p.get_coordinate_system() != *this) {

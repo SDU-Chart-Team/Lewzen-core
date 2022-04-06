@@ -53,6 +53,9 @@ namespace Lewzen {
     }
 
     Point2D center_rotate(const Point &p, const Point &c, double theta) {
+        if (p.get_coordinate_system() != c.get_coordinate_system()) {
+            throw coordinate_system_mismatch("Two points are not in the same coordinate system");
+        }
         Point2D d = linear_transform(std::cos(theta), std::sin(theta), -std::sin(theta), std::cos(theta), p - c); // p + (p - c) * mat^{-1}
         return d + c;
     }

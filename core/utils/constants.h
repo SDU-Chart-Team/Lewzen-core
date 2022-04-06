@@ -10,4 +10,10 @@ namespace Lewzen {
     * @hideinitializer
     */
     const NUM_NULL = std::numeric_limits<double>::max();
+    /**
+    * The null string indicating default option.
+    *
+    * @hideinitializer
+    */
+    const STR_NULL = "";
 }

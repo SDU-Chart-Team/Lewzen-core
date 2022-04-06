@@ -12,13 +12,13 @@ namespace Lewzen {
     const std::shared_ptr<Point2D> &PointCoordinateSystem::get_origin() const {
         return _origin;
     }
-    bool PointCoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        if (!A::operator==(coordianate)) return false;
-        return _component == static_cast<const PointCoordinateSystem &>(coordianate).get_origin();
+    bool PointCoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        if (!A::operator==(coordinate)) return false;
+        return _component == static_cast<const PointCoordinateSystem &>(coordinate).get_origin();
     }
-    bool PointCoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        if (A::operator==(coordianate)) return false;
-        return !_component == static_cast<const PointCoordinateSystem &>(coordianate).get_origin();
+    bool PointCoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        if (A::operator==(coordinate)) return false;
+        return !_component == static_cast<const PointCoordinateSystem &>(coordinate).get_origin();
     }
     Point2D to_relative(const Point2D &p) const {
        if (p.get_coordinate_system() != *this) {

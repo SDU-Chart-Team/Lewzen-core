@@ -5,13 +5,13 @@
 namespace Lewzen {
     SVGGradient::SVGGradient() {
     }
-    const std::vector<SVGStop> &SVGGradient::get_stops() {
+    const std::vector<std::shared_ptr<SVGStop>> &SVGGradient::get_stops() {
         return _stops;
     }
-    void SVGGradient::add_stop(SVGStop stop) {
+    void SVGGradient::add_stop(std::shared_ptr<SVGStop> stop) {
         _stops->push_back(stop);
     }
-    bool SVGGradient::remove_stop(SVGStop stop) {
+    bool SVGGradient::remove_stop(std::shared_ptr<SVGStop> stop) {
         for (auto it = _stops->begin(); it != _stops->end();) {
             if (*it == stop) it = _stops->erase(it);
             else it++;

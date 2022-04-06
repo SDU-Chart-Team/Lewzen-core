@@ -16,15 +16,15 @@ namespace Lewzen {
     const std::shared_ptr<Point2D> &VectorCoordinateSystem::get_B() const {
         return _B;
     }
-    bool VectorCoordinateSystem::operator== (const CoordinateSystem &coordianate_system) const {
-        if (!A::operator==(coordianate)) return false;
-        return _component == static_cast<const VectorCoordinateSystem &>(coordianate).get_A()
-               && _component == static_cast<const VectorCoordinateSystem &>(coordianate).get_B();
+    bool VectorCoordinateSystem::operator== (const CoordinateSystem &coordinate_system) const {
+        if (!A::operator==(coordinate)) return false;
+        return _component == static_cast<const VectorCoordinateSystem &>(coordinate).get_A()
+               && _component == static_cast<const VectorCoordinateSystem &>(coordinate).get_B();
     }
-    bool VectorCoordinateSystem::operator!= (const CoordinateSystem &coordianate_system) const {
-        if (A::operator==(coordianate)) return false;
-        return !_component == static_cast<const VectorCoordinateSystem &>(coordianate).get_A()
-                   || !_component == static_cast<const VectorCoordinateSystem &>(coordianate).get_B();
+    bool VectorCoordinateSystem::operator!= (const CoordinateSystem &coordinate_system) const {
+        if (A::operator==(coordinate)) return false;
+        return !_component == static_cast<const VectorCoordinateSystem &>(coordinate).get_A()
+                   || !_component == static_cast<const VectorCoordinateSystem &>(coordinate).get_B();
     }
     Point2D to_relative(const Point2D &p) const {
        if (p.get_coordinate_system() != *this) {

@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include "svg/xml_element.h"
 #include "svg/point.h"
 #include "svg/svg_element.h"
 #include "svg/svg_define.h"
@@ -12,7 +13,7 @@ namespace Lewzen {
     /**
     * SVG context, consisting of SVG elements and SVG defines.
     */
-    class SVG {
+    class SVG: public XMLElement {
     private:
         // SVG element id maps to SVG element
         std::unordered_map<const std::string &, std::shared_ptr<SVGElement>> _elements;
@@ -90,7 +91,7 @@ namespace Lewzen {
         * @param element the pointer of the SVG element
         * @return the id of the SVG element.
         */
-        const std::string &get_element_id(std::shared_ptr<SVGElement>element) const;
+        const std::string &get_element_id(std::shared_ptr<SVGElement> element) const;
         /**
         * Get id list of SVG elements.
         *
@@ -146,9 +147,13 @@ namespace Lewzen {
 
         /// Functional
         /**
+        * Parse this SVG object to XML, in CanvasCoordinateSystem.
+        */
+        const std::string &to_XML() const override;
+        /**
         * Parse this SVG object to XML.
         */
-        std::string to_XML(const CoordinateSystem &coordianate_system_system) const;
+        const std::string &to_XML(const CoordinateSystem &coordinate_system) const;
     }
 }
 #endif

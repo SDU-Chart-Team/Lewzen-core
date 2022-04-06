@@ -1,4 +1,5 @@
 #include <string>
+#include "xml_property.h"
 #ifndef __LZ_SVG_FILL_STYLE__
 #define __LZ_SVG_FILL_STYLE__
 
@@ -6,9 +7,9 @@ namespace Lewzen {
     /**
     * Fill style for SVG element.
     */
-    class SVGFillStyle {
+    class SVGFillStyle: public XML {
     public:
-        enum class FillRule { DEFAULT, NONEZERO, EVEN_ODD };
+        enum class FillRule { NONEZERO, EVENODD };
     private:
         // fill content, eg: 'red', '#FFFFFF', 'url(#my_define)'.
         std::string _fill;
@@ -64,7 +65,7 @@ namespace Lewzen {
         /**
         * Parse this fill style to XML properties.
         */
-        std::string to_properties() const;
+        const std::string &to_properties() const override;
     }
 }
 #endif  
