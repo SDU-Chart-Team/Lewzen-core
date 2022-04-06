@@ -28,7 +28,7 @@ namespace Lewzen {
     void SVGLinearGradient::set_y2(const double &y2) {
         _y2 = y2;
     }
-    std::string SVGLinearGradient::to_XML() const {
+    std::string SVGLinearGradient::to_XML() const override {
         std::stringstream ss;
         ss << "<linearGradient";
         ss << " class=\".linear_gradient ." <<  _id << "\"";

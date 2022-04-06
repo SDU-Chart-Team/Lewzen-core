@@ -1,6 +1,6 @@
 # 矢量图
 
-## 坐标系 Coordinate
+## 坐标系 CoordinateSystem
 
 描述一种坐标系
 

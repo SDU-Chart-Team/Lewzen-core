@@ -1,6 +1,5 @@
 #include <vector>
 #include <memory>
-#include "coordinate.h"
 #include "point.h"
 #ifndef __LZ_POINT_FUNC__
 #define __LZ_POINT_FUNC__
@@ -31,8 +30,8 @@ namespace Lewzen {
     * Do line symmetric transformation on 2D point.
     *
     * @param p the point.
-    * @param a a point in line, in the same coordinate with point p. 
-    * @param b another point in line, in the same coordinate with point p. 
+    * @param a a point in line, in the same coordinate system with point p. 
+    * @param b another point in line, in the same coordinate system with point p. 
     * 
     * @return line symmetric point of p.
     */
@@ -41,7 +40,7 @@ namespace Lewzen {
     * Do line symmetric transformation on 2D point.
     *
     * @param p the point.
-    * @param a a point in line, in the same coordinate with point p. 
+    * @param a a point in line, in the same coordinate system with point p. 
     * @param dx x rate of line.
     * @param dy y rate of line.
     * 
@@ -53,7 +52,7 @@ namespace Lewzen {
     * Do center symmetric transformation on 2D point.
     *
     * @param p the point.
-    * @param c symmetric center, in the same coordinate with point p.
+    * @param c symmetric center, in the same coordinate system with point p.
     * 
     * @return center symmetric point of p.
     */
@@ -63,7 +62,7 @@ namespace Lewzen {
     * Do center zoom transformation on 2D point.
     *
     * @param p the point.
-    * @param c zoom center, in the same coordinate with point p.
+    * @param c zoom center, in the same coordinate system with point p.
     * @param lambda zoom rate.
     * 
     * @return center zoom point of p.
@@ -74,7 +73,7 @@ namespace Lewzen {
     * Do rotate transformation on 2D point.
     *
     * @param p the point.
-    * @param c rotate center, in the same coordinate with point p.
+    * @param c rotate center, in the same coordinate system with point p.
     * @param theta rotate radian in clockwise direction.
     * 
     * @return center zoom point of p.
@@ -85,7 +84,7 @@ namespace Lewzen {
     /**
     * Get geometry centroid of a set of 2D points.
     *
-    * @param p_list the list of 2D points' pointers, in the same coordinate.
+    * @param p_list the list of 2D points' pointers, in the same coordinate system.
     * 
     * @return geometry centroid.
     */
@@ -97,7 +96,7 @@ namespace Lewzen {
     /**
     * Get polygon centroid of a set of vertices. The vertices should be inputted in order and the polygon should be closed.
     *
-    * @param p_list the list of vertices' pointers, in the same coordinate.
+    * @param p_list the list of vertices' pointers, in the same coordinate system.
     * 
     * @return polygon centroid.
     */
@@ -106,13 +105,13 @@ namespace Lewzen {
     /**
     * Get weight balance point of a set of 2D points and corresponding weight.
     *
-    * @param p_list the list of 2D points' pointers, in the same coordinate.
+    * @param p_list the list of 2D points' pointers, in the same coordinate system.
     * @param weights the list of weights.
     * 
     * @return weight balance point.
     */
     Point2D weight_balance(const std::vector<std::shared_ptr<Point2D>> &p_list, const std::vector<double> &weights);
 
-    /// Coordinate Conversion
-    Point2D coordinate_convert(const Point &p, const Coordinate &coordinate);
+    /// CoordinateSystem Conversion
+    Point2D coordinate system_convert(const Point &p, const CoordinateSystem &coordinate_system);
 }

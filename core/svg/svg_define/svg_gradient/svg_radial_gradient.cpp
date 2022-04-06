@@ -48,7 +48,7 @@ namespace Lewzen {
     void SVGRadialGradient::set_gradient_units(const SVGRadialGradient::GradientUnits &gradient_units) {
         _gradient_units = gradient_units;
     }
-    std::string SVGRadialGradient::to_XML() const {
+    std::string SVGRadialGradient::to_XML() const override {
         std::stringstream ss;
         ss << "<radialGradient";
         ss << " class=\".radial_gradient ." <<  _id << "\"";

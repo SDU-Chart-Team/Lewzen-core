@@ -1,5 +1,5 @@
 #include <string>
-#include "coordinate.h"
+#include "coordinate_system.h"
 #ifndef __LZ_POINT__
 #define __LZ_POINT__
 
@@ -12,10 +12,10 @@ namespace Lewzen {
         // position (x, y)
         double _x, _y;
         // corrdiante information
-        Coordinate _coordinate;
+        CoordinateSystem _coordinate system;
     public:
         /**
-        * Constructor of SVG Element. The coordinate is 'NULL'.
+        * Constructor of SVG Element. The coordinate system is 'NULL'.
         *
         * @param x x position.
         * @param y y position.
@@ -26,17 +26,17 @@ namespace Lewzen {
         *
         * @param x x position.
         * @param y y position.
-        * @param coordinate coordinate information.
+        * @param coordinate system coordinate system information.
         */
-        Point2D(const double &x, const double &y, const Coordinate &coordinate);
+        Point2D(const double &x, const double &y, const CoordinateSystem &coordinate_system);
 
         /// Property
         /**
-        * Get coordinate information.
+        * Get coordinate system information.
         *
-        * @return coordinate information.
+        * @return coordinate system information.
         */
-        const Coordinate &get_coordinate();
+        const CoordinateSystem &get_coordinate_system();
         /**
         * Get x position.
         *
@@ -70,37 +70,37 @@ namespace Lewzen {
         void move(const double &dx, const double &dy);
 
         /**
-        * Compare two points. Compare x, y and coordinate.
+        * Compare two points. Compare x, y and coordinate system.
         *
         * @relatesalso Point
         */
         bool operator== (const Point2D &point);
         /**
-        * Let this point equals to another point. Two points should be in the same coordinate.
+        * Let this point equals to another point. Two points should be in the same coordinate system.
         *
         * @relatesalso Point
         */
         Point2D &operator=(const Point2D &point);
         /**
-        * Add another point to this point. Two points should be in the same coordinate.
+        * Add another point to this point. Two points should be in the same coordinate system.
         *
         * @relatesalso Point
         */
         Point2D &operator+=(const Point2D &point);
         /**
-        * Substract another point from this point. Two points should be in the same coordinate.
+        * Substract another point from this point. Two points should be in the same coordinate system.
         *
         * @relatesalso Point
         */
         Point2D &operator-=(const Point2D &point);
         /**
-        * Point addition. Two points should be in the same coordinate.
+        * Point addition. Two points should be in the same coordinate system.
         *
         * @relatesalso Point
         */
         Point2D &operator+(const Point2D &point);
         /**
-        * Point substraction. Two points should be in the same coordinate.
+        * Point substraction. Two points should be in the same coordinate system.
         *
         * @relatesalso Point
         */
@@ -108,9 +108,9 @@ namespace Lewzen {
         /**
         * Convert this point to another coordianate.
         *
-        * @relatesalso Coordinate
+        * @relatesalso CoordinateSystem
         */
-        Point2D operator() (const Coordinate &coordinate);
+        Point2D operator() (const CoordinateSystem &coordinate_system);
     };
 }
 #endif

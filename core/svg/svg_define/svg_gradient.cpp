@@ -22,7 +22,7 @@ namespace Lewzen {
         _stops->erase(_stop->begin() + index);
         return true;
     }
-    std::string SVGGradient::to_XML() const {
+    std::string SVGGradient::to_XML() const override {
         std::stringstream ss;
         for (auto &stop : *_stops) {
             ss << stop.to_XML() << std::endl;

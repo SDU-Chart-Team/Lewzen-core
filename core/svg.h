@@ -66,7 +66,7 @@ namespace Lewzen {
         /**
         * Get a SVG element in SVG, where the point locates, with z_index the largest.
         *
-        * @param point a point in Component Coordinate System or Component Relative Coordinate System.
+        * @param point a point in ComponentCoordinateSystem or ComponentRelativeCoordinateSystem.
         * @return the pointer of the SVG element; NULL for non-exist.
         */
         std::shared_ptr<SVGElement> get_element(const Point2D &point) const;
@@ -79,7 +79,7 @@ namespace Lewzen {
         /**
         * Get SVG elements in SVG, where the point locates.
         *
-        * @param point a point in Component Coordinate System or Component Relative Coordinate System.
+        * @param point a point in ComponentCoordinateSystem or ComponentRelativeCoordinateSystem.
         * @return the pointer list of the SVG elements.
         */
         const std::vector<std::shared_ptr<SVGElement> > get_elements(const Point2D &point) const;
@@ -148,14 +148,7 @@ namespace Lewzen {
         /**
         * Parse this SVG object to XML.
         */
-        std::string to_XML() const;
-        /**
-        * Determine if a point is inside this SVG.
-        *
-        * @param point a point in Component Coordinate System or Component Relative Coordinate System.
-        * @return true for the point being in this SVG.
-        */
-        bool is_in(const Point2D &point) const;
+        std::string to_XML(const CoordinateSystem &coordianate_system_system) const;
     }
 }
 #endif

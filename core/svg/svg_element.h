@@ -119,14 +119,7 @@ namespace Lewzen {
         /**
         * Parse this SVG element object to XML. (Unimplemented)
         */
-        virtual std::string to_XML() const = 0;
-        /**
-        * Determine if a point is inside this SVG element. (Unimplemented)
-        *
-        * @param point a point, in Component Coordinate System or Component Relative Coordinate System.
-        * @return true for the point being in this SVG element.
-        */
-        virtual bool is_in(const Point2D &point) const = 0;
+        virtual std::string to_XML(const CoordinateSystem &coordianate_system_system) const = 0;
     }
 }
 #endif

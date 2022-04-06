@@ -6,17 +6,17 @@
 namespace Lewzen
 {
     /**
-     * @brief The decorator of text, containing the coordinate
+     * @brief The decorator of text, containing the coordinate system
      *
      */
 
     class TextSVG
     {
         /**
-         * @brief  the translater between Component Coordinate System and Component Relative Coordinate System
+         * @brief  the translater between ComponentCoordinateSystem and ComponentRelativeCoordinateSystem
          *
          */
-        class CoordinateTranslater
+        class CoordinateSystemTranslater
         {
         private:
             Point2D _origin;
@@ -24,7 +24,7 @@ namespace Lewzen
 
     private:
         Text _text;
-        CoordinateTranslater _tanslater;
+        CoordinateSystemTranslater _tanslater;
 
         /**
          * @brief generate the text
@@ -34,16 +34,16 @@ namespace Lewzen
         void _generate_text(std::string text_content);
 
         /**
-         * @brief generate the coordinate translater
+         * @brief generate the coordinate system translater
          *
-         * @param origin the origin of the Component Relative Coordinate System
+         * @param origin the origin of the ComponentRelativeCoordinateSystem
          */
-        void _generate_coordinate_translater(Point2D origin);
+        void _generate_coordinate system_translater(Point2D origin);
 
     public:
         /**
          * @brief Construct a new Text SVG object
-         * genetater text and coordinate translater
+         * genetater text and coordinate system translater
          */
         TextSVG();
 
@@ -63,7 +63,7 @@ namespace Lewzen
         /**
          * @brief
          *
-         * @param point the point in Component Coordinate System
+         * @param point the point in ComponentCoordinateSystem
          * @return true for the point being in this text SVG
          * @return false
          */

@@ -115,7 +115,7 @@ namespace Lewzen {
         /**
         * Parse this gradient to XML.
         */
-        std::string to_XML() const;
+        std::string to_XML() const override;
     }
 }
 #endif
