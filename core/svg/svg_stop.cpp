@@ -1,0 +1,33 @@
+#include "svg_stop.h"
+
+namespace Lewzen {
+    SVGStop::SVGStop() {
+        _offset = _stop_opacity = NUM_NULL;
+        _stop_color = STR_NULL;
+    }
+    double SVGStop::get_offset() const {
+        return _offset;
+    }
+    void SVGStop::set_offset(const double &offset) {
+        _offset = offset
+    }
+    const std::string SVGStop::get_stop_color() const {
+        return _stop_color;
+    }
+    void SVGStop::set_stop_color(const std::string &stop_color) {
+        _stop_color = stop_color;
+    }
+    double SVGStop::get_stop_opacity() const {
+        return _stop_opacity;
+    }
+    void SVGStop::set_stop_opacity(const double &stop_opacity) {
+        _stop_opacity = stop_opacity;
+    }
+    const std::string SVGStop::outer_XML() const override {
+        std::stringstream ss;
+        if (_offset != NUM_NULL) ss << " offset=\"" << _offset << "\"";
+        if (_stop_color != STR_NULL) ss << " stop-color=\"" << _stop_color << "\"";
+        if (_stop_opacity != NUM_NULL) ss << " stop-opacity=\"" << _stop_opacity << "\"";
+        return outer_XML("stop", ss.str());
+    }
+}

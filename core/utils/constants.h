@@ -1,7 +1,7 @@
-#include <string>
-#include <limits>
 #ifndef __LZ_UTILS_DEFS__
 #define __LZ_UTILS_DEFS__
+#include <string>
+#include <limits>
 
 namespace Lewzen {
     /**
@@ -9,11 +9,18 @@ namespace Lewzen {
     *
     * @hideinitializer
     */
-    const NUM_NULL = std::numeric_limits<double>::max();
+    const double NUM_NULL = std::numeric_limits<double>::max();
     /**
     * The null string indicating default option.
     *
     * @hideinitializer
     */
-    const STR_NULL = "";
+    const std::string STR_NULL = "";
+    /**
+    * The hash code.
+    *
+    * @hideinitializer
+    */
+    typedef unsigned long long int HASH_CODE;
 }
+#endif

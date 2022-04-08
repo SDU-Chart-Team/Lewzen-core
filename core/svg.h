@@ -2,7 +2,7 @@
 #include <map>
 #include <string>
 #include <memory>
-#include "svg/xml_element.h"
+#include "xml_element.h"
 #include "svg/point.h"
 #include "svg/svg_element.h"
 #include "svg/svg_define.h"
@@ -16,19 +16,19 @@ namespace Lewzen {
     class SVG: public XMLElement {
     private:
         // SVG element id maps to SVG element
-        std::unordered_map<const std::string &, std::shared_ptr<SVGElement>> _elements;
+        std::unordered_map<std::string, std::shared_ptr<SVGElement>> _elements;
         // SVG element maps to SVG element id
-        std::unordered_map<std::shared_ptr<SVGElement>, const std::string &> _elements_r;
+        std::unordered_map<std::shared_ptr<SVGElement>, const std::string> _elements_r;
 
         // z_index  maps to SVG element id
-        std::map<int, const std::string &> _z_index;
+        std::map<int, const std::string> _z_index;
         // SVG element id maps to z_index
-        std::unordered_map<const std::string &, int> _z_index_r;
+        std::unordered_map<std::string, int> _z_index_r;
 
         // SVG public define id maps to SVG define
-        std::unordered_map<const std::string &, std::shared_ptr<SVGDefine>> _defines;
+        std::unordered_map<std::string, std::shared_ptr<SVGDefs>> _defines;
         // SVG public define maps to SVG public define id
-        std::unordered_map<std::shared_ptr<SVGDefine>, const std::string &> _defines_r;
+        std::unordered_map<std::shared_ptr<SVGDefs>, const std::string> _defines_r;
 
     public:
          /**
@@ -76,14 +76,14 @@ namespace Lewzen {
         *
         * @return the pointer list of the SVG elements.
         */
-        const std::vector<std::shared_ptr<SVGElement> > get_elements() const;
+        const std::vector<std::shared_ptr<SVGElement>> get_elements() const;
         /**
         * Get SVG elements in SVG, where the point locates.
         *
         * @param point a point in ComponentCoordinateSystem or ComponentRelativeCoordinateSystem.
         * @return the pointer list of the SVG elements.
         */
-        const std::vector<std::shared_ptr<SVGElement> > get_elements(const Point2D &point) const;
+        const std::vector<std::shared_ptr<SVGElement>> get_elements(const Point2D &point) const;
 
         /**
         * Get id of a SVG element.
@@ -91,13 +91,13 @@ namespace Lewzen {
         * @param element the pointer of the SVG element
         * @return the id of the SVG element.
         */
-        const std::string &get_element_id(std::shared_ptr<SVGElement> element) const;
+        const std::string get_element_id(std::shared_ptr<SVGElement> element) const;
         /**
         * Get id list of SVG elements.
         *
         * @return the list of the SVG elements' id.
         */
-        const std::vector<const std::string &> get_elements_id() const;
+        const std::vector<std::string> get_elements_id() const;
         
         /// Z-Index
         /**
@@ -114,7 +114,7 @@ namespace Lewzen {
         *
         * @param define the SVG define.
         */
-        void add_define(std::shared_ptr<SVGDefine> define);
+        void add_define(std::shared_ptr<SVGDefs> define);
         /**
         * Remoev a SVG define in SVG.
         *
@@ -129,7 +129,7 @@ namespace Lewzen {
         * @param id the id of SVG define in this SVG.
         * @return the pointer of the SVG define; NULL for non-exist.
         */
-        std::shared_ptr<SVGDefine> get_define(const std::string &id) const;
+        std::shared_ptr<SVGDefs> get_define(const std::string &id) const;
         
         /**
         * Get id of a SVG define.
@@ -137,23 +137,23 @@ namespace Lewzen {
         * @param define the pointer of the SVG define
         * @return the id of the SVG define.
         */
-        const std::string &get_define_id(std::shared_ptr<SVGElement>define) const;
+        const std::string get_define_id(std::shared_ptr<SVGElement>define) const;
         /**
         * Get id list of SVG defines.
         *
         * @return the list of the SVG defines' id.
         */
-        const std::vector<const std::string &> get_defines_id() const;
+        const std::vector<std::string> get_defines_id() const;
 
         /// Functional
         /**
         * Parse this SVG object to XML, in CanvasCoordinateSystem.
         */
-        const std::string &to_XML() const override;
+        const std::string outer_XML() const override;
         /**
         * Parse this SVG object to XML.
         */
-        const std::string &to_XML(const CoordinateSystem &coordinate_system) const;
+        const std::string outer_XML(const CoordinateSystem &coordinate_system) const;
     }
 }
 #endif
