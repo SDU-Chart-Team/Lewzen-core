@@ -1,0 +1,48 @@
+{
+    "tag": "marker",
+    "comment": "The <marker> element defines the graphic that is to be used for drawing arrowheads or polymarkers on a given <path>, <line>, <polyline> or <polygon> element.",
+    "attributes": [
+        {
+            "name": "markerWidth",
+            "type": "number",
+            "comment": "width of marker viewport."
+        },
+        {
+            "name": "markerHeight",
+            "type": "number",
+            "comment": "height of marker viewport."
+        },
+        {
+            "name": "refX",
+            "type": "number",
+            "comment": "x of the reference point of the marker."
+        },
+        {
+            "name": "refY",
+            "type": "number",
+            "comment": "y of the reference point of the marker."
+        },
+        {
+            "name": "orient",
+            "type": "string",
+            "comment": "the orientation of the marker relative to the shape it is attached to. eg: 'auto', 'auto-start-reverse', '65deg'."
+        },
+        {
+            "name": "preserveAspectRatio",
+            "type": "string",
+            "comment": "how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. eg: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)"
+        },
+        {
+            "name": "viewBox",
+            "type": "string",
+            "comment": "the bound of the SVG viewport for the current SVG fragment. eg: '0 0 100 100'"
+        },
+        {
+            "name": "markerUnits",
+            "type": "enum",
+            "candidates": ["userSpaceOnUse", "strokeWidth"],
+            "default": "strokeWidth",
+            "comment": "the marker units."
+        }
+    ]
+}

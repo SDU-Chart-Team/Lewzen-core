@@ -1,41 +1,59 @@
+#ifndef __LZ_SVG_DEFS__
+#define __LZ_SVG_DEFS__
 #include <string>
+#include <sstream>
 #include "../xml_element.h"
-#ifndef __LZ_SVG_DEFINE__
-#define __LZ_SVG_DEFINE__
 
 namespace Lewzen {
     /**
-    * A SVG define in SVG context.
+    * The <defs> element is used to store graphical objects that will be used at a later time. Objects created inside a <defs> element are not rendered directly. To display them you have to reference them (with a <use> element for example).
     */
     class SVGDefs: public XMLElement {
-    private:
-        // id
-        std::string _id;
     public:
         /**
-        * Constructor of stroke style.
+        * Constructor of defs.
         */
         SVGDefs();
+        /**
+        * Deep copy of defs.
+        */
+        SVGDefs(const SVGDefs &element);
 
-        /// ID
+        /// Tag
+    public:
         /**
-        * Get element's id.
+        * Get tag name of this element.
         *
-        * @return element's id.
+        * @return tag name.
         */
-        const std::string get_id() const;
+        const std::string get_tag() const;
+
+        /// Defs
+    public:
+
+        /// Attributes
+    protected:
         /**
-        * Set element's id.
+        * Get attribute string of this XML element.
         *
-        * @param id element's id.
+        * @return outer XML.
         */
-        void set_id(const std::string &id);
-        
-        /// Functional
+        const std::string get_attributes() const;
+
+        /// Operators
+    public:
         /**
-        * Parse this SVG object to XML. (Unimplemented)
+        * Deep copy this XML element.
+        *
+        * @relatesalso XMLElement
         */
-        virtual const std::string outer_XML();
-    }
+        std::shared_ptr<XMLElement> clone() const;
+        /**
+        * XML substraction, returning differences.
+        *
+        * @relatesalso XMLElement
+        */
+        const std::string operator-(const XMLElement &element) const;
+    };
 }
 #endif

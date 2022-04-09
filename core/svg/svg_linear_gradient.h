@@ -1,80 +1,115 @@
-#include <string>
-#include <vector>
-#include "../xml_element.h"
 #ifndef __LZ_SVG_LINEAR_GRADIENT__
 #define __LZ_SVG_LINEAR_GRADIENT__
+#include <string>
+#include <sstream>
+#include "../xml_element.h"
 
 namespace Lewzen {
     /**
-    * A linear gradient define in SVG context.
+    * The <linearGradient> element lets authors define linear gradients to apply to other SVG elements.
     */
     class SVGLinearGradient: public XMLElement {
-    private:
-        double _x1;
-        double _y1;
-        double _x2;
-        double _y2;
     public:
         /**
-        * Constructor of linear gradient.
+        * Constructor of linearGradient.
         */
         SVGLinearGradient();
+        /**
+        * Deep copy of linearGradient.
+        */
+        SVGLinearGradient(const SVGLinearGradient &element);
 
-        /// Properties
+        /// Tag
+    public:
+        /**
+        * Get tag name of this element.
+        *
+        * @return tag name.
+        */
+        const std::string get_tag() const;
+
+        /// LinearGradient
+    private:
+        double _xQ;
+    private:
+        double _yQ;
+    private:
+        double _xR;
+    private:
+        double _yR;
+    public:
         /**
         * Get x1 of gradient line.
         *
         * @return x1 of gradient line.
         */
-        double get_x1() const;
+        double get_xQ() const;
         /**
         * Set x1 of gradient line.
         *
-        * @param x1
+        * @param xQ x1 of gradient line.
         */
-        void set_x1(const double &x1);
+        void set_xQ(const double &xQ);
         /**
         * Get y1 of gradient line.
         *
         * @return y1 of gradient line.
         */
-        double get_y1() const;
+        double get_yQ() const;
         /**
         * Set y1 of gradient line.
         *
-        * @param y1
+        * @param yQ y1 of gradient line.
         */
-        void set_y1(const double &y1);
+        void set_yQ(const double &yQ);
         /**
         * Get x2 of gradient line.
         *
         * @return x2 of gradient line.
         */
-        double get_x2() const;
+        double get_xR() const;
         /**
         * Set x2 of gradient line.
         *
-        * @param x2
+        * @param xR x2 of gradient line.
         */
-        void set_x2(const double &x2);
+        void set_xR(const double &xR);
         /**
         * Get y2 of gradient line.
         *
         * @return y2 of gradient line.
         */
-        double get_y2() const;
+        double get_yR() const;
         /**
         * Set y2 of gradient line.
         *
-        * @param y2
+        * @param yR y2 of gradient line.
         */
-        void set_y2(const double &y2);
+        void set_yR(const double &yR);
 
-        /// Functional
+        /// Attributes
+    protected:
         /**
-        * Parse this gradient to XML.
+        * Get attribute string of this XML element.
+        *
+        * @return outer XML.
         */
-        const std::string outer_XML() const override;
-    }
+        const std::string get_attributes() const;
+
+        /// Operators
+    public:
+        /**
+        * Deep copy this XML element.
+        *
+        * @relatesalso XMLElement
+        */
+        std::shared_ptr<XMLElement> clone() const;
+        /**
+        * XML substraction, returning differences.
+        *
+        * @relatesalso XMLElement
+        */
+        const std::string operator-(const XMLElement &element) const;
+    };
 }
 #endif

@@ -1,30 +1,51 @@
-#include <string>
-#include "../xml_element.h"
 #ifndef __LZ_SVG_PATTERN__
 #define __LZ_SVG_PATTERN__
+#include <string>
+#include <sstream>
+#include "../xml_element.h"
 
 namespace Lewzen {
-    // Define for patterns: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns
     /**
-    * A pattern define in SVG context.
+    * The <pattern> element defines a graphics object which can be redrawn at repeated x- and y-coordinate intervals ("tiled") to cover an area.
     */
     class SVGPattern: public XMLElement {
-    public:
-        enum class PatternContentUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
-        enum class PatternUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
-    private:
-        double _x;
-        double _y;
-        double _width;
-        double _height;
-        PatternContentUnits _pattern_content_units;
-        PatternUnits _pattern_units;
     public:
         /**
         * Constructor of pattern.
         */
         SVGPattern();
+        /**
+        * Deep copy of pattern.
+        */
+        SVGPattern(const SVGPattern &element);
 
+        /// Tag
+    public:
+        /**
+        * Get tag name of this element.
+        *
+        * @return tag name.
+        */
+        const std::string get_tag() const;
+
+        /// Pattern
+    private:
+        double _x;
+    private:
+        double _y;
+    private:
+        double _width;
+    private:
+        double _height;
+    public:
+        enum class PatternContentUnits { USER_SPACE_ON_USE, OBJECT_BOUNDING_BOX };
+    private:
+        PatternContentUnits _pattern_content_units;
+    public:
+        enum class PatternUnits { USER_SPACE_ON_USE, OBJECT_BOUNDING_BOX };
+    private:
+        PatternUnits _pattern_units;
+    public:
         /**
         * Get x of offset.
         *
@@ -98,11 +119,29 @@ namespace Lewzen {
         */
         void set_pattern_units(const PatternUnits &pattern_units);
 
-        /// Functional
+        /// Attributes
+    protected:
         /**
-        * Parse this gradient to XML.
+        * Get attribute string of this XML element.
+        *
+        * @return outer XML.
         */
-        const std::string outer_XML() const override;
-    }
+        const std::string get_attributes() const;
+
+        /// Operators
+    public:
+        /**
+        * Deep copy this XML element.
+        *
+        * @relatesalso XMLElement
+        */
+        std::shared_ptr<XMLElement> clone() const;
+        /**
+        * XML substraction, returning differences.
+        *
+        * @relatesalso XMLElement
+        */
+        const std::string operator-(const XMLElement &element) const;
+    };
 }
 #endif

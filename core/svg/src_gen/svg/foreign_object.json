@@ -1,0 +1,26 @@
+{
+    "tag": "foreignObject",
+    "comment": "The <foreignObject> SVG element includes elements from a different XML namespace. In the context of a browser, it is most likely (X)HTML.",
+    "attributes": [
+        {
+            "name": "width",
+            "type": "number",
+            "comment": "height of the foreign object."
+        },
+        {
+            "name": "height",
+            "type": "number",
+            "comment": "width of the foreign object."
+        },
+        {
+            "name": "x",
+            "type": "number",
+            "comment": "x of the foreign object."
+        },
+        {
+            "name": "y",
+            "type": "number",
+            "comment": "y of the foreign object."
+        }
+    ]
+}

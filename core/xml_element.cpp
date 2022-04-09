@@ -14,7 +14,7 @@ namespace Lewzen {
         _stroke_linecap = XMLElement::StrokeLinecap::BUTT;
         _stroke_linejoin = XMLElement::StrokeLinejoin::MITER;
     }
-    XMLElement::XMLElement(XMLElement &element) {
+    XMLElement::XMLElement(const XMLElement &element) {
         _classes = element.get_classes();
         _fill = element.get_fill();
         _fill_opacity = element.get_fill_opacity();
@@ -31,7 +31,9 @@ namespace Lewzen {
         for (auto p : element.get_inner_elements()) {
             _inner_elements.push_back(p->clone());
         }
-        _hash = element.get_hash();
+        _attribute_hash = element.get_attribute_hash();
+        _inner_hash = element.get_inner_hash();
+        _outer_hash = element.get_outer_hash();
     }
 
     const std::string XMLElement::get_tag() const {
@@ -163,19 +165,6 @@ namespace Lewzen {
         return ss.str();
     }
 
-    const std::string XMLElement::get_attributes() const {
-        std::stringstream ss;
-
-        const std::string _class_attributes = get_class_attributes();
-        const std::string _fill_attributes = get_fill_attributes();
-        const std::string _stroke_attributes = get_stroke_attributes();
-        if (_class_attributes != "") ss << " " << _class_attributes;
-        if (_fill_attributes != "") ss << " " << _fill_attributes;
-        if (_stroke_attributes != "") ss << " " << _stroke_attributes;
-        
-        return ss.str();
-    }
-
     const std::string XMLElement::inner_XML() const {
         std::stringstream ss;
         ss << _inner_text << std::endl;
@@ -207,6 +196,19 @@ namespace Lewzen {
         update_hash();
     }
 
+    const std::string XMLElement::get_attributes() const {
+        std::stringstream ss;
+
+        const std::string _class_attributes = get_class_attributes();
+        const std::string _fill_attributes = get_fill_attributes();
+        const std::string _stroke_attributes = get_stroke_attributes();
+        if (_class_attributes != "") ss << " " << _class_attributes;
+        if (_fill_attributes != "") ss << " " << _fill_attributes;
+        if (_stroke_attributes != "") ss << " " << _stroke_attributes;
+        
+        return ss.str();
+    }
+
     const std::string XMLElement::outer_XML() const {
         std::stringstream ss;
 
@@ -228,19 +230,19 @@ namespace Lewzen {
     void XMLElement::update_hash() {
         std::stringstream ss, sc;
 
-        ss << get_tag() << ",";
-        ss << get_attributes() << ",";
-        _hash = str_hash(ss.str());
+        _attribute_hash = str_hash(get_attributes());
 
         sc << get_inner_text() << ",";
-        for (auto p : _inner_elements) sc << p->get_hash() << ",";
+        for (auto p : _inner_elements) sc << p->get_outer_hash() << ",";
         _inner_hash = str_hash(sc.str());
 
+        ss << get_tag() << ",";
+        ss << get_attributes() << ",";
         ss << sc.str();
         _outer_hash = str_hash(ss.str());
     }
-    const HASH_CODE XMLElement::get_hash() const {
-        return _hash;
+    const HASH_CODE XMLElement::get_attribute_hash() const {
+        return _attribute_hash;
     }
     const HASH_CODE XMLElement::get_inner_hash() const {
         return _inner_hash;
@@ -257,6 +259,10 @@ namespace Lewzen {
     }
     const std::string XMLElement::operator-(const XMLElement &element) const {
         std::stringstream ss;
+
+        if (get_tag() != element.get_tag()) {
+            ss << "replace " << xml.size() << std::endl << xml << std::endl;
+        }
 
         if (_classes != element.get_classes()) {
             if (_classes.size() == 0) ss << "reset class" << std::endl;

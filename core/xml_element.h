@@ -19,7 +19,7 @@ namespace Lewzen {
         /**
         * Deep copy of XML element.
         */
-        XMLElement(XMLElement &element);
+        XMLElement(const XMLElement &element);
 
         /// Tag
     public:
@@ -291,7 +291,7 @@ namespace Lewzen {
         */
         void set_inner_elements(const std::vector<std::shared_ptr<XMLElement>> &inner_elements);
 
-        /// Outer XML
+        /// Attributes
     protected:
         /**
         * Get attribute string of this XML element.
@@ -299,6 +299,8 @@ namespace Lewzen {
         * @return outer XML.
         */
         virtual const std::string get_attributes() const;
+
+        /// Outer XML
     public:
         /**
         * Get XML of this XML element.
@@ -309,7 +311,7 @@ namespace Lewzen {
 
         /// Hash
     private:
-        HASH_CODE _hash;
+        HASH_CODE _attribute_hash;
         HASH_CODE _inner_hash;
         HASH_CODE _outer_hash;
     protected:
@@ -321,19 +323,19 @@ namespace Lewzen {
         void update_hash();
     public:
         /**
-        * Get hash of this element, excluding inner content.
+        * Get hash of attributes of this element.
         *
         * @return hash code.
         */
-        const HASH_CODE get_hash() const;
+        const HASH_CODE get_attribute_hash() const;
         /**
-        * Get hash of this element, only inner content
+        * Get hash of inner content of this element.
         *
         * @return inner hash code.
         */
         const HASH_CODE get_inner_hash() const;
         /**
-        * Get hash of this element.
+        * Get hash of this element, including tag, attributes and inner content.
         *
         * @return outer hash code.
         */
@@ -352,7 +354,7 @@ namespace Lewzen {
         *
         * @relatesalso XMLElement
         */
-        virtual bool operator==(const XMLElement &element) const;
+        bool operator==(const XMLElement &element) const;
         /**
         * XML substraction, returning differences.
         *

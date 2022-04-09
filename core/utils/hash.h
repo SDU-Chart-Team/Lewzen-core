@@ -1,7 +1,7 @@
 #ifndef __LZ_UTILS_HASH__
 #define __LZ_UTILS_HASH__
 #include <string>
-#include "constants.h"
+#include "constant.h"
 
 namespace Lewzen {
     /**

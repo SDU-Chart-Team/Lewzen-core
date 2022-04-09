@@ -2,38 +2,83 @@
 
 namespace Lewzen {
     SVGLinearGradient::SVGLinearGradient() {
-        _x1 = _y1 = _x2 = _y2 = NUM_NULL;
+        _xQ = NUM_NULL;
+        _yQ = NUM_NULL;
+        _xR = NUM_NULL;
+        _yR = NUM_NULL;
     }
-    double SVGLinearGradient::get_x1() const {
-        return _x1;
+    SVGLinearGradient::SVGLinearGradient(const SVGLinearGradient &element) {
+        _xQ = element.get_xQ();
+        _yQ = element.get_yQ();
+        _xR = element.get_xR();
+        _yR = element.get_yR();
+        new (this)XMLElement(element);
     }
-    void SVGLinearGradient::set_x1(const double &x1) {
-        _x1 = x1;
+    const std::string SVGLinearGradient::get_tag() const {
+        return "linearGradient";
     }
-    double SVGLinearGradient::get_y1() const {
-        return _y1;
+    double SVGLinearGradient::get_xQ() const {
+        return _xQ;
     }
-    void SVGLinearGradient::set_y1(const double &y1) {
-        _y1 = y1;
+    void SVGLinearGradient::set_xQ(const double &xQ) {
+        _xQ = xQ;
     }
-    double SVGLinearGradient::get_x2() const {
-        return _x2;
+    double SVGLinearGradient::get_yQ() const {
+        return _yQ;
     }
-    void SVGLinearGradient::set_x2(const double &x2) {
-        _x2 = x2;
+    void SVGLinearGradient::set_yQ(const double &yQ) {
+        _yQ = yQ;
     }
-    double SVGLinearGradient::get_y2() const {
-        return _y2;
+    double SVGLinearGradient::get_xR() const {
+        return _xR;
     }
-    void SVGLinearGradient::set_y2(const double &y2) {
-        _y2 = y2;
+    void SVGLinearGradient::set_xR(const double &xR) {
+        _xR = xR;
     }
-    const std::string SVGLinearGradient::outer_XML() const override {
+    double SVGLinearGradient::get_yR() const {
+        return _yR;
+    }
+    void SVGLinearGradient::set_yR(const double &yR) {
+        _yR = yR;
+    }
+    const std::string SVGLinearGradient::get_attributes() const {
         std::stringstream ss;
-        if (_x1 != NUM_NULL) ss << " x1=\"" << _x1 << "\"";
-        if (_y1 != NUM_NULL) ss << " y1=\"" << _y1 << "\"";
-        if (_x2 != NUM_NULL) ss << " x2=\"" << _x2 << "\"";
-        if (_y2 != NUM_NULL) ss << " y2=\"" << _y2 << "\"";
-        return outer_XML("linearGradient", ss.str());
+
+        if (_xQ != NUM_NULL) ss << " x1=\"" << _xQ << "\"";
+        if (_yQ != NUM_NULL) ss << " y1=\"" << _yQ << "\"";
+        if (_xR != NUM_NULL) ss << " x2=\"" << _xR << "\"";
+        if (_yR != NUM_NULL) ss << " y2=\"" << _yR << "\"";
+        ss << XMLElement::get_attributes();
+
+        return ss.str();
+    }
+    std::shared_ptr<XMLElement> SVGLinearGradient::clone() const {
+        return std::make_shared<SVGLinearGradient>(*this);
+    }
+    const std::string SVGLinearGradient::operator-(const XMLElement &element) const {
+        std::stringstream ss;
+
+        ss << XMLElement::operator-(element);
+        if (get_tag() != element.get_tag()) return ss.str();
+        auto _element = static_cast<const SVGLinearGradient &>(element);
+
+        if (_xQ != _element.get_xQ()) {
+            if (_xQ == NUM_NULL) ss << "reset x1" << std::endl;
+            else ss << "modify x1 " << _xQ << std::endl;
+        }
+        if (_yQ != _element.get_yQ()) {
+            if (_yQ == NUM_NULL) ss << "reset y1" << std::endl;
+            else ss << "modify y1 " << _yQ << std::endl;
+        }
+        if (_xR != _element.get_xR()) {
+            if (_xR == NUM_NULL) ss << "reset x2" << std::endl;
+            else ss << "modify x2 " << _xR << std::endl;
+        }
+        if (_yR != _element.get_yR()) {
+            if (_yR == NUM_NULL) ss << "reset y2" << std::endl;
+            else ss << "modify y2 " << _yR << std::endl;
+        }
+
+        return ss.str();
     }
 }

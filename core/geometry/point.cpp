@@ -7,6 +7,7 @@ namespace Lewzen {
         new (this)Point2D(x, y, CoordinateSystem());
     }
     Point2D::Point2D(const double &x, const double &y, const CoordinateSystem &coordinate_system): _x(x), _y(y), _coordinate_system(coordinate_system.clone()) {}
+    Point2D::Point2D(const Point2D &point): _x(point.get_x()), _y(point.get_y()), _coordinate_system(point.get_coordinate_system().clone()) {}
     const CoordinateSystem &Point2D::get_coordinate_system() const {
         return *_coordinate_system;
     }
@@ -25,6 +26,9 @@ namespace Lewzen {
     void Point2D::move(const double &dx, const double &dy) {
         _x += dx;
         _y += dy;
+    }
+    std::shared_ptr<Point2D> Point2D::clone() const {
+        return std::make_shared<Point2D>(*this);
     }
     bool Point2D::operator==(const Point2D &point) const {
         return _x == point.get_x() && _y == point.get_y() && get_coordinate_system() == point.get_coordinate_system();

@@ -1,32 +1,53 @@
-#include <string>
-#include <vector>
-#include "../xml_element.h"
 #ifndef __LZ_SVG_RADIAL_GRADIENT__
 #define __LZ_SVG_RADIAL_GRADIENT__
+#include <string>
+#include <sstream>
+#include "../xml_element.h"
 
 namespace Lewzen {
     /**
-    * A radial gradient define in SVG context.
+    * The <radialGradient> element lets authors define radial gradients that can be applied to fill or stroke of graphical elements.
     */
     class SVGRadialGradient: public XMLElement {
     public:
-        enum class SpreadMethod { PAD, REFLECT, REPEAT };
-        enum class GradientUnits { OBJECT_BOUNDING_BOX, USER_SPACE_ON_USE };
-    private:
-        double _cx;
-        double _cy;
-        double _r;
-        double _fx;
-        double _fy;
-        SpreadMethod _spread_method;
-        GradientUnits _gradient_units;
-    public:
         /**
-        * Constructor of radial gradient.
+        * Constructor of radialGradient.
         */
         SVGRadialGradient();
+        /**
+        * Deep copy of radialGradient.
+        */
+        SVGRadialGradient(const SVGRadialGradient &element);
 
-        /// Properties
+        /// Tag
+    public:
+        /**
+        * Get tag name of this element.
+        *
+        * @return tag name.
+        */
+        const std::string get_tag() const;
+
+        /// RadialGradient
+    private:
+        double _cx;
+    private:
+        double _cy;
+    private:
+        double _r;
+    private:
+        double _fx;
+    private:
+        double _fy;
+    public:
+        enum class SpreadMethod { PAD, REFLECT, REPEAT };
+    private:
+        SpreadMethod _spread_method;
+    public:
+        enum class GradientUnits { USER_SPACE_ON_USE, OBJECT_BOUNDING_BOX };
+    private:
+        GradientUnits _gradient_units;
+    public:
         /**
         * Get x of center point.
         *
@@ -52,15 +73,15 @@ namespace Lewzen {
         */
         void set_cy(const double &cy);
         /**
-        * Get the radius.
+        * Get radius of radiation.
         *
-        * @return the radius.
+        * @return radius of radiation.
         */
         double get_r() const;
         /**
-        * Set the radius.
+        * Set radius of radiation.
         *
-        * @param r the radius.
+        * @param r radius of radiation.
         */
         void set_r(const double &r);
         /**
@@ -112,11 +133,29 @@ namespace Lewzen {
         */
         void set_gradient_units(const GradientUnits &gradient_units);
 
-        /// Functional
+        /// Attributes
+    protected:
         /**
-        * Parse this gradient to XML.
+        * Get attribute string of this XML element.
+        *
+        * @return outer XML.
         */
-        const std::string outer_XML() const override;
-    }
+        const std::string get_attributes() const;
+
+        /// Operators
+    public:
+        /**
+        * Deep copy this XML element.
+        *
+        * @relatesalso XMLElement
+        */
+        std::shared_ptr<XMLElement> clone() const;
+        /**
+        * XML substraction, returning differences.
+        *
+        * @relatesalso XMLElement
+        */
+        const std::string operator-(const XMLElement &element) const;
+    };
 }
 #endif

@@ -31,6 +31,10 @@ namespace Lewzen {
         * @param coordinate system coordinate system information.
         */
         Point2D(const double &x, const double &y, const CoordinateSystem &coordinate_system);
+        /**
+        * Deep copy of point.
+        */
+        Point2D(const Point2D &point);
 
         /// Property
         /**
@@ -71,6 +75,12 @@ namespace Lewzen {
         */
         void move(const double &dx, const double &dy);
 
+        /**
+        * Deep copy of point.
+        *
+        * @relatesalso Point2D
+        */
+        virtual std::shared_ptr<Point2D> clone() const;
         /**
         * Compare two points. Compare x, y and coordinate system.
         *
