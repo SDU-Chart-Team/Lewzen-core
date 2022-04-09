@@ -48,7 +48,7 @@ namespace Lewzen
          * @brief parse this text SVG element object to XML according to _parser
          *
          */
-        std::string to_XML() const
+        const std::string outer_XML() const
         {
             // TODO
             // switch (_text_type)
