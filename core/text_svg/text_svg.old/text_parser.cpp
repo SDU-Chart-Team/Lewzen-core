@@ -12,5 +12,4 @@ namespace Lewzen
         }
     }
 
-    //TODO:realization of child class
 }

@@ -68,7 +68,6 @@ namespace Lewzen
          *
          * @return int
          */
-        // TODO:封装性？？？？
         int &get_font_size();
         /**
          * @brief Set the font size object
