@@ -6,10 +6,10 @@ namespace Lewzen {
     /**
     * Fill style for SVG element.
     */
-    class SVGFill                                                                                                                        Style {
+    class SVGFillStyle {
+    public:
+        enum class FillRule { DEFAULT, NONEZERO, EVEN_ODD };
     private:
-        enum class  FillRule;
-        
         // fill content, eg: 'red', '#FFFFFF', 'url(#my_define)'.
         std::string _fill;
         // fill opacity
@@ -17,16 +17,10 @@ namespace Lewzen {
         // fill rule
         FillRule _fill_rule;
     public:
-        enum class  FillRule { DEFAULT, NONEZERO, EVEN_ODD };
-
-         /**
+        /**
         * Constructor of fill style.
         */
         SVGFillStyle();
-        /**
-        * Destructor of fill style.
-        */
-        ~SVGFillStyle();
 
         /// Properties
         /**
@@ -46,7 +40,7 @@ namespace Lewzen {
         *
         * @return the fill opacity.
         */
-        double &get_fill_opacity() const;
+        double get_fill_opacity() const;
         /**
         * Set the fill opacity.
         *
@@ -70,7 +64,7 @@ namespace Lewzen {
         /**
         * Parse this fill style to XML properties.
         */
-        virtual std::string to_properties() const;
+        std::string to_properties() const;
     }
 }
 #endif  

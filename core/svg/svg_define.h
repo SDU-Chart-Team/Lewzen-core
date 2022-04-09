@@ -1,4 +1,5 @@
 #include <string>
+#include "../utils.h"
 #ifndef __LZ_SVG_DEFINE__
 #define __LZ_SVG_DEFINE__
 
@@ -15,10 +16,6 @@ namespace Lewzen {
         * Constructor of stroke style.
         */
         SVGDefine();
-        /**
-        * Destructor of stroke style.
-        */
-        ~SVGDefine();
 
         /// ID
         /**
@@ -36,25 +33,9 @@ namespace Lewzen {
         
         /// Functional
         /**
-        * Parse this SVG object to XML.
+        * Parse this SVG object to XML. (Unimplemented)
         */
-        virtual to_XML();
-    }
-
-    // Define for patterns: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Patterns
-    /**
-    * A pattern define in SVG context.
-    */
-    class SVGPattern: public SVGDefine {
-
-    }
-
-    // Define for gradients: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Gradients
-    /**
-    * A gradient define in SVG context.
-    */
-    class SVGGradient: public SVGDefine {
-
+        virtual std::string to_XML() const = 0;
     }
 }
 #endif
