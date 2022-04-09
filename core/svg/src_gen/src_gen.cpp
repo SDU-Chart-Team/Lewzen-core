@@ -23,7 +23,7 @@ const std::string xml_to_snake(const std::string &xml, bool uppercase = false) {
         if (xml[i] == '-') {
             snake.push_back('_');
         } else if (is_uppercase(xml[i])) {
-            if (i == 0 || xml[i-1] != '-') snake.push_back('_');
+            if (i == 0 || (xml[i-1] != '-' && !is_uppercase(xml[i-1]))) snake.push_back('_');
             snake.push_back(to_bcase(xml[i], uppercase));
         } else snake.push_back(to_bcase(xml[i], uppercase));
     }
