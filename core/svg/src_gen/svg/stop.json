@@ -1,0 +1,21 @@
+{
+    "tag": "stop",
+    "comment": "The SVG <stop> element defines a color and its position to use on a gradient. This element is always a child of a <linearGradient> or <radialGradient> element.",
+    "attributes": [
+        {
+            "name": "offset",
+            "type": "number",
+            "comment": "the offset of stop."
+        },
+        {
+            "name": "stop-color",
+            "type": "string",
+            "comment": "the color of stop, eg: 'red', '#FFFFFF'."
+        },
+        {
+            "name": "stop-opacity",
+            "type": "number",
+            "comment": "the opacity of stop."
+        }
+    ]
+}
