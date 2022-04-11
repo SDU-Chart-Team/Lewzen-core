@@ -21,10 +21,15 @@ public:
 // TODO:define the parse function
 class PureTextParser : public TextParser
 {
+private:
+    // the start tag and end tag of a SVG text
+    const std::string STARTTAG = "<svg xmlns = \"http://www.w3.org/2000/svg\" version=\"1.1\"> <text> ";
+    const std::string ENDTAG = "</text></svg>";
+
 public:
     std::string sourceCode2XML(std::string sourceCode)
     {
-        std::string xml = "";
+        std::string xml = this.STARTTAG + sourceCode + this.ENDTAG;
         return xml;
     }
 };
@@ -33,20 +38,20 @@ class MarkdownTextParser : public TextParser
 {
 public:
     std::string sourceCode2XML(std::string sourceCode)
-    {
-        std::string xml = "";
-        return xml;
-    }
+    // {
+    //     std::string xml = "";
+    //     return xml;
+    // }
 };
 
 class KatexTextParser : public TextParser
 {
 public:
     std::string sourceCode2XML(std::string sourceCode)
-    {
-        std::string xml = "";
-        return xml;
-    }
+    // {
+    //     std::string xml = "";
+    //     return xml;
+    // }
 };
 
 #endif

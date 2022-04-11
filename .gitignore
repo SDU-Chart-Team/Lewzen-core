@@ -1,2 +1,6 @@
 test/
+<<<<<<< HEAD
+.vscode/
+=======
 core/svg/src_gen/src_gen
+>>>>>>> upstream/main
