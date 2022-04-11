@@ -5,6 +5,166 @@
 #include "svg_element.h"
 
 namespace Lewzen {
+    DOMRect::DOMRect(const double &x, const double &y, const double &width, const double &height): _x(x), _y(y), _width(width), _height(height) {}
+    DOMRect::DOMRect(const DOMRect &rect): _x(rect.get_x()), _y(rect.get_y()), _width(rect.get_width()), _height(rect.get_height()) {}
+    double DOMRect::get_x() const {
+        return _x;
+    }
+    double DOMRect::set_x(const double &x) {
+        _x = x;
+    }
+    double DOMRect::get_y() const {
+        return _y;
+    }
+    double DOMRect::set_y(const double &y) {
+        _y = y;
+    }
+    double DOMRect::get_width() const {
+        return _width;
+    }
+    double DOMRect::set_width(const double &width) {
+        _width = width;
+    }
+    double DOMRect::get_height() const {
+        return _height;
+    }
+    double DOMRect::set_height(const double &height) {
+        _height = height;
+    }
+    double DOMRect::get_top() const {
+        return (_height >= 0) ? _y : _y + _height;
+    }
+    double DOMRect::set_top(const double &top) {
+        double d = top - get_top();
+        if (_height >= 0) _y += d, _height -= d;
+        else _height += d;
+    }
+    double DOMRect::get_left() const {
+        return (_width >= 0) ? _x : _x + _width;
+    }
+    double DOMRect::set_left(const double &left) {
+        double d = left - get_left();
+        if (_width >= 0) _x += d, _width -= d;
+        else _width += d;
+    }
+    double DOMRect::get_bottom() const {
+        return (_height < 0) ? _y : _y + _height;
+    }
+    double DOMRect::set_bottom(const double &bottom) {
+        double d = bottom - get_bottom();
+        if (_height < 0) _y += d, _height -= d;
+        else _height += d;
+    }
+    double DOMRect::get_right() const {
+        return (_width < 0) ? _x : _x + _width;
+    }
+    double DOMRect::set_right(const double &right) {
+        double d = right - get_right();
+        if (_width < 0) _x += d, _width -= d;
+        else _width += d;
+    }
+
+    bool _is_identity_2d(const DOMMatrix &matrix) { // TODO
+        return false;
+    }
+    DOMMatrix::DOMMatrix(const double &m11, const double &m12, const double &m13, const double &m14, const double &m21, const double &m22, const double &m23, const double &m24, const double &m31, const double &m32, const double &m33, const double &m34, const double &m41, const double &m42, const double &m43, const double &m44):
+        _m11(m11), _m12(m12), _m13(m13), _m14(m14), _m21(m21), _m22(m22), _m23(m23), _m24(m24), _m31(m31), _m32(m32), _m33(m33), _m34(m34), _m41(m41), _m42(m42), _m43(m43), _m44(m44), _2d(false) {
+        _identity = _is_identity_2d(*this);
+    }
+    DOMMatrix::DOMMatrix(const double &a, const double &b, const double &c, const double &d, const double &e, const double &f):
+        _m11(a), _m12(b), _m21(c), _m22(d), _m41(e), _m42(f), _m33(1), _m44(1), _2d(true) {
+        _identity = _is_identity_2d(*this);
+    }
+    DOMMatrix::DOMMatrix(const double *mat, int size) {
+        set_matrix(mat, size);
+    }
+    DOMMatrix::DOMMatrix(const DOMMatrix &matrix) {
+        set_matrix(matrix.get_matrix(), matrix.is2D() ? 6 : 16);
+    }
+    const bool DOMMatrix::is2D() const {
+        return _2d;
+    }
+    const bool DOMMatrix::isIdentity() const {
+        return _identity;
+    }
+    void DOMMatrix::set_matrix(const double *mat, int size) {
+        if (size <= 6) {
+            double _mat[6];
+            for (int i = 0; i < size; i++) _mat[i] = mat[i];
+            for (int i = size; i < 6; i++) _mat[i] = 0;
+            _m11 = _mat[0], _m12 = _mat[1], _m21 = _mat[2], _m22 = _mat[3], _m41 = _mat[4], _m42 = _mat[5], _m33 = 1, _m44 = 1, _2d = true;
+        } else {
+            double _mat[6];
+            for (int i = 0; i < size; i++) _mat[i] = mat[i];
+            for (int i = size; i < 16; i++) _mat[i] = 0;
+            _m11 = _mat[0], _m12 = _mat[1], _m13 = _mat[2], _m14 = _mat[3], _m21 = _mat[4], _m22 = _mat[5], _m23 = _mat[6], _m24 = _mat[7], _m31 = _mat[8], _m32 = _mat[9], _m33 = _mat[10], _m34 = _mat[11], _m41 = _mat[12], _m42 = _mat[13], _m43 = _mat[14], _m44 = _mat[15], _2d = false;
+        }
+        _identity = _is_identity_2d(*this);
+    }
+    const double *DOMMatrix::get_matrix() const { // TODO
+        return new double[0];
+    }
+    DOMMatrix &DOMMatrix::invert_self() { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::multiplySelf(const DOMMatrix &matrix) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::preMultiplySelf(const DOMMatrix &matrix) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::translateSelf(const double &v1, const double &v2, const double &v3) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::scaleSelf(const double &v1, const double &v2, const double &v3) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::scale3dSelf(const double &v1, const double &v2, const double &v3) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::rotateSelf(const double &thetaX, const double &thetY, const double &thetZ) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::rotateAxisAngleSelf(const double &v1, const double &v2, const double &v3, const double &theta) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::rotateFromVectorSelf(const double &v1, const double &v2, const double &v3, const double &theta) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::skewXSelf(const double &theta) { // TODO
+        return *this;
+    }
+    DOMMatrix &DOMMatrix::skewYSelf(const double &theta) { // TODO
+        return *this;
+    }
+
+    DOMPoint::DOMPoint(const double &x, const double &y, const double &z, const double &w): _x(x), _y(y), _z(z), _w(w) {}
+    DOMPoint::DOMPoint(const DOMPoint &point): _x(point.get_x()), _y(point.get_y()), _z(point.get_z()), _w(point.get_w()) {}
+    double DOMPoint::get_x() const {
+        return _x;
+    }
+    double DOMPoint::set_x(const double &x) {
+        _x = x;
+    }
+    double DOMPoint::get_y() const{
+        return _y;
+    }
+    double DOMPoint::set_y(const double &y){
+        _x = y;
+    }
+    double DOMPoint::get_z() const{
+        return _z;
+    }
+    double DOMPoint::set_z(const double &z){
+        _z = z;
+    }
+    double DOMPoint::get_w() const{
+        return _w;
+    }
+    double DOMPoint::set_w(const double &w){
+        _w = w;
+    }
+
     SVGElement::SVGElement() {
         _clip_path = STR_NULL;
         _clip_rule = ClipRule::NONZERO;

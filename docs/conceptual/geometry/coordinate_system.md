@@ -72,10 +72,10 @@
 
 ## 坐标系转换
 
-![](../../img/UML-coordinate-system.png)
+![](../../.img/UML-coordinate-system.png)
 
 每个坐标系提供两种方向的基本转换：转为画布坐标系；从画布坐标系推导。由此可以实现任意坐标系相互转换。
 
-![](../../img/coordinate_system_conversion.png)
+![](../../.img/coordinate_system_conversion.png)
 
 除了各个坐标系与画布坐标系的相互转换外，还提供了绝对坐标系与对应的相对坐标系间的转换。

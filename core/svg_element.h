@@ -9,21 +9,222 @@
 namespace Lewzen {
     /**
     * Rectangle in DOM.
+    *
+    * according to https://developer.mozilla.org/en-US/docs/Web/API/DOMRect
     */
     class DOMRect {
-
+    private:
+        double _x, _y, _width, _height;
+    public:
+        /**
+        * Constructor of DOM Rect.
+        */
+        DOMRect(const double &x = 0, const double &y = 0, const double &width = 0, const double &height = 0);
+        /**
+        * Deep copy of DOM Rect.
+        */
+        DOMRect(const DOMRect &rect);
+        /**
+        * The x coordinate of the DOMRect's origin (typically the top-left corner of the rectangle).
+        */
+        double get_x() const;
+        /**
+        * The x coordinate of the DOMRect's origin (typically the top-left corner of the rectangle).
+        */
+        double set_x(const double &x);
+        /**
+        * The y coordinate of the DOMRect's origin (typically the top-left corner of the rectangle).
+        */
+        double get_y() const;
+        /**
+        * The y coordinate of the DOMRect's origin (typically the top-left corner of the rectangle).
+        */
+        double set_y(const double &y);
+        /**
+        * The width of the DOMRect.
+        */
+        double get_width() const;
+        /**
+        * The width of the DOMRect.
+        */
+        double set_width(const double &width);
+        /**
+        * The height of the DOMRect.
+        */
+        double get_height() const;
+        /**
+        * The height of the DOMRect.
+        */
+        double set_height(const double &height);
+        /**
+        * Returns the top coordinate value of the DOMRect (has the same value as y, or y + height if height is negative.)
+        */
+        double get_top() const;
+        /**
+        * Returns the top coordinate value of the DOMRect (has the same value as y, or y + height if height is negative.)
+        */
+        double set_top(const double &top);
+        /**
+        * Returns the left coordinate value of the DOMRect (has the same value as x, or x + width if width is negative.)
+        */
+        double get_left() const;
+        /**
+        * Returns the left coordinate value of the DOMRect (has the same value as x, or x + width if width is negative.)
+        */
+        double set_left(const double &left);
+        /**
+        * Returns the bottom coordinate value of the DOMRect (has the same value as y + height, or y if height is negative.)
+        */
+        double get_bottom() const;
+        /**
+        * Returns the bottom coordinate value of the DOMRect (has the same value as y + height, or y if height is negative.)
+        */
+        double set_bottom(const double &bottom);
+        /**
+        * Returns the right coordinate value of the DOMRect (has the same value as x + width, or x if width is negative.)
+        */
+        double get_right() const;
+        /**
+        * Returns the right coordinate value of the DOMRect (has the same value as x + width, or x if width is negative.)
+        */
+        double set_right(const double &right);
     };
     /**
     * Matrix in DOM.
+    *
+    * according to https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix
     */
     class DOMMatrix {
-
+    private:
+        bool _2d, _identity;
+        double _m11, _m12, _m13, _m14, _m21, _m22, _m23, _m24, _m31, _m32, _m33, _m34, _m41, _m42, _m43, _m44;
+    public:
+        /**
+        * Constructor of DOM Matrix, 3D.
+        */
+        DOMMatrix(const double &m11, const double &m12, const double &m13, const double &m14, const double &m21, const double &m22, const double &m23, const double &m24, const double &m31, const double &m32, const double &m33, const double &m34, const double &m41, const double &m42, const double &m43, const double &m44);
+        /**
+        * Constructor of DOM Matrix, 2D.
+        */
+        DOMMatrix(const double &a = 1, const double &b = 0, const double &c = 0, const double &d = 1, const double &e = 0, const double &f = 0);
+        /**
+        * Constructor of DOM Matrix. If size is 6, 2D; else if size is 16, 3D; else, lower case and zero fill.
+        */
+        DOMMatrix(const double *mat, int size);
+        /**
+        * Deep copy of DOM Matrix.
+        */
+        DOMMatrix(const DOMMatrix &matrix);
+        /**
+        * A Boolean flag whose value is true if the matrix was initialized as a 2D matrix. If false, the matrix is 3D.
+        */
+        const bool is2D() const;
+        /**
+        * A Boolean whose value is true if the matrix is the identity matrix. The identity matrix is one in which every value is 0 except those on the main diagonal from top-left to bottom-right corner (in other words, where the offsets in each direction are equal).
+        */
+        const bool isIdentity() const;
+        /**
+        * Set matrix by given double array. If size is 6, 2D; else if size is 16, 3D; else, lower case and zero fill.
+        */
+        void set_matrix(const double *mat, int size);
+        /**
+        * Return double array of this matrix.
+        */
+        const double *get_matrix() const;
+        /**
+        * Modifies the matrix by inverting it. If the matrix can't be inverted, its components are all set to NaN, and is2D returns false.
+        */
+        DOMMatrix &invert_self();
+        /**
+        * Modifies the matrix by post-multiplying it with the specified DOMMatrix. This is equivalent to the dot product A⋅B, where matrix A is the source matrix and B is the matrix given as an input to the method. Returns itself.
+        */
+        DOMMatrix &multiplySelf(const DOMMatrix &matrix);
+        /**
+        * Modifies the matrix by pre-multiplying it with the specified DOMMatrix. This is equivalent to the dot product B⋅A, where matrix A is the source matrix and B is the matrix given as an input to the method. Returns itself.
+        */
+        DOMMatrix &preMultiplySelf(const DOMMatrix &matrix);
+        /**
+        * Modifies the matrix by applying the specified vector. The default vector is [0, 0, 0]. Returns itself.
+        */
+        DOMMatrix &translateSelf(const double &v1, const double &v2, const double &v3);
+        /**
+        * Modifies the matrix by applying the specified scaling factors, with the center located at the specified origin. Also returns itself. By default, the scaling factor is 1 for all three axes, and the origin is (0, 0, 0). Returns itself.
+        */
+        DOMMatrix &scaleSelf(const double &v1, const double &v2, const double &v3);
+        /**
+        * Modifies the matrix by applying the specified scaling factor to all three axes, centered on the given origin. Returns itself.
+        */
+        DOMMatrix &scale3dSelf(const double &v1, const double &v2, const double &v3);
+        /**
+        * Modifies the matrix by rotating itself around each axis by the specified number of degrees. Returns itself.
+        */
+        DOMMatrix &rotateSelf(const double &thetaX, const double &thetY, const double &thetZ);
+        /**
+        * Modifies the matrix by rotating it by the specified angle around the given vector. Returns itself.
+        */
+        DOMMatrix &rotateAxisAngleSelf(const double &v1, const double &v2, const double &v3, const double &theta);
+        /**
+        * Modifies the matrix by rotating it by the angle between the specified vector and (1, 0). Returns itself.
+        */
+        DOMMatrix &rotateFromVectorSelf(const double &v1, const double &v2, const double &v3, const double &theta);
+        /**
+        * Modifies the matrix by applying the specified skew transformation along the X-axis. Returns itself.
+        */
+        DOMMatrix &skewXSelf(const double &theta);
+        /**
+        * Modifies the matrix by applying the specified skew transformation along the Y-axis. Returns itself.
+        */
+        DOMMatrix &skewYSelf(const double &theta);
     };
     /**
     * Point in DOM.
+    *
+    * according to https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint
     */
     class DOMPoint {
-
+    private:
+        double _x, _y, _z, _w;
+    public:
+        /**
+        * Constructor of DOM Point.
+        */
+        DOMPoint(const double &x = 0, const double &y = 0, const double &z = 0, const double &w = 0);
+        /**
+        * Deep copy of DOM Point.
+        */
+        DOMPoint(const DOMPoint &point);
+        /**
+        * The x coordinate of the DOMPoint.
+        */
+        double get_x() const;
+        /**
+        * The x coordinate of the DOMPoint.
+        */
+        double set_x(const double &x);
+        /**
+        * The y coordinate of the DOMPoint.
+        */
+        double get_y() const;
+        /**
+        * The y coordinate of the DOMPoint.
+        */
+        double set_y(const double &y);
+        /**
+        * The z coordinate of the DOMPoint.
+        */
+        double get_z() const;
+        /**
+        * The z coordinate of the DOMPoint.
+        */
+        double set_z(const double &z);
+        /**
+        * The perspective value of the DOMPoint.
+        */
+        double get_w() const;
+        /**
+        * The perspective value of the DOMPoint.
+        */
+        double set_w(const double &w);
     };
     
 
