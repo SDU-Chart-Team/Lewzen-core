@@ -1,0 +1,50 @@
+{
+    "tag": "linearGradient",
+    "comment": "The <linearGradient> element lets authors define linear gradients to apply to other SVG elements.",
+    "attributes": [
+        {
+            "name": "x1",
+            "type": "number",
+            "comment": "x1 of gradient line."
+        },
+        {
+            "name": "y1",
+            "type": "number",
+            "comment": "y1 of gradient line."
+        },
+        {
+            "name": "x2",
+            "type": "number",
+            "comment": "x2 of gradient line."
+        },
+        {
+            "name": "y2",
+            "type": "number",
+            "comment": "y2 of gradient line."
+        },
+        {
+            "name": "spreadMethod",
+            "type": "enum",
+            "candidates": ["pad", "reflect", "repeat"],
+            "default": "pad",
+            "comment": "the spread method."
+        },
+        {
+            "name": "gradientUnits",
+            "type": "enum",
+            "candidates": ["userSpaceOnUse", "objectBoundingBox"],
+            "default": "objectBoundingBox",
+            "comment": "the gradient units."
+        },
+        {
+            "name": "gradientTransform",
+            "type": "string",
+            "comment": "provides additional transformation to the gradient coordinate system."
+        },
+        {
+            "name": "href",
+            "type": "string",
+            "comment": "defines a reference to another <linearGradient>."
+        }
+    ]
+}

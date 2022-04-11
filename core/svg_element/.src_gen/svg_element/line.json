@@ -1,0 +1,31 @@
+{
+    "tag": "line",
+    "comment": "The <line> element is an SVG basic shape used to create a line connecting two points.",
+    "attributes": [
+        {
+            "name": "x1",
+            "type": "number",
+            "comment": "x position of the line starting point."
+        },
+        {
+            "name": "y1",
+            "type": "number",
+            "comment": "y position of the line starting point."
+        },
+        {
+            "name": "x2",
+            "type": "number",
+            "comment": "x position of the line ending point."
+        },
+        {
+            "name": "y2",
+            "type": "number",
+            "comment": "y position of the line ending point."
+        },
+        {
+            "name": "pathLength",
+            "type": "number",
+            "comment": "the total length for the circle's circumference, in user units."
+        }
+    ]
+}

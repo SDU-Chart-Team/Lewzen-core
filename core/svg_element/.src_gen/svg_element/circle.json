@@ -1,0 +1,26 @@
+{
+    "tag": "circle",
+    "comment": "The <circle> SVG element is an SVG basic shape, used to draw circles based on a center point and a radius.",
+    "attributes": [
+        {
+            "name": "cx",
+            "type": "number",
+            "comment": "x of the center of the circle."
+        },
+        {
+            "name": "cy",
+            "type": "number",
+            "comment": "y of the center of the circle."
+        },
+        {
+            "name": "r",
+            "type": "number",
+            "comment": "the radius of the circle."
+        },
+        {
+            "name": "pathLength",
+            "type": "number",
+            "comment": "the total length for the circle's circumference, in user units."
+        }
+    ]
+}

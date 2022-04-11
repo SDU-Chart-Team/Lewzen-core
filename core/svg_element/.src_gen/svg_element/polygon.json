@@ -1,0 +1,16 @@
+{
+    "tag": "polygon",
+    "comment": "The <polygon> element defines a closed shape consisting of a set of connected straight line segments. The last point is connected to the first point.",
+    "attributes": [
+        {
+            "name": "points",
+            "type": "string",
+            "comment": "defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon."
+        },
+        {
+            "name": "pathLength",
+            "type": "number",
+            "comment": "the total length for the circle's circumference, in user units."
+        }
+    ]
+}

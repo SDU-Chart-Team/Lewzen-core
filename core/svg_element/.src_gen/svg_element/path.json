@@ -1,0 +1,16 @@
+{
+    "tag": "path",
+    "comment": "The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.",
+    "attributes": [
+        {
+            "name": "d",
+            "type": "string",
+            "comment": "defines the shape of the path."
+        },
+        {
+            "name": "pathLength",
+            "type": "number",
+            "comment": "the total length for the circle's circumference, in user units."
+        }
+    ]
+}

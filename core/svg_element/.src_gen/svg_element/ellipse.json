@@ -1,0 +1,31 @@
+{
+    "tag": "ellipse",
+    "comment": "The <ellipse> element is an SVG basic shape, used to create ellipses based on a center coordinate, and both their x and y radius.",
+    "attributes": [
+        {
+            "name": "cx",
+            "type": "number",
+            "comment": "x position of the ellipse."
+        },
+        {
+            "name": "cy",
+            "type": "number",
+            "comment": "y position of the ellipse."
+        },
+        {
+            "name": "rx",
+            "type": "number",
+            "comment": "the radius of the ellipse on the x axis."
+        },
+        {
+            "name": "ry",
+            "type": "number",
+            "comment": "the radius of the ellipse on the y axis."
+        },
+        {
+            "name": "pathLength",
+            "type": "number",
+            "comment": "the total length for the circle's circumference, in user units."
+        }
+    ]
+}
