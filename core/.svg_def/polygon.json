@@ -1,0 +1,16 @@
+{
+    "tag": "polygon",
+    "comment": "The <polygon> element defines a closed shape consisting of a set of connected straight line segments. The last point is connected to the first point.",
+    "attributes": [
+        {
+            "name": "points",
+            "type": "<number>+",
+            "comment": "This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. \nValue type: <number>+ ; Default value: \"\"; Animatable: yes"
+        },
+        {
+            "name": "pathLength",
+            "type": "<number>",
+            "comment": "This attribute lets specify the total length for the path, in user units. \nValue type: <number> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "tag": "foreignObject",
+    "comment": "The <foreignObject> SVG element includes elements from a different XML namespace. In the context of a browser, it is most likely (X)HTML.",
+    "attributes": [
+        {
+            "name": "width",
+            "type": "<length>|<percentage>",
+            "comment": "The height of the foreignObject. \nValue type: <length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "height",
+            "type": "<length>|<percentage>",
+            "comment": "The width of the foreignObject. \nValue type: <length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "x",
+            "type": "<length>|<percentage>",
+            "comment": "The x coordinate of the foreignObject. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<length>|<percentage>",
+            "comment": "The y coordinate of the foreignObject. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        }
+    ]
+}

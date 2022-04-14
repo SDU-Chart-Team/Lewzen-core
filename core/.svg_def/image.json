@@ -1,0 +1,46 @@
+{
+    "tag": "image",
+    "comment": "The <image> SVG element includes images inside SVG documents. It can display raster image files or other SVG files.\nThe only image formats SVG software must support are JPEG, PNG, and other SVG files. Animated GIF behavior is undefined.\nSVG files displayed with <image> are treated as an image: external resources aren't loaded, :visited styles aren't applied, and they cannot be interactive. To include dynamic SVG elements, try <use> with an external URL. To include SVG files and run scripts inside them, try <object> inside of <foreignObject>.",
+    "attributes": [
+        {
+            "name": "width",
+            "type": "<length>|<percentage>",
+            "comment": "The width the image renders at. Unlike HTML's <img>, this attribute is required."
+        },
+        {
+            "name": "height",
+            "type": "<length>|<percentage>",
+            "comment": "The height the image renders at. Unlike HTML's <img>, this attribute is required."
+        },
+        {
+            "name": "x",
+            "type": "<length>|<percentage>",
+            "comment": "Positions the image horizontally from the origin."
+        },
+        {
+            "name": "y",
+            "type": "<length>|<percentage>",
+            "comment": "Positions the image vertically from the origin."
+        },
+        {
+            "name": "href",
+            "type": "<URL>",
+            "comment": "Points at a URL for the image file."
+        },
+        {
+            "name": "xlink:href",
+            "type": "<URL>",
+            "comment": "Points at a URL for the image file."
+        },
+        {
+            "name": "preserveAspectRatio",
+            "type": "<string>:preserveAspectRatio",
+            "comment": "how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. eg: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)"
+        },
+        {
+            "name": "crossorigin",
+            "type": "<string>:crossorigin",
+            "comment": "the value of the credentials flag for CORS requests."
+        }
+    ]
+}

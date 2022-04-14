@@ -1,0 +1,16 @@
+{
+    "tag": "path",
+    "comment": "The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.",
+    "attributes": [
+        {
+            "name": "d",
+            "type": "<path>",
+            "comment": "This attribute defines the shape of the path. \nValue type: <string> ; Default value: ''; Animatable: yes"
+        },
+        {
+            "name": "pathLength",
+            "type": "<number>",
+            "comment": "This attribute lets authors specify the total length for the path, in user units. \nValue type: <number> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

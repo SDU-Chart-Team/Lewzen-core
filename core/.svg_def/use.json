@@ -1,0 +1,31 @@
+{
+    "tag": "use",
+    "comment": "The <use> element takes nodes from within the SVG document, and duplicates them somewhere else.",
+    "attributes": [
+        {
+            "name": "href",
+            "type": "<URL>",
+            "comment": "The URL to an element/fragment that needs to be duplicated. \nValue type: <URL> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "x",
+            "type": "<coordinate>",
+            "comment": "The x coordinate of the use element. \nValue type: <coordinate> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<coordinate>",
+            "comment": "The y coordinate of the use element. \nValue type: <coordinate> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "width",
+            "type": "<length>",
+            "comment": "The width of the use element. \nValue type: <length> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "height",
+            "type": "<length>",
+            "comment": "The width of the use element. \nValue type: <length> ; Default value: 0; Animatable: yes"
+        }
+    ]
+}

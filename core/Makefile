@@ -8,7 +8,7 @@ cc = g++
 all: $(objects)
 	cd utils && make
 	cd geometry && make
-	cd svg_element && make
+	cd svg_el && make
 
 utils.o: utils.cpp utils.h
 	$(cc) -c utils.cpp
@@ -21,5 +21,5 @@ svg_element.o: svg_element.cpp svg_element.h
 clean:
 	cd utils && make clean
 	cd geometry && make clean
-	cd svg_element && make clean
+	cd svg_el && make clean
 	-rm $(objects)

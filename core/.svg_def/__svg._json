@@ -1,0 +1,709 @@
+{
+    "tag": "element",
+    "comment": "The SVG element.",
+    "attributes": [
+        {
+            "name": "id",
+            "type": "<string>:id",
+            "comment": "Defines a unique identifier (ID) which must be unique in the whole document. Its purpose is to identify the element when linking (using a fragment identifier), scripting, or styling (with CSS). \nValue: Any valid ID string; Animatable: No"
+        },
+        {
+            "name": "lang",
+            "type": "<string>:lang_id",
+            "comment": "Participates in defining the language of the element, the language that non-editable elements are written in or the language that editable elements should be written in. The tag contains one single entry value in the format defined in RFC 5646: Tags for Identifying Languages (also known as BCP 47). \nValue: Any valid language ID; Animatable: No"
+        },
+        {
+            "name": "tabindex",
+            "type": "<integer>",
+            "comment": "The tabindex SVG attribute allows you to control whether an element is focusable and to define the relative order of the element for the purposes of sequential focus navigation. \nValue type: <integer>; Animatable: No"
+        },
+        {
+            "name": "xml:base",
+            "type": "<IRI>",
+            "comment": "Specifies a base IRI other than the base IRI of the document. \nValue type: <IRI>; Animatable: No"
+        },
+        {
+            "name": "xml:lang",
+            "type": "<string>:lang_id",
+            "comment": "It is a universal attribute allowed in all XML dialects to mark up the natural human language that an element contains. It's almost identical in usage to HTML's lang, but in conforming XML 1.0 documents, it does not allow the use of a null attribute value (xml:lang=\"\") to indicate an unknown language. Instead, use xml:lang=\"und\". \nValue: Any valid language ID; Animatable: No"
+        },
+        {
+            "name": "xml:space",
+            "type": "default|preserve",
+            "comment": "SVG supports the standard XML attribute xml:space to specify the handling of white space characters within a given <text> element's character data. \nValue: default | preserve; Animatable: No"
+        },
+
+        {
+            "name": "class",
+            "type": "<string>:id",
+            "comment": "Assigns a class name or set of class names to an element. It functions identically to the class attribute in HTML. \nValue: Any valid ID string; Animatable: Yes"
+        },
+        {
+            "name": "style",
+            "type": "<string>:style",
+            "comment": "It specifies style information for its element. It functions identically to the style attribute in HTML. \nValue: Any valid style string; Animatable: No"
+        },
+        
+        {
+            "name": "onbegin",
+            "type": "event",
+            "comment": "Event of onbegin."
+        },
+        {
+            "name": "onend",
+            "type": "event",
+            "comment": "Event of onend."
+        },
+        {
+            "name": "onrepeat",
+            "type": "event",
+            "comment": "Event of onrepeat."
+        },
+
+        {
+            "name": "onabort",
+            "type": "event",
+            "comment": "Event of onabort."
+        },
+        {
+            "name": "onerror",
+            "type": "event",
+            "comment": "Event of onerror."
+        },
+        {
+            "name": "onresize",
+            "type": "event",
+            "comment": "Event of onresize."
+        },
+        {
+            "name": "onscroll",
+            "type": "event",
+            "comment": "Event of onscroll."
+        },
+        {
+            "name": "onunload",
+            "type": "event",
+            "comment": "Event of onunload."
+        },
+
+
+        {
+            "name": "oncopy",
+            "type": "event",
+            "comment": "Event of oncopy."
+        },
+        {
+            "name": "oncut",
+            "type": "event",
+            "comment": "Event of oncut."
+        },
+        {
+            "name": "onpaste",
+            "type": "event",
+            "comment": "Event of onpaste."
+        },
+
+        {
+            "name": "oncancel",
+            "type": "event",
+            "comment": "Event of oncancel."
+        },
+        {
+            "name": "oncanplay",
+            "type": "event",
+            "comment": "Event of oncanplay."
+        },
+        {
+            "name": "oncanplaythrough",
+            "type": "event",
+            "comment": "Event of oncanplaythrough."
+        },
+        {
+            "name": "onchange",
+            "type": "event",
+            "comment": "Event of onchange."
+        },
+        {
+            "name": "onclick",
+            "type": "event",
+            "comment": "Event of onclick."
+        },
+        {
+            "name": "onclose",
+            "type": "event",
+            "comment": "Event of onclose."
+        },
+        {
+            "name": "oncuechange",
+            "type": "event",
+            "comment": "Event of oncuechange."
+        },
+        {
+            "name": "ondblclick",
+            "type": "event",
+            "comment": "Event of ondblclick."
+        },
+        {
+            "name": "ondrag",
+            "type": "event",
+            "comment": "Event of ondrag."
+        },
+        {
+            "name": "ondragend",
+            "type": "event",
+            "comment": "Event of ondragend."
+        },
+        {
+            "name": "ondragenter",
+            "type": "event",
+            "comment": "Event of ondragenter."
+        },
+        {
+            "name": "ondragleave",
+            "type": "event",
+            "comment": "Event of ondragleave."
+        },
+        {
+            "name": "ondragover",
+            "type": "event",
+            "comment": "Event of ondragover."
+        },
+        {
+            "name": "ondragstart",
+            "type": "event",
+            "comment": "Event of ondragstart."
+        },
+        {
+            "name": "ondrop",
+            "type": "event",
+            "comment": "Event of ondrop."
+        },
+        {
+            "name": "ondurationchange",
+            "type": "event",
+            "comment": "Event of ondurationchange."
+        },
+        {
+            "name": "onemptied",
+            "type": "event",
+            "comment": "Event of onemptied."
+        },
+        {
+            "name": "onended",
+            "type": "event",
+            "comment": "Event of onended."
+        },
+        {
+            "name": "onfocus",
+            "type": "event",
+            "comment": "Event of onfocus."
+        },
+        {
+            "name": "oninput",
+            "type": "event",
+            "comment": "Event of oninput."
+        },
+        {
+            "name": "oninvalid",
+            "type": "event",
+            "comment": "Event of oninvalid."
+        },
+        {
+            "name": "onkeydown",
+            "type": "event",
+            "comment": "Event of onkeydown."
+        },
+        {
+            "name": "onkeypress",
+            "type": "event",
+            "comment": "Event of onkeypress."
+        },
+        {
+            "name": "onkeyup",
+            "type": "event",
+            "comment": "Event of onkeyup."
+        },
+        {
+            "name": "onload",
+            "type": "event",
+            "comment": "Event of onload."
+        },
+        {
+            "name": "onloadeddata",
+            "type": "event",
+            "comment": "Event of onloadeddata."
+        },
+        {
+            "name": "onloadedmetadata",
+            "type": "event",
+            "comment": "Event of onloadedmetadata."
+        },
+        {
+            "name": "onloadstart",
+            "type": "event",
+            "comment": "Event of onloadstart."
+        },
+        {
+            "name": "onmousedown",
+            "type": "event",
+            "comment": "Event of onmousedown."
+        },
+        {
+            "name": "onmouseenter",
+            "type": "event",
+            "comment": "Event of onmouseenter."
+        },
+        {
+            "name": "onmouseleave",
+            "type": "event",
+            "comment": "Event of onmouseleave."
+        },
+        {
+            "name": "onmousemove",
+            "type": "event",
+            "comment": "Event of onmousemove."
+        },
+        {
+            "name": "onmouseout",
+            "type": "event",
+            "comment": "Event of onmouseout."
+        },
+        {
+            "name": "onmouseover",
+            "type": "event",
+            "comment": "Event of onmouseover."
+        },
+        {
+            "name": "onmouseup",
+            "type": "event",
+            "comment": "Event of onmouseup."
+        },
+        {
+            "name": "onmousewheel",
+            "type": "event",
+            "comment": "Event of onmousewheel."
+        },
+        {
+            "name": "onpause",
+            "type": "event",
+            "comment": "Event of onpause."
+        },
+        {
+            "name": "onplay",
+            "type": "event",
+            "comment": "Event of onplay."
+        },
+        {
+            "name": "onplaying",
+            "type": "event",
+            "comment": "Event of onplaying."
+        },
+        {
+            "name": "onprogress",
+            "type": "event",
+            "comment": "Event of onprogress."
+        },
+        {
+            "name": "onratechange",
+            "type": "event",
+            "comment": "Event of onratechange."
+        },
+        {
+            "name": "onreset",
+            "type": "event",
+            "comment": "Event of onreset."
+        },
+        {
+            "name": "onseeked",
+            "type": "event",
+            "comment": "Event of onseeked."
+        },
+        {
+            "name": "onseeking",
+            "type": "event",
+            "comment": "Event of onseeking."
+        },
+        {
+            "name": "onselect",
+            "type": "event",
+            "comment": "Event of onselect."
+        },
+        {
+            "name": "onshow",
+            "type": "event",
+            "comment": "Event of onshow."
+        },
+        {
+            "name": "onstalled",
+            "type": "event",
+            "comment": "Event of onstalled."
+        },
+        {
+            "name": "onsubmit",
+            "type": "event",
+            "comment": "Event of onsubmit."
+        },
+        {
+            "name": "onsuspend",
+            "type": "event",
+            "comment": "Event of onsuspend."
+        },
+        {
+            "name": "ontimeupdate",
+            "type": "event",
+            "comment": "Event of ontimeupdate."
+        },
+        {
+            "name": "ontoggle",
+            "type": "event",
+            "comment": "Event of ontoggle."
+        },
+        {
+            "name": "onvolumechange",
+            "type": "event",
+            "comment": "Event of onvolumechange."
+        },
+        {
+            "name": "onwaiting",
+            "type": "event",
+            "comment": "Event of onwaiting."
+        },
+
+        {
+            "name": "onactivate",
+            "type": "event",
+            "comment": "Event of onactivate."
+        },
+        {
+            "name": "onfocusin",
+            "type": "event",
+            "comment": "Event of onfocusin."
+        },
+        {
+            "name": "onfocusout",
+            "type": "event",
+            "comment": "Event of onfocusout."
+        },
+
+        {
+            "name": "alignment-baseline",
+            "type": "auto|baseline|before-edge|text-before-edge|middle|central|after-edge|text-after-edge|ideographic|alphabetic|hanging|mathematical|inherit",
+            "comment": "It specifies how an object is aligned along the font baseline with respect to its parent. \nValue: auto|baseline|before-edge|text-before-edge|middle|central|after-edge|text-after-edge|ideographic|alphabetic|hanging|mathematical|inherit; Animatable: Yes"
+        },
+        {
+            "name": "baseline-shift",
+            "type": "auto|baseline|super|sub|<percentage>|<length>|inherit",
+            "comment": "It allows repositioning of the dominant-baseline relative to the dominant-baseline of the parent text content element. \nValue: auto|baseline|super|sub|<percentage>|<length>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "clip",
+            "type": "auto|<shape()>|inherit",
+            "comment": "It defines what portion of an element is visible. \nValue: auto|<shape()>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "clip-path",
+            "type": "none|<FuncIRI>|inherit",
+            "comment": "It binds the element it is applied to with a given <clipPath> element. \nValue: none|<FuncIRI>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "clip-rule",
+            "type": "nonezero|evenodd|inherit",
+            "comment": "It indicates how to determine what side of a path is inside a shape in order to know how a <clipPath> should clip its target. \nValue: nonezero|evenodd|inherit; Animatable: Yes"
+        },
+        {
+            "name": "color",
+            "type": "<color>|inherit",
+            "comment": "It provides a potential indirect value (currentcolor) for the fill, stroke, stop-color, flood-color and lighting-color presentation attributes. \nValue: <color>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "color-interpolation",
+            "type": "auto|sRGB|linearRGB|inherit",
+            "comment": "It specifies the color space for gradient interpolations, color animations, and alpha compositing. \nValue: auto|sRGB|linearRGB|inherit; Animatable: Yes"
+        },
+        {
+            "name": "color-interpolation-filters",
+            "type": "auto|sRGB|linearRGB|inherit",
+            "comment": "It specifies the color space for imaging operations performed via filter effects. \nValue: auto|sRGB|linearRGB|inherit; Animatable: Yes"
+        },
+        {
+            "name": "color-profile",
+            "type": "auto|sRGB|linearRGB|<name>|<IRI>|inherit",
+            "comment": "It defines which color profile a raster image included through the <image> element should use. \nValue: auto|sRGB|linearRGB|<name>|<IRI>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "color-rendering",
+            "type": "auto|optimizeSpeed|optimizeQuality|inherit",
+            "comment": "It provides a hint to the browser about how to optimize its color interpolation and compositing operations. \nValue: auto|optimizeSpeed|optimizeQuality|inherit; Animatable: Yes"
+        },
+        {
+            "name": "cursor",
+            "type": "<FuncIRI>|<keywords>|inherit",
+            "comment": "It specifies the mouse cursor displayed when the mouse pointer is over an element. \nValue: <FuncIRI>|<keywords>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "d",
+            "type": "<path>|none",
+            "comment": "It defines a path to be drawn. \nValue: path()|none"
+        },
+        {
+            "name": "direction",
+            "type": "ltr|rtl|inherit",
+            "comment": "It specifies the base writing direction of text. \nValue: ltr|rtl|inherit; Animatable: Yes"
+        },
+        {
+            "name": "display",
+            "type": "<string>:display",
+            "comment": "It allows to control the rendering of graphical or container elements. \nValue: see css display; Animatable: Yes"
+        },
+        {
+            "name": "dominant-baseline",
+            "type": "auto|text-bottom|alphabetic|ideographic|middle|central| mathematical|hanging|text-top",
+            "comment": "It defines the baseline used to align the box's text and inline-level contents. \nValue: auto|text-bottom|alphabetic|ideographic|middle|central| mathematical|hanging|text-top; Animatable: Yes"
+        },
+        {
+            "name": "enable-background",
+            "type": "accumulate|new|inherit",
+            "comment": "It tells the browser how to manage the accumulation of the background image. \nValue: accumulate|new|inherit; Animatable: No"
+        },
+        {
+            "name": "fill",
+            "type": "<paint>",
+            "comment": "It defines the color of the inside of the graphical element it applies to. \nValue: <paint>; Animatable: Yes"
+        },
+        {
+            "name": "fill-opacity",
+            "type": "<number>|<percentage>",
+            "comment": "It specifies the opacity of the color or the content the current object is filled with. \nValue: <number>|<percentage>; Animatable: Yes"
+        },
+        {
+            "name": "fill-rule",
+            "type": "nonzero|evenodd|inherit",
+            "comment": "It indicates how to determine what side of a path is inside a shape. \nValue: nonzero|evenodd|inherit; Animatable: Yes"
+        },
+        {
+            "name": "filter",
+            "type": "<FuncIRI>|none|inherit",
+            "comment": "It defines the filter effects defined by the <filter> element that shall be applied to its element. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+        },
+        {
+            "name": "flood-color",
+            "type": "<color>",
+            "comment": "It indicates what color to use to flood the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. \nValue: <color>; Animatable: Yes"
+        },
+        {
+            "name": "flood-opacity",
+            "type": "<number>|<percentage>",
+            "comment": "It indicates the opacity value to use across the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. \nValue: <number>|<percentage>; Animatable: Yes"
+        },
+        {
+            "name": "font-family",
+            "type": "<string>:font-family",
+            "comment": "It indicates which font family will be used to render the text of the element. \nValue: see css font-family; Animatable: Yes"
+        },
+        {
+            "name": "font-size",
+            "type": "<string>:font-size",
+            "comment": "It specifies the size of the font. \nValue: see css font-size; Animatable: Yes"
+        },
+        {
+            "name": "font-size-adjust",
+            "type": "<number>|none|inherit",
+            "comment": "It specifies that the font size should be chosen based on the height of lowercase letters rather than the height of capital letters. \nValue: <number>|none|inherit; Animatable: Yes"
+        },
+        {
+            "name": "font-stretch",
+            "type": "<string>:font-stretch",
+            "comment": "It selects a normal, condensed, or expanded face from a font. \nValue: see css font-stretch; Animatable: Yes"
+        },
+        {
+            "name": "font-style",
+            "type": "normal|italic|oblique",
+            "comment": "It specifies whether a font should be styled with a normal, italic, or oblique face from its font-family. \nValue: normal|italic|oblique; Animatable: Yes"
+        },
+        {
+            "name": "font-variant",
+            "type": "<string>:font-variant",
+            "comment": "It specifies whether a font should be used with some of their variation such as small caps or ligatures. \nValue: see css font-variant; Animatable: Yes"
+        },
+        {
+            "name": "font-weight",
+            "type": "normal|bold|lighter|bolder|100|200|300|400|500|600|700|800|900",
+            "comment": "It specifies the weight (or boldness) of the font. \nValue: normal|bold|lighter|bolder|100|200|300|400|500|600|700|800|900; Animatable: Yes"
+        },
+        {
+            "name": "glyph-orientation-horizontal",
+            "type": "<angle>|inherit",
+            "comment": "It controls glyph orientation when the inline-progression-direction is horizontal. \nValue: <angle>|inherit; Animatable: No"
+        },
+        {
+            "name": "glyph-orientation-vertical",
+            "type": "auto|<angle>|inherit",
+            "comment": "It controls glyph orientation when the inline-progression-direction is vertical. \nValue: auto|<angle>|inherit; Animatable: No"
+        },
+        {
+            "name": "image-rendering",
+            "type": "auto|optimizeQuality|optimizeSpeed",
+            "comment": "It provides a hint to the browser about how to make speed vs. quality tradeoffs as it performs image processing. \nValue: auto|optimizeQuality|optimizeSpeed; Animatable: Yes"
+        },
+        {
+            "name": "kerning",
+            "type": "auto|<length>|inherit",
+            "comment": "It indicates whether the browser should adjust inter-glyph spacing. \nValue: auto|<length>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "letter-spacing",
+            "type": "normal|<length>|inherit",
+            "comment": "It controls spacing between text characters. \nValue: normal|<length>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "lighting-color",
+            "type": "<color>",
+            "comment": "It defines the color of the light source for filter primitives elements <feDiffuseLighting> and <feSpecularLighting>. \nValue: <color>; Animatable: Yes"
+        },
+        {
+            "name": "marker-end",
+            "type": "<FuncIRI>|none|inherit",
+            "comment": "It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+        },
+        {
+            "name": "marker-mid",
+            "type": "<FuncIRI>|none|inherit",
+            "comment": "It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+        },
+        {
+            "name": "marker-start",
+            "type": "<FuncIRI>|none|inherit",
+            "comment": "It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+        },
+        {
+            "name": "mask",
+            "type": "<string>:mask",
+            "comment": "It alters the visibility of an element by either masking or clipping the image at specific points. \nValue: see css mask; Animatable: Yes"
+        },
+        {
+            "name": "opacity",
+            "type": "<opacity-value>",
+            "comment": "It specifies the transparency of an object or a group of objects. \nValue: <opacity-value>; Animatable: Yes"
+        },
+        {
+            "name": "overflow",
+            "type": "visible|hidden|scroll|auto|inherit",
+            "comment": "Specifies whether the content of a block-level element is clipped when it overflows the element's box. \nValue: visible|hidden|scroll|auto|inherit; Animatable: Yes"
+        },
+        {
+            "name": "pointer-events",
+            "type": "bounding-box|visiblePainted|visibleFil|visibleStroke|visible |painted|fill|stroke|all|none",
+            "comment": "Defines whether or when an element may be the target of a mouse event. \nValue: bounding-box|visiblePainted|visibleFil|visibleStroke|visible |painted|fill|stroke|all|none; Animatable: Yes"
+        },
+        {
+            "name": "shape-rendering",
+            "type": "auto|optimizeSpeed|crispEdges|geometricPrecision |inherit",
+            "comment": "Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. \nValue: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes"
+        },
+        {
+            "name": "solid-color",
+            "type": "",
+            "comment": "- \nValue:; Animatable: -"
+        },
+        {
+            "name": "solid-opacity",
+            "type": "",
+            "comment": "- \nValue:; Animatable: -"
+        },
+        {
+            "name": "stop-color",
+            "type": "currentcolor|<color>|<icccolor>|inherit",
+            "comment": "Indicates what color to use at that gradient stop. \nValue: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "stop-opacity",
+            "type": "<opacity-value>|inherit",
+            "comment": "Defines the opacity of a given gradient stop. \nValue: <opacity-value>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "stroke",
+            "type": "<paint>",
+            "comment": "Defines the color used to paint the outline of the shape. \nValue: <paint>; Animatable: Yes"
+        },
+        {
+            "name": "stroke-dasharray",
+            "type": "none|<dasharray>",
+            "comment": "Defines the pattern of dashes and gaps used to paint the outline of the shape. \nValue: none|<dasharray>; Animatable: Yes"
+        },
+        {
+            "name": "stroke-dashoffset",
+            "type": "<percentage>|<length>",
+            "comment": "Defines an offset on the rendering of the associated dash array. \nValue: <percentage>|<length>; Animatable: Yes"
+        },
+        {
+            "name": "stroke-linecap",
+            "type": "butt|round|square",
+            "comment": "Defines the shape to be used at the end of open subpaths when they are stroked. \nValue: butt|round|square; Animatable: Yes"
+        },
+        {
+            "name": "stroke-linejoin",
+            "type": "arcs|bevel|miter|miter-clip|round",
+            "comment": "Defines the shape to be used at the corners of paths when they are stroked. \nValue: arcs|bevel|miter|miter-clip|round; Animatable: Yes"
+        },
+        {
+            "name": "stroke-miterlimit",
+            "type": "<number>",
+            "comment": "Defines a limit on the ratio of the miter length to the stroke-width used to draw a miter join. \nValue: <number>; Animatable: Yes"
+        },
+        {
+            "name": "stroke-opacity",
+            "type": "<opacity-value>|<percentage>",
+            "comment": "Defines the opacity of the stroke of a shape. \nValue: <opacity-value>|<percentage>; Animatable: Yes"
+        },
+        {
+            "name": "stroke-width",
+            "type": "<length>|<percentage>",
+            "comment": "Defines the width of the stroke to be applied to the shape. \nValue: <length>|<percentage>; Animatable: Yes"
+        },
+        {
+            "name": "text-anchor",
+            "type": "start|middle|end|inherit",
+            "comment": "Defines the vertical alignment a string of text. \nValue: start|middle|end|inherit; Animatable: Yes"
+        },
+        {
+            "name": "text-decoration",
+            "type": "none|underline|overline|line-through|blink|inherit",
+            "comment": "Sets the appearance of decorative lines on text. \nValue: none|underline|overline|line-through|blink|inherit; Animatable: Yes"
+        },
+        {
+            "name": "text-rendering",
+            "type": "auto|optimizeSpeed|optimizeLegibility|geometricPrecision|inherit",
+            "comment": "Hints about what tradeoffs to make as the browser renders text. \nValue: auto|optimizeSpeed|optimizeLegibility|geometricPrecision|inherit; Animatable: Yes"
+        },
+        {
+            "name": "transform",
+            "type": "<transform-list>",
+            "comment": "Defines a list of transform definitions that are applied to an element and the element's children. \nValue: <transform-list>; Animatable: Yes"
+        },
+        {
+            "name": "unicode-bidi",
+            "type": "",
+            "comment": "- \nValue:; Animatable: -"
+        },
+        {
+            "name": "vector-effect",
+            "type": "default|non-scaling-stroke|inherit|<uri>",
+            "comment": "Specifies the vector effect to use when drawing an object. \nValue: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes"
+        },
+        {
+            "name": "visibility",
+            "type": "visible|hidden|collapse|inherit",
+            "comment": "Lets you control the visibility of graphical elements. \nValue: visible|hidden|collapse|inherit; Animatable: Yes"
+        },
+        {
+            "name": "word-spacing",
+            "type": "<length>|inherit",
+            "comment": "Specifies spacing behavior between words. \nValue: <length>|inherit; Animatable: Yes"
+        },
+        {
+            "name": "writing-mode",
+            "type": "lr-tb|rl-tb|tb-rl|lr|rl|tb|inherit",
+            "comment": "Specifies whether the initial inline-progression-direction for a <text> element shall be left-to-right, right-to-left, or top-to-bottom. \nValue: lr-tb|rl-tb|tb-rl|lr|rl|tb|inherit; Animatable: Yes"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "tag": "ellipse",
+    "comment": "The <ellipse> element is an SVG basic shape, used to create ellipses based on a center coordinate, and both their x and y radius.",
+    "attributes": [
+        {
+            "name": "cx",
+            "type": "<length>|<percentage>",
+            "comment": "The x position of the ellipse. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "cy",
+            "type": "<length>|<percentage>",
+            "comment": "The y position of the ellipse. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "rx",
+            "type": "auto|<length>|<percentage>",
+            "comment": "The radius of the ellipse on the x axis. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "ry",
+            "type": "auto|<length>|<percentage>",
+            "comment": "The radius of the ellipse on the y axis. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "pathLength",
+            "type": "<number>",
+            "comment": "This attribute lets specify the total length for the path, in user units. \nValue type: <number> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

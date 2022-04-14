@@ -1,0 +1,56 @@
+{
+    "tag": "pattern",
+    "comment": "The <pattern> element defines a graphics object which can be redrawn at repeated x- and y-coordinate intervals (\"tiled\") to cover an area.",
+    "attributes": [
+        {
+            "name": "height",
+            "type": "<length>|<percentage>",
+            "comment": "This attribute determines the height of the pattern tile. \nValue type: <length>|<percentage>; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "href",
+            "type": "<URL>",
+            "comment": "This attribute reference a template pattern that provides default values for the <pattern> attributes. \nValue type: <URL>; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "patternContentUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for the contents of the <pattern>. \nValue type: userSpaceOnUse|objectBoundingBox; Default value: userSpaceOnUse; Animatable: yes"
+        },
+        {
+            "name": "patternTransform",
+            "type": "<transform-list>",
+            "comment": "This attribute contains the definition of an optional additional transformation from the pattern coordinate system onto the target coordinate system. \nValue type: <transform-list>; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "patternUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for attributes x, y, width , and height. \nValue type: userSpaceOnUse|objectBoundingBox; Default value: objectBoundingBox; Animatable: yes"
+        },
+        {
+            "name": "preserveAspectRatio",
+            "type": "(none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)",
+            "comment": "This attribute defines how the SVG fragment must be deformed if it is embedded in a container with a different aspect ratio. \nValue type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes"
+        },
+        {
+            "name": "viewBox",
+            "type": "<list-of-numbers>",
+            "comment": "This attribute defines the bound of the SVG viewport for the pattern fragment. \nValue type: <list-of-numbers> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "width",
+            "type": "<length>|<percentage>",
+            "comment": "This attribute determines the width of the pattern tile. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "x",
+            "type": "<length>|<percentage>",
+            "comment": "This attribute determines the x coordinate shift of the pattern tile. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<length>|<percentage>",
+            "comment": "This attribute determines the y coordinate shift of the pattern tile. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        }
+    ]
+}
