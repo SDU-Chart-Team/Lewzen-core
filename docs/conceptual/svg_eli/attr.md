@@ -22,6 +22,8 @@ SVG中需要用到的基本属性类型，信息来自：「[mozilla/Web/Content
 
 // TODO
 
+（使用泛型与参数包；在参数包中迭代：https://riptutorial.com/cplusplus/example/3208/iterating-over-a-parameter-pack）
+
 ### 元组
 
 需要同时存在的多个类型属性，且区分顺序。与列表不同，元组中包含的属性是多类型的，且数量是一定的。例如："(\<number\>) (a|b)"等。

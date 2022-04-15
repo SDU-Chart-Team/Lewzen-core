@@ -11,13 +11,13 @@ namespace Lewzen {
         return (*_commit)();
     }
     template <typename T>
-    void Attribute::set(const T &attr) {}
+    void Attribute::set(const T &attr) { _LZ_WARNING("Calling Attribute.set, but no implementation.") }
     template <typename T>
-    Attribute &Attribute::operator=(const T &attr) {}
+    Attribute &Attribute::operator=(const T &attr) { _LZ_WARNING("Calling Attribute.operator=, but no implementation.") }
     template <typename T>
-    void Attribute::bind(const T (*bind_func)()) {}
+    void Attribute::bind(const T (*bind_func)()) { _LZ_WARNING("Calling Attribute.bind, but no implementation.") }
     template <typename T>
-    void Attribute::bind(const std::weak_ptr<T> &bind_ptr) {}
+    void Attribute::bind(const std::weak_ptr<T> &bind_ptr) { _LZ_WARNING("Calling Attribute.bind, but no implementation.") }
     template <typename T>
     Attribute &Attribute::operator[](const T (*bind_func)) {
         bind(bind_func);
