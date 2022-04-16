@@ -3,16 +3,23 @@ Projects:
     ✔ Concept
     ✔ Defination @high @done(22-04-12 18:00)
     ☐ Implementation @high
+      ☐ json
+      ✔ src_gen @done(22-04-08 :00)
+      ☐ implementation test
   ☐ Attribute @started(22-4-11 18:00) 
     ✔ Concept @critical @done(22-04-14 23:00)
-      - see: https://developer.mozilla.org/en-US/docs/Web/SVG/Content_type
+      (see: https://developer.mozilla.org/en-US/docs/Web/SVG/Content_type)
     ✔ Defination @high @done(22-04-14 22:30)
-      - get (to string)
-      - set (from many basic c++ types)
-      - bind
+      ✔ get (to string)
+      ✔ set (from many basic c++ types)
+      ✔ bind
     ☐ Implementation @high @started(22-4-14 23:30) 
-      - json
-      - src_gen
+      ☐ json
+      ✔ src_gen @done(22-04-15 22:00)
+      ☐ implementation test
+        ✔ basic type @done(22-04-16 00:55)
+        ☐ tuple
+        ☐ enumerate
   ☐ SVG Element Interface @started(22-4-22 00:00) 
     ✔ Concept @critical @done(22-04-14 23:50)
     ☐ Defination @high

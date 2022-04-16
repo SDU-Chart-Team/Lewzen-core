@@ -1,0 +1,51 @@
+{
+    "type": "length",
+    "includes": [
+        "regex"
+    ],
+    "comment": "A length is a distance measurement, given as a number along with a unit. Lengths are specified in one of two ways. When used in a stylesheet, a <length> is defined as follows:\n```\nlength ::= number (~\"em\" | ~\"ex\" | ~\"px\" | ~\"in\" | ~\"cm\" | ~\"mm\" | ~\"pt\" | ~\"pc\")?\nSee the CSS2 specification for the meanings of the unit identifiers.\n```\nFor properties defined in CSS2, a length unit identifier must be provided. For length values in SVG-specific properties and their corresponding presentation attributes, the length unit identifier is optional. If not provided, the length value represents a distance in the current user coordinate system. In presentation attributes for all properties, whether defined in SVG1.1 or in CSS2, the length identifier, if specified, must be in lower case.\nWhen lengths are used in an SVG attribute, a <length> is instead defined as follows:\n```\nlength ::= number (\"em\" | \"ex\" | \"px\" | \"in\" | \"cm\" | \"mm\" | \"pt\" | \"pc\" | \"%\")?\n```\nThe unit identifiers in such <length> values must be in lower case.\nNote that the non-property <length> definition also allows a percentage unit identifier. The meaning of a percentage length value depends on the attribute for which the percentage length value has been specified. Two common cases are:\n- when a percentage length value represents a percentage of the viewport width or height\n- when a percentage length value represents a percentage of the bounding box width or height on a given object.\nIn the SVG DOM, <length> values are represented using SVGLength or SVGAnimatedLength objects.",
+    "accepts": [
+        {
+            "ctype": "int",
+            "cname": "integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "float",
+            "cname": "float",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "double",
+            "cname": "double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long",
+            "cname": "long",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long long int",
+            "cname": "long integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long double",
+            "cname": "long double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "std::string",
+            "cname": "legal string",
+            "to_string": "if (!is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \\\"\" << attr << \"\\\" to Length.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
+            "additional_funcs": [
+                {
+                    "declaration": "static bool is_legal_string(const std::string &attr);",
+                    "comment": "Check if a string is legal as a Length attribute.",
+                    "implementation": "std::regex re(R\"(^(([+-]?[0-9]+)([Ee]([+-]?[0-9]+))?|[+-]?[0-9]*\\.[0-9]+([Ee]([+-]?[0-9]+))?)(em|ex|px|in|cm|mm|pt|pc|%)?$)\");\nreturn std::regex_match(attr, re);"
+                }
+            ]
+        }
+    ]
+}

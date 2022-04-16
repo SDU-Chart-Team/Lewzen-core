@@ -1,5 +1,5 @@
-#ifndef __LZ_ATTR_NUMBER__
-#define __LZ_ATTR_NUMBER__
+#ifndef __LZ_ATTR_PERCENTAGE__
+#define __LZ_ATTR_PERCENTAGE__
 #include <functional>
 #include <string>
 #include <memory>
@@ -9,31 +9,31 @@
 
 namespace Lewzen {
     /**
-    * Real numbers are specified in one of two ways. When used in a stylesheet, a <number> is defined as follows: 
-    * ```number ::= integer
-    *     | [+-]? [0-9]* "." [0-9]+```
-    * When used in an SVG attribute, a <number> is defined differently, to allow numbers with large magnitudes to be specified more concisely:
-    * ```number ::= integer ([Ee] integer)?
-    *     | [+-]? [0-9]* "." [0-9]+ ([Ee] integer)?```
-    * Within the SVG DOM, a <number> is represented as a float, SVGNumber or a SVGAnimatedNumber.
+    * Percentages are specified as a number followed by a "%" character:
+    * ```
+    * percentage ::= number "%"
+    * ```
+    * Note that the definition of <number> depends on whether the percentage is specified in a stylesheet or in an attribute that is not also a presentation attribute.
+    * Percentage values are always relative to another value (for example, a length). Each attribute or property that allows percentages also defines the reference distance measurement to which the percentage refers.
+    * Within the SVG DOM, a <percentage> is represented using an SVGNumber or SVGAnimatedNumber object.
     */
-    class Number {
+    class Percentage {
     private:
         std::function<const std::string()> _commit;
         std::function<const std::string()> _getter;
         std::function<void(const std::string &)> _setter;
     public:
         /**
-        * Empty constructor of Number.
+        * Empty constructor of Percentage.
         */
-        Number();
+        Percentage();
         /**
-        * Constructor of Number, with binding with getter and setter.
+        * Constructor of Percentage, with binding with getter and setter.
         *
         * @param getter getter function
         * @param setter setter function
         */
-        Number(std::function<const std::string()> getter, std::function<void(const std::string &)> setter);
+        Percentage(std::function<const std::string()> getter, std::function<void(const std::string &)> setter);
 
         /**
         * Return attribute string, from getter.
@@ -66,7 +66,7 @@ namespace Lewzen {
         * @param attr attribute.
         */
         template <typename T>
-        Number &operator=(const T &attr);
+        Percentage &operator=(const T &attr);
 
         /**
         * Bind attribute to a function. This will break value binding with bind_ptr. (This function will reset commit)
@@ -81,7 +81,7 @@ namespace Lewzen {
         * @param bind_func binding function.
         */
         template <typename T>
-        Number &operator[](const T (*bind_func));
+        Percentage &operator[](const T (*bind_func));
         /**
         * Bind attribute to a function. This will break value binding with bind_func. (This function will reset commit)
         *
@@ -95,7 +95,7 @@ namespace Lewzen {
         * @param bind_ptr binding pointer.
         */
         template <typename T>
-        Number &operator[](const std::weak_ptr<T> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<T> &bind_ptr);
 
     private:
         int _con_val_integer;
@@ -105,7 +105,7 @@ namespace Lewzen {
         std::weak_ptr<int> _bind_ptr_integer;
         const std::string _from_bind_ptr_integer();
         /**
-        * Convert integer to string of Number.
+        * Convert integer to string of Percentage.
         */
         static std::string integer_to_string(const int &attr);
     public:
@@ -120,7 +120,7 @@ namespace Lewzen {
         *
         * @param attr integer attribute.
         */
-        Number &operator=(const int &attr);
+        Percentage &operator=(const int &attr);
         /**
         * Bind attribute to a integer function. This will break value binding with bind_ptr.
         *
@@ -132,7 +132,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const int (*bind_func)());
+        Percentage &operator[](const int (*bind_func)());
         /**
         * Bind attribute to a integer pointer. This will break value binding with bind_func.
         *
@@ -144,7 +144,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<int> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<int> &bind_ptr);
 
     private:
         float _con_val_float;
@@ -154,7 +154,7 @@ namespace Lewzen {
         std::weak_ptr<float> _bind_ptr_float;
         const std::string _from_bind_ptr_float();
         /**
-        * Convert float to string of Number.
+        * Convert float to string of Percentage.
         */
         static std::string float_to_string(const float &attr);
     public:
@@ -169,7 +169,7 @@ namespace Lewzen {
         *
         * @param attr float attribute.
         */
-        Number &operator=(const float &attr);
+        Percentage &operator=(const float &attr);
         /**
         * Bind attribute to a float function. This will break value binding with bind_ptr.
         *
@@ -181,7 +181,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const float (*bind_func)());
+        Percentage &operator[](const float (*bind_func)());
         /**
         * Bind attribute to a float pointer. This will break value binding with bind_func.
         *
@@ -193,7 +193,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<float> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<float> &bind_ptr);
 
     private:
         double _con_val_double;
@@ -203,7 +203,7 @@ namespace Lewzen {
         std::weak_ptr<double> _bind_ptr_double;
         const std::string _from_bind_ptr_double();
         /**
-        * Convert double to string of Number.
+        * Convert double to string of Percentage.
         */
         static std::string double_to_string(const double &attr);
     public:
@@ -218,7 +218,7 @@ namespace Lewzen {
         *
         * @param attr double attribute.
         */
-        Number &operator=(const double &attr);
+        Percentage &operator=(const double &attr);
         /**
         * Bind attribute to a double function. This will break value binding with bind_ptr.
         *
@@ -230,7 +230,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const double (*bind_func)());
+        Percentage &operator[](const double (*bind_func)());
         /**
         * Bind attribute to a double pointer. This will break value binding with bind_func.
         *
@@ -242,7 +242,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<double> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<double> &bind_ptr);
 
     private:
         long _con_val_long;
@@ -252,7 +252,7 @@ namespace Lewzen {
         std::weak_ptr<long> _bind_ptr_long;
         const std::string _from_bind_ptr_long();
         /**
-        * Convert long to string of Number.
+        * Convert long to string of Percentage.
         */
         static std::string long_to_string(const long &attr);
     public:
@@ -267,7 +267,7 @@ namespace Lewzen {
         *
         * @param attr long attribute.
         */
-        Number &operator=(const long &attr);
+        Percentage &operator=(const long &attr);
         /**
         * Bind attribute to a long function. This will break value binding with bind_ptr.
         *
@@ -279,7 +279,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const long (*bind_func)());
+        Percentage &operator[](const long (*bind_func)());
         /**
         * Bind attribute to a long pointer. This will break value binding with bind_func.
         *
@@ -291,7 +291,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<long> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<long> &bind_ptr);
 
     private:
         long long int _con_val_long_integer;
@@ -301,7 +301,7 @@ namespace Lewzen {
         std::weak_ptr<long long int> _bind_ptr_long_integer;
         const std::string _from_bind_ptr_long_integer();
         /**
-        * Convert long integer to string of Number.
+        * Convert long integer to string of Percentage.
         */
         static std::string long_integer_to_string(const long long int &attr);
     public:
@@ -316,7 +316,7 @@ namespace Lewzen {
         *
         * @param attr long integer attribute.
         */
-        Number &operator=(const long long int &attr);
+        Percentage &operator=(const long long int &attr);
         /**
         * Bind attribute to a long integer function. This will break value binding with bind_ptr.
         *
@@ -328,7 +328,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const long long int (*bind_func)());
+        Percentage &operator[](const long long int (*bind_func)());
         /**
         * Bind attribute to a long integer pointer. This will break value binding with bind_func.
         *
@@ -340,7 +340,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<long long int> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<long long int> &bind_ptr);
 
     private:
         long double _con_val_long_double;
@@ -350,7 +350,7 @@ namespace Lewzen {
         std::weak_ptr<long double> _bind_ptr_long_double;
         const std::string _from_bind_ptr_long_double();
         /**
-        * Convert long double to string of Number.
+        * Convert long double to string of Percentage.
         */
         static std::string long_double_to_string(const long double &attr);
     public:
@@ -365,7 +365,7 @@ namespace Lewzen {
         *
         * @param attr long double attribute.
         */
-        Number &operator=(const long double &attr);
+        Percentage &operator=(const long double &attr);
         /**
         * Bind attribute to a long double function. This will break value binding with bind_ptr.
         *
@@ -377,7 +377,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const long double (*bind_func)());
+        Percentage &operator[](const long double (*bind_func)());
         /**
         * Bind attribute to a long double pointer. This will break value binding with bind_func.
         *
@@ -389,7 +389,7 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<long double> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<long double> &bind_ptr);
 
     private:
         std::string _con_val_legal_string;
@@ -399,7 +399,7 @@ namespace Lewzen {
         std::weak_ptr<std::string> _bind_ptr_legal_string;
         const std::string _from_bind_ptr_legal_string();
         /**
-        * Convert legal string to string of Number.
+        * Convert legal string to string of Percentage.
         */
         static std::string legal_string_to_string(const std::string &attr);
     public:
@@ -414,7 +414,7 @@ namespace Lewzen {
         *
         * @param attr legal string attribute.
         */
-        Number &operator=(const std::string &attr);
+        Percentage &operator=(const std::string &attr);
         /**
         * Set attribute from legal string, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
         *
@@ -426,7 +426,7 @@ namespace Lewzen {
         *
         * @param attr legal string attribute.
         */
-        Number &operator=(const char * attr);
+        Percentage &operator=(const char * attr);
         /**
         * Bind attribute to a legal string function. This will break value binding with bind_ptr.
         *
@@ -438,7 +438,7 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        Number &operator[](const std::string (*bind_func)());
+        Percentage &operator[](const std::string (*bind_func)());
         /**
         * Bind attribute to a legal string pointer. This will break value binding with bind_func.
         *
@@ -450,12 +450,12 @@ namespace Lewzen {
         *
         * @param bind_ptr binding pointer.
         */
-        Number &operator[](const std::weak_ptr<std::string> &bind_ptr);
+        Percentage &operator[](const std::weak_ptr<std::string> &bind_ptr);
         /**
-        * Check if a string is legal as a Number attribute.
+        * Check if a string is legal as a Percentage attribute.
         */
         static bool is_legal_string(const std::string &attr);
     };
 }
-#include "attr_number.cpp"
+#include "attr_percentage.cpp"
 #endif

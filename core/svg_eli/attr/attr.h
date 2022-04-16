@@ -1,5 +1,5 @@
-#ifndef __LZ_ATTR_TYPE__
-#define __LZ_ATTR_TYPE__
+#ifndef __LZ_ATTR__
+#define __LZ_ATTR__
 #include <string>
 #include <memory>
 #include <iostream>
@@ -38,7 +38,7 @@ namespace Lewzen {
         *
         * @return attribute string.
         */
-        const std::string get_to_commit()  const;
+        const std::string get_commit()  const;
 
         /**
         * Set attribute from value, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
@@ -90,4 +90,5 @@ namespace Lewzen {
         void commit();
     };
 }
+#include "attr.tpp"
 #endif

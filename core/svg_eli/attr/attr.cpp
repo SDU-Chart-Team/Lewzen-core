@@ -7,7 +7,7 @@ namespace Lewzen {
         if (_getter == nullptr) return STR_NULL;
         return (*_getter)();
     }
-    const std::string Attribute::get_to_commit() const {
+    const std::string Attribute::get_commit() const {
         return (*_commit)();
     }
     template <typename T>

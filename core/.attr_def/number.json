@@ -21,6 +21,11 @@
             "to_string": "return std::to_string(attr);"
         },
         {
+            "ctype": "long",
+            "cname": "long",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
             "ctype": "long long int",
             "cname": "long integer",
             "to_string": "return std::to_string(attr);"
@@ -33,7 +38,7 @@
         {
             "ctype": "std::string",
             "cname": "legal string",
-            "to_string": "if (is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \" << attr << \" to Number.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
+            "to_string": "if (!is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \\\"\" << attr << \"\\\" to Number.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
             "additional_funcs": [
                 {
                     "declaration": "static bool is_legal_string(const std::string &attr);",
