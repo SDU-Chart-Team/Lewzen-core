@@ -36,6 +36,18 @@ namespace Lewzen {
         Percentage(std::function<const std::string()> getter, std::function<void(const std::string &)> setter);
 
         /**
+        * Set getter of Percentage this attribute.
+        * @param getter getter function
+        */
+        void set_getter(std::function<const std::string()> getter);
+        /**
+        * Set setter of Percentage this attribute.
+        *
+        * @param setter setter function
+        */
+        void set_setter(std::function<void(const std::string &)> setter);
+
+        /**
         * Return attribute string, from getter.
         *
         * @return attribute string.
@@ -74,23 +86,23 @@ namespace Lewzen {
         * @param bind_func binding function.
         */
         template <typename T>
-        void bind(const T (*bind_func)());
+        void bind(std::function<const T()>bind_func);
         /**
         * Bind attribute to a function. This will break value binding with bind_ptr. (This function will reset commit)
         *
         * @param bind_func binding function.
         */
         template <typename T>
-        Percentage &operator[](const T (*bind_func));
+        Percentage &operator[](std::function<const T()>bind_func);
         /**
-        * Bind attribute to a function. This will break value binding with bind_func. (This function will reset commit)
+        * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)
         *
         * @param bind_ptr binding pointer.
         */
         template <typename T>
         void bind(const std::weak_ptr<T> &bind_ptr);
         /**
-        * Bind attribute to a function. This will break value binding with bind_func. (This function will reset commit)
+        * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)
         *
         * @param bind_ptr binding pointer.
         */
@@ -100,7 +112,7 @@ namespace Lewzen {
     private:
         int _con_val_integer;
         const std::string _from_con_val_integer();
-        const int (*_bind_func_integer)();
+        std::function<const int()> _bind_func_integer;
         const std::string _from_bind_func_integer();
         std::weak_ptr<int> _bind_ptr_integer;
         const std::string _from_bind_ptr_integer();
@@ -126,13 +138,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const int (*bind_func)());
+        void bind(std::function<const int()> bind_func);
         /**
         * Bind attribute to a integer function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const int (*bind_func)());
+        Percentage &operator[](std::function<const int()> bind_func);
         /**
         * Bind attribute to a integer pointer. This will break value binding with bind_func.
         *
@@ -149,7 +161,7 @@ namespace Lewzen {
     private:
         float _con_val_float;
         const std::string _from_con_val_float();
-        const float (*_bind_func_float)();
+        std::function<const float()> _bind_func_float;
         const std::string _from_bind_func_float();
         std::weak_ptr<float> _bind_ptr_float;
         const std::string _from_bind_ptr_float();
@@ -175,13 +187,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const float (*bind_func)());
+        void bind(std::function<const float()> bind_func);
         /**
         * Bind attribute to a float function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const float (*bind_func)());
+        Percentage &operator[](std::function<const float()> bind_func);
         /**
         * Bind attribute to a float pointer. This will break value binding with bind_func.
         *
@@ -198,7 +210,7 @@ namespace Lewzen {
     private:
         double _con_val_double;
         const std::string _from_con_val_double();
-        const double (*_bind_func_double)();
+        std::function<const double()> _bind_func_double;
         const std::string _from_bind_func_double();
         std::weak_ptr<double> _bind_ptr_double;
         const std::string _from_bind_ptr_double();
@@ -224,13 +236,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const double (*bind_func)());
+        void bind(std::function<const double()> bind_func);
         /**
         * Bind attribute to a double function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const double (*bind_func)());
+        Percentage &operator[](std::function<const double()> bind_func);
         /**
         * Bind attribute to a double pointer. This will break value binding with bind_func.
         *
@@ -247,7 +259,7 @@ namespace Lewzen {
     private:
         long _con_val_long;
         const std::string _from_con_val_long();
-        const long (*_bind_func_long)();
+        std::function<const long()> _bind_func_long;
         const std::string _from_bind_func_long();
         std::weak_ptr<long> _bind_ptr_long;
         const std::string _from_bind_ptr_long();
@@ -273,13 +285,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const long (*bind_func)());
+        void bind(std::function<const long()> bind_func);
         /**
         * Bind attribute to a long function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const long (*bind_func)());
+        Percentage &operator[](std::function<const long()> bind_func);
         /**
         * Bind attribute to a long pointer. This will break value binding with bind_func.
         *
@@ -296,7 +308,7 @@ namespace Lewzen {
     private:
         long long int _con_val_long_integer;
         const std::string _from_con_val_long_integer();
-        const long long int (*_bind_func_long_integer)();
+        std::function<const long long int()> _bind_func_long_integer;
         const std::string _from_bind_func_long_integer();
         std::weak_ptr<long long int> _bind_ptr_long_integer;
         const std::string _from_bind_ptr_long_integer();
@@ -322,13 +334,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const long long int (*bind_func)());
+        void bind(std::function<const long long int()> bind_func);
         /**
         * Bind attribute to a long integer function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const long long int (*bind_func)());
+        Percentage &operator[](std::function<const long long int()> bind_func);
         /**
         * Bind attribute to a long integer pointer. This will break value binding with bind_func.
         *
@@ -345,7 +357,7 @@ namespace Lewzen {
     private:
         long double _con_val_long_double;
         const std::string _from_con_val_long_double();
-        const long double (*_bind_func_long_double)();
+        std::function<const long double()> _bind_func_long_double;
         const std::string _from_bind_func_long_double();
         std::weak_ptr<long double> _bind_ptr_long_double;
         const std::string _from_bind_ptr_long_double();
@@ -371,13 +383,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const long double (*bind_func)());
+        void bind(std::function<const long double()> bind_func);
         /**
         * Bind attribute to a long double function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const long double (*bind_func)());
+        Percentage &operator[](std::function<const long double()> bind_func);
         /**
         * Bind attribute to a long double pointer. This will break value binding with bind_func.
         *
@@ -394,7 +406,7 @@ namespace Lewzen {
     private:
         std::string _con_val_legal_string;
         const std::string _from_con_val_legal_string();
-        const std::string (*_bind_func_legal_string)();
+        std::function<const std::string()> _bind_func_legal_string;
         const std::string _from_bind_func_legal_string();
         std::weak_ptr<std::string> _bind_ptr_legal_string;
         const std::string _from_bind_ptr_legal_string();
@@ -432,13 +444,13 @@ namespace Lewzen {
         *
         * @param bind_func binding function.
         */
-        void bind(const std::string (*bind_func)());
+        void bind(std::function<const std::string()> bind_func);
         /**
         * Bind attribute to a legal string function. This will break value binding with bind_ptr.
         *
         * @param bind_func binding function.
         */
-        Percentage &operator[](const std::string (*bind_func)());
+        Percentage &operator[](std::function<const std::string()> bind_func);
         /**
         * Bind attribute to a legal string pointer. This will break value binding with bind_func.
         *

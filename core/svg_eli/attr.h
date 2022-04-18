@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 #include <iostream>
-#include "../../utils.h"
+#include "../utils.h"
 
 namespace Lewzen {
     /**
@@ -90,5 +90,9 @@ namespace Lewzen {
         void commit();
     };
 }
-#include "attr.tpp"
+#include "attr.cpp"
+#include "attr/attr_percentage.h"
+#include "attr/attr_length.h"
+#include "attr/attr_number.h"
+#include "attr/attr_tuple.hpp"
 #endif
