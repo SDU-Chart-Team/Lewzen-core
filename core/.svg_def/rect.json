@@ -1,0 +1,41 @@
+{
+    "tag": "rect",
+    "comment": "The <rect> element is a basic SVG shape that draws rectangles, defined by their position, width, and height. The rectangles may have their corners rounded.",
+    "attributes": [
+        {
+            "name": "x",
+            "type": "<length>|<percentage>",
+            "comment": "The x coordinate of the rect. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<length>|<percentage>",
+            "comment": "The y coordinate of the rect. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "width",
+            "type": "auto|<length>|<percentage>",
+            "comment": "The width of the rect. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "height",
+            "type": "auto|<length>|<percentage>",
+            "comment": "The height of the rect. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "rx",
+            "type": "auto|<length>|<percentage>r",
+            "comment": "The horizontal corner radius of the rect. Defaults to ry if it is specified. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "ry",
+            "type": "auto|<length>|<percentage>",
+            "comment": "The vertical corner radius of the rect. Defaults to rx if it is specified. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
+        },
+        {
+            "name": "pathLength",
+            "type": "<number>",
+            "comment": "The total length of the rectangle's perimeter, in user units. \nValue type: <number> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

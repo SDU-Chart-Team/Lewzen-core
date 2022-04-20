@@ -1,0 +1,31 @@
+{
+    "tag": "line",
+    "comment": "The <line> element is an SVG basic shape used to create a line connecting two points.",
+    "attributes": [
+        {
+            "name": "x1",
+            "type": "<length>|<percentage>|<number>",
+            "comment": "Defines the x-axis coordinate of the line starting point. \nValue type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "x2",
+            "type": "<length>|<percentage>|<number>",
+            "comment": "Defines the x-axis coordinate of the line ending point. \nValue type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y1",
+            "type": "<length>|<percentage>|<number>",
+            "comment": "Defines the y-axis coordinate of the line starting point. \nValue type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y2",
+            "type": "<length>|<percentage>|<number>",
+            "comment": "Defines the y-axis coordinate of the line ending point. \nValue type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "pathLength",
+            "type": "<number>",
+            "comment": "Defines the total path length in user units. \nValue type: <number> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

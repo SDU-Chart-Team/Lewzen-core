@@ -1,0 +1,36 @@
+{
+    "tag": "mask",
+    "comment": "The <mask> element defines an alpha mask for compositing the current object into the background. A mask is used/referenced using the mask property.",
+    "attributes": [
+        {
+            "name": "height",
+            "type": "<length>",
+            "comment": "This attribute defines the height of the masking area. \nValue type: <length> ; Default value: 120%; Animatable: yes"
+        },
+        {
+            "name": "maskContentUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for the contents of the <mask>. \nValue type: userSpaceOnUse|objectBoundingBox ; Default value: userSpaceOnUse; Animatable: yes."
+        },
+        {
+            "name": "maskUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for attributes x, y, width and height on the <mask>. \nValue type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes"
+        },
+        {
+            "name": "x",
+            "type": "<coordinate>",
+            "comment": "This attribute defines the x-axis coordinate of the top-left corner of the masking area. \nValue type: <coordinate> ; Default value: -10%; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<coordinate>",
+            "comment": "This attribute defines the y-axis coordinate of the top-left corner of the masking area. \nValue type: <coordinate> ; Default value: -10%; Animatable: yes"
+        },
+        {
+            "name": "width",
+            "type": "<length>",
+            "comment": "This attribute defines the width of the masking area. \nValue type: <length> ; Default value: 120%; Animatable: yes"
+        }
+    ]
+}

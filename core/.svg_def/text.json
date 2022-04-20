@@ -1,0 +1,41 @@
+{
+    "tag": "text",
+    "comment": "The SVG <text> element draws a graphics element consisting of text. It's possible to apply a gradient, pattern, clipping path, mask, or filter to <text>, like any other SVG graphics element.",
+    "attributes": [
+        {
+            "name": "x",
+            "type": "<length>|<percentage>",
+            "comment": "The x coordinate of the starting point of the text baseline. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "y",
+            "type": "<length>|<percentage>",
+            "comment": "The y coordinate of the starting point of the text baseline. \nValue type: <length>|<percentage> ; Default value: 0; Animatable: yes"
+        },
+        {
+            "name": "dx",
+            "type": "<length>|<percentage>",
+            "comment": "Shifts the text position horizontally from a previous text element. \nValue type: <length>|<percentage> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "dy",
+            "type": "<length>|<percentage>",
+            "comment": "Shifts the text position vertically from a previous text element. \nValue type: <length>|<percentage> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "rotate",
+            "type": "<list-of-number>",
+            "comment": "Rotates orientation of each individual glyph. Can rotate glyphs individually. \nValue type: <list-of-number> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "lengthAdjust",
+            "type": "spacing|spacingAndGlyphs",
+            "comment": "How the text is stretched or compressed to fit the width defined by the textLength attribute. \nValue type: spacing|spacingAndGlyphs; Default value: spacing; Animatable: yes"
+        },
+        {
+            "name": "textLength",
+            "type": "<length>|<percentage>",
+            "comment": "A width that the text should be scaled to fit. \nValue type: <length>|<percentage> ; Default value: none; Animatable: yes"
+        }
+    ]
+}

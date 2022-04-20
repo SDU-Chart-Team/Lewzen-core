@@ -1,0 +1,56 @@
+{
+    "tag": "radialGradient",
+    "comment": "The <radialGradient> element lets authors define radial gradients that can be applied to fill or stroke of graphical elements.",
+    "attributes": [
+        {
+            "name": "cx",
+            "type": "<length>",
+            "comment": "This attribute defines the x coordinate of the end circle of the radial gradient. \nValue type: <length> ; Default value: 50%; Animatable: yes"
+        },
+        {
+            "name": "cy",
+            "type": "<length>",
+            "comment": "This attribute defines the y coordinate of the end circle of the radial gradient. \nValue type: <length> ; Default value: 50%; Animatable: yes"
+        },
+        {
+            "name": "fr",
+            "type": "<length>",
+            "comment": "This attribute defines the radius of the start circle of the radial gradient. The gradient will be drawn such that the 0% <stop> is mapped to the perimeter of the start circle. \nValue type: <length> ; Default value: 0%; Animatable: yes"
+        },
+        {
+            "name": "fx",
+            "type": "<length>",
+            "comment": "This attribute defines the x coordinate of the start circle of the radial gradient. \nValue type: <length> ; Default value: Same as cx; Animatable: yes"
+        },
+        {
+            "name": "fy",
+            "type": "<length>",
+            "comment": "This attribute defines the y coordinate of the start circle of the radial gradient. \nValue type: <length> ; Default value: Same as cx; Animatable: yes"
+        },
+        {
+            "name": "gradientUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for attributes cx, cy, r, fx, fy, fr \nValue type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes"
+        },
+        {
+            "name": "gradientTransform",
+            "type": "<transform-list>",
+            "comment": "This attribute provides additional transformation to the gradient coordinate system. \nValue type: <transform-list> ; Default value: identity transform; Animatable: yes"
+        },
+        {
+            "name": "href",
+            "type": "<URL>",
+            "comment": "This attribute defines a reference to another <linearGradient> element that will be used as a template. \nValue type: <URL> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "r",
+            "type": "<length>",
+            "comment": "This attribute defines the radius of the end circle of the radial gradient. The gradient will be drawn such that the 100% <stop> is mapped to the perimeter of the end circle. \nValue type: <length> ; Default value: 50%; Animatable: yes"
+        },
+        {
+            "name": "spreadMethod",
+            "type": "pad|reflect|repeat",
+            "comment": "This attribute indicates how the gradient behaves if it starts or ends inside the bounds of the shape containing the gradient. \nValue type: pad|reflect|repeat ; Default value: pad; Animatable: yes"
+        }
+    ]
+}

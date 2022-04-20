@@ -1,0 +1,51 @@
+{
+    "type": "number",
+    "includes": [
+        "regex"
+    ],
+    "comment": "Real numbers are specified in one of two ways. When used in a stylesheet, a <number> is defined as follows: \n```number ::= integer\n    | [+-]? [0-9]* \".\" [0-9]+```\nWhen used in an SVG attribute, a <number> is defined differently, to allow numbers with large magnitudes to be specified more concisely:\n```number ::= integer ([Ee] integer)?\n    | [+-]? [0-9]* \".\" [0-9]+ ([Ee] integer)?```\nWithin the SVG DOM, a <number> is represented as a float, SVGNumber or a SVGAnimatedNumber.",
+    "accepts": [
+        {
+            "ctype": "int",
+            "cname": "integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "float",
+            "cname": "float",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "double",
+            "cname": "double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long",
+            "cname": "long",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long long int",
+            "cname": "long integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long double",
+            "cname": "long double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "std::string",
+            "cname": "legal string",
+            "to_string": "if (!is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \\\"\" << attr << \"\\\" to Number.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
+            "additional_funcs": [
+                {
+                    "declaration": "static bool is_legal_string(const std::string &attr);",
+                    "comment": "Check if a string is legal as a Number attribute.",
+                    "implementation": "std::regex re(R\"(^([+-]?[0-9]+)([Ee]([+-]?[0-9]+))?|[+-]?[0-9]*\\.[0-9]+([Ee]([+-]?[0-9]+))?$)\");\nreturn std::regex_match(attr, re);"
+                }
+            ]
+        }
+    ]
+}

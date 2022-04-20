@@ -1,0 +1,46 @@
+{
+    "tag": "linearGradient",
+    "comment": "The <linearGradient> element lets authors define linear gradients to apply to other SVG elements.",
+    "attributes": [
+        {
+            "name": "gradientUnits",
+            "type": "userSpaceOnUse|objectBoundingBox",
+            "comment": "This attribute defines the coordinate system for attributes x1, x2, y1, y2 \nValue type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes"
+        },
+        {
+            "name": "gradientTransform",
+            "type": "<transform-list>",
+            "comment": "This attribute provides additional transformation to the gradient coordinate system. \nValue type: <transform-list> ; Default value: identity transform; Animatable: yes"
+        },
+        {
+            "name": "href",
+            "type": "<URL>",
+            "comment": "This attribute defines a reference to another <linearGradient> element that will be used as a template. \nValue type: <URL> ; Default value: none; Animatable: yes"
+        },
+        {
+            "name": "spreadMethod",
+            "type": "pad|reflect|repeat",
+            "comment": "This attribute indicates how the gradient behaves if it starts or ends inside the bounds of the shape containing the gradient. \nValue type: pad|reflect|repeat ; Default value: pad; Animatable: yes"
+        },
+        {
+            "name": "x1",
+            "type": "<length-percentage>|<number>",
+            "comment": "This attribute defines the x coordinate of the starting point of the vector gradient along which the linear gradient is drawn. \nValue type: <length-percentage>|<number>; Default value: 0%; Animatable: yes"
+        },
+        {
+            "name": "x2",
+            "type": "<length-percentage>|<number>",
+            "comment": "This attribute defines the x coordinate of the ending point of the vector gradient along which the linear gradient is drawn. \nValue type: <length-percentage>|<number>; Default value: 100%; Animatable: yes"
+        },
+        {
+            "name": "y1",
+            "type": "<length-percentage>|<number>",
+            "comment": "This attribute defines the y coordinate of the starting point of the vector gradient along which the linear gradient is drawn. \nValue type: <length-percentage>|<number>; Default value: 0%; Animatable: yes"
+        },
+        {
+            "name": "y2",
+            "type": "<length-percentage>|<number>",
+            "comment": "This attribute defines the y coordinate of the ending point of the vector gradient along which the linear gradient is drawn. \nValue type: <length-percentage>|<number>; Default value: 0%; Animatable: yes"
+        }
+    ]
+}
