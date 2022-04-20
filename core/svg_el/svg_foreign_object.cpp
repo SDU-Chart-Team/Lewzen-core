@@ -22,28 +22,28 @@ namespace Lewzen {
     }
     void SVGForeignObject::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGForeignObject::get_height() const {
         return _height;
     }
     void SVGForeignObject::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGForeignObject::get_x() const {
         return _x;
     }
     void SVGForeignObject::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGForeignObject::get_y() const {
         return _y;
     }
     void SVGForeignObject::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGForeignObject::get_attributes() const {
         std::stringstream ss;

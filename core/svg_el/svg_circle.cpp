@@ -22,28 +22,28 @@ namespace Lewzen {
     }
     void SVGCircle::set_cx(const std::string &cx) {
         _cx = cx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGCircle::get_cy() const {
         return _cy;
     }
     void SVGCircle::set_cy(const std::string &cy) {
         _cy = cy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGCircle::get_r() const {
         return _r;
     }
     void SVGCircle::set_r(const std::string &r) {
         _r = r;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGCircle::get_path_length() const {
         return _path_length;
     }
     void SVGCircle::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGCircle::get_attributes() const {
         std::stringstream ss;

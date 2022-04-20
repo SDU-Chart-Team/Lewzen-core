@@ -34,70 +34,70 @@ namespace Lewzen {
     }
     void SVGRadialGradient::set_cx(const std::string &cx) {
         _cx = cx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_cy() const {
         return _cy;
     }
     void SVGRadialGradient::set_cy(const std::string &cy) {
         _cy = cy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_fr() const {
         return _fr;
     }
     void SVGRadialGradient::set_fr(const std::string &fr) {
         _fr = fr;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_fx() const {
         return _fx;
     }
     void SVGRadialGradient::set_fx(const std::string &fx) {
         _fx = fx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_fy() const {
         return _fy;
     }
     void SVGRadialGradient::set_fy(const std::string &fy) {
         _fy = fy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_gradient_units() const {
         return _gradient_units;
     }
     void SVGRadialGradient::set_gradient_units(const std::string &gradient_units) {
         _gradient_units = gradient_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_gradient_transform() const {
         return _gradient_transform;
     }
     void SVGRadialGradient::set_gradient_transform(const std::string &gradient_transform) {
         _gradient_transform = gradient_transform;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_href() const {
         return _href;
     }
     void SVGRadialGradient::set_href(const std::string &href) {
         _href = href;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_r() const {
         return _r;
     }
     void SVGRadialGradient::set_r(const std::string &r) {
         _r = r;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_spread_method() const {
         return _spread_method;
     }
     void SVGRadialGradient::set_spread_method(const std::string &spread_method) {
         _spread_method = spread_method;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRadialGradient::get_attributes() const {
         std::stringstream ss;

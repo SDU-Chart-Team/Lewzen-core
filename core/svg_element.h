@@ -2340,11 +2340,23 @@ Value type: <IRI>; Animatable: No
         HASH_CODE _outer_hash;
     protected:
         /**
-        * Update hash of this element.
+        * Update outer hash by inner hash and attribtue hash.
         *
         * @return hash code.
         */
-        void update_hash();
+        void update_outer_hash();
+        /**
+        * Update attribute hash and outer hash of this element.
+        *
+        * @return hash code.
+        */
+        void update_attribute_hash();
+        /**
+        * Update inner hash and outer hash of this element.
+        *
+        * @return hash code.
+        */
+        void update_inner_hash();
     public:
         /**
         * Get hash of attributes of this element.

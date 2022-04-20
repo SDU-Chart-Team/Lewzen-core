@@ -26,42 +26,42 @@ namespace Lewzen {
     }
     void SVGMask::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_mask_content_units() const {
         return _mask_content_units;
     }
     void SVGMask::set_mask_content_units(const std::string &mask_content_units) {
         _mask_content_units = mask_content_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_mask_units() const {
         return _mask_units;
     }
     void SVGMask::set_mask_units(const std::string &mask_units) {
         _mask_units = mask_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_x() const {
         return _x;
     }
     void SVGMask::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_y() const {
         return _y;
     }
     void SVGMask::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_width() const {
         return _width;
     }
     void SVGMask::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMask::get_attributes() const {
         std::stringstream ss;

@@ -30,56 +30,56 @@ namespace Lewzen {
     }
     void SVGLinearGradient::set_gradient_units(const std::string &gradient_units) {
         _gradient_units = gradient_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_gradient_transform() const {
         return _gradient_transform;
     }
     void SVGLinearGradient::set_gradient_transform(const std::string &gradient_transform) {
         _gradient_transform = gradient_transform;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_href() const {
         return _href;
     }
     void SVGLinearGradient::set_href(const std::string &href) {
         _href = href;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_spread_method() const {
         return _spread_method;
     }
     void SVGLinearGradient::set_spread_method(const std::string &spread_method) {
         _spread_method = spread_method;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_xQ() const {
         return _xQ;
     }
     void SVGLinearGradient::set_xQ(const std::string &xQ) {
         _xQ = xQ;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_xR() const {
         return _xR;
     }
     void SVGLinearGradient::set_xR(const std::string &xR) {
         _xR = xR;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_yQ() const {
         return _yQ;
     }
     void SVGLinearGradient::set_yQ(const std::string &yQ) {
         _yQ = yQ;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_yR() const {
         return _yR;
     }
     void SVGLinearGradient::set_yR(const std::string &yR) {
         _yR = yR;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLinearGradient::get_attributes() const {
         std::stringstream ss;

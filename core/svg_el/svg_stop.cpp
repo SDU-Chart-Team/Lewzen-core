@@ -20,21 +20,21 @@ namespace Lewzen {
     }
     void SVGStop::set_offset(const std::string &offset) {
         _offset = offset;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGStop::get_stop_color() const {
         return _stop_color;
     }
     void SVGStop::set_stop_color(const std::string &stop_color) {
         _stop_color = stop_color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGStop::get_stop_opacity() const {
         return _stop_opacity;
     }
     void SVGStop::set_stop_opacity(const std::string &stop_opacity) {
         _stop_opacity = stop_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGStop::get_attributes() const {
         std::stringstream ss;

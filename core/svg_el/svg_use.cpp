@@ -24,35 +24,35 @@ namespace Lewzen {
     }
     void SVGUse::set_href(const std::string &href) {
         _href = href;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGUse::get_x() const {
         return _x;
     }
     void SVGUse::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGUse::get_y() const {
         return _y;
     }
     void SVGUse::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGUse::get_width() const {
         return _width;
     }
     void SVGUse::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGUse::get_height() const {
         return _height;
     }
     void SVGUse::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGUse::get_attributes() const {
         std::stringstream ss;

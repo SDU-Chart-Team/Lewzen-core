@@ -82,7 +82,7 @@
 
         By 'operator[]' or 'bind', you can bind attribute with a weak pointer. We only support weak pointer to prevent memory leaks, which means you should maintain these smart pointers manually. Note that weak pointers to be bound do not need 'const'. For string, we do not support 'char *' pointers.
 
-- Manage inner content
+- Managing inner content
 
     SVG Element Interface owns a content string and a list of children elements.
 
@@ -141,98 +141,98 @@
 
         This returns SVG differences by a series of DOM commands. These commands will explain how to change `el2` to `el1`.
 
-        - DOM commands:
+        DOM commands:
 
-            <table>
-            <tr><td>Command</td> <td>Explaination</td></tr>
-            <tr>
-            <td>
-            
-            `child <index:int>`
-            
-            </td>
-            <td>
+        <table stye="table-layout:fixed;">
+        <tr><th><div style="width:200px;text-align:center">Command</div></th> <th>Explaination</th></tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `child <index:int>`
+        
+        </td>
+        <td>
 
-            ```javascript
-            current = current.childNodes[index];
-            ```
+        ```javascript
+        current = current.childNodes[index];
+        ```
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `parent`
-            
-            </td>
-            <td>
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `parent`
+        
+        </td>
+        <td>
 
-            ```javascript
-            current = current.parentNode;
-            ```
+        ```javascript
+        current = current.parentNode;
+        ```
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `remove <index:int>`
-            
-            </td>
-            <td>
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `remove <index:int>`
+        
+        </td>
+        <td>
 
-            ```javascript
-            current.removeChild(current.childNodes[index]);
-            ```
+        ```javascript
+        current.removeChild(current.childNodes[index]);
+        ```
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `append "<xml:str>"`
-            
-            </td>
-            <td>
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `append "<xml:str>"`
+        
+        </td>
+        <td>
 
-            ```javascript
-            current.appendChild(new DOMParser().parseFromString(xml, "text/xml"));
-            ```
+        ```javascript
+        current.appendChild(new DOMParser().parseFromString(xml, "text/xml"));
+        ```
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `sort "<indices>"`
-            
-            </td>
-            <td>
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `sort "<indices>"`
+        
+        </td>
+        <td>
 
-            ```javascript
-            [...current.children]
-            .map((node,i)=>{node._index=indices[i];return node;})
-            .sort((a,b)=>a._index>b._index?1:-1)
-            .forEach(node=>current.appendChild(node));
-            ```
+        ```javascript
+        [...current.children]
+        .map((node,i)=>{node._index=indices[i];return node;})
+        .sort((a,b)=>a._index>b._index?1:-1)
+        .forEach(node=>current.appendChild(node));
+        ```
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `modify <attr:str> "<val:str>"`
-            
-            </td>
-            <td>
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `modify <attr:str> "<val:str>"`
+        
+        </td>
+        <td>
 
-            ```javascript
-            current.setAttribute("attr", "val");
-            ```
+        ```javascript
+        current.setAttribute("attr", "val");
+        ```
 
-            </td>
-            </tr>
-            </table>
+        </td>
+        </tr>
+        </table>
 
 ### Component
 

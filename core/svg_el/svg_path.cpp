@@ -18,14 +18,14 @@ namespace Lewzen {
     }
     void SVGPath::set_d(const std::string &d) {
         _d = d;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPath::get_path_length() const {
         return _path_length;
     }
     void SVGPath::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPath::get_attributes() const {
         std::stringstream ss;

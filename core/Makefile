@@ -1,7 +1,7 @@
 objects = \
 	utils.o\
     geometry.o\
-	svg_element.o
+	svg_el.o
 cc = g++
 
 .PHONY: all
@@ -14,8 +14,8 @@ utils.o: utils.cpp utils.h
 	$(cc) -c utils.cpp
 geometry.o: geometry.cpp geometry.h
 	$(cc) -c geometry.cpp
-svg_element.o: svg_element.cpp svg_element.h
-	$(cc) -c svg_element.cpp
+svg_el.o: svg_el.cpp svg_el.h
+	$(cc) -c svg_el.cpp
 
 .PHONY: clean
 clean:
