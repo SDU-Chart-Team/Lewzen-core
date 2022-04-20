@@ -66,14 +66,14 @@ namespace Lewzen {
 
     public:
         /**
-        * Set attribute from value, conver to string and call setter. This will break value binding with bind_func and bind_ptr. (This function will reset commit)
+        * Set attribute from value, conver to string. This will break value binding with bind_func and bind_ptr. (This function will reset commit)
         *
         * @param attr attribute.
         */
         template <typename T>
         void set(const T &attr);
         /**
-        * Set attribute from value, conver to string and call setter.  This will break value binding with bind_func and bind_ptr. (This function will reset commit)
+        * Set attribute from value, conver to string.  This will break value binding with bind_func and bind_ptr. (This function will reset commit)
         *
         * @param attr attribute.
         */
@@ -122,13 +122,13 @@ namespace Lewzen {
         static std::string integer_to_string(const int &attr);
     public:
         /**
-        * Set attribute from integer, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from integer, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr integer attribute.
         */
         void set(const int &attr);
         /**
-        * Set attribute from integer, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from integer, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr integer attribute.
         */
@@ -171,13 +171,13 @@ namespace Lewzen {
         static std::string float_to_string(const float &attr);
     public:
         /**
-        * Set attribute from float, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from float, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr float attribute.
         */
         void set(const float &attr);
         /**
-        * Set attribute from float, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from float, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr float attribute.
         */
@@ -220,13 +220,13 @@ namespace Lewzen {
         static std::string double_to_string(const double &attr);
     public:
         /**
-        * Set attribute from double, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from double, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr double attribute.
         */
         void set(const double &attr);
         /**
-        * Set attribute from double, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from double, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr double attribute.
         */
@@ -269,13 +269,13 @@ namespace Lewzen {
         static std::string long_to_string(const long &attr);
     public:
         /**
-        * Set attribute from long, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long attribute.
         */
         void set(const long &attr);
         /**
-        * Set attribute from long, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long attribute.
         */
@@ -318,13 +318,13 @@ namespace Lewzen {
         static std::string long_integer_to_string(const long long int &attr);
     public:
         /**
-        * Set attribute from long integer, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long integer, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long integer attribute.
         */
         void set(const long long int &attr);
         /**
-        * Set attribute from long integer, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long integer, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long integer attribute.
         */
@@ -367,13 +367,13 @@ namespace Lewzen {
         static std::string long_double_to_string(const long double &attr);
     public:
         /**
-        * Set attribute from long double, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long double, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long double attribute.
         */
         void set(const long double &attr);
         /**
-        * Set attribute from long double, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from long double, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr long double attribute.
         */
@@ -416,25 +416,25 @@ namespace Lewzen {
         static std::string legal_string_to_string(const std::string &attr);
     public:
         /**
-        * Set attribute from legal string, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from legal string, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr legal string attribute.
         */
         void set(const std::string &attr);
         /**
-        * Set attribute from legal string, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from legal string, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr legal string attribute.
         */
         Number &operator=(const std::string &attr);
         /**
-        * Set attribute from legal string, conver to string and call setter. This will break value binding with bind_func and bind_ptr.
+        * Set attribute from legal string, conver to string. This will break value binding with bind_func and bind_ptr.
         *
         * @param attr legal string attribute.
         */
         void set(const char * attr);
         /**
-        * Set attribute from legal string, conver to string and call setter.  This will break value binding with bind_func and bind_ptr.
+        * Set attribute from legal string, conver to string.  This will break value binding with bind_func and bind_ptr.
         *
         * @param attr legal string attribute.
         */

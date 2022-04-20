@@ -1,5 +1,6 @@
 objects = \
 	attr_tuple.hpp.gch\
+	attr_enumerate.hpp.gch\
 	attr_percentage.o\
 	attr_length.o\
 	attr_number.o
@@ -16,6 +17,8 @@ attr_number.o: attr_number.cpp attr_number.h
 	$(cc) -c attr_number.cpp
 attr_tuple.hpp.gch: attr_tuple.hpp
 	$(cc) -c attr_tuple.hpp
+attr_enumerate.hpp.gch: attr_enumerate.hpp
+	$(cc) -c attr_enumerate.hpp
 
 .PHONY: all
 clean:

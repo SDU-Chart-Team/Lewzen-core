@@ -95,4 +95,5 @@ namespace Lewzen {
 #include "attr/attr_length.h"
 #include "attr/attr_number.h"
 #include "attr/attr_tuple.hpp"
+#include "attr/attr_enumerate.hpp"
 #endif

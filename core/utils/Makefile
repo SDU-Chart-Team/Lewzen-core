@@ -3,7 +3,8 @@ objects = \
 	data_structure.o\
 	hash.o\
 	uuid.o\
-	warning.o
+	warning.o\
+	lambda.hpp.gch
 cc = g++
 
 .PHONY: all
@@ -19,6 +20,8 @@ uuid.o: uuid.cpp uuid.h
 	$(cc) -c uuid.cpp
 warning.o: warning.cpp warning.h
 	$(cc) -c warning.cpp
+lambda.hpp.gch: lambda.hpp
+	$(cc) -c lambda.hpp
 
 .PHONY: clean
 clean:
