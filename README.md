@@ -8,7 +8,7 @@
 
     ```cpp
     // Object
-    auto obj = SVGIRect();
+    //auto obj = SVGIRect(); // not safe with bad weak ptr
 
     // Pointer
     #include <memory>
@@ -82,7 +82,7 @@
 
         By 'operator[]' or 'bind', you can bind attribute with a weak pointer. We only support weak pointer to prevent memory leaks, which means you should maintain these smart pointers manually. Note that weak pointers to be bound do not need 'const'. For string, we do not support 'char *' pointers.
 
-- Manage inner content
+- Managing inner content
 
     SVG Element Interface owns a content string and a list of children elements.
 
@@ -133,106 +133,155 @@
 
         This returns SVG content including all attributes and all its children.
 
-    - Differences expressed by DOM commands
+    - Differences between 2 SVGs expressed by DOM commands
 
         ```cpp
         el1 - el2;
         ```
 
         This returns SVG differences by a series of DOM commands. These commands will explain how to change `el2` to `el1`.
+    
+    - Update commitment described by DOM commands
 
-        - DOM commands:
+        For SVG Element Interfaces, you can commit update and get DOM commands to describe those changes.
 
-            <table>
-            <tr><td>Command</td> <td>Explaination</td></tr>
-            <tr>
-            <td>
-            
-            `child <index:int>`
-            
-            </td>
-            <td>
+        DOM commands:
 
-            ```javascript
-            current = current.childNodes[index];
-            ```
+        <table stye="table-layout:fixed;">
+        <tr><th><div style="width:200px;text-align:center">Command</div></th> <th>Explaination</th></tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `child <index:int>`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `parent`
-            
-            </td>
-            <td>
+        ```javascript
+        current = current.children[index];
+        ```
 
-            ```javascript
-            current = current.parentNode;
-            ```
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `parent`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `remove <index:int>`
-            
-            </td>
-            <td>
+        ```javascript
+        current = current.parentNode;
+        ```
 
-            ```javascript
-            current.removeChild(current.childNodes[index]);
-            ```
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `remove <index:int>`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `append "<xml:str>"`
-            
-            </td>
-            <td>
+        ```javascript
+        current.children[index].remove();
+        ```
 
-            ```javascript
-            current.appendChild(new DOMParser().parseFromString(xml, "text/xml"));
-            ```
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `append <len> <xml:str>`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `sort "<indices>"`
-            
-            </td>
-            <td>
+        ```javascript
+        let append = new DOMParser().parseFromString(xml, "text/xml");
+        current.appendChild(append.documentElement);
+        ```
 
-            ```javascript
-            [...current.children]
-            .map((node,i)=>{node._index=indices[i];return node;})
-            .sort((a,b)=>a._index>b._index?1:-1)
-            .forEach(node=>current.appendChild(node));
-            ```
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `replace <len> <xml:str>`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            <tr>
-            <td>
-            
-            `modify <attr:str> "<val:str>"`
-            
-            </td>
-            <td>
+        ```javascript
+        let replace = new DOMParser().parseFromString(xml, "text/xml");
+        current.parentNode.replaceChild(current, replace.documentElement);
+        current = replace;
+        ```
 
-            ```javascript
-            current.setAttribute("attr", "val");
-            ```
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `sort "<indices>"`
+        
+        </td>
+        <td>
 
-            </td>
-            </tr>
-            </table>
+        ```javascript
+        [...current.children]
+        .map((node,i)=>{node._index=indices[i];return node;})
+        .sort((a,b)=>a._index>b._index?1:-1)
+        .forEach(node=>current.appendChild(node));
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `modify <attr:str> "<val:str>"`
+        
+        </td>
+        <td>
+
+        ```javascript
+        current.setAttribute("attr", "val");
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `reset <attr:str>`
+        
+        </td>
+        <td>
+
+        ```javascript
+        current.removeAttribute("attr");
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `content <len> <content:str>`
+        
+        </td>
+        <td>
+
+        ```javascript
+        current.childNodes[0].nodeValue = content;
+        ```
+
+        </td>
+        </tr>
+        </table>
 
 ### Component
 

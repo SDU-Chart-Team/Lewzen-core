@@ -30,56 +30,56 @@ namespace Lewzen {
     }
     void SVGMarker::set_marker_height(const std::string &marker_height) {
         _marker_height = marker_height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_marker_units() const {
         return _marker_units;
     }
     void SVGMarker::set_marker_units(const std::string &marker_units) {
         _marker_units = marker_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_marker_width() const {
         return _marker_width;
     }
     void SVGMarker::set_marker_width(const std::string &marker_width) {
         _marker_width = marker_width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_orient() const {
         return _orient;
     }
     void SVGMarker::set_orient(const std::string &orient) {
         _orient = orient;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_preserve_aspect_ratio() const {
         return _preserve_aspect_ratio;
     }
     void SVGMarker::set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio) {
         _preserve_aspect_ratio = preserve_aspect_ratio;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_ref_x() const {
         return _ref_x;
     }
     void SVGMarker::set_ref_x(const std::string &ref_x) {
         _ref_x = ref_x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_ref_y() const {
         return _ref_y;
     }
     void SVGMarker::set_ref_y(const std::string &ref_y) {
         _ref_y = ref_y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_view_box() const {
         return _view_box;
     }
     void SVGMarker::set_view_box(const std::string &view_box) {
         _view_box = view_box;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGMarker::get_attributes() const {
         std::stringstream ss;

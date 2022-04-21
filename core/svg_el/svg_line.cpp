@@ -24,35 +24,35 @@ namespace Lewzen {
     }
     void SVGLine::set_xQ(const std::string &xQ) {
         _xQ = xQ;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLine::get_xR() const {
         return _xR;
     }
     void SVGLine::set_xR(const std::string &xR) {
         _xR = xR;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLine::get_yQ() const {
         return _yQ;
     }
     void SVGLine::set_yQ(const std::string &yQ) {
         _yQ = yQ;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLine::get_yR() const {
         return _yR;
     }
     void SVGLine::set_yR(const std::string &yR) {
         _yR = yR;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLine::get_path_length() const {
         return _path_length;
     }
     void SVGLine::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGLine::get_attributes() const {
         std::stringstream ss;

@@ -34,70 +34,70 @@ namespace Lewzen {
     }
     void SVGPattern::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_href() const {
         return _href;
     }
     void SVGPattern::set_href(const std::string &href) {
         _href = href;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_pattern_content_units() const {
         return _pattern_content_units;
     }
     void SVGPattern::set_pattern_content_units(const std::string &pattern_content_units) {
         _pattern_content_units = pattern_content_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_pattern_transform() const {
         return _pattern_transform;
     }
     void SVGPattern::set_pattern_transform(const std::string &pattern_transform) {
         _pattern_transform = pattern_transform;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_pattern_units() const {
         return _pattern_units;
     }
     void SVGPattern::set_pattern_units(const std::string &pattern_units) {
         _pattern_units = pattern_units;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_preserve_aspect_ratio() const {
         return _preserve_aspect_ratio;
     }
     void SVGPattern::set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio) {
         _preserve_aspect_ratio = preserve_aspect_ratio;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_view_box() const {
         return _view_box;
     }
     void SVGPattern::set_view_box(const std::string &view_box) {
         _view_box = view_box;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_width() const {
         return _width;
     }
     void SVGPattern::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_x() const {
         return _x;
     }
     void SVGPattern::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_y() const {
         return _y;
     }
     void SVGPattern::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPattern::get_attributes() const {
         std::stringstream ss;

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <map>
 #include <unordered_map>
-#include "svg_element.h"
+#include "svg_el.h"
 
 namespace Lewzen {
     SVGElement::SVGElement() {
@@ -145,7 +145,6 @@ namespace Lewzen {
         _visibility = STR_NULL;
         _word_spacing = STR_NULL;
         _writing_mode = STR_NULL;
-
         _inner_text = STR_NULL;
 
         _attribute_hash = 0;
@@ -306,991 +305,992 @@ namespace Lewzen {
     const std::string SVGElement::get_tag() const {
         return "?";
     }
-
     const std::string SVGElement::get_id() const {
         return _id;
     }
     void SVGElement::set_id(const std::string &id) {
         _id = id;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_lang() const {
         return _lang;
     }
     void SVGElement::set_lang(const std::string &lang) {
         _lang = lang;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_tabindex() const {
         return _tabindex;
     }
     void SVGElement::set_tabindex(const std::string &tabindex) {
         _tabindex = tabindex;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_xmlZbase() const {
         return _xmlZbase;
     }
     void SVGElement::set_xmlZbase(const std::string &xmlZbase) {
         _xmlZbase = xmlZbase;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_xmlZlang() const {
         return _xmlZlang;
     }
     void SVGElement::set_xmlZlang(const std::string &xmlZlang) {
         _xmlZlang = xmlZlang;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_xmlZspace() const {
         return _xmlZspace;
     }
     void SVGElement::set_xmlZspace(const std::string &xmlZspace) {
         _xmlZspace = xmlZspace;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_class() const {
         return _class;
     }
-    void SVGElement::set_class(const std::string &_class_) {
-        _class = _class_;
-        update_hash();
+    void SVGElement::set_class(const std::string &cls) {
+        _class = cls;
+        update_attribute_hash();
     }
     const std::string SVGElement::get_style() const {
         return _style;
     }
     void SVGElement::set_style(const std::string &style) {
         _style = style;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onbegin() const {
         return _onbegin;
     }
     void SVGElement::set_onbegin(const std::string &onbegin) {
         _onbegin = onbegin;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onend() const {
         return _onend;
     }
     void SVGElement::set_onend(const std::string &onend) {
         _onend = onend;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onrepeat() const {
         return _onrepeat;
     }
     void SVGElement::set_onrepeat(const std::string &onrepeat) {
         _onrepeat = onrepeat;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onabort() const {
         return _onabort;
     }
     void SVGElement::set_onabort(const std::string &onabort) {
         _onabort = onabort;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onerror() const {
         return _onerror;
     }
     void SVGElement::set_onerror(const std::string &onerror) {
         _onerror = onerror;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onresize() const {
         return _onresize;
     }
     void SVGElement::set_onresize(const std::string &onresize) {
         _onresize = onresize;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onscroll() const {
         return _onscroll;
     }
     void SVGElement::set_onscroll(const std::string &onscroll) {
         _onscroll = onscroll;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onunload() const {
         return _onunload;
     }
     void SVGElement::set_onunload(const std::string &onunload) {
         _onunload = onunload;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncopy() const {
         return _oncopy;
     }
     void SVGElement::set_oncopy(const std::string &oncopy) {
         _oncopy = oncopy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncut() const {
         return _oncut;
     }
     void SVGElement::set_oncut(const std::string &oncut) {
         _oncut = oncut;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onpaste() const {
         return _onpaste;
     }
     void SVGElement::set_onpaste(const std::string &onpaste) {
         _onpaste = onpaste;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncancel() const {
         return _oncancel;
     }
     void SVGElement::set_oncancel(const std::string &oncancel) {
         _oncancel = oncancel;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncanplay() const {
         return _oncanplay;
     }
     void SVGElement::set_oncanplay(const std::string &oncanplay) {
         _oncanplay = oncanplay;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncanplaythrough() const {
         return _oncanplaythrough;
     }
     void SVGElement::set_oncanplaythrough(const std::string &oncanplaythrough) {
         _oncanplaythrough = oncanplaythrough;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onchange() const {
         return _onchange;
     }
     void SVGElement::set_onchange(const std::string &onchange) {
         _onchange = onchange;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onclick() const {
         return _onclick;
     }
     void SVGElement::set_onclick(const std::string &onclick) {
         _onclick = onclick;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onclose() const {
         return _onclose;
     }
     void SVGElement::set_onclose(const std::string &onclose) {
         _onclose = onclose;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oncuechange() const {
         return _oncuechange;
     }
     void SVGElement::set_oncuechange(const std::string &oncuechange) {
         _oncuechange = oncuechange;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondblclick() const {
         return _ondblclick;
     }
     void SVGElement::set_ondblclick(const std::string &ondblclick) {
         _ondblclick = ondblclick;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondrag() const {
         return _ondrag;
     }
     void SVGElement::set_ondrag(const std::string &ondrag) {
         _ondrag = ondrag;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondragend() const {
         return _ondragend;
     }
     void SVGElement::set_ondragend(const std::string &ondragend) {
         _ondragend = ondragend;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondragenter() const {
         return _ondragenter;
     }
     void SVGElement::set_ondragenter(const std::string &ondragenter) {
         _ondragenter = ondragenter;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondragleave() const {
         return _ondragleave;
     }
     void SVGElement::set_ondragleave(const std::string &ondragleave) {
         _ondragleave = ondragleave;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondragover() const {
         return _ondragover;
     }
     void SVGElement::set_ondragover(const std::string &ondragover) {
         _ondragover = ondragover;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondragstart() const {
         return _ondragstart;
     }
     void SVGElement::set_ondragstart(const std::string &ondragstart) {
         _ondragstart = ondragstart;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondrop() const {
         return _ondrop;
     }
     void SVGElement::set_ondrop(const std::string &ondrop) {
         _ondrop = ondrop;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ondurationchange() const {
         return _ondurationchange;
     }
     void SVGElement::set_ondurationchange(const std::string &ondurationchange) {
         _ondurationchange = ondurationchange;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onemptied() const {
         return _onemptied;
     }
     void SVGElement::set_onemptied(const std::string &onemptied) {
         _onemptied = onemptied;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onended() const {
         return _onended;
     }
     void SVGElement::set_onended(const std::string &onended) {
         _onended = onended;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onfocus() const {
         return _onfocus;
     }
     void SVGElement::set_onfocus(const std::string &onfocus) {
         _onfocus = onfocus;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oninput() const {
         return _oninput;
     }
     void SVGElement::set_oninput(const std::string &oninput) {
         _oninput = oninput;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_oninvalid() const {
         return _oninvalid;
     }
     void SVGElement::set_oninvalid(const std::string &oninvalid) {
         _oninvalid = oninvalid;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onkeydown() const {
         return _onkeydown;
     }
     void SVGElement::set_onkeydown(const std::string &onkeydown) {
         _onkeydown = onkeydown;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onkeypress() const {
         return _onkeypress;
     }
     void SVGElement::set_onkeypress(const std::string &onkeypress) {
         _onkeypress = onkeypress;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onkeyup() const {
         return _onkeyup;
     }
     void SVGElement::set_onkeyup(const std::string &onkeyup) {
         _onkeyup = onkeyup;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onload() const {
         return _onload;
     }
     void SVGElement::set_onload(const std::string &onload) {
         _onload = onload;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onloadeddata() const {
         return _onloadeddata;
     }
     void SVGElement::set_onloadeddata(const std::string &onloadeddata) {
         _onloadeddata = onloadeddata;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onloadedmetadata() const {
         return _onloadedmetadata;
     }
     void SVGElement::set_onloadedmetadata(const std::string &onloadedmetadata) {
         _onloadedmetadata = onloadedmetadata;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onloadstart() const {
         return _onloadstart;
     }
     void SVGElement::set_onloadstart(const std::string &onloadstart) {
         _onloadstart = onloadstart;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmousedown() const {
         return _onmousedown;
     }
     void SVGElement::set_onmousedown(const std::string &onmousedown) {
         _onmousedown = onmousedown;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmouseenter() const {
         return _onmouseenter;
     }
     void SVGElement::set_onmouseenter(const std::string &onmouseenter) {
         _onmouseenter = onmouseenter;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmouseleave() const {
         return _onmouseleave;
     }
     void SVGElement::set_onmouseleave(const std::string &onmouseleave) {
         _onmouseleave = onmouseleave;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmousemove() const {
         return _onmousemove;
     }
     void SVGElement::set_onmousemove(const std::string &onmousemove) {
         _onmousemove = onmousemove;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmouseout() const {
         return _onmouseout;
     }
     void SVGElement::set_onmouseout(const std::string &onmouseout) {
         _onmouseout = onmouseout;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmouseover() const {
         return _onmouseover;
     }
     void SVGElement::set_onmouseover(const std::string &onmouseover) {
         _onmouseover = onmouseover;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmouseup() const {
         return _onmouseup;
     }
     void SVGElement::set_onmouseup(const std::string &onmouseup) {
         _onmouseup = onmouseup;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onmousewheel() const {
         return _onmousewheel;
     }
     void SVGElement::set_onmousewheel(const std::string &onmousewheel) {
         _onmousewheel = onmousewheel;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onpause() const {
         return _onpause;
     }
     void SVGElement::set_onpause(const std::string &onpause) {
         _onpause = onpause;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onplay() const {
         return _onplay;
     }
     void SVGElement::set_onplay(const std::string &onplay) {
         _onplay = onplay;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onplaying() const {
         return _onplaying;
     }
     void SVGElement::set_onplaying(const std::string &onplaying) {
         _onplaying = onplaying;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onprogress() const {
         return _onprogress;
     }
     void SVGElement::set_onprogress(const std::string &onprogress) {
         _onprogress = onprogress;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onratechange() const {
         return _onratechange;
     }
     void SVGElement::set_onratechange(const std::string &onratechange) {
         _onratechange = onratechange;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onreset() const {
         return _onreset;
     }
     void SVGElement::set_onreset(const std::string &onreset) {
         _onreset = onreset;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onseeked() const {
         return _onseeked;
     }
     void SVGElement::set_onseeked(const std::string &onseeked) {
         _onseeked = onseeked;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onseeking() const {
         return _onseeking;
     }
     void SVGElement::set_onseeking(const std::string &onseeking) {
         _onseeking = onseeking;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onselect() const {
         return _onselect;
     }
     void SVGElement::set_onselect(const std::string &onselect) {
         _onselect = onselect;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onshow() const {
         return _onshow;
     }
     void SVGElement::set_onshow(const std::string &onshow) {
         _onshow = onshow;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onstalled() const {
         return _onstalled;
     }
     void SVGElement::set_onstalled(const std::string &onstalled) {
         _onstalled = onstalled;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onsubmit() const {
         return _onsubmit;
     }
     void SVGElement::set_onsubmit(const std::string &onsubmit) {
         _onsubmit = onsubmit;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onsuspend() const {
         return _onsuspend;
     }
     void SVGElement::set_onsuspend(const std::string &onsuspend) {
         _onsuspend = onsuspend;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ontimeupdate() const {
         return _ontimeupdate;
     }
     void SVGElement::set_ontimeupdate(const std::string &ontimeupdate) {
         _ontimeupdate = ontimeupdate;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_ontoggle() const {
         return _ontoggle;
     }
     void SVGElement::set_ontoggle(const std::string &ontoggle) {
         _ontoggle = ontoggle;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onvolumechange() const {
         return _onvolumechange;
     }
     void SVGElement::set_onvolumechange(const std::string &onvolumechange) {
         _onvolumechange = onvolumechange;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onwaiting() const {
         return _onwaiting;
     }
     void SVGElement::set_onwaiting(const std::string &onwaiting) {
         _onwaiting = onwaiting;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onactivate() const {
         return _onactivate;
     }
     void SVGElement::set_onactivate(const std::string &onactivate) {
         _onactivate = onactivate;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onfocusin() const {
         return _onfocusin;
     }
     void SVGElement::set_onfocusin(const std::string &onfocusin) {
         _onfocusin = onfocusin;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_onfocusout() const {
         return _onfocusout;
     }
     void SVGElement::set_onfocusout(const std::string &onfocusout) {
         _onfocusout = onfocusout;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_alignment_baseline() const {
         return _alignment_baseline;
     }
     void SVGElement::set_alignment_baseline(const std::string &alignment_baseline) {
         _alignment_baseline = alignment_baseline;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_baseline_shift() const {
         return _baseline_shift;
     }
     void SVGElement::set_baseline_shift(const std::string &baseline_shift) {
         _baseline_shift = baseline_shift;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_clip() const {
         return _clip;
     }
     void SVGElement::set_clip(const std::string &clip) {
         _clip = clip;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_clip_path() const {
         return _clip_path;
     }
     void SVGElement::set_clip_path(const std::string &clip_path) {
         _clip_path = clip_path;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_clip_rule() const {
         return _clip_rule;
     }
     void SVGElement::set_clip_rule(const std::string &clip_rule) {
         _clip_rule = clip_rule;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_color() const {
         return _color;
     }
     void SVGElement::set_color(const std::string &color) {
         _color = color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_color_interpolation() const {
         return _color_interpolation;
     }
     void SVGElement::set_color_interpolation(const std::string &color_interpolation) {
         _color_interpolation = color_interpolation;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_color_interpolation_filters() const {
         return _color_interpolation_filters;
     }
     void SVGElement::set_color_interpolation_filters(const std::string &color_interpolation_filters) {
         _color_interpolation_filters = color_interpolation_filters;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_color_profile() const {
         return _color_profile;
     }
     void SVGElement::set_color_profile(const std::string &color_profile) {
         _color_profile = color_profile;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_color_rendering() const {
         return _color_rendering;
     }
     void SVGElement::set_color_rendering(const std::string &color_rendering) {
         _color_rendering = color_rendering;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_cursor() const {
         return _cursor;
     }
     void SVGElement::set_cursor(const std::string &cursor) {
         _cursor = cursor;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_d() const {
         return _d;
     }
     void SVGElement::set_d(const std::string &d) {
         _d = d;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_direction() const {
         return _direction;
     }
     void SVGElement::set_direction(const std::string &direction) {
         _direction = direction;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_display() const {
         return _display;
     }
     void SVGElement::set_display(const std::string &display) {
         _display = display;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_dominant_baseline() const {
         return _dominant_baseline;
     }
     void SVGElement::set_dominant_baseline(const std::string &dominant_baseline) {
         _dominant_baseline = dominant_baseline;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_enable_background() const {
         return _enable_background;
     }
     void SVGElement::set_enable_background(const std::string &enable_background) {
         _enable_background = enable_background;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_fill() const {
         return _fill;
     }
     void SVGElement::set_fill(const std::string &fill) {
         _fill = fill;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_fill_opacity() const {
         return _fill_opacity;
     }
     void SVGElement::set_fill_opacity(const std::string &fill_opacity) {
         _fill_opacity = fill_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_fill_rule() const {
         return _fill_rule;
     }
     void SVGElement::set_fill_rule(const std::string &fill_rule) {
         _fill_rule = fill_rule;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_filter() const {
         return _filter;
     }
     void SVGElement::set_filter(const std::string &filter) {
         _filter = filter;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_flood_color() const {
         return _flood_color;
     }
     void SVGElement::set_flood_color(const std::string &flood_color) {
         _flood_color = flood_color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_flood_opacity() const {
         return _flood_opacity;
     }
     void SVGElement::set_flood_opacity(const std::string &flood_opacity) {
         _flood_opacity = flood_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_family() const {
         return _font_family;
     }
     void SVGElement::set_font_family(const std::string &font_family) {
         _font_family = font_family;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_size() const {
         return _font_size;
     }
     void SVGElement::set_font_size(const std::string &font_size) {
         _font_size = font_size;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_size_adjust() const {
         return _font_size_adjust;
     }
     void SVGElement::set_font_size_adjust(const std::string &font_size_adjust) {
         _font_size_adjust = font_size_adjust;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_stretch() const {
         return _font_stretch;
     }
     void SVGElement::set_font_stretch(const std::string &font_stretch) {
         _font_stretch = font_stretch;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_style() const {
         return _font_style;
     }
     void SVGElement::set_font_style(const std::string &font_style) {
         _font_style = font_style;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_variant() const {
         return _font_variant;
     }
     void SVGElement::set_font_variant(const std::string &font_variant) {
         _font_variant = font_variant;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_font_weight() const {
         return _font_weight;
     }
     void SVGElement::set_font_weight(const std::string &font_weight) {
         _font_weight = font_weight;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_glyph_orientation_horizontal() const {
         return _glyph_orientation_horizontal;
     }
     void SVGElement::set_glyph_orientation_horizontal(const std::string &glyph_orientation_horizontal) {
         _glyph_orientation_horizontal = glyph_orientation_horizontal;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_glyph_orientation_vertical() const {
         return _glyph_orientation_vertical;
     }
     void SVGElement::set_glyph_orientation_vertical(const std::string &glyph_orientation_vertical) {
         _glyph_orientation_vertical = glyph_orientation_vertical;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_image_rendering() const {
         return _image_rendering;
     }
     void SVGElement::set_image_rendering(const std::string &image_rendering) {
         _image_rendering = image_rendering;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_kerning() const {
         return _kerning;
     }
     void SVGElement::set_kerning(const std::string &kerning) {
         _kerning = kerning;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_letter_spacing() const {
         return _letter_spacing;
     }
     void SVGElement::set_letter_spacing(const std::string &letter_spacing) {
         _letter_spacing = letter_spacing;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_lighting_color() const {
         return _lighting_color;
     }
     void SVGElement::set_lighting_color(const std::string &lighting_color) {
         _lighting_color = lighting_color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_marker_end() const {
         return _marker_end;
     }
     void SVGElement::set_marker_end(const std::string &marker_end) {
         _marker_end = marker_end;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_marker_mid() const {
         return _marker_mid;
     }
     void SVGElement::set_marker_mid(const std::string &marker_mid) {
         _marker_mid = marker_mid;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_marker_start() const {
         return _marker_start;
     }
     void SVGElement::set_marker_start(const std::string &marker_start) {
         _marker_start = marker_start;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_mask() const {
         return _mask;
     }
     void SVGElement::set_mask(const std::string &mask) {
         _mask = mask;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_opacity() const {
         return _opacity;
     }
     void SVGElement::set_opacity(const std::string &opacity) {
         _opacity = opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_overflow() const {
         return _overflow;
     }
     void SVGElement::set_overflow(const std::string &overflow) {
         _overflow = overflow;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_pointer_events() const {
         return _pointer_events;
     }
     void SVGElement::set_pointer_events(const std::string &pointer_events) {
         _pointer_events = pointer_events;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_shape_rendering() const {
         return _shape_rendering;
     }
     void SVGElement::set_shape_rendering(const std::string &shape_rendering) {
         _shape_rendering = shape_rendering;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_solid_color() const {
         return _solid_color;
     }
     void SVGElement::set_solid_color(const std::string &solid_color) {
         _solid_color = solid_color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_solid_opacity() const {
         return _solid_opacity;
     }
     void SVGElement::set_solid_opacity(const std::string &solid_opacity) {
         _solid_opacity = solid_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stop_color() const {
         return _stop_color;
     }
     void SVGElement::set_stop_color(const std::string &stop_color) {
         _stop_color = stop_color;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stop_opacity() const {
         return _stop_opacity;
     }
     void SVGElement::set_stop_opacity(const std::string &stop_opacity) {
         _stop_opacity = stop_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke() const {
         return _stroke;
     }
     void SVGElement::set_stroke(const std::string &stroke) {
         _stroke = stroke;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_dasharray() const {
         return _stroke_dasharray;
     }
     void SVGElement::set_stroke_dasharray(const std::string &stroke_dasharray) {
         _stroke_dasharray = stroke_dasharray;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_dashoffset() const {
         return _stroke_dashoffset;
     }
     void SVGElement::set_stroke_dashoffset(const std::string &stroke_dashoffset) {
         _stroke_dashoffset = stroke_dashoffset;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_linecap() const {
         return _stroke_linecap;
     }
     void SVGElement::set_stroke_linecap(const std::string &stroke_linecap) {
         _stroke_linecap = stroke_linecap;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_linejoin() const {
         return _stroke_linejoin;
     }
     void SVGElement::set_stroke_linejoin(const std::string &stroke_linejoin) {
         _stroke_linejoin = stroke_linejoin;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_miterlimit() const {
         return _stroke_miterlimit;
     }
     void SVGElement::set_stroke_miterlimit(const std::string &stroke_miterlimit) {
         _stroke_miterlimit = stroke_miterlimit;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_opacity() const {
         return _stroke_opacity;
     }
     void SVGElement::set_stroke_opacity(const std::string &stroke_opacity) {
         _stroke_opacity = stroke_opacity;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_stroke_width() const {
         return _stroke_width;
     }
     void SVGElement::set_stroke_width(const std::string &stroke_width) {
         _stroke_width = stroke_width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_text_anchor() const {
         return _text_anchor;
     }
     void SVGElement::set_text_anchor(const std::string &text_anchor) {
         _text_anchor = text_anchor;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_text_decoration() const {
         return _text_decoration;
     }
     void SVGElement::set_text_decoration(const std::string &text_decoration) {
         _text_decoration = text_decoration;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_text_rendering() const {
         return _text_rendering;
     }
     void SVGElement::set_text_rendering(const std::string &text_rendering) {
         _text_rendering = text_rendering;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_transform() const {
         return _transform;
     }
     void SVGElement::set_transform(const std::string &transform) {
         _transform = transform;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_unicode_bidi() const {
         return _unicode_bidi;
     }
     void SVGElement::set_unicode_bidi(const std::string &unicode_bidi) {
         _unicode_bidi = unicode_bidi;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_vector_effect() const {
         return _vector_effect;
     }
     void SVGElement::set_vector_effect(const std::string &vector_effect) {
         _vector_effect = vector_effect;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_visibility() const {
         return _visibility;
     }
     void SVGElement::set_visibility(const std::string &visibility) {
         _visibility = visibility;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_word_spacing() const {
         return _word_spacing;
     }
     void SVGElement::set_word_spacing(const std::string &word_spacing) {
         _word_spacing = word_spacing;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGElement::get_writing_mode() const {
         return _writing_mode;
     }
     void SVGElement::set_writing_mode(const std::string &writing_mode) {
         _writing_mode = writing_mode;
+        update_attribute_hash();
     }
 
     const std::string SVGElement::inner_SVG() const {
         std::stringstream ss;
-        ss << _inner_text << std::endl;
-        for (auto &p : _inner_elements) {
-            ss << p->outer_SVG() << std::endl;
+        if (_inner_text != STR_NULL) ss << _inner_text << std::endl;
+        for (int i = 0; i < _inner_elements.size(); i++) {
+            if (i < _inner_elements.size() - 1) ss << _inner_elements[i]->outer_SVG() << std::endl;
+            else ss << _inner_elements[i]->outer_SVG();
         }
         return ss.str();
     }
     void SVGElement::set_inner_text(const std::string &text) {
         _inner_text = text;
-        update_hash();
+        update_inner_hash();
     }
     const std::string SVGElement::get_inner_text() const {
         return _inner_text;
@@ -1298,7 +1298,7 @@ namespace Lewzen {
     void SVGElement::add_inner_element(const std::shared_ptr<SVGElement> &inner_element) {
         _inner_elements.push_back(inner_element);
         inner_element->_parent_elements.push_back(shared_from_this());
-        update_hash();
+        update_inner_hash();
     }
     void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element) {
         _inner_elements.erase(std::remove(_inner_elements.begin(), _inner_elements.end(), inner_element), _inner_elements.end());
@@ -1306,7 +1306,7 @@ namespace Lewzen {
         parents.erase(std::remove_if(parents.begin(), parents.end(), [inner_element](auto &p){
             return !(p.owner_before(inner_element) || inner_element.owner_before(p));
         }), parents.end());
-        update_hash();
+        update_inner_hash();
     }
     const std::vector<std::shared_ptr<SVGElement>> SVGElement::get_inner_elements() const {
         return _inner_elements;
@@ -1314,7 +1314,7 @@ namespace Lewzen {
     void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {
         for (auto p : _inner_elements) remove_inner_element(p);
         for (auto p : inner_elements) add_inner_element(p);
-        update_hash();
+        update_inner_hash();
     }
 
     const std::string SVGElement::get_attributes() const {
@@ -1481,23 +1481,35 @@ namespace Lewzen {
         return ss.str();
     }
 
-    void SVGElement::update_hash() {
-        std::stringstream ss, sc;
-
-        _attribute_hash = str_hash(get_attributes()); // attributes
-
-        sc << get_inner_text() << ",";
-        for (auto p : _inner_elements) sc << p->get_outer_hash() << ",";
-        _inner_hash = str_hash(sc.str()); // inner content
-
+    void SVGElement::update_outer_hash() {
+        // update outer hash by attribute hash and inner hash
+        std::stringstream ss;
         ss << get_tag() << ",";
         ss << _attribute_hash << ",";
         ss << _inner_hash;
-        _outer_hash = str_hash(ss.str()); // outer content
+        _outer_hash = str_hash(ss.str());
 
+        // update parent element
         for (auto wp : _parent_elements) {
-            if (auto sp = wp.lock()) sp->update_hash();
-        } // parent
+            if (auto sp = wp.lock()) sp->update_inner_hash();
+        }
+    }
+    void SVGElement::update_attribute_hash() {
+        // update attribute hash
+        _attribute_hash = str_hash(get_attributes());
+
+        // update outer hash
+        update_outer_hash();
+    }
+    void SVGElement::update_inner_hash() {
+        // inner string + (inner elements)
+        std::stringstream ss;
+        ss << get_inner_text() << ",";
+        for (auto p : _inner_elements) ss << p->get_outer_hash() << ",";
+        _inner_hash = str_hash(ss.str());
+
+        // update outer hash
+        update_outer_hash();
     }
     const HASH_CODE SVGElement::get_attribute_hash() const {
         return _attribute_hash;
@@ -1519,6 +1531,72 @@ namespace Lewzen {
         return !operator==(element);
     }
     const std::string SVGElement::operator-(const SVGElement &element) const {
+        std::stringstream ss;
+
+        // tag differ
+        if (get_tag() != element.get_tag()) {
+            auto svg = outer_SVG();
+            ss << "replace " << svg.size() << std::endl << svg << std::endl;
+            return ss.str();
+        }
+
+        // cast
+        auto _element = static_cast<const SVGElement &>(element);
+
+        // attribute differ
+        if (element.get_attribute_hash() == get_attribute_hash()) return ss.str();
+        ss << attribute_differ(_element);
+
+        // inner differ
+        if (element.get_inner_hash() == get_inner_hash()) return ss.str();
+        if (element.get_inner_text() != get_inner_text()) {
+            auto content = get_inner_text();
+            ss << "content " << content.size() << std::endl << content << std::endl;
+        }
+        // extract change relation
+        std::vector<_el_idx> removal;
+        std::vector<_el_idx> addition;
+        std::vector<std::pair<_el_idx, _el_idx>> changed;
+        inner_differ(element, removal, addition, changed);
+        // remove
+        int n = element.get_inner_elements().size();
+        int *removed = new int[n],
+               *indices = new int[n];
+        for (auto &r : removal) removed[r.idx] = 1;
+        for (int i = 1; i < n; i++) removed[i] += removed[i - 1];
+        for (auto &r : removal) ss << "remove " << r.idx - (r.idx > 0 ? removed[r.idx - 1] : 0) << std::endl;
+        // append
+        for (auto &a : addition) {
+            auto svg = a.ptr->outer_SVG();
+            ss << "append " << svg.size() << std::endl << svg << std::endl;
+        }
+        // change recursively
+        for (auto &c : changed) {
+            auto &a = c.first; auto &b = c.second;
+            ss << "child " << b.idx - removed[b.idx] << std::endl;
+            ss << (*a.ptr - *b.ptr);
+            ss << "parent" << std::endl;
+        }
+        // sort
+        for (auto &c : changed) {
+            auto &a = c.first; auto &b = c.second;
+            indices[b.idx - removed[b.idx]] =  a.idx;
+        }
+        for (int i = 0; i < addition.size(); i++) {
+            auto &a = addition[i];
+            indices[changed.size() + i] = a.idx;
+        }
+        ss << "sort \"";
+        for (int i = 0; i < n; i++) {
+            ss << indices[i];
+            if (i < n - 1) ss << ", ";
+        }
+        ss << "\"" << std::endl;
+        delete[] removed; delete[] indices;
+
+        return ss.str();
+    }
+    const std::string SVGElement::attribute_differ(const SVGElement &element) const {
         std::stringstream ss;
 
         if (get_tag() != element.get_tag()) {
@@ -2084,8 +2162,82 @@ namespace Lewzen {
             else ss << "modify writing-mode \"" << _writing_mode << "\"" << std::endl;
         }
 
-        // TODO: inner differ
-
         return ss.str();
+    }
+    const std::string SVGElement::inner_differ(const SVGElement &element,
+            std::vector<_el_idx> &removal,
+            std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &changed) const {
+        std::unordered_map<std::string, std::set<_el_idx>> tags_map;
+        std::set<_el_idx> A, B;
+        int c = 0;
+        for (auto &a : _inner_elements) A.insert({a, c++}); c = 0;
+        for (auto &b : element.get_inner_elements()) tags_map[b->get_tag()].insert({b, c}), B.insert({b, c++});
+
+        c = 0;
+        for (auto &_a : _inner_elements) { // with outer hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_outer_hash() == a.ptr->get_outer_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with inner hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_inner_hash() == a.ptr->get_inner_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                changed.push_back({a, match});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with attribute hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_attribute_hash() == a.ptr->get_attribute_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                changed.push_back({a, match});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with tag equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag) || tags_map[tag].size() == 0) continue;
+            _el_idx match = *tags_map[tag].begin();
+            tags_map[tag].erase(match);
+            A.erase(a), B.erase(match);
+            changed.push_back({a, match});
+        }
+        for (auto &a : A) addition.push_back(a);
+        for (auto &b : B) removal.push_back(b);
     }
 }

@@ -18,14 +18,14 @@ namespace Lewzen {
     }
     void SVGPolyline::set_points(const std::string &points) {
         _points = points;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPolyline::get_path_length() const {
         return _path_length;
     }
     void SVGPolyline::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPolyline::get_attributes() const {
         std::stringstream ss;

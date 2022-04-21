@@ -28,49 +28,49 @@ namespace Lewzen {
     }
     void SVGText::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_y() const {
         return _y;
     }
     void SVGText::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_dx() const {
         return _dx;
     }
     void SVGText::set_dx(const std::string &dx) {
         _dx = dx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_dy() const {
         return _dy;
     }
     void SVGText::set_dy(const std::string &dy) {
         _dy = dy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_rotate() const {
         return _rotate;
     }
     void SVGText::set_rotate(const std::string &rotate) {
         _rotate = rotate;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_length_adjust() const {
         return _length_adjust;
     }
     void SVGText::set_length_adjust(const std::string &length_adjust) {
         _length_adjust = length_adjust;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_text_length() const {
         return _text_length;
     }
     void SVGText::set_text_length(const std::string &text_length) {
         _text_length = text_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGText::get_attributes() const {
         std::stringstream ss;

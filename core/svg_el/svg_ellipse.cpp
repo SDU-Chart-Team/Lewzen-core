@@ -24,35 +24,35 @@ namespace Lewzen {
     }
     void SVGEllipse::set_cx(const std::string &cx) {
         _cx = cx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGEllipse::get_cy() const {
         return _cy;
     }
     void SVGEllipse::set_cy(const std::string &cy) {
         _cy = cy;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGEllipse::get_rx() const {
         return _rx;
     }
     void SVGEllipse::set_rx(const std::string &rx) {
         _rx = rx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGEllipse::get_ry() const {
         return _ry;
     }
     void SVGEllipse::set_ry(const std::string &ry) {
         _ry = ry;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGEllipse::get_path_length() const {
         return _path_length;
     }
     void SVGEllipse::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGEllipse::get_attributes() const {
         std::stringstream ss;

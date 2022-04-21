@@ -18,14 +18,14 @@ namespace Lewzen {
     }
     void SVGPolygon::set_points(const std::string &points) {
         _points = points;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPolygon::get_path_length() const {
         return _path_length;
     }
     void SVGPolygon::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGPolygon::get_attributes() const {
         std::stringstream ss;

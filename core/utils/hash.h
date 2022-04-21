@@ -10,6 +10,6 @@ namespace Lewzen {
     * @param str the string.
     * @return hash.
     */
-    const HASH_CODE str_hash(std::string str);
+    const HASH_CODE str_hash(const std::string &str);
 }
 #endif

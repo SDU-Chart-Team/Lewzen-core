@@ -30,56 +30,56 @@ namespace Lewzen {
     }
     void SVGImage::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_height() const {
         return _height;
     }
     void SVGImage::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_x() const {
         return _x;
     }
     void SVGImage::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_y() const {
         return _y;
     }
     void SVGImage::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_href() const {
         return _href;
     }
     void SVGImage::set_href(const std::string &href) {
         _href = href;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_xlinkZhref() const {
         return _xlinkZhref;
     }
     void SVGImage::set_xlinkZhref(const std::string &xlinkZhref) {
         _xlinkZhref = xlinkZhref;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_preserve_aspect_ratio() const {
         return _preserve_aspect_ratio;
     }
     void SVGImage::set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio) {
         _preserve_aspect_ratio = preserve_aspect_ratio;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_crossorigin() const {
         return _crossorigin;
     }
     void SVGImage::set_crossorigin(const std::string &crossorigin) {
         _crossorigin = crossorigin;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGImage::get_attributes() const {
         std::stringstream ss;

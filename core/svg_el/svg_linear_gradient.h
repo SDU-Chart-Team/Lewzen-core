@@ -2,7 +2,7 @@
 #define __LZ_SVG_LINEAR_GRADIENT__
 #include <string>
 #include <sstream>
-#include "../svg_element.h"
+#include "../svg_el.h"
 
 namespace Lewzen {
     /**

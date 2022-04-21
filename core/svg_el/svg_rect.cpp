@@ -28,49 +28,49 @@ namespace Lewzen {
     }
     void SVGRect::set_x(const std::string &x) {
         _x = x;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_y() const {
         return _y;
     }
     void SVGRect::set_y(const std::string &y) {
         _y = y;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_width() const {
         return _width;
     }
     void SVGRect::set_width(const std::string &width) {
         _width = width;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_height() const {
         return _height;
     }
     void SVGRect::set_height(const std::string &height) {
         _height = height;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_rx() const {
         return _rx;
     }
     void SVGRect::set_rx(const std::string &rx) {
         _rx = rx;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_ry() const {
         return _ry;
     }
     void SVGRect::set_ry(const std::string &ry) {
         _ry = ry;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_path_length() const {
         return _path_length;
     }
     void SVGRect::set_path_length(const std::string &path_length) {
         _path_length = path_length;
-        update_hash();
+        update_attribute_hash();
     }
     const std::string SVGRect::get_attributes() const {
         std::stringstream ss;
