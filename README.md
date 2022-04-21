@@ -8,7 +8,7 @@
 
     ```cpp
     // Object
-    auto obj = SVGIRect();
+    //auto obj = SVGIRect(); // not safe with bad weak ptr
 
     // Pointer
     #include <memory>
@@ -133,13 +133,17 @@
 
         This returns SVG content including all attributes and all its children.
 
-    - Differences expressed by DOM commands
+    - Differences between 2 SVGs expressed by DOM commands
 
         ```cpp
         el1 - el2;
         ```
 
         This returns SVG differences by a series of DOM commands. These commands will explain how to change `el2` to `el1`.
+    
+    - Update commitment described by DOM commands
+
+        For SVG Element Interfaces, you can commit update and get DOM commands to describe those changes.
 
         DOM commands:
 
@@ -154,7 +158,7 @@
         <td>
 
         ```javascript
-        current = current.childNodes[index];
+        current = current.children[index];
         ```
 
         </td>
@@ -182,7 +186,7 @@
         <td>
 
         ```javascript
-        current.removeChild(current.childNodes[index]);
+        current.children[index].remove();
         ```
 
         </td>
@@ -190,13 +194,30 @@
         <tr>
         <td style="text-align:center">
         
-        `append "<xml:str>"`
+        `append <len> <xml:str>`
         
         </td>
         <td>
 
         ```javascript
-        current.appendChild(new DOMParser().parseFromString(xml, "text/xml"));
+        let append = new DOMParser().parseFromString(xml, "text/xml");
+        current.appendChild(append.documentElement);
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `replace <len> <xml:str>`
+        
+        </td>
+        <td>
+
+        ```javascript
+        let replace = new DOMParser().parseFromString(xml, "text/xml");
+        current.parentNode.replaceChild(current, replace.documentElement);
+        current = replace;
         ```
 
         </td>
@@ -228,6 +249,34 @@
 
         ```javascript
         current.setAttribute("attr", "val");
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `reset <attr:str>`
+        
+        </td>
+        <td>
+
+        ```javascript
+        current.removeAttribute("attr");
+        ```
+
+        </td>
+        </tr>
+        <tr>
+        <td style="text-align:center">
+        
+        `content <len> <content:str>`
+        
+        </td>
+        <td>
+
+        ```javascript
+        current.childNodes[0].nodeValue = content;
         ```
 
         </td>

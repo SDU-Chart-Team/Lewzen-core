@@ -1,6 +1,6 @@
 #include "hash.h"
 
-namespace Lewzen {
+namespace MurmurHash {
     //-----------------------------------------------------------------------------
     // MurmurHash2, 64-bit versions, by Austin Appleby
 
@@ -9,19 +9,19 @@ namespace Lewzen {
 
     // 64-bit hash for 64-bit platforms
 
-    HASH_CODE MurmurHash64A ( const void * key, int len, unsigned int seed )
+    const Lewzen::HASH_CODE MurmurHash64A ( const void * key, int len, unsigned int seed )
     {
-        const HASH_CODE m = 0xc6a4a7935bd1e995;
+        const Lewzen::HASH_CODE m = 0xc6a4a7935bd1e995;
         const int r = 47;
 
-        HASH_CODE h = seed ^ (len * m);
+        Lewzen::HASH_CODE h = seed ^ (len * m);
 
-        const HASH_CODE * data = (const HASH_CODE *)key;
-        const HASH_CODE * end = data + (len/8);
+        const Lewzen::HASH_CODE * data = (const Lewzen::HASH_CODE *)key;
+        const Lewzen::HASH_CODE * end = data + (len/8);
 
         while(data != end)
         {
-            HASH_CODE k = *data++;
+            Lewzen::HASH_CODE k = *data++;
 
             k *= m; 
             k ^= k >> r; 
@@ -35,13 +35,13 @@ namespace Lewzen {
 
         switch(len & 7)
         {
-        case 7: h ^= HASH_CODE(data2[6]) << 48;
-        case 6: h ^= HASH_CODE(data2[5]) << 40;
-        case 5: h ^= HASH_CODE(data2[4]) << 32;
-        case 4: h ^= HASH_CODE(data2[3]) << 24;
-        case 3: h ^= HASH_CODE(data2[2]) << 16;
-        case 2: h ^= HASH_CODE(data2[1]) << 8;
-        case 1: h ^= HASH_CODE(data2[0]);
+        case 7: h ^= Lewzen::HASH_CODE(data2[6]) << 48;
+        case 6: h ^= Lewzen::HASH_CODE(data2[5]) << 40;
+        case 5: h ^= Lewzen::HASH_CODE(data2[4]) << 32;
+        case 4: h ^= Lewzen::HASH_CODE(data2[3]) << 24;
+        case 3: h ^= Lewzen::HASH_CODE(data2[2]) << 16;
+        case 2: h ^= Lewzen::HASH_CODE(data2[1]) << 8;
+        case 1: h ^= Lewzen::HASH_CODE(data2[0]);
                 h *= m;
         };
     
@@ -55,7 +55,7 @@ namespace Lewzen {
 
     // 64-bit hash for 32-bit platforms
 
-    HASH_CODE MurmurHash64B ( const void * key, int len, unsigned int seed )
+    const Lewzen::HASH_CODE MurmurHash64B ( const void * key, int len, unsigned int seed )
     {
         const unsigned int m = 0x5bd1e995;
         const int r = 24;
@@ -99,15 +99,17 @@ namespace Lewzen {
         h1 ^= h2 >> 17; h1 *= m;
         h2 ^= h1 >> 19; h2 *= m;
 
-        HASH_CODE h = h1;
+        Lewzen::HASH_CODE h = h1;
 
         h = (h << 32) | h2;
 
         return h;
     }
+}
 
-    const unsigned int SEED = 0xbf378d83LL;
+namespace Lewzen {
+    const unsigned int HASH_SEED = 0xbf378d83LL;
     const Lewzen::HASH_CODE str_hash(const std::string &str) {
-        return MurmurHash64B(str.c_str(), str.size(), SEED);
+        return MurmurHash::MurmurHash64B(str.c_str(), str.size(), HASH_SEED);
     }
 }

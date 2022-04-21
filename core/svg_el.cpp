@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <map>
 #include <unordered_map>
-#include "svg_element.h"
+#include "svg_el.h"
 
 namespace Lewzen {
     SVGElement::SVGElement() {
@@ -1281,9 +1281,10 @@ namespace Lewzen {
 
     const std::string SVGElement::inner_SVG() const {
         std::stringstream ss;
-        ss << _inner_text << std::endl;
-        for (auto &p : _inner_elements) {
-            ss << p->outer_SVG() << std::endl;
+        if (_inner_text != STR_NULL) ss << _inner_text << std::endl;
+        for (int i = 0; i < _inner_elements.size(); i++) {
+            if (i < _inner_elements.size() - 1) ss << _inner_elements[i]->outer_SVG() << std::endl;
+            else ss << _inner_elements[i]->outer_SVG();
         }
         return ss.str();
     }
@@ -1530,6 +1531,72 @@ namespace Lewzen {
         return !operator==(element);
     }
     const std::string SVGElement::operator-(const SVGElement &element) const {
+        std::stringstream ss;
+
+        // tag differ
+        if (get_tag() != element.get_tag()) {
+            auto svg = outer_SVG();
+            ss << "replace " << svg.size() << std::endl << svg << std::endl;
+            return ss.str();
+        }
+
+        // cast
+        auto _element = static_cast<const SVGElement &>(element);
+
+        // attribute differ
+        if (element.get_attribute_hash() == get_attribute_hash()) return ss.str();
+        ss << attribute_differ(_element);
+
+        // inner differ
+        if (element.get_inner_hash() == get_inner_hash()) return ss.str();
+        if (element.get_inner_text() != get_inner_text()) {
+            auto content = get_inner_text();
+            ss << "content " << content.size() << std::endl << content << std::endl;
+        }
+        // extract change relation
+        std::vector<_el_idx> removal;
+        std::vector<_el_idx> addition;
+        std::vector<std::pair<_el_idx, _el_idx>> changed;
+        inner_differ(element, removal, addition, changed);
+        // remove
+        int n = element.get_inner_elements().size();
+        int *removed = new int[n],
+               *indices = new int[n];
+        for (auto &r : removal) removed[r.idx] = 1;
+        for (int i = 1; i < n; i++) removed[i] += removed[i - 1];
+        for (auto &r : removal) ss << "remove " << r.idx - (r.idx > 0 ? removed[r.idx - 1] : 0) << std::endl;
+        // append
+        for (auto &a : addition) {
+            auto svg = a.ptr->outer_SVG();
+            ss << "append " << svg.size() << std::endl << svg << std::endl;
+        }
+        // change recursively
+        for (auto &c : changed) {
+            auto &a = c.first; auto &b = c.second;
+            ss << "child " << b.idx - removed[b.idx] << std::endl;
+            ss << (*a.ptr - *b.ptr);
+            ss << "parent" << std::endl;
+        }
+        // sort
+        for (auto &c : changed) {
+            auto &a = c.first; auto &b = c.second;
+            indices[b.idx - removed[b.idx]] =  a.idx;
+        }
+        for (int i = 0; i < addition.size(); i++) {
+            auto &a = addition[i];
+            indices[changed.size() + i] = a.idx;
+        }
+        ss << "sort \"";
+        for (int i = 0; i < n; i++) {
+            ss << indices[i];
+            if (i < n - 1) ss << ", ";
+        }
+        ss << "\"" << std::endl;
+        delete[] removed; delete[] indices;
+
+        return ss.str();
+    }
+    const std::string SVGElement::attribute_differ(const SVGElement &element) const {
         std::stringstream ss;
 
         if (get_tag() != element.get_tag()) {
@@ -2095,8 +2162,82 @@ namespace Lewzen {
             else ss << "modify writing-mode \"" << _writing_mode << "\"" << std::endl;
         }
 
-        // TODO: inner differ
-
         return ss.str();
+    }
+    const std::string SVGElement::inner_differ(const SVGElement &element,
+            std::vector<_el_idx> &removal,
+            std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &changed) const {
+        std::unordered_map<std::string, std::set<_el_idx>> tags_map;
+        std::set<_el_idx> A, B;
+        int c = 0;
+        for (auto &a : _inner_elements) A.insert({a, c++}); c = 0;
+        for (auto &b : element.get_inner_elements()) tags_map[b->get_tag()].insert({b, c}), B.insert({b, c++});
+
+        c = 0;
+        for (auto &_a : _inner_elements) { // with outer hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_outer_hash() == a.ptr->get_outer_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with inner hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_inner_hash() == a.ptr->get_inner_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                changed.push_back({a, match});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with attribute hash equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_attribute_hash() == a.ptr->get_attribute_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                changed.push_back({a, match});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements) { // with tag equal
+            auto &tag  = _a->get_tag();
+            _el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag) || tags_map[tag].size() == 0) continue;
+            _el_idx match = *tags_map[tag].begin();
+            tags_map[tag].erase(match);
+            A.erase(a), B.erase(match);
+            changed.push_back({a, match});
+        }
+        for (auto &a : A) addition.push_back(a);
+        for (auto &b : B) removal.push_back(b);
     }
 }

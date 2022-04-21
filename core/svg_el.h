@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <utility>
 #include "utils.h"
 
 namespace Lewzen {
@@ -2129,12 +2130,36 @@ namespace Lewzen {
         * @return outer SVG.
         */
         const std::string get_attributes() const;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGElement &element) const;
         
         /// Inner SVG
     private:
         std::string _inner_text;
         std::vector<std::shared_ptr<SVGElement>> _inner_elements;
         std::vector<std::weak_ptr<SVGElement>> _parent_elements;
+    protected:
+        struct _el_idx {
+            std::shared_ptr<SVGElement> ptr;
+            int idx;
+            bool operator<(const _el_idx &b) const {
+                if (ptr == b.ptr) return idx < b.idx;
+                return ptr < b.ptr;
+            }
+        };
+        /**
+        * Returning differences on inner elements.
+        *
+        * @return DOM Commands.
+        */
+        const std::string inner_differ(const SVGElement &element,
+            std::vector<_el_idx> &removal,
+            std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &changed) const;
     public:
         /**
         * Get inner SVG of this SVG element.
