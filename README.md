@@ -8,18 +8,20 @@
 
     ```cpp
     // Object
-    //auto obj = SVGIRect(); // not safe with bad weak ptr
+    //auto obj = SVGIRect(); // not recommended with bad weak ptr
 
     // Pointer
     #include <memory>
     auto ptr = std::make_shared<SVGICircle>();
     ```
 
+    Creating SVG Element Interface via object is not recommended because it is inherited from std::enable_shared_from_this which is used to maintain parent relationship. The safe way of initialization is std::make_shared.
+
 - Setting Attributes
 
     ```cpp
-    auto obj = SVGIMask();
-    auto &height = obj.height;
+    auto el = std::make_shared<SVGIMask>();
+    auto &height = el->height;
 
     // Assignment
     height.set("1.5px"); // by member function
@@ -72,7 +74,7 @@
 
             In case there might be some function cannot be cast where compiler cannot deduce type automatically, we introduced a method to deal with any cast problem you could meet with function binding:
 
-            ```c++
+            ```cpp
             std::function<const Type()> func = func_with_problem;
             ```
 
@@ -101,25 +103,48 @@
 
         Content string can be arbitary string, including HTML.
 
-    - Inner content element
+    - Inner elements
 
-        A shared pointer list of SVG Element. (SVG Element Interfaces are derived from SVG Element.)
+        A shared pointer list of SVG Element. (SVG Element Interfaces are derived from SVG Element)
 
         You can add a new pointer to its tail or remove all same pointers from it:
 
         ```cpp
         auto p1 = std::make_shared<SVGCircle>();
         auto p2 = std::make_shared<SVGICircle>();
-        el.add_inner_element(p1);
-        el.remove_inner_element(p2);
+        el->add_inner_element(p1); // add
+        el->remove_inner_element(p2); // remove
+        el->remove_inner_element(p2, true); // remove all
         ```
+
+        An element can be child of only one parent. If an child element is added to another parent element, it will be first removed from original parent. Removing an element is based on content rather than pointer.
 
         If a complicated list operation is needed, you can get and set the whole list:
 
         ```cpp
-        auto list = el.get_inner_elements();
-        el.set_inner_elements(list);
+        auto list = el->get_inner_elements();
+        el->set_inner_elements(list);
         ```
+
+- Assigning and Cloning
+
+    You can assign another element to an element:
+
+    ```cpp
+    *el1 = *el2;
+    ```
+
+    This will run a deep copy including all descendants.
+
+    You can also get a copy from itself:
+
+    ```cpp
+    auto el = std::make_shared<SVGICircle>();
+    auto copy1 = el->clone(); // std::shared_ptr<SVGElement>
+    auto copy2 = el->clone(true); // std::shared_ptr<SVGICircle>
+    ```
+
+    The default returning value will be cast to SVG Element because it is an overridden function. Adding an boolean parameter, it will return the original type.
 
 - Rendering
 
@@ -128,7 +153,7 @@
     - Outer XML
 
         ```cpp
-        el.outer_SVG();
+        el->outer_SVG();
         ```
 
         This returns SVG content including all attributes and all its children.
@@ -136,7 +161,7 @@
     - Differences between 2 SVGs expressed by DOM commands
 
         ```cpp
-        el1 - el2;
+        *el1 - *el2;
         ```
 
         This returns SVG differences by a series of DOM commands. These commands will explain how to change `el2` to `el1`.
@@ -145,10 +170,18 @@
 
         For SVG Element Interfaces, you can commit update and get DOM commands to describe those changes.
 
-        DOM commands:
+        ```cpp
+        el->commit();
+        ```
+
+    - **DOM commands**:
+
+        Any white-spaces including '` `', '`\t`', '`\n`' are considered to be delimiters.
+
+        For string parameter without white-spaces, it will enclosed by '`\"`'；Otherwise, a length parameter is need.
 
         <table stye="table-layout:fixed;">
-        <tr><th><div style="width:200px;text-align:center">Command</div></th> <th>Explaination</th></tr>
+        <tr><th><div style="width:220px;text-align:center">Command</div></th> <th style="text-align:center">Equivalent Javascript Code</th></tr>
         <tr>
         <td style="text-align:center">
         
@@ -194,7 +227,7 @@
         <tr>
         <td style="text-align:center">
         
-        `append <len> <xml:str>`
+        `append <len:int> <xml:str>`
         
         </td>
         <td>
@@ -209,7 +242,7 @@
         <tr>
         <td style="text-align:center">
         
-        `replace <len> <xml:str>`
+        `replace <len:int> <xml:str>`
         
         </td>
         <td>
@@ -225,7 +258,7 @@
         <tr>
         <td style="text-align:center">
         
-        `sort "<indices>"`
+        `sort "<indices:list>"`
         
         </td>
         <td>
@@ -270,7 +303,7 @@
         <tr>
         <td style="text-align:center">
         
-        `content <len> <content:str>`
+        `content <len:int> <content:str>`
         
         </td>
         <td>

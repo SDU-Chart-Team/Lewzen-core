@@ -13,19 +13,6 @@ namespace Lewzen {
         _x = STR_NULL;
         _y = STR_NULL;
     }
-    SVGPattern::SVGPattern(const SVGPattern &element) {
-        _height = element.get_height();
-        _href = element.get_href();
-        _pattern_content_units = element.get_pattern_content_units();
-        _pattern_transform = element.get_pattern_transform();
-        _pattern_units = element.get_pattern_units();
-        _preserve_aspect_ratio = element.get_preserve_aspect_ratio();
-        _view_box = element.get_view_box();
-        _width = element.get_width();
-        _x = element.get_x();
-        _y = element.get_y();
-        new (this)SVGElement(element);
-    }
     const std::string SVGPattern::get_tag() const {
         return "pattern";
     }
@@ -117,7 +104,32 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGPattern::clone() const {
-        return std::make_shared<SVGPattern>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGPattern> SVGPattern::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGPattern>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGPattern::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGPattern &>(element);
+        return operator=(_element);
+    }
+    SVGPattern &SVGPattern::operator=(const SVGPattern &element) {
+        SVGElement::operator=(element);
+
+        _height = element.get_height();
+        _href = element.get_href();
+        _pattern_content_units = element.get_pattern_content_units();
+        _pattern_transform = element.get_pattern_transform();
+        _pattern_units = element.get_pattern_units();
+        _preserve_aspect_ratio = element.get_preserve_aspect_ratio();
+        _view_box = element.get_view_box();
+        _width = element.get_width();
+        _x = element.get_x();
+        _y = element.get_y();
+        return *this;
     }
     const std::string SVGPattern::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -126,43 +138,51 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGPattern &>(element);
 
-        if (_height != _element.get_height()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGPattern::attribute_differ(const SVGPattern &element) const {
+        std::stringstream ss;
+
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_href != _element.get_href()) {
+        if (_href != element.get_href()) {
             if (_href == STR_NULL) ss << "reset href" << std::endl;
             else ss << "modify href \"" << _href << "\"" << std::endl;
         }
-        if (_pattern_content_units != _element.get_pattern_content_units()) {
+        if (_pattern_content_units != element.get_pattern_content_units()) {
             if (_pattern_content_units == STR_NULL) ss << "reset patternContentUnits" << std::endl;
             else ss << "modify patternContentUnits \"" << _pattern_content_units << "\"" << std::endl;
         }
-        if (_pattern_transform != _element.get_pattern_transform()) {
+        if (_pattern_transform != element.get_pattern_transform()) {
             if (_pattern_transform == STR_NULL) ss << "reset patternTransform" << std::endl;
             else ss << "modify patternTransform \"" << _pattern_transform << "\"" << std::endl;
         }
-        if (_pattern_units != _element.get_pattern_units()) {
+        if (_pattern_units != element.get_pattern_units()) {
             if (_pattern_units == STR_NULL) ss << "reset patternUnits" << std::endl;
             else ss << "modify patternUnits \"" << _pattern_units << "\"" << std::endl;
         }
-        if (_preserve_aspect_ratio != _element.get_preserve_aspect_ratio()) {
+        if (_preserve_aspect_ratio != element.get_preserve_aspect_ratio()) {
             if (_preserve_aspect_ratio == STR_NULL) ss << "reset preserveAspectRatio" << std::endl;
             else ss << "modify preserveAspectRatio \"" << _preserve_aspect_ratio << "\"" << std::endl;
         }
-        if (_view_box != _element.get_view_box()) {
+        if (_view_box != element.get_view_box()) {
             if (_view_box == STR_NULL) ss << "reset viewBox" << std::endl;
             else ss << "modify viewBox \"" << _view_box << "\"" << std::endl;
         }
-        if (_width != _element.get_width()) {
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }
-        if (_x != _element.get_x()) {
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }

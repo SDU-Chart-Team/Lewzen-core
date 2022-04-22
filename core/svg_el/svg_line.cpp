@@ -8,14 +8,6 @@ namespace Lewzen {
         _yR = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGLine::SVGLine(const SVGLine &element) {
-        _xQ = element.get_xQ();
-        _xR = element.get_xR();
-        _yQ = element.get_yQ();
-        _yR = element.get_yR();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGLine::get_tag() const {
         return "line";
     }
@@ -67,7 +59,27 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGLine::clone() const {
-        return std::make_shared<SVGLine>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGLine> SVGLine::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGLine>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGLine::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGLine &>(element);
+        return operator=(_element);
+    }
+    SVGLine &SVGLine::operator=(const SVGLine &element) {
+        SVGElement::operator=(element);
+
+        _xQ = element.get_xQ();
+        _xR = element.get_xR();
+        _yQ = element.get_yQ();
+        _yR = element.get_yR();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGLine::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -76,23 +88,31 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGLine &>(element);
 
-        if (_xQ != _element.get_xQ()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGLine::attribute_differ(const SVGLine &element) const {
+        std::stringstream ss;
+
+        if (_xQ != element.get_xQ()) {
             if (_xQ == STR_NULL) ss << "reset x1" << std::endl;
             else ss << "modify x1 \"" << _xQ << "\"" << std::endl;
         }
-        if (_xR != _element.get_xR()) {
+        if (_xR != element.get_xR()) {
             if (_xR == STR_NULL) ss << "reset x2" << std::endl;
             else ss << "modify x2 \"" << _xR << "\"" << std::endl;
         }
-        if (_yQ != _element.get_yQ()) {
+        if (_yQ != element.get_yQ()) {
             if (_yQ == STR_NULL) ss << "reset y1" << std::endl;
             else ss << "modify y1 \"" << _yQ << "\"" << std::endl;
         }
-        if (_yR != _element.get_yR()) {
+        if (_yR != element.get_yR()) {
             if (_yR == STR_NULL) ss << "reset y2" << std::endl;
             else ss << "modify y2 \"" << _yR << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

@@ -16,10 +16,6 @@ namespace Lewzen {
         * Constructor of SVG element.
         */
         SVGElement();
-        /**
-        * Deep copy of SVG element.
-        */
-        SVGElement(const SVGElement &element);
 
         /// Tag
     public:
@@ -28,7 +24,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const;
 
         /// Element
     private:
@@ -2129,7 +2125,7 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const;
         /**
         * Returning differences on attributes.
         *
@@ -2138,10 +2134,10 @@ namespace Lewzen {
         const std::string attribute_differ(const SVGElement &element) const;
         
         /// Inner SVG
-    private:
+    protected:
         std::string _inner_text;
         std::vector<std::shared_ptr<SVGElement>> _inner_elements;
-        std::vector<std::weak_ptr<SVGElement>> _parent_elements;
+        std::weak_ptr<SVGElement> _parent_element;
     protected:
         struct _el_idx {
             std::shared_ptr<SVGElement> ptr;
@@ -2159,6 +2155,7 @@ namespace Lewzen {
         const std::string inner_differ(const SVGElement &element,
             std::vector<_el_idx> &removal,
             std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &unchanged,
             std::vector<std::pair<_el_idx, _el_idx>> &changed) const;
     public:
         /**
@@ -2186,11 +2183,12 @@ namespace Lewzen {
         */
         void add_inner_element(const std::shared_ptr<SVGElement> &element);
         /**
-        * Remove a sub element from this SVG element.
+        * Remove a child element or child elements from this SVG element, based on content.
         *
         * @param element an inner element.
+        * @param remove_all if to remove all occurances.
         */
-        void remove_inner_element(const std::shared_ptr<SVGElement> &element);
+        void remove_inner_element(const std::shared_ptr<SVGElement> &element, bool remove_all = false);
         /**
         * Get inner SVG elements list in this SVG element.
         *
@@ -2265,6 +2263,12 @@ namespace Lewzen {
         * @relatesalso SVGElement
         */
         virtual std::shared_ptr<SVGElement> clone() const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGElement
+        */
+        virtual SVGElement &operator=(const SVGElement &element);
         /**
         * Compare two SVG elements.
         *

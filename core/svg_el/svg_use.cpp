@@ -8,14 +8,6 @@ namespace Lewzen {
         _width = STR_NULL;
         _height = STR_NULL;
     }
-    SVGUse::SVGUse(const SVGUse &element) {
-        _href = element.get_href();
-        _x = element.get_x();
-        _y = element.get_y();
-        _width = element.get_width();
-        _height = element.get_height();
-        new (this)SVGElement(element);
-    }
     const std::string SVGUse::get_tag() const {
         return "use";
     }
@@ -67,7 +59,27 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGUse::clone() const {
-        return std::make_shared<SVGUse>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGUse> SVGUse::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGUse>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGUse::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGUse &>(element);
+        return operator=(_element);
+    }
+    SVGUse &SVGUse::operator=(const SVGUse &element) {
+        SVGElement::operator=(element);
+
+        _href = element.get_href();
+        _x = element.get_x();
+        _y = element.get_y();
+        _width = element.get_width();
+        _height = element.get_height();
+        return *this;
     }
     const std::string SVGUse::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -76,23 +88,31 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGUse &>(element);
 
-        if (_href != _element.get_href()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGUse::attribute_differ(const SVGUse &element) const {
+        std::stringstream ss;
+
+        if (_href != element.get_href()) {
             if (_href == STR_NULL) ss << "reset href" << std::endl;
             else ss << "modify href \"" << _href << "\"" << std::endl;
         }
-        if (_x != _element.get_x()) {
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }
-        if (_width != _element.get_width()) {
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }
-        if (_height != _element.get_height()) {
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }

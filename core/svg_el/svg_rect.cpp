@@ -10,16 +10,6 @@ namespace Lewzen {
         _ry = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGRect::SVGRect(const SVGRect &element) {
-        _x = element.get_x();
-        _y = element.get_y();
-        _width = element.get_width();
-        _height = element.get_height();
-        _rx = element.get_rx();
-        _ry = element.get_ry();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGRect::get_tag() const {
         return "rect";
     }
@@ -87,7 +77,29 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGRect::clone() const {
-        return std::make_shared<SVGRect>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGRect> SVGRect::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGRect>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGRect::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGRect &>(element);
+        return operator=(_element);
+    }
+    SVGRect &SVGRect::operator=(const SVGRect &element) {
+        SVGElement::operator=(element);
+
+        _x = element.get_x();
+        _y = element.get_y();
+        _width = element.get_width();
+        _height = element.get_height();
+        _rx = element.get_rx();
+        _ry = element.get_ry();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGRect::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -96,31 +108,39 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGRect &>(element);
 
-        if (_x != _element.get_x()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGRect::attribute_differ(const SVGRect &element) const {
+        std::stringstream ss;
+
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }
-        if (_width != _element.get_width()) {
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }
-        if (_height != _element.get_height()) {
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_rx != _element.get_rx()) {
+        if (_rx != element.get_rx()) {
             if (_rx == STR_NULL) ss << "reset rx" << std::endl;
             else ss << "modify rx \"" << _rx << "\"" << std::endl;
         }
-        if (_ry != _element.get_ry()) {
+        if (_ry != element.get_ry()) {
             if (_ry == STR_NULL) ss << "reset ry" << std::endl;
             else ss << "modify ry \"" << _ry << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

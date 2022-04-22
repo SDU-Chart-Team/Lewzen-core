@@ -8,14 +8,6 @@ namespace Lewzen {
         _ry = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGEllipse::SVGEllipse(const SVGEllipse &element) {
-        _cx = element.get_cx();
-        _cy = element.get_cy();
-        _rx = element.get_rx();
-        _ry = element.get_ry();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGEllipse::get_tag() const {
         return "ellipse";
     }
@@ -67,7 +59,27 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGEllipse::clone() const {
-        return std::make_shared<SVGEllipse>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGEllipse> SVGEllipse::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGEllipse>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGEllipse::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGEllipse &>(element);
+        return operator=(_element);
+    }
+    SVGEllipse &SVGEllipse::operator=(const SVGEllipse &element) {
+        SVGElement::operator=(element);
+
+        _cx = element.get_cx();
+        _cy = element.get_cy();
+        _rx = element.get_rx();
+        _ry = element.get_ry();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGEllipse::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -76,23 +88,31 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGEllipse &>(element);
 
-        if (_cx != _element.get_cx()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGEllipse::attribute_differ(const SVGEllipse &element) const {
+        std::stringstream ss;
+
+        if (_cx != element.get_cx()) {
             if (_cx == STR_NULL) ss << "reset cx" << std::endl;
             else ss << "modify cx \"" << _cx << "\"" << std::endl;
         }
-        if (_cy != _element.get_cy()) {
+        if (_cy != element.get_cy()) {
             if (_cy == STR_NULL) ss << "reset cy" << std::endl;
             else ss << "modify cy \"" << _cy << "\"" << std::endl;
         }
-        if (_rx != _element.get_rx()) {
+        if (_rx != element.get_rx()) {
             if (_rx == STR_NULL) ss << "reset rx" << std::endl;
             else ss << "modify rx \"" << _rx << "\"" << std::endl;
         }
-        if (_ry != _element.get_ry()) {
+        if (_ry != element.get_ry()) {
             if (_ry == STR_NULL) ss << "reset ry" << std::endl;
             else ss << "modify ry \"" << _ry << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

@@ -5,11 +5,6 @@ namespace Lewzen {
         _d = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGPath::SVGPath(const SVGPath &element) {
-        _d = element.get_d();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGPath::get_tag() const {
         return "path";
     }
@@ -37,7 +32,24 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGPath::clone() const {
-        return std::make_shared<SVGPath>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGPath> SVGPath::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGPath>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGPath::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGPath &>(element);
+        return operator=(_element);
+    }
+    SVGPath &SVGPath::operator=(const SVGPath &element) {
+        SVGElement::operator=(element);
+
+        _d = element.get_d();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGPath::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -46,11 +58,19 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGPath &>(element);
 
-        if (_d != _element.get_d()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGPath::attribute_differ(const SVGPath &element) const {
+        std::stringstream ss;
+
+        if (_d != element.get_d()) {
             if (_d == STR_NULL) ss << "reset d" << std::endl;
             else ss << "modify d \"" << _d << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

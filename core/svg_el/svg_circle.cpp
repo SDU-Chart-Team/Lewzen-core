@@ -7,13 +7,6 @@ namespace Lewzen {
         _r = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGCircle::SVGCircle(const SVGCircle &element) {
-        _cx = element.get_cx();
-        _cy = element.get_cy();
-        _r = element.get_r();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGCircle::get_tag() const {
         return "circle";
     }
@@ -57,7 +50,26 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGCircle::clone() const {
-        return std::make_shared<SVGCircle>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGCircle> SVGCircle::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGCircle>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGCircle::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGCircle &>(element);
+        return operator=(_element);
+    }
+    SVGCircle &SVGCircle::operator=(const SVGCircle &element) {
+        SVGElement::operator=(element);
+
+        _cx = element.get_cx();
+        _cy = element.get_cy();
+        _r = element.get_r();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGCircle::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -66,19 +78,27 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGCircle &>(element);
 
-        if (_cx != _element.get_cx()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGCircle::attribute_differ(const SVGCircle &element) const {
+        std::stringstream ss;
+
+        if (_cx != element.get_cx()) {
             if (_cx == STR_NULL) ss << "reset cx" << std::endl;
             else ss << "modify cx \"" << _cx << "\"" << std::endl;
         }
-        if (_cy != _element.get_cy()) {
+        if (_cy != element.get_cy()) {
             if (_cy == STR_NULL) ss << "reset cy" << std::endl;
             else ss << "modify cy \"" << _cy << "\"" << std::endl;
         }
-        if (_r != _element.get_r()) {
+        if (_r != element.get_r()) {
             if (_r == STR_NULL) ss << "reset r" << std::endl;
             else ss << "modify r \"" << _r << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

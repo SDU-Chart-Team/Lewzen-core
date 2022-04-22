@@ -11,17 +11,6 @@ namespace Lewzen {
         _yQ = STR_NULL;
         _yR = STR_NULL;
     }
-    SVGLinearGradient::SVGLinearGradient(const SVGLinearGradient &element) {
-        _gradient_units = element.get_gradient_units();
-        _gradient_transform = element.get_gradient_transform();
-        _href = element.get_href();
-        _spread_method = element.get_spread_method();
-        _xQ = element.get_xQ();
-        _xR = element.get_xR();
-        _yQ = element.get_yQ();
-        _yR = element.get_yR();
-        new (this)SVGElement(element);
-    }
     const std::string SVGLinearGradient::get_tag() const {
         return "linearGradient";
     }
@@ -97,7 +86,30 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGLinearGradient::clone() const {
-        return std::make_shared<SVGLinearGradient>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGLinearGradient> SVGLinearGradient::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGLinearGradient>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGLinearGradient::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGLinearGradient &>(element);
+        return operator=(_element);
+    }
+    SVGLinearGradient &SVGLinearGradient::operator=(const SVGLinearGradient &element) {
+        SVGElement::operator=(element);
+
+        _gradient_units = element.get_gradient_units();
+        _gradient_transform = element.get_gradient_transform();
+        _href = element.get_href();
+        _spread_method = element.get_spread_method();
+        _xQ = element.get_xQ();
+        _xR = element.get_xR();
+        _yQ = element.get_yQ();
+        _yR = element.get_yR();
+        return *this;
     }
     const std::string SVGLinearGradient::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -106,35 +118,43 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGLinearGradient &>(element);
 
-        if (_gradient_units != _element.get_gradient_units()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGLinearGradient::attribute_differ(const SVGLinearGradient &element) const {
+        std::stringstream ss;
+
+        if (_gradient_units != element.get_gradient_units()) {
             if (_gradient_units == STR_NULL) ss << "reset gradientUnits" << std::endl;
             else ss << "modify gradientUnits \"" << _gradient_units << "\"" << std::endl;
         }
-        if (_gradient_transform != _element.get_gradient_transform()) {
+        if (_gradient_transform != element.get_gradient_transform()) {
             if (_gradient_transform == STR_NULL) ss << "reset gradientTransform" << std::endl;
             else ss << "modify gradientTransform \"" << _gradient_transform << "\"" << std::endl;
         }
-        if (_href != _element.get_href()) {
+        if (_href != element.get_href()) {
             if (_href == STR_NULL) ss << "reset href" << std::endl;
             else ss << "modify href \"" << _href << "\"" << std::endl;
         }
-        if (_spread_method != _element.get_spread_method()) {
+        if (_spread_method != element.get_spread_method()) {
             if (_spread_method == STR_NULL) ss << "reset spreadMethod" << std::endl;
             else ss << "modify spreadMethod \"" << _spread_method << "\"" << std::endl;
         }
-        if (_xQ != _element.get_xQ()) {
+        if (_xQ != element.get_xQ()) {
             if (_xQ == STR_NULL) ss << "reset x1" << std::endl;
             else ss << "modify x1 \"" << _xQ << "\"" << std::endl;
         }
-        if (_xR != _element.get_xR()) {
+        if (_xR != element.get_xR()) {
             if (_xR == STR_NULL) ss << "reset x2" << std::endl;
             else ss << "modify x2 \"" << _xR << "\"" << std::endl;
         }
-        if (_yQ != _element.get_yQ()) {
+        if (_yQ != element.get_yQ()) {
             if (_yQ == STR_NULL) ss << "reset y1" << std::endl;
             else ss << "modify y1 \"" << _yQ << "\"" << std::endl;
         }
-        if (_yR != _element.get_yR()) {
+        if (_yR != element.get_yR()) {
             if (_yR == STR_NULL) ss << "reset y2" << std::endl;
             else ss << "modify y2 \"" << _yR << "\"" << std::endl;
         }
