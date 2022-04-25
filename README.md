@@ -66,7 +66,7 @@
             There's return value constraint. Lambda function won't cast type to legal ctype statically. For example, you should not return 'char *' as a string.
 
             ```cpp
-            //auto lambda = [](){ return "123"; } // illegal
+            //auto lambda = [](){ return "123"; } // illegal with std::bad_function_call
             auto lambda = [](){ return std::string("123"); }
             ```
 

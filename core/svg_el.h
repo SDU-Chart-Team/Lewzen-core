@@ -1364,14 +1364,14 @@ namespace Lewzen {
         void set_color_rendering(const std::string &color_rendering);
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
-        * Value: <FuncIRI>|<keywords>|inherit; Animatable: Yes
+        * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @return the cursor
         */
         const std::string get_cursor() const;
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
-        * Value: <FuncIRI>|<keywords>|inherit; Animatable: Yes
+        * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @param  the cursor
         */
@@ -1713,42 +1713,42 @@ namespace Lewzen {
         */
         void set_lighting_color(const std::string &lighting_color);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-end
         */
         const std::string get_marker_end() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-end
         */
         void set_marker_end(const std::string &marker_end);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-mid
         */
         const std::string get_marker_mid() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-mid
         */
         void set_marker_mid(const std::string &marker_mid);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-start
         */
         const std::string get_marker_start() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-start
@@ -1811,14 +1811,14 @@ namespace Lewzen {
         */
         void set_pointer_events(const std::string &pointer_events);
         /**
-        * Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. 
+        * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @return the shape-rendering
         */
         const std::string get_shape_rendering() const;
         /**
-        * Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. 
+        * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @param  the shape-rendering
@@ -1854,14 +1854,14 @@ namespace Lewzen {
         void set_solid_opacity(const std::string &solid_opacity);
         /**
         * Indicates what color to use at that gradient stop. 
-        * Value: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes
+        * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @return the stop-color
         */
         const std::string get_stop_color() const;
         /**
         * Indicates what color to use at that gradient stop. 
-        * Value: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes
+        * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @param  the stop-color
         */
@@ -1896,14 +1896,14 @@ namespace Lewzen {
         void set_stroke(const std::string &stroke);
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
-        * Value: none|<dasharray>; Animatable: Yes
+        * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @return the stroke-dasharray
         */
         const std::string get_stroke_dasharray() const;
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
-        * Value: none|<dasharray>; Animatable: Yes
+        * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @param  the stroke-dasharray
         */
@@ -2064,14 +2064,14 @@ namespace Lewzen {
         void set_unicode_bidi(const std::string &unicode_bidi);
         /**
         * Specifies the vector effect to use when drawing an object. 
-        * Value: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes
+        * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @return the vector-effect
         */
         const std::string get_vector_effect() const;
         /**
         * Specifies the vector effect to use when drawing an object. 
-        * Value: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes
+        * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @param  the vector-effect
         */

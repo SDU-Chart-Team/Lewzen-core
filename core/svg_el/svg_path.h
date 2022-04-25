@@ -6,7 +6,7 @@
 
 namespace Lewzen {
     /**
-    * The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.
+    * The <anything>:path SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.
     */
     class SVGPath: public SVGElement {
     public:

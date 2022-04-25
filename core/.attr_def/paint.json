@@ -1,0 +1,12 @@
+{
+    "type": "paint",
+    "includes": [],
+    "comment": "The values for properties fill and stroke are specifications of the type of paint to use when filling or stroking a given graphics element. The available options and syntax for <paint> are described in Specifying paint.\nWithin the SVG DOM, <paint> values are represented using SVGPaint objects.",
+    "accepts": [
+        {
+            "ctype": "std::string",
+            "cname": "string",
+            "to_string": "return attr;"
+        }
+    ]
+}

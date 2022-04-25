@@ -98,14 +98,14 @@ namespace Lewzen {
         void set_dy(const std::string &dy);
         /**
         * Rotates orientation of each individual glyph. Can rotate glyphs individually. 
-        * Value type: <list-of-number> ; Default value: none; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
         * @return the rotate
         */
         const std::string get_rotate() const;
         /**
         * Rotates orientation of each individual glyph. Can rotate glyphs individually. 
-        * Value type: <list-of-number> ; Default value: none; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
         * @param  the rotate
         */

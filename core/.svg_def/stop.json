@@ -9,13 +9,13 @@
         },
         {
             "name": "stop-color",
-            "type": "currentcolor|<color>|<icccolor>",
-            "comment": "This attribute defines the color of the gradient stop. It can be used as a CSS property. \nValue type: currentcolor|<color>|<icccolor>; Default value: black; Animatable: yes"
+            "type": "currentcolor|<color>|<color>:icccolor",
+            "comment": "This attribute defines the color of the gradient stop. It can be used as a CSS property. \nValue type: currentcolor|<color>|<color>:icccolor; Default value: black; Animatable: yes"
         },
         {
             "name": "stop-opacity",
-            "type": "<opacity>",
-            "comment": "This attribute defines the opacity of the gradient stop. It can be used as a CSS property. \nValue type: <opacity>; Default value: 1; Animatable: yes"
+            "type": "<opacity-value>",
+            "comment": "This attribute defines the opacity of the gradient stop. It can be used as a CSS property. \nValue type: <opacity-value>; Default value: 1; Animatable: yes"
         }
     ]
 }

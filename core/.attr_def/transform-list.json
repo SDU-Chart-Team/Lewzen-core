@@ -1,0 +1,12 @@
+{
+    "type": "transform-list",
+    "includes": [],
+    "comment": "A <transform-list> is used to specify a list of coordinate system transformations. A detailed description of the possible values for a <transform-list> is given in the transform attribute definition.\nWithin the SVG DOM, a <transform-list> value is represented using an SVGTransformList or SVGAnimatedTransformList object.",
+    "accepts": [
+        {
+            "ctype": "std::string",
+            "cname": "string",
+            "to_string": "return attr;"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "type": "FuncIRI",
+    "includes": [],
+    "comment": "Functional notation for a reference. The syntax for this reference is the same as the css uri.",
+    "accepts": [
+        {
+            "ctype": "std::string",
+            "cname": "string",
+            "to_string": "return attr;"
+        }
+    ]
+}

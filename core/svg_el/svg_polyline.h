@@ -32,14 +32,14 @@ namespace Lewzen {
     public:
         /**
         * This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. 
-        * Value type: <number>+ ; Default value: ""; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: ""; Animatable: yes
         *
         * @return the points
         */
         const std::string get_points() const;
         /**
         * This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. 
-        * Value type: <number>+ ; Default value: ""; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: ""; Animatable: yes
         *
         * @param  the points
         */

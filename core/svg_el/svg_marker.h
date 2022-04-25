@@ -6,7 +6,7 @@
 
 namespace Lewzen {
     /**
-    * The <marker> element defines the graphic that is to be used for drawing arrowheads or polymarkers on a given <path>, <line>, <polyline> or <polygon> element.
+    * The <marker> element defines the graphic that is to be used for drawing arrowheads or polymarkers on a given <anything>:path, <line>, <polyline> or <polygon> element.
     */
     class SVGMarker: public SVGElement {
     public:

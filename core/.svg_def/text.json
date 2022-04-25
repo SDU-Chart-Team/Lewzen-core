@@ -24,8 +24,8 @@
         },
         {
             "name": "rotate",
-            "type": "<list-of-number>",
-            "comment": "Rotates orientation of each individual glyph. Can rotate glyphs individually. \nValue type: <list-of-number> ; Default value: none; Animatable: yes"
+            "type": "<list-of-numbers>",
+            "comment": "Rotates orientation of each individual glyph. Can rotate glyphs individually. \nValue type: <list-of-numbers> ; Default value: none; Animatable: yes"
         },
         {
             "name": "lengthAdjust",

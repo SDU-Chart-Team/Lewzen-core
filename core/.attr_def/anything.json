@@ -1,0 +1,12 @@
+{
+    "type": "anything",
+    "includes": [],
+    "comment": "The basic type <anything> is a sequence of zero or more characters. Specifically:\n```\nanything ::= Char*\n```\nwhere Char is the production for a character, as defined in XML 1.0 , section 2.2.",
+    "accepts": [
+        {
+            "ctype": "std::string",
+            "cname": "string",
+            "to_string": "return attr;"
+        }
+    ]
+}

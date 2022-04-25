@@ -34,12 +34,12 @@
         },
         {
             "name": "preserveAspectRatio",
-            "type": "<string>:preserveAspectRatio",
+            "type": "<anything>:preserveAspectRatio",
             "comment": "how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. eg: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)"
         },
         {
             "name": "crossorigin",
-            "type": "<string>:crossorigin",
+            "type": "<anything>:crossorigin",
             "comment": "the value of the credentials flag for CORS requests."
         }
     ]

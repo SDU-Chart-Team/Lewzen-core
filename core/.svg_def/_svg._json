@@ -4,12 +4,12 @@
     "attributes": [
         {
             "name": "id",
-            "type": "<string>:id",
+            "type": "<anything>:id",
             "comment": "Defines a unique identifier (ID) which must be unique in the whole document. Its purpose is to identify the element when linking (using a fragment identifier), scripting, or styling (with CSS). \nValue: Any valid ID string; Animatable: No"
         },
         {
             "name": "lang",
-            "type": "<string>:lang_id",
+            "type": "<anything>:lang_id",
             "comment": "Participates in defining the language of the element, the language that non-editable elements are written in or the language that editable elements should be written in. The tag contains one single entry value in the format defined in RFC 5646: Tags for Identifying Languages (also known as BCP 47). \nValue: Any valid language ID; Animatable: No"
         },
         {
@@ -24,7 +24,7 @@
         },
         {
             "name": "xml:lang",
-            "type": "<string>:lang_id",
+            "type": "<anything>:lang_id",
             "comment": "It is a universal attribute allowed in all XML dialects to mark up the natural human language that an element contains. It's almost identical in usage to HTML's lang, but in conforming XML 1.0 documents, it does not allow the use of a null attribute value (xml:lang=\"\") to indicate an unknown language. Instead, use xml:lang=\"und\". \nValue: Any valid language ID; Animatable: No"
         },
         {
@@ -35,12 +35,12 @@
 
         {
             "name": "class",
-            "type": "<string>:id",
+            "type": "<anything>:id",
             "comment": "Assigns a class name or set of class names to an element. It functions identically to the class attribute in HTML. \nValue: Any valid ID string; Animatable: Yes"
         },
         {
             "name": "style",
-            "type": "<string>:style",
+            "type": "<anything>:style",
             "comment": "It specifies style information for its element. It functions identically to the style attribute in HTML. \nValue: Any valid style string; Animatable: No"
         },
         
@@ -396,11 +396,6 @@
             "comment": "It allows repositioning of the dominant-baseline relative to the dominant-baseline of the parent text content element. \nValue: auto|baseline|super|sub|<percentage>|<length>|inherit; Animatable: Yes"
         },
         {
-            "name": "clip",
-            "type": "auto|<shape()>|inherit",
-            "comment": "It defines what portion of an element is visible. \nValue: auto|<shape()>|inherit; Animatable: Yes"
-        },
-        {
             "name": "clip-path",
             "type": "none|<FuncIRI>|inherit",
             "comment": "It binds the element it is applied to with a given <clipPath> element. \nValue: none|<FuncIRI>|inherit; Animatable: Yes"
@@ -437,12 +432,12 @@
         },
         {
             "name": "cursor",
-            "type": "<FuncIRI>|<keywords>|inherit",
-            "comment": "It specifies the mouse cursor displayed when the mouse pointer is over an element. \nValue: <FuncIRI>|<keywords>|inherit; Animatable: Yes"
+            "type": "<FuncIRI>|<anything>:cursorKeywords|inherit",
+            "comment": "It specifies the mouse cursor displayed when the mouse pointer is over an element. \nValue: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes"
         },
         {
             "name": "d",
-            "type": "<path>|none",
+            "type": "<anything>:path|none",
             "comment": "It defines a path to be drawn. \nValue: path()|none"
         },
         {
@@ -452,7 +447,7 @@
         },
         {
             "name": "display",
-            "type": "<string>:display",
+            "type": "<anything>:display",
             "comment": "It allows to control the rendering of graphical or container elements. \nValue: see css display; Animatable: Yes"
         },
         {
@@ -497,12 +492,12 @@
         },
         {
             "name": "font-family",
-            "type": "<string>:font-family",
+            "type": "<anything>:font-family",
             "comment": "It indicates which font family will be used to render the text of the element. \nValue: see css font-family; Animatable: Yes"
         },
         {
             "name": "font-size",
-            "type": "<string>:font-size",
+            "type": "<anything>:font-size",
             "comment": "It specifies the size of the font. \nValue: see css font-size; Animatable: Yes"
         },
         {
@@ -512,7 +507,7 @@
         },
         {
             "name": "font-stretch",
-            "type": "<string>:font-stretch",
+            "type": "<anything>:font-stretch",
             "comment": "It selects a normal, condensed, or expanded face from a font. \nValue: see css font-stretch; Animatable: Yes"
         },
         {
@@ -522,7 +517,7 @@
         },
         {
             "name": "font-variant",
-            "type": "<string>:font-variant",
+            "type": "<anything>:font-variant",
             "comment": "It specifies whether a font should be used with some of their variation such as small caps or ligatures. \nValue: see css font-variant; Animatable: Yes"
         },
         {
@@ -563,21 +558,21 @@
         {
             "name": "marker-end",
             "type": "<FuncIRI>|none|inherit",
-            "comment": "It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+            "comment": "It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
         },
         {
             "name": "marker-mid",
             "type": "<FuncIRI>|none|inherit",
-            "comment": "It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+            "comment": "It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
         },
         {
             "name": "marker-start",
             "type": "<FuncIRI>|none|inherit",
-            "comment": "It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
+            "comment": "It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. \nValue: <FuncIRI>|none|inherit; Animatable: Yes"
         },
         {
             "name": "mask",
-            "type": "<string>:mask",
+            "type": "<anything>:mask",
             "comment": "It alters the visibility of an element by either masking or clipping the image at specific points. \nValue: see css mask; Animatable: Yes"
         },
         {
@@ -598,7 +593,7 @@
         {
             "name": "shape-rendering",
             "type": "auto|optimizeSpeed|crispEdges|geometricPrecision |inherit",
-            "comment": "Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. \nValue: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes"
+            "comment": "Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. \nValue: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes"
         },
         {
             "name": "solid-color",
@@ -612,8 +607,8 @@
         },
         {
             "name": "stop-color",
-            "type": "currentcolor|<color>|<icccolor>|inherit",
-            "comment": "Indicates what color to use at that gradient stop. \nValue: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes"
+            "type": "currentcolor|<color>|<color>:icccolor|inherit",
+            "comment": "Indicates what color to use at that gradient stop. \nValue: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes"
         },
         {
             "name": "stop-opacity",
@@ -627,8 +622,8 @@
         },
         {
             "name": "stroke-dasharray",
-            "type": "none|<dasharray>",
-            "comment": "Defines the pattern of dashes and gaps used to paint the outline of the shape. \nValue: none|<dasharray>; Animatable: Yes"
+            "type": "none|<list-of-numbers>:dasharray",
+            "comment": "Defines the pattern of dashes and gaps used to paint the outline of the shape. \nValue: none|<list-of-numbers>:dasharray; Animatable: Yes"
         },
         {
             "name": "stroke-dashoffset",
@@ -687,8 +682,8 @@
         },
         {
             "name": "vector-effect",
-            "type": "default|non-scaling-stroke|inherit|<uri>",
-            "comment": "Specifies the vector effect to use when drawing an object. \nValue: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes"
+            "type": "default|non-scaling-stroke|inherit|<IRI>:uri",
+            "comment": "Specifies the vector effect to use when drawing an object. \nValue: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes"
         },
         {
             "name": "visibility",
