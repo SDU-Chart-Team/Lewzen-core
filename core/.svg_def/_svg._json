@@ -46,342 +46,342 @@
         
         {
             "name": "onbegin",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onbegin."
         },
         {
             "name": "onend",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onend."
         },
         {
             "name": "onrepeat",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onrepeat."
         },
 
         {
             "name": "onabort",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onabort."
         },
         {
             "name": "onerror",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onerror."
         },
         {
             "name": "onresize",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onresize."
         },
         {
             "name": "onscroll",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onscroll."
         },
         {
             "name": "onunload",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onunload."
         },
 
 
         {
             "name": "oncopy",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncopy."
         },
         {
             "name": "oncut",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncut."
         },
         {
             "name": "onpaste",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onpaste."
         },
 
         {
             "name": "oncancel",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncancel."
         },
         {
             "name": "oncanplay",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncanplay."
         },
         {
             "name": "oncanplaythrough",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncanplaythrough."
         },
         {
             "name": "onchange",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onchange."
         },
         {
             "name": "onclick",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onclick."
         },
         {
             "name": "onclose",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onclose."
         },
         {
             "name": "oncuechange",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oncuechange."
         },
         {
             "name": "ondblclick",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondblclick."
         },
         {
             "name": "ondrag",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondrag."
         },
         {
             "name": "ondragend",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondragend."
         },
         {
             "name": "ondragenter",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondragenter."
         },
         {
             "name": "ondragleave",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondragleave."
         },
         {
             "name": "ondragover",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondragover."
         },
         {
             "name": "ondragstart",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondragstart."
         },
         {
             "name": "ondrop",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondrop."
         },
         {
             "name": "ondurationchange",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ondurationchange."
         },
         {
             "name": "onemptied",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onemptied."
         },
         {
             "name": "onended",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onended."
         },
         {
             "name": "onfocus",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onfocus."
         },
         {
             "name": "oninput",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oninput."
         },
         {
             "name": "oninvalid",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of oninvalid."
         },
         {
             "name": "onkeydown",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onkeydown."
         },
         {
             "name": "onkeypress",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onkeypress."
         },
         {
             "name": "onkeyup",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onkeyup."
         },
         {
             "name": "onload",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onload."
         },
         {
             "name": "onloadeddata",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onloadeddata."
         },
         {
             "name": "onloadedmetadata",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onloadedmetadata."
         },
         {
             "name": "onloadstart",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onloadstart."
         },
         {
             "name": "onmousedown",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmousedown."
         },
         {
             "name": "onmouseenter",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmouseenter."
         },
         {
             "name": "onmouseleave",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmouseleave."
         },
         {
             "name": "onmousemove",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmousemove."
         },
         {
             "name": "onmouseout",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmouseout."
         },
         {
             "name": "onmouseover",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmouseover."
         },
         {
             "name": "onmouseup",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmouseup."
         },
         {
             "name": "onmousewheel",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onmousewheel."
         },
         {
             "name": "onpause",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onpause."
         },
         {
             "name": "onplay",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onplay."
         },
         {
             "name": "onplaying",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onplaying."
         },
         {
             "name": "onprogress",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onprogress."
         },
         {
             "name": "onratechange",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onratechange."
         },
         {
             "name": "onreset",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onreset."
         },
         {
             "name": "onseeked",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onseeked."
         },
         {
             "name": "onseeking",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onseeking."
         },
         {
             "name": "onselect",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onselect."
         },
         {
             "name": "onshow",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onshow."
         },
         {
             "name": "onstalled",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onstalled."
         },
         {
             "name": "onsubmit",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onsubmit."
         },
         {
             "name": "onsuspend",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onsuspend."
         },
         {
             "name": "ontimeupdate",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ontimeupdate."
         },
         {
             "name": "ontoggle",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of ontoggle."
         },
         {
             "name": "onvolumechange",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onvolumechange."
         },
         {
             "name": "onwaiting",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onwaiting."
         },
 
         {
             "name": "onactivate",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onactivate."
         },
         {
             "name": "onfocusin",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onfocusin."
         },
         {
             "name": "onfocusout",
-            "type": "event",
+            "type": "<anything>:event",
             "comment": "Event of onfocusout."
         },
 

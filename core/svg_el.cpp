@@ -83,7 +83,6 @@ namespace Lewzen {
         _onfocusout = STR_NULL;
         _alignment_baseline = STR_NULL;
         _baseline_shift = STR_NULL;
-        _clip = STR_NULL;
         _clip_path = STR_NULL;
         _clip_rule = STR_NULL;
         _color = STR_NULL;
@@ -694,13 +693,6 @@ namespace Lewzen {
         _baseline_shift = baseline_shift;
         update_attribute_hash();
     }
-    const std::string SVGElement::get_clip() const {
-        return _clip;
-    }
-    void SVGElement::set_clip(const std::string &clip) {
-        _clip = clip;
-        update_attribute_hash();
-    }
     const std::string SVGElement::get_clip_path() const {
         return _clip_path;
     }
@@ -1259,7 +1251,6 @@ namespace Lewzen {
         if (_onfocusout != STR_NULL) ss << " onfocusout=\"" << _onfocusout << "\"";
         if (_alignment_baseline != STR_NULL) ss << " alignment-baseline=\"" << _alignment_baseline << "\"";
         if (_baseline_shift != STR_NULL) ss << " baseline-shift=\"" << _baseline_shift << "\"";
-        if (_clip != STR_NULL) ss << " clip=\"" << _clip << "\"";
         if (_clip_path != STR_NULL) ss << " clip-path=\"" << _clip_path << "\"";
         if (_clip_rule != STR_NULL) ss << " clip-rule=\"" << _clip_rule << "\"";
         if (_color != STR_NULL) ss << " color=\"" << _color << "\"";
@@ -1466,7 +1457,6 @@ namespace Lewzen {
         _onfocusout = element.get_onfocusout();
         _alignment_baseline = element.get_alignment_baseline();
         _baseline_shift = element.get_baseline_shift();
-        _clip = element.get_clip();
         _clip_path = element.get_clip_path();
         _clip_rule = element.get_clip_rule();
         _color = element.get_color();
@@ -1606,12 +1596,16 @@ namespace Lewzen {
             auto &a = addition[i];
             indices[unchanged.size() + i] = a.idx;
         }
-        ss << "sort \"";
-        for (int i = 0; i < m; i++) {
-            ss << indices[i];
-            if (i < m - 1) ss << ",";
+        bool ordered = true;
+        for (int i = 0; i < m && ordered; i++) if (indices[i] != i) ordered = false;
+        if (!ordered) {
+            ss << "sort \"";
+            for (int i = 0; i < m; i++) {
+                ss << indices[i];
+                if (i < m - 1) ss << ",";
+            }
+            ss << "\"" << std::endl;
         }
-        ss << "\"" << std::endl;
         delete[] removed; delete[] indices;
 
         return ss.str();
@@ -1926,10 +1920,6 @@ namespace Lewzen {
         if (_baseline_shift != element.get_baseline_shift()) {
             if (_baseline_shift == STR_NULL) ss << "reset baseline-shift" << std::endl;
             else ss << "modify baseline-shift \"" << _baseline_shift << "\"" << std::endl;
-        }
-        if (_clip != element.get_clip()) {
-            if (_clip == STR_NULL) ss << "reset clip" << std::endl;
-            else ss << "modify clip \"" << _clip << "\"" << std::endl;
         }
         if (_clip_path != element.get_clip_path()) {
             if (_clip_path == STR_NULL) ss << "reset clip-path" << std::endl;

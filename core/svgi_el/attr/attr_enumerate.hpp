@@ -5,7 +5,7 @@
 #define __debug
 #endif
 #include <tuple>
-#include "../attr.h"
+#include "../attr.hpp"
 
 namespace Lewzen {
     template<typename... Ts>
@@ -36,10 +36,13 @@ namespace Lewzen {
             #endif
             return STR_NULL;
         }
+        const std::string __commit_impl(AttrColor &u) const {
+            return u.get_commit();
+        }
         const std::string __commit_impl(AttrAnything &u) const {
             return u.get_commit();
         }
-        const std::string __commit_impl(AttrInterger &u) const {
+        const std::string __commit_impl(AttrInteger &u) const {
             return u.get_commit();
         }
         const std::string __commit_impl(AttrListOfNumbers &u) const {
@@ -109,10 +112,13 @@ namespace Lewzen {
             std::cout  << "Warning: " << "Found unsupported ctype \"" << typeid(u).name() << "\" in Enumerate, which only supports SVG attributes."<< std::endl;
             #endif
         }
+        void _EnumerateImpl(AttrColor &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+            u.set_getter(getter), u.set_setter(setter);
+        }
         void _EnumerateImpl(AttrAnything &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
-        void _EnumerateImpl(AttrInterger &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+        void _EnumerateImpl(AttrInteger &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
         void _EnumerateImpl(AttrListOfNumbers &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
@@ -150,6 +156,24 @@ namespace Lewzen {
         }
         void _EnumerateImpl(AttrFuncIRI &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
+        }
+
+        /**
+        * Set getter of Integer this attribute.
+        * @param getter getter function
+        */
+        void set_getter(std::function<const std::string()> getter) {
+            _getter = getter;
+            _Enumerate<0, Ts...>(getter, _setter);
+        }
+        /**
+        * Set setter of Integer this attribute.
+        *
+        * @param setter setter function
+        */
+        void set_setter(std::function<void(const std::string &)> setter) {
+            _setter = setter;
+            _Enumerate<0, Ts...>(_getter, setter);
         }
 
         /**
@@ -208,11 +232,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _set_impl(const T &attr, AttrColor &u) {
+            u.set(attr);
+        }
+        template<typename T>
         void _set_impl(const T &attr, AttrAnything &u) {
             u.set(attr);
         }
         template<typename T>
-        void _set_impl(const T &attr, AttrInterger &u) {
+        void _set_impl(const T &attr, AttrInteger &u) {
             u.set(attr);
         }
         template<typename T>
@@ -296,11 +324,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _op1_impl(const T &attr, AttrColor &u) {
+            u = attr;
+        }
+        template<typename T>
         void _op1_impl(const T &attr, AttrAnything &u) {
             u = attr;
         }
         template<typename T>
-        void _op1_impl(const T &attr, AttrInterger &u) {
+        void _op1_impl(const T &attr, AttrInteger &u) {
             u = attr;
         }
         template<typename T>
@@ -397,11 +429,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _bind1_impl(std::function<const T()>bind_func, AttrColor &u) {
+            u.bind(bind_func);
+        }
+        template<typename T>
         void _bind1_impl(std::function<const T()>bind_func, AttrAnything &u) {
             u.bind(bind_func);
         }
         template<typename T>
-        void _bind1_impl(std::function<const T()>bind_func, AttrInterger &u) {
+        void _bind1_impl(std::function<const T()>bind_func, AttrInteger &u) {
             u.bind(bind_func);
         }
         template<typename T>
@@ -499,11 +535,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _op2_impl(std::function<const T()>bind_func, AttrColor &u) {
+            u[bind_func];
+        }
+        template<typename T>
         void _op2_impl(std::function<const T()>bind_func, AttrAnything &u) {
             u[bind_func];
         }
         template<typename T>
-        void _op2_impl(std::function<const T()>bind_func, AttrInterger &u) {
+        void _op2_impl(std::function<const T()>bind_func, AttrInteger &u) {
             u[bind_func];
         }
         template<typename T>
@@ -585,11 +625,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrColor &u) {
+            u.bind(bind_ptr);
+        }
+        template<typename T>
         void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrAnything &u) {
             u.bind(bind_ptr);
         }
         template<typename T>
-        void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrInterger &u) {
+        void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrInteger &u) {
             u.bind(bind_ptr);
         }
         template<typename T>
@@ -672,11 +716,15 @@ namespace Lewzen {
             #endif
         }
         template<typename T>
+        void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrColor &u) {
+            u[bind_ptr];
+        }
+        template<typename T>
         void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrAnything &u) {
             u[bind_ptr];
         }
         template<typename T>
-        void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrInterger &u) {
+        void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrInteger &u) {
             u[bind_ptr];
         }
         template<typename T>

@@ -182,8 +182,6 @@ namespace Lewzen {
     private:
         std::string _baseline_shift;
     private:
-        std::string _clip;
-    private:
         std::string _clip_path;
     private:
         std::string _clip_rule;
@@ -1250,20 +1248,6 @@ namespace Lewzen {
         * @param  the baseline-shift
         */
         void set_baseline_shift(const std::string &baseline_shift);
-        /**
-        * It defines what portion of an element is visible. 
-        * Value: auto|<shape()>|inherit; Animatable: Yes
-        *
-        * @return the clip
-        */
-        const std::string get_clip() const;
-        /**
-        * It defines what portion of an element is visible. 
-        * Value: auto|<shape()>|inherit; Animatable: Yes
-        *
-        * @param  the clip
-        */
-        void set_clip(const std::string &clip);
         /**
         * It binds the element it is applied to with a given <clipPath> element. 
         * Value: none|<FuncIRI>|inherit; Animatable: Yes

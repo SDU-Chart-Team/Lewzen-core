@@ -1,7 +1,7 @@
 #ifndef __LZ_ATTR_CONSTANT__
 #define __LZ_ATTR_CONSTANT__
 #include <sstream>
-#include "../attr.h"
+#include "../attr.hpp"
 
 namespace Lewzen {
     template<char const *const_val>

@@ -383,12 +383,16 @@ std::string SVGCPP() {
     ss << "            auto &a = addition[i];" << std::endl;
     ss << "            indices[unchanged.size() + i] = a.idx;" << std::endl;
     ss << "        }" << std::endl;
-    ss << "        ss << \"sort \\\"\";" << std::endl;
-    ss << "        for (int i = 0; i < m; i++) {" << std::endl;
-    ss << "            ss << indices[i];" << std::endl;
-    ss << "            if (i < m - 1) ss << \",\";" << std::endl;
+    ss << "        bool ordered = true;" << std::endl;
+    ss << "        for (int i = 0; i < m && ordered; i++) if (indices[i] != i) ordered = false;" << std::endl;
+    ss << "        if (!ordered) {" << std::endl;
+    ss << "            ss << \"sort \\\"\";" << std::endl;
+    ss << "            for (int i = 0; i < m; i++) {" << std::endl;
+    ss << "                ss << indices[i];" << std::endl;
+    ss << "                if (i < m - 1) ss << \",\";" << std::endl;
+    ss << "            }" << std::endl;
+    ss << "            ss << \"\\\"\" << std::endl;" << std::endl;
     ss << "        }" << std::endl;
-    ss << "        ss << \"\\\"\" << std::endl;" << std::endl;
     ss << "        delete[] removed; delete[] indices;" << std::endl;
     ss << "" << std::endl;
     ss << "        return ss.str();" << std::endl;
@@ -878,18 +882,6 @@ const std::string Makefile(const std::vector<std::string> &tags) {
     ss << ".PHONY: all" << std::endl;
     ss << "clean:" << std::endl;
 	ss << "\t-rm $(objects)" << std::endl;
-    return ss.str();
-}
-
-const std::string Includes(const std::vector<std::string> &tags) {
-    fs::path p(out_dir);
-    fs::path base(base_dir);
-    auto ip = fs::relative(p, base).generic_string();
-
-    std::stringstream ss;
-    for (auto &tag : tags) {
-        ss << "#include \"" << ip << "/svg_" << tag <<".h\"" << std::endl;
-    }
     return ss.str();
 }
 

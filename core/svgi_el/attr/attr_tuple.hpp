@@ -3,7 +3,7 @@
 #include <array>
 #include <tuple>
 #include <sstream>
-#include "../attr.h"
+#include "../attr.hpp"
 
 namespace Lewzen {
     template<typename... Ts>
@@ -39,10 +39,13 @@ namespace Lewzen {
         void __commit_impl(I &u) const {
             _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
         }
+        void __commit_impl(AttrColor &u) const {
+            u.commit();
+        }
         void __commit_impl(AttrAnything &u) const {
             u.commit();
         }
-        void __commit_impl(AttrInterger &u) const {
+        void __commit_impl(AttrInteger &u) const {
             u.commit();
         }
         void __commit_impl(AttrListOfNumbers &u) const {
@@ -112,10 +115,13 @@ namespace Lewzen {
         void _TupleImpl(I &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
         }
+        void _TupleImpl(AttrColor &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+            u.set_getter(getter), u.set_setter(setter);
+        }
         void _TupleImpl(AttrAnything &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
-        void _TupleImpl(AttrInterger &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+        void _TupleImpl(AttrInteger &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
         void _TupleImpl(AttrListOfNumbers &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
@@ -153,6 +159,22 @@ namespace Lewzen {
         }
         void _TupleImpl(AttrFuncIRI &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
+        }
+
+        /**
+        * Set getter of Integer this attribute.
+        * @param getter getter function
+        */
+        void set_getter(std::function<const std::string()> getter) {
+            _getter = getter;
+        }
+        /**
+        * Set setter of Integer this attribute.
+        *
+        * @param setter setter function
+        */
+        void set_setter(std::function<void(const std::string &)> setter) {
+            _setter = setter;
         }
 
         /**
