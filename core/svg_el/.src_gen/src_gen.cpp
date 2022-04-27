@@ -220,6 +220,7 @@ std::string SVGCPP() {
     ss << "                                    }" << std::endl;
     ss << "                                    return false;" << std::endl;
     ss << "                                }), _inner_elements.end());" << std::endl;
+    ss << "        success = false;" << std::endl;
     ss << "        for (auto &p : removed) p->_parent_element = std::weak_ptr<SVGElement>();" << std::endl;
     ss << "        update_inner_hash();" << std::endl;
     ss << "    }" << std::endl;
@@ -227,7 +228,8 @@ std::string SVGCPP() {
     ss << "        return _inner_elements;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {" << std::endl;
-    ss << "        for (auto p : _inner_elements) remove_inner_element(p);" << std::endl;
+    ss << "        auto tmp = _inner_elements;" << std::endl;
+    ss << "        for (auto p : tmp) remove_inner_element(p);" << std::endl;
     ss << "        for (auto p : inner_elements) add_inner_element(p);" << std::endl;
     ss << "        update_inner_hash();" << std::endl;
     ss << "    }" << std::endl;

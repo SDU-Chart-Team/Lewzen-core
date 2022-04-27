@@ -592,6 +592,7 @@ namespace Lewzen {
                                     }
                                     return false;
                                 }), _inner_elements_commit.end());
+        success = false;
         for (auto &p : removed) p->_parent_element_commit = std::weak_ptr<SVGIElement>();
     }
     const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::get_inner_elements() const {
@@ -612,12 +613,14 @@ namespace Lewzen {
         // attribute differ
         for (auto &i : bound) ss << _attr_commit[i]() << std::endl;
         for (auto &i : modified) ss << _attr_commit[i]() << std::endl;
+        modified.clear();
 
         // inner differ
         if (_inner_text_commit != get_inner_text()) {
             auto content = _inner_text_commit;
             ss << "content " << content.size() << std::endl << content << std::endl;
         }
+        // recursion
         std::vector<std::string> changed;
         for (auto &p : _inner_elements_commit) changed.push_back(p->commit());
         // extract change relation
@@ -637,10 +640,10 @@ namespace Lewzen {
             auto svg = _inner_elements_commit[a]->outer_SVG();
             ss << "append " << svg.size() << std::endl << svg << std::endl;
         }
-        // change recursively
+        // changed
         for (auto &c : unchanged) {
             auto &a = c.first; auto &b = c.second;
-            auto &s = changed[b];
+            auto &s = changed[a];
             if (s == STR_NULL) continue;
             ss << "child " << b - removed[b] << std::endl;
             ss << s << std::endl;
@@ -667,10 +670,14 @@ namespace Lewzen {
         }
         delete[] removed; delete[] indices;
 
-        _inner_elements_last = _inner_elements_commit;
+        // commit inner changes
+        _inner_elements_last.clear();
+        SVGElement::set_inner_elements({});
+        for (auto &p : _inner_elements_commit) _inner_elements_last.push_back(p), SVGElement::add_inner_element(p);
+
         return ss.str();
     }
-    const std::string SVGIElement::inner_differ_commit(std::vector<int> &removal,
+    void SVGIElement::inner_differ_commit(std::vector<int> &removal,
             std::vector<int> &addition,
             std::vector<std::pair<int, int>> &unchanged) const {
         std::unordered_map<std::string, std::set<_i_el_idx>> tags_map;

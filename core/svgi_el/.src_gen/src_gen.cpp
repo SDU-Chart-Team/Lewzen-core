@@ -139,7 +139,7 @@ public:
     }
     const std::string domain() const {
         std::stringstream ss;
-        ss << "    private:" << std::endl;
+        ss << "    public:" << std::endl;
          ss << "        /**" << std::endl;
         ss << "        * " << _comment << std::endl;
         ss << "        */" << std::endl;
@@ -242,6 +242,7 @@ std::string SVGICPP() {
     ss << "                                    }" << std::endl;
     ss << "                                    return false;" << std::endl;
     ss << "                                }), _inner_elements_commit.end());" << std::endl;
+    ss << "        success = false;" << std::endl;
     ss << "        for (auto &p : removed) p->_parent_element_commit = std::weak_ptr<SVGIElement>();" << std::endl;
     ss << "    }" << std::endl;
     ss << "    const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::get_inner_elements() const {" << std::endl;
@@ -262,12 +263,14 @@ std::string SVGICPP() {
     ss << "        // attribute differ" << std::endl;
     ss << "        for (auto &i : bound) ss << _attr_commit[i]() << std::endl;" << std::endl;
     ss << "        for (auto &i : modified) ss << _attr_commit[i]() << std::endl;" << std::endl;
+    ss << "        modified.clear();" << std::endl;
     ss << "" << std::endl;
     ss << "        // inner differ" << std::endl;
     ss << "        if (_inner_text_commit != get_inner_text()) {" << std::endl;
     ss << "            auto content = _inner_text_commit;" << std::endl;
     ss << "            ss << \"content \" << content.size() << std::endl << content << std::endl;" << std::endl;
     ss << "        }" << std::endl;
+    ss << "        // recursion" << std::endl;
     ss << "        std::vector<std::string> changed;" << std::endl;
     ss << "        for (auto &p : _inner_elements_commit) changed.push_back(p->commit());" << std::endl;
     ss << "        // extract change relation" << std::endl;
@@ -287,10 +290,10 @@ std::string SVGICPP() {
     ss << "            auto svg = _inner_elements_commit[a]->outer_SVG();" << std::endl;
     ss << "            ss << \"append \" << svg.size() << std::endl << svg << std::endl;" << std::endl;
     ss << "        }" << std::endl;
-    ss << "        // change recursively" << std::endl;
+    ss << "        // changed" << std::endl;
     ss << "        for (auto &c : unchanged) {" << std::endl;
     ss << "            auto &a = c.first; auto &b = c.second;" << std::endl;
-    ss << "            auto &s = changed[b];" << std::endl;
+    ss << "            auto &s = changed[a];" << std::endl;
     ss << "            if (s == STR_NULL) continue;" << std::endl;
     ss << "            ss << \"child \" << b - removed[b] << std::endl;" << std::endl;
     ss << "            ss << s << std::endl;" << std::endl;
@@ -317,10 +320,14 @@ std::string SVGICPP() {
     ss << "        }" << std::endl;
     ss << "        delete[] removed; delete[] indices;" << std::endl;
     ss << "" << std::endl;
-    ss << "        _inner_elements_last = _inner_elements_commit;" << std::endl;
+    ss << "        // commit inner changes" << std::endl;
+    ss << "        _inner_elements_last.clear();" << std::endl;
+    ss << "        SVGElement::set_inner_elements({});" << std::endl;
+    ss << "        for (auto &p : _inner_elements_commit) _inner_elements_last.push_back(p), SVGElement::add_inner_element(p);" << std::endl;
+    ss << "" << std::endl;
     ss << "        return ss.str();" << std::endl;
     ss << "    }" << std::endl;
-    ss << "    const std::string SVGIElement::inner_differ_commit(std::vector<int> &removal," << std::endl;
+    ss << "    void SVGIElement::inner_differ_commit(std::vector<int> &removal," << std::endl;
     ss << "            std::vector<int> &addition," << std::endl;
     ss << "            std::vector<std::pair<int, int>> &unchanged) const {" << std::endl;
     ss << "        std::unordered_map<std::string, std::set<_i_el_idx>> tags_map;" << std::endl;
@@ -405,7 +412,7 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "    /**" << std::endl;
     ss << "    * An SVG element interface." << std::endl;
     ss << "    */" << std::endl;
-    ss << "    class SVGIElement : protected virtual SVGElement {" << std::endl;
+    ss << "    class SVGIElement : public virtual SVGElement {" << std::endl;
     ss << "    public:" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Constructor of SVG element interface." << std::endl;
@@ -455,11 +462,9 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "            }" << std::endl;
     ss << "        };" << std::endl;
     ss << "        /**" << std::endl;
-    ss << "        * Returning differences on inner elements." << std::endl;
-    ss << "        *" << std::endl;
-    ss << "        * @return DOM Commands." << std::endl;
+    ss << "        * Compare inner elements before and after commitment." << std::endl;
     ss << "        */" << std::endl;
-    ss << "        const std::string inner_differ_commit(std::vector<int> &removal," << std::endl;
+    ss << "        void inner_differ_commit(std::vector<int> &removal," << std::endl;
     ss << "            std::vector<int> &addition," << std::endl;
     ss << "            std::vector<std::pair<int, int>> &unchanged) const;" << std::endl;
     ss << "    public:" << std::endl;

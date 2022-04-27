@@ -1159,6 +1159,7 @@ namespace Lewzen {
                                     }
                                     return false;
                                 }), _inner_elements.end());
+        success = false;
         for (auto &p : removed) p->_parent_element = std::weak_ptr<SVGElement>();
         update_inner_hash();
     }
@@ -1166,7 +1167,8 @@ namespace Lewzen {
         return _inner_elements;
     }
     void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {
-        for (auto p : _inner_elements) remove_inner_element(p);
+        auto tmp = _inner_elements;
+        for (auto p : tmp) remove_inner_element(p);
         for (auto p : inner_elements) add_inner_element(p);
         update_inner_hash();
     }

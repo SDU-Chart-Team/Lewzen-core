@@ -7,7 +7,7 @@ namespace Lewzen {
     /**
     * An SVG element interface.
     */
-    class SVGIElement : protected virtual SVGElement {
+    class SVGIElement : public virtual SVGElement {
     public:
         /**
         * Constructor of SVG element interface.
@@ -26,762 +26,762 @@ namespace Lewzen {
         const std::string get_tag() const;
 
         /// Attributes
-    private:
+    public:
         /**
         * Defines a unique identifier (ID) which must be unique in the whole document. Its purpose is to identify the element when linking (using a fragment identifier), scripting, or styling (with CSS). 
         * Value: Any valid ID string; Animatable: No
         */
         AttrAnything Id;
-    private:
+    public:
         /**
         * Participates in defining the language of the element, the language that non-editable elements are written in or the language that editable elements should be written in. The tag contains one single entry value in the format defined in RFC 5646: Tags for Identifying Languages (also known as BCP 47). 
         * Value: Any valid language ID; Animatable: No
         */
         AttrAnything Lang;
-    private:
+    public:
         /**
         * The tabindex SVG attribute allows you to control whether an element is focusable and to define the relative order of the element for the purposes of sequential focus navigation. 
         * Value type: <integer>; Animatable: No
         */
         AttrInteger Tabindex;
-    private:
+    public:
         /**
         * Specifies a base IRI other than the base IRI of the document. 
         * Value type: <IRI>; Animatable: No
         */
         AttrIRI XmlBase;
-    private:
+    public:
         /**
         * It is a universal attribute allowed in all XML dialects to mark up the natural human language that an element contains. It's almost identical in usage to HTML's lang, but in conforming XML 1.0 documents, it does not allow the use of a null attribute value (xml:lang="") to indicate an unknown language. Instead, use xml:lang="und". 
         * Value: Any valid language ID; Animatable: No
         */
         AttrAnything XmlLang;
-    private:
+    public:
         /**
         * SVG supports the standard XML attribute xml:space to specify the handling of white space characters within a given <text> element's character data. 
         * Value: default | preserve; Animatable: No
         */
         AttrEnumerate<AttrConstDefault, AttrConstPreserve> XmlSpace;
-    private:
+    public:
         /**
         * Assigns a class name or set of class names to an element. It functions identically to the class attribute in HTML. 
         * Value: Any valid ID string; Animatable: Yes
         */
         AttrAnything Class;
-    private:
+    public:
         /**
         * It specifies style information for its element. It functions identically to the style attribute in HTML. 
         * Value: Any valid style string; Animatable: No
         */
         AttrAnything Style;
-    private:
+    public:
         /**
         * Event of onbegin.
         */
         AttrAnything Onbegin;
-    private:
+    public:
         /**
         * Event of onend.
         */
         AttrAnything Onend;
-    private:
+    public:
         /**
         * Event of onrepeat.
         */
         AttrAnything Onrepeat;
-    private:
+    public:
         /**
         * Event of onabort.
         */
         AttrAnything Onabort;
-    private:
+    public:
         /**
         * Event of onerror.
         */
         AttrAnything Onerror;
-    private:
+    public:
         /**
         * Event of onresize.
         */
         AttrAnything Onresize;
-    private:
+    public:
         /**
         * Event of onscroll.
         */
         AttrAnything Onscroll;
-    private:
+    public:
         /**
         * Event of onunload.
         */
         AttrAnything Onunload;
-    private:
+    public:
         /**
         * Event of oncopy.
         */
         AttrAnything Oncopy;
-    private:
+    public:
         /**
         * Event of oncut.
         */
         AttrAnything Oncut;
-    private:
+    public:
         /**
         * Event of onpaste.
         */
         AttrAnything Onpaste;
-    private:
+    public:
         /**
         * Event of oncancel.
         */
         AttrAnything Oncancel;
-    private:
+    public:
         /**
         * Event of oncanplay.
         */
         AttrAnything Oncanplay;
-    private:
+    public:
         /**
         * Event of oncanplaythrough.
         */
         AttrAnything Oncanplaythrough;
-    private:
+    public:
         /**
         * Event of onchange.
         */
         AttrAnything Onchange;
-    private:
+    public:
         /**
         * Event of onclick.
         */
         AttrAnything Onclick;
-    private:
+    public:
         /**
         * Event of onclose.
         */
         AttrAnything Onclose;
-    private:
+    public:
         /**
         * Event of oncuechange.
         */
         AttrAnything Oncuechange;
-    private:
+    public:
         /**
         * Event of ondblclick.
         */
         AttrAnything Ondblclick;
-    private:
+    public:
         /**
         * Event of ondrag.
         */
         AttrAnything Ondrag;
-    private:
+    public:
         /**
         * Event of ondragend.
         */
         AttrAnything Ondragend;
-    private:
+    public:
         /**
         * Event of ondragenter.
         */
         AttrAnything Ondragenter;
-    private:
+    public:
         /**
         * Event of ondragleave.
         */
         AttrAnything Ondragleave;
-    private:
+    public:
         /**
         * Event of ondragover.
         */
         AttrAnything Ondragover;
-    private:
+    public:
         /**
         * Event of ondragstart.
         */
         AttrAnything Ondragstart;
-    private:
+    public:
         /**
         * Event of ondrop.
         */
         AttrAnything Ondrop;
-    private:
+    public:
         /**
         * Event of ondurationchange.
         */
         AttrAnything Ondurationchange;
-    private:
+    public:
         /**
         * Event of onemptied.
         */
         AttrAnything Onemptied;
-    private:
+    public:
         /**
         * Event of onended.
         */
         AttrAnything Onended;
-    private:
+    public:
         /**
         * Event of onfocus.
         */
         AttrAnything Onfocus;
-    private:
+    public:
         /**
         * Event of oninput.
         */
         AttrAnything Oninput;
-    private:
+    public:
         /**
         * Event of oninvalid.
         */
         AttrAnything Oninvalid;
-    private:
+    public:
         /**
         * Event of onkeydown.
         */
         AttrAnything Onkeydown;
-    private:
+    public:
         /**
         * Event of onkeypress.
         */
         AttrAnything Onkeypress;
-    private:
+    public:
         /**
         * Event of onkeyup.
         */
         AttrAnything Onkeyup;
-    private:
+    public:
         /**
         * Event of onload.
         */
         AttrAnything Onload;
-    private:
+    public:
         /**
         * Event of onloadeddata.
         */
         AttrAnything Onloadeddata;
-    private:
+    public:
         /**
         * Event of onloadedmetadata.
         */
         AttrAnything Onloadedmetadata;
-    private:
+    public:
         /**
         * Event of onloadstart.
         */
         AttrAnything Onloadstart;
-    private:
+    public:
         /**
         * Event of onmousedown.
         */
         AttrAnything Onmousedown;
-    private:
+    public:
         /**
         * Event of onmouseenter.
         */
         AttrAnything Onmouseenter;
-    private:
+    public:
         /**
         * Event of onmouseleave.
         */
         AttrAnything Onmouseleave;
-    private:
+    public:
         /**
         * Event of onmousemove.
         */
         AttrAnything Onmousemove;
-    private:
+    public:
         /**
         * Event of onmouseout.
         */
         AttrAnything Onmouseout;
-    private:
+    public:
         /**
         * Event of onmouseover.
         */
         AttrAnything Onmouseover;
-    private:
+    public:
         /**
         * Event of onmouseup.
         */
         AttrAnything Onmouseup;
-    private:
+    public:
         /**
         * Event of onmousewheel.
         */
         AttrAnything Onmousewheel;
-    private:
+    public:
         /**
         * Event of onpause.
         */
         AttrAnything Onpause;
-    private:
+    public:
         /**
         * Event of onplay.
         */
         AttrAnything Onplay;
-    private:
+    public:
         /**
         * Event of onplaying.
         */
         AttrAnything Onplaying;
-    private:
+    public:
         /**
         * Event of onprogress.
         */
         AttrAnything Onprogress;
-    private:
+    public:
         /**
         * Event of onratechange.
         */
         AttrAnything Onratechange;
-    private:
+    public:
         /**
         * Event of onreset.
         */
         AttrAnything Onreset;
-    private:
+    public:
         /**
         * Event of onseeked.
         */
         AttrAnything Onseeked;
-    private:
+    public:
         /**
         * Event of onseeking.
         */
         AttrAnything Onseeking;
-    private:
+    public:
         /**
         * Event of onselect.
         */
         AttrAnything Onselect;
-    private:
+    public:
         /**
         * Event of onshow.
         */
         AttrAnything Onshow;
-    private:
+    public:
         /**
         * Event of onstalled.
         */
         AttrAnything Onstalled;
-    private:
+    public:
         /**
         * Event of onsubmit.
         */
         AttrAnything Onsubmit;
-    private:
+    public:
         /**
         * Event of onsuspend.
         */
         AttrAnything Onsuspend;
-    private:
+    public:
         /**
         * Event of ontimeupdate.
         */
         AttrAnything Ontimeupdate;
-    private:
+    public:
         /**
         * Event of ontoggle.
         */
         AttrAnything Ontoggle;
-    private:
+    public:
         /**
         * Event of onvolumechange.
         */
         AttrAnything Onvolumechange;
-    private:
+    public:
         /**
         * Event of onwaiting.
         */
         AttrAnything Onwaiting;
-    private:
+    public:
         /**
         * Event of onactivate.
         */
         AttrAnything Onactivate;
-    private:
+    public:
         /**
         * Event of onfocusin.
         */
         AttrAnything Onfocusin;
-    private:
+    public:
         /**
         * Event of onfocusout.
         */
         AttrAnything Onfocusout;
-    private:
+    public:
         /**
         * It specifies how an object is aligned along the font baseline with respect to its parent. 
         * Value: auto|baseline|before-edge|text-before-edge|middle|central|after-edge|text-after-edge|ideographic|alphabetic|hanging|mathematical|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstBaseline, AttrConstBeforeEdge, AttrConstTextBeforeEdge, AttrConstMiddle, AttrConstCentral, AttrConstAfterEdge, AttrConstTextAfterEdge, AttrConstIdeographic, AttrConstAlphabetic, AttrConstHanging, AttrConstMathematical, AttrConstInherit> AlignmentBaseline;
-    private:
+    public:
         /**
         * It allows repositioning of the dominant-baseline relative to the dominant-baseline of the parent text content element. 
         * Value: auto|baseline|super|sub|<percentage>|<length>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstBaseline, AttrConstSuper, AttrConstSub, AttrPercentage, AttrLength, AttrConstInherit> BaselineShift;
-    private:
+    public:
         /**
         * It binds the element it is applied to with a given <clipPath> element. 
         * Value: none|<FuncIRI>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstNone, AttrFuncIRI, AttrConstInherit> ClipPath;
-    private:
+    public:
         /**
         * It indicates how to determine what side of a path is inside a shape in order to know how a <clipPath> should clip its target. 
         * Value: nonezero|evenodd|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstNonezero, AttrConstEvenodd, AttrConstInherit> ClipRule;
-    private:
+    public:
         /**
         * It provides a potential indirect value (currentcolor) for the fill, stroke, stop-color, flood-color and lighting-color presentation attributes. 
         * Value: <color>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrColor, AttrConstInherit> Color;
-    private:
+    public:
         /**
         * It specifies the color space for gradient interpolations, color animations, and alpha compositing. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstSRGB, AttrConstLinearRGB, AttrConstInherit> ColorInterpolation;
-    private:
+    public:
         /**
         * It specifies the color space for imaging operations performed via filter effects. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstSRGB, AttrConstLinearRGB, AttrConstInherit> ColorInterpolationFilters;
-    private:
+    public:
         /**
         * It defines which color profile a raster image included through the <image> element should use. 
         * Value: auto|sRGB|linearRGB|<name>|<IRI>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstSRGB, AttrConstLinearRGB, AttrName, AttrIRI, AttrConstInherit> ColorProfile;
-    private:
+    public:
         /**
         * It provides a hint to the browser about how to optimize its color interpolation and compositing operations. 
         * Value: auto|optimizeSpeed|optimizeQuality|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstOptimizeSpeed, AttrConstOptimizeQuality, AttrConstInherit> ColorRendering;
-    private:
+    public:
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
         * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrFuncIRI, AttrAnything, AttrConstInherit> Cursor;
-    private:
+    public:
         /**
         * It defines a path to be drawn. 
         * Value: path()|none
         */
         AttrEnumerate<AttrAnything, AttrConstNone> D;
-    private:
+    public:
         /**
         * It specifies the base writing direction of text. 
         * Value: ltr|rtl|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstLtr, AttrConstRtl, AttrConstInherit> Direction;
-    private:
+    public:
         /**
         * It allows to control the rendering of graphical or container elements. 
         * Value: see css display; Animatable: Yes
         */
         AttrAnything Display;
-    private:
+    public:
         /**
         * It defines the baseline used to align the box's text and inline-level contents. 
         * Value: auto|text-bottom|alphabetic|ideographic|middle|central| mathematical|hanging|text-top; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstTextBottom, AttrConstAlphabetic, AttrConstIdeographic, AttrConstMiddle, AttrConstCentral, AttrConstMathematical, AttrConstHanging, AttrConstTextTop> DominantBaseline;
-    private:
+    public:
         /**
         * It tells the browser how to manage the accumulation of the background image. 
         * Value: accumulate|new|inherit; Animatable: No
         */
         AttrEnumerate<AttrConstAccumulate, AttrConstNew, AttrConstInherit> EnableBackground;
-    private:
+    public:
         /**
         * It defines the color of the inside of the graphical element it applies to. 
         * Value: <paint>; Animatable: Yes
         */
         AttrPaint Fill;
-    private:
+    public:
         /**
         * It specifies the opacity of the color or the content the current object is filled with. 
         * Value: <number>|<percentage>; Animatable: Yes
         */
         AttrEnumerate<AttrNumber, AttrPercentage> FillOpacity;
-    private:
+    public:
         /**
         * It indicates how to determine what side of a path is inside a shape. 
         * Value: nonzero|evenodd|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstNonzero, AttrConstEvenodd, AttrConstInherit> FillRule;
-    private:
+    public:
         /**
         * It defines the filter effects defined by the <filter> element that shall be applied to its element. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrFuncIRI, AttrConstNone, AttrConstInherit> Filter;
-    private:
+    public:
         /**
         * It indicates what color to use to flood the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <color>; Animatable: Yes
         */
         AttrColor FloodColor;
-    private:
+    public:
         /**
         * It indicates the opacity value to use across the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <number>|<percentage>; Animatable: Yes
         */
         AttrEnumerate<AttrNumber, AttrPercentage> FloodOpacity;
-    private:
+    public:
         /**
         * It indicates which font family will be used to render the text of the element. 
         * Value: see css font-family; Animatable: Yes
         */
         AttrAnything FontFamily;
-    private:
+    public:
         /**
         * It specifies the size of the font. 
         * Value: see css font-size; Animatable: Yes
         */
         AttrAnything FontSize;
-    private:
+    public:
         /**
         * It specifies that the font size should be chosen based on the height of lowercase letters rather than the height of capital letters. 
         * Value: <number>|none|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrNumber, AttrConstNone, AttrConstInherit> FontSizeAdjust;
-    private:
+    public:
         /**
         * It selects a normal, condensed, or expanded face from a font. 
         * Value: see css font-stretch; Animatable: Yes
         */
         AttrAnything FontStretch;
-    private:
+    public:
         /**
         * It specifies whether a font should be styled with a normal, italic, or oblique face from its font-family. 
         * Value: normal|italic|oblique; Animatable: Yes
         */
         AttrEnumerate<AttrConstNormal, AttrConstItalic, AttrConstOblique> FontStyle;
-    private:
+    public:
         /**
         * It specifies whether a font should be used with some of their variation such as small caps or ligatures. 
         * Value: see css font-variant; Animatable: Yes
         */
         AttrAnything FontVariant;
-    private:
+    public:
         /**
         * It specifies the weight (or boldness) of the font. 
         * Value: normal|bold|lighter|bolder|100|200|300|400|500|600|700|800|900; Animatable: Yes
         */
         AttrEnumerate<AttrConstNormal, AttrConstBold, AttrConstLighter, AttrConstBolder, AttrConst100, AttrConst200, AttrConst300, AttrConst400, AttrConst500, AttrConst600, AttrConst700, AttrConst800, AttrConst900> FontWeight;
-    private:
+    public:
         /**
         * It controls glyph orientation when the inline-progression-direction is horizontal. 
         * Value: <angle>|inherit; Animatable: No
         */
         AttrEnumerate<AttrAngle, AttrConstInherit> GlyphOrientationHorizontal;
-    private:
+    public:
         /**
         * It controls glyph orientation when the inline-progression-direction is vertical. 
         * Value: auto|<angle>|inherit; Animatable: No
         */
         AttrEnumerate<AttrConstAuto, AttrAngle, AttrConstInherit> GlyphOrientationVertical;
-    private:
+    public:
         /**
         * It provides a hint to the browser about how to make speed vs. quality tradeoffs as it performs image processing. 
         * Value: auto|optimizeQuality|optimizeSpeed; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstOptimizeQuality, AttrConstOptimizeSpeed> ImageRendering;
-    private:
+    public:
         /**
         * It indicates whether the browser should adjust inter-glyph spacing. 
         * Value: auto|<length>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrLength, AttrConstInherit> Kerning;
-    private:
+    public:
         /**
         * It controls spacing between text characters. 
         * Value: normal|<length>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstNormal, AttrLength, AttrConstInherit> LetterSpacing;
-    private:
+    public:
         /**
         * It defines the color of the light source for filter primitives elements <feDiffuseLighting> and <feSpecularLighting>. 
         * Value: <color>; Animatable: Yes
         */
         AttrColor LightingColor;
-    private:
+    public:
         /**
         * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrFuncIRI, AttrConstNone, AttrConstInherit> MarkerEnd;
-    private:
+    public:
         /**
         * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrFuncIRI, AttrConstNone, AttrConstInherit> MarkerMid;
-    private:
+    public:
         /**
         * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrFuncIRI, AttrConstNone, AttrConstInherit> MarkerStart;
-    private:
+    public:
         /**
         * It alters the visibility of an element by either masking or clipping the image at specific points. 
         * Value: see css mask; Animatable: Yes
         */
         AttrAnything Mask;
-    private:
+    public:
         /**
         * It specifies the transparency of an object or a group of objects. 
         * Value: <opacity-value>; Animatable: Yes
         */
         AttrOpacityValue Opacity;
-    private:
+    public:
         /**
         * Specifies whether the content of a block-level element is clipped when it overflows the element's box. 
         * Value: visible|hidden|scroll|auto|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstVisible, AttrConstHidden, AttrConstScroll, AttrConstAuto, AttrConstInherit> Overflow;
-    private:
+    public:
         /**
         * Defines whether or when an element may be the target of a mouse event. 
         * Value: bounding-box|visiblePainted|visibleFil|visibleStroke|visible |painted|fill|stroke|all|none; Animatable: Yes
         */
         AttrEnumerate<AttrConstBoundingBox, AttrConstVisiblePainted, AttrConstVisibleFil, AttrConstVisibleStroke, AttrConstVisible, AttrConstPainted, AttrConstFill, AttrConstStroke, AttrConstAll, AttrConstNone> PointerEvents;
-    private:
+    public:
         /**
         * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstOptimizeSpeed, AttrConstCrispEdges, AttrConstGeometricPrecision, AttrConstInherit> ShapeRendering;
-    private:
+    public:
         /**
         * - 
         * Value:; Animatable: -
         */
         AttrAnything SolidColor;
-    private:
+    public:
         /**
         * - 
         * Value:; Animatable: -
         */
         AttrAnything SolidOpacity;
-    private:
+    public:
         /**
         * Indicates what color to use at that gradient stop. 
         * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstCurrentcolor, AttrColor, AttrColor, AttrConstInherit> StopColor;
-    private:
+    public:
         /**
         * Defines the opacity of a given gradient stop. 
         * Value: <opacity-value>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrOpacityValue, AttrConstInherit> StopOpacity;
-    private:
+    public:
         /**
         * Defines the color used to paint the outline of the shape. 
         * Value: <paint>; Animatable: Yes
         */
         AttrPaint Stroke;
-    private:
+    public:
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
         * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         */
         AttrEnumerate<AttrConstNone, AttrListOfNumbers> StrokeDasharray;
-    private:
+    public:
         /**
         * Defines an offset on the rendering of the associated dash array. 
         * Value: <percentage>|<length>; Animatable: Yes
         */
         AttrEnumerate<AttrPercentage, AttrLength> StrokeDashoffset;
-    private:
+    public:
         /**
         * Defines the shape to be used at the end of open subpaths when they are stroked. 
         * Value: butt|round|square; Animatable: Yes
         */
         AttrEnumerate<AttrConstButt, AttrConstRound, AttrConstSquare> StrokeLinecap;
-    private:
+    public:
         /**
         * Defines the shape to be used at the corners of paths when they are stroked. 
         * Value: arcs|bevel|miter|miter-clip|round; Animatable: Yes
         */
         AttrEnumerate<AttrConstArcs, AttrConstBevel, AttrConstMiter, AttrConstMiterClip, AttrConstRound> StrokeLinejoin;
-    private:
+    public:
         /**
         * Defines a limit on the ratio of the miter length to the stroke-width used to draw a miter join. 
         * Value: <number>; Animatable: Yes
         */
         AttrNumber StrokeMiterlimit;
-    private:
+    public:
         /**
         * Defines the opacity of the stroke of a shape. 
         * Value: <opacity-value>|<percentage>; Animatable: Yes
         */
         AttrEnumerate<AttrOpacityValue, AttrPercentage> StrokeOpacity;
-    private:
+    public:
         /**
         * Defines the width of the stroke to be applied to the shape. 
         * Value: <length>|<percentage>; Animatable: Yes
         */
         AttrEnumerate<AttrLength, AttrPercentage> StrokeWidth;
-    private:
+    public:
         /**
         * Defines the vertical alignment a string of text. 
         * Value: start|middle|end|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstStart, AttrConstMiddle, AttrConstEnd, AttrConstInherit> TextAnchor;
-    private:
+    public:
         /**
         * Sets the appearance of decorative lines on text. 
         * Value: none|underline|overline|line-through|blink|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstNone, AttrConstUnderline, AttrConstOverline, AttrConstLineThrough, AttrConstBlink, AttrConstInherit> TextDecoration;
-    private:
+    public:
         /**
         * Hints about what tradeoffs to make as the browser renders text. 
         * Value: auto|optimizeSpeed|optimizeLegibility|geometricPrecision|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstAuto, AttrConstOptimizeSpeed, AttrConstOptimizeLegibility, AttrConstGeometricPrecision, AttrConstInherit> TextRendering;
-    private:
+    public:
         /**
         * Defines a list of transform definitions that are applied to an element and the element's children. 
         * Value: <transform-list>; Animatable: Yes
         */
         AttrTransformList Transform;
-    private:
+    public:
         /**
         * - 
         * Value:; Animatable: -
         */
         AttrAnything UnicodeBidi;
-    private:
+    public:
         /**
         * Specifies the vector effect to use when drawing an object. 
         * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         */
         AttrEnumerate<AttrConstDefault, AttrConstNonScalingStroke, AttrConstInherit, AttrIRI> VectorEffect;
-    private:
+    public:
         /**
         * Lets you control the visibility of graphical elements. 
         * Value: visible|hidden|collapse|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrConstVisible, AttrConstHidden, AttrConstCollapse, AttrConstInherit> Visibility;
-    private:
+    public:
         /**
         * Specifies spacing behavior between words. 
         * Value: <length>|inherit; Animatable: Yes
         */
         AttrEnumerate<AttrLength, AttrConstInherit> WordSpacing;
-    private:
+    public:
         /**
         * Specifies whether the initial inline-progression-direction for a <text> element shall be left-to-right, right-to-left, or top-to-bottom. 
         * Value: lr-tb|rl-tb|tb-rl|lr|rl|tb|inherit; Animatable: Yes
@@ -2746,11 +2746,9 @@ namespace Lewzen {
             }
         };
         /**
-        * Returning differences on inner elements.
-        *
-        * @return DOM Commands.
+        * Compare inner elements before and after commitment.
         */
-        const std::string inner_differ_commit(std::vector<int> &removal,
+        void inner_differ_commit(std::vector<int> &removal,
             std::vector<int> &addition,
             std::vector<std::pair<int, int>> &unchanged) const;
     public:

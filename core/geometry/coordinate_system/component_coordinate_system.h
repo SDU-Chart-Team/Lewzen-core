@@ -3,23 +3,24 @@
 #include <string>
 #include <memory>
 #include "../coordinate_system.h"
-#include "../../component.h"
+#include "../component_rotatable.h"
 
 namespace Lewzen {
+    class ComponentRotatable;
     /**
     * Component coordinate system information.
     */
     class ComponentCoordinateSystem: public CoordinateSystem {
     private:
         // component
-        std::shared_ptr<Component> _component;
+        std::weak_ptr<ComponentRotatable> _component;
     public:
         /**
         * Constructor of ComponentCoordinateSystem. Unit is equal to CanvasCoordinateSystem.
         *
         * @param component the component of component coordinate system.
         */
-        ComponentCoordinateSystem(const std::shared_ptr<Component> &component);
+        ComponentCoordinateSystem(const std::weak_ptr<ComponentRotatable> &component);
         /**
         * Deep copy of this coordinate system.
         */
@@ -29,7 +30,7 @@ namespace Lewzen {
         *
         * @return the component of component coordinate system.
         */
-        const std::shared_ptr<Component> get_component() const;
+        const std::weak_ptr<ComponentRotatable> get_component() const;
         /**
         * Deep copy of this coordinate system.
         *
