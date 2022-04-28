@@ -181,7 +181,7 @@ namespace Lewzen {
         *
         * @relatesalso SVGMarker
         */
-        virtual std::shared_ptr<SVGMarker> clone(bool identity) const;
+        std::shared_ptr<SVGMarker> clone(bool identity) const;
         /**
         * Assigning SVG element by deep copy.
         *

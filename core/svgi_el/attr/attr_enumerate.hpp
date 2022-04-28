@@ -39,6 +39,9 @@ namespace Lewzen {
         const std::string __commit_impl(AttrColor &u) const {
             return u.get_commit();
         }
+        const std::string __commit_impl(AttrCoordinate &u) const {
+            return u.get_commit();
+        }
         const std::string __commit_impl(AttrAnything &u) const {
             return u.get_commit();
         }
@@ -113,6 +116,9 @@ namespace Lewzen {
             #endif
         }
         void _EnumerateImpl(AttrColor &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+            u.set_getter(getter), u.set_setter(setter);
+        }
+        void _EnumerateImpl(AttrCoordinate &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
         void _EnumerateImpl(AttrAnything &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
@@ -236,6 +242,10 @@ namespace Lewzen {
             u.set(attr);
         }
         template<typename T>
+        void _set_impl(const T &attr, AttrCoordinate &u) {
+            u.set(attr);
+        }
+        template<typename T>
         void _set_impl(const T &attr, AttrAnything &u) {
             u.set(attr);
         }
@@ -325,6 +335,10 @@ namespace Lewzen {
         }
         template<typename T>
         void _op1_impl(const T &attr, AttrColor &u) {
+            u = attr;
+        }
+        template<typename T>
+        void _op1_impl(const T &attr, AttrCoordinate &u) {
             u = attr;
         }
         template<typename T>
@@ -430,6 +444,10 @@ namespace Lewzen {
         }
         template<typename T>
         void _bind1_impl(std::function<const T()>bind_func, AttrColor &u) {
+            u.bind(bind_func);
+        }
+        template<typename T>
+        void _bind1_impl(std::function<const T()>bind_func, AttrCoordinate &u) {
             u.bind(bind_func);
         }
         template<typename T>
@@ -539,6 +557,10 @@ namespace Lewzen {
             u[bind_func];
         }
         template<typename T>
+        void _op2_impl(std::function<const T()>bind_func, AttrCoordinate &u) {
+            u[bind_func];
+        }
+        template<typename T>
         void _op2_impl(std::function<const T()>bind_func, AttrAnything &u) {
             u[bind_func];
         }
@@ -626,6 +648,10 @@ namespace Lewzen {
         }
         template<typename T>
         void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrColor &u) {
+            u.bind(bind_ptr);
+        }
+        template<typename T>
+        void _bind2_impl(const std::weak_ptr<T> &bind_ptr, AttrCoordinate &u) {
             u.bind(bind_ptr);
         }
         template<typename T>
@@ -717,6 +743,10 @@ namespace Lewzen {
         }
         template<typename T>
         void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrColor &u) {
+            u[bind_ptr];
+        }
+        template<typename T>
+        void _op3_impl(const std::weak_ptr<T> &bind_ptr, AttrCoordinate &u) {
             u[bind_ptr];
         }
         template<typename T>

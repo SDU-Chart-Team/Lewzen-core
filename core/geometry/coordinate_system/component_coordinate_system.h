@@ -13,14 +13,14 @@ namespace Lewzen {
     class ComponentCoordinateSystem: public CoordinateSystem {
     private:
         // component
-        std::weak_ptr<ComponentRotatable> _component;
+        std::weak_ptr<const ComponentRotatable> _component;
     public:
         /**
         * Constructor of ComponentCoordinateSystem. Unit is equal to CanvasCoordinateSystem.
         *
         * @param component the component of component coordinate system.
         */
-        ComponentCoordinateSystem(const std::weak_ptr<ComponentRotatable> &component);
+        ComponentCoordinateSystem(const std::weak_ptr<const ComponentRotatable> &component);
         /**
         * Deep copy of this coordinate system.
         */
@@ -30,7 +30,7 @@ namespace Lewzen {
         *
         * @return the component of component coordinate system.
         */
-        const std::weak_ptr<ComponentRotatable> get_component() const;
+        const std::weak_ptr<const ComponentRotatable> get_component() const;
         /**
         * Deep copy of this coordinate system.
         *

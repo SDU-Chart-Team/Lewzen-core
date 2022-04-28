@@ -174,8 +174,8 @@ public:
     }
     const std::string get_set() const {
         std::stringstream ss;
-        ss << "        std::function<const std::string()> _getter_" + dom_to_snake(_rname) + " = std::bind(&SVGElement::get_" + dom_to_snake(_rname) + ", (SVGElement *)this);" << std::endl;
-        ss << "        std::function<void(const std::string &)> _setter_" + dom_to_snake(_rname) + " = std::bind(&SVGElement::set_" + dom_to_snake(_rname) + ", (SVGElement *)this, std::placeholders::_1);" << std::endl;
+        ss << "        std::function<const std::string()> _getter_" + dom_to_snake(_rname) + " = std::bind(&SVG" + dom_to_pascal(_tag) + "::get_" + dom_to_snake(_rname) + ", (SVG" + dom_to_pascal(_tag) + " *)this);" << std::endl;
+        ss << "        std::function<void(const std::string &)> _setter_" + dom_to_snake(_rname) + " = std::bind(&SVG" + dom_to_pascal(_tag) + "::set_" + dom_to_snake(_rname) + ", (SVG" + dom_to_pascal(_tag) + " *)this, std::placeholders::_1);" << std::endl;
         ss << "        " + _name + ".set_getter(_getter_" + dom_to_snake(_rname) + "), " + _name + ".set_setter(_setter_" + dom_to_snake(_rname) + ");" << std::endl;
         ss << "        " + _name + ".callback_assign(_attr_on_assign[" << _i << "]), " + _name + ".callback_bind_func(_attr_on_bind[" << _i << "]), " + _name + ".callback_bind_ptr(_attr_on_bind[" << _i << "]);" << std::endl;
         return ss.str();
@@ -528,7 +528,7 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        *" << std::endl;
     ss << "        * @relatesalso SVGIElement" << std::endl;
     ss << "        */" << std::endl;
-    ss << "        const std::string commit();" << std::endl;
+    ss << "        virtual const std::string commit();" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Deep copy this SVG element." << std::endl;
     ss << "        *" << std::endl;
@@ -540,7 +540,7 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        *" << std::endl;
     ss << "        * @relatesalso SVGIElement" << std::endl;
     ss << "        */" << std::endl;
-    ss << "        virtual std::shared_ptr<SVGIElement> clone(bool identity) const;" << std::endl;
+    ss << "        std::shared_ptr<SVGIElement> clone(bool identity) const;" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Assigning SVG element by deep copy." << std::endl;
     ss << "        *" << std::endl;
@@ -573,16 +573,162 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        virtual const std::string operator-(const SVGElement &element) const;" << std::endl;
     ss << "    };" << std::endl;
     ss << "}" << std::endl;
+    
+    fs::path p(out_dir);
+    fs::path base(base_dir);
+    auto ip = fs::relative(p, base).generic_string();
+    ss << std::endl;
+    for (auto &tag : tags) {
+        ss << "#include \"" << ip << "/svgi_" << tag <<".h\"" << std::endl;
+    }
     ss << "#endif" << std::endl;
     return ss.str();
 }
 
-/*
+const std::string CPPFile(const std::string &tag, const std::string &comment, const std::vector<std::shared_ptr<Attribute>> attributes) {
+    fs::path p(out_dir);
+    fs::path base(base_dir);
+    auto ip = fs::relative(base, p).generic_string();
+    std::stringstream ss;
+    
+    ss << "#include \"svgi_" + dom_to_snake(tag) + ".h\"" << std::endl;
+    ss << "" << std::endl;
+    ss << "namespace Lewzen {" << std::endl;
+    ss << "    SVGI" << dom_to_pascal(tag) << "::SVGI" << dom_to_pascal(tag) << "(): SVGIElement() {}" << std::endl;
+    ss << "    void SVGI" << dom_to_pascal(tag) << "::_bind_getter_setter() {" << std::endl;
+    for (auto &p : attributes) ss << p->get_set();
+    ss << "        SVGIElement::_bind_getter_setter();" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::get_tag() const {" << std::endl;
+    ss << "        return \"" << tag << "\";" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::commit() {" << std::endl;
+    ss << "        std::stringstream ss;" << std::endl;
+    ss << "" << std::endl;
+    ss << "        // attribute differ" << std::endl;
+    ss << "        for (auto &i : bound) ss << _attr_commit[i]() << std::endl;" << std::endl;
+    ss << "        for (auto &i : modified) ss << _attr_commit[i]() << std::endl;" << std::endl;
+    ss << "        modified.clear();" << std::endl;
+    ss << "" << std::endl;
+    ss << "        // base class" << std::endl;
+    ss << "        ss << SVGIElement::commit();" << std::endl;
+    ss << "" << std::endl;
+    ss << "        return ss.str();" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    std::shared_ptr<SVGElement> SVGI" << dom_to_pascal(tag) << "::clone() const {" << std::endl;
+    ss << "        auto cloned = std::make_shared<SVGElement>();" << std::endl;
+    ss << "        *cloned = static_cast<SVG" << dom_to_pascal(tag) << ">(*this);" << std::endl;
+    ss << "        return cloned;" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    std::shared_ptr<SVGI" << dom_to_pascal(tag) << "> SVGI" << dom_to_pascal(tag) << "::clone(bool identity) const {" << std::endl;
+    ss << "        auto cloned = std::make_shared<SVGI" << dom_to_pascal(tag) << ">();" << std::endl;
+    ss << "        *cloned = *this;" << std::endl;
+    ss << "        return cloned;" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    SVGI" << dom_to_pascal(tag) << " &SVGI" << dom_to_pascal(tag) << "::operator=(const SVGI" << dom_to_pascal(tag) << " &element) {" << std::endl;
+    ss << "        SVG" << dom_to_pascal(tag) << "::operator=(static_cast<SVG" << dom_to_pascal(tag) << ">(*this));" << std::endl;
+    for (auto &p : attributes) ss << p->copy();
+    ss << std::endl;
+    ss << "        _bind_getter_setter();" << std::endl;
+    ss << "        return *this;" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::operator-(const SVGElement &element) const {" << std::endl;
+    ss << "        return SVG" << dom_to_pascal(tag) << "::operator-(static_cast<SVG" << dom_to_pascal(tag) << ">(*this));" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "}" << std::endl;
+    return ss.str();
+}
+
+const std::string HeaderFile(const std::string &tag, const std::string &comment, const std::vector<std::shared_ptr<Attribute>> attributes) {
+    fs::path p(out_dir);
+    fs::path base(base_dir);
+    auto ip = fs::relative(base, p).generic_string();
+    std::stringstream ss;
+
+    ss << "#ifndef __LZ_SVGI_" << dom_to_snake(tag, true) << "__" << std::endl;
+    ss << "#define __LZ_SVGI_" << dom_to_snake(tag, true) << "__" << std::endl;
+    ss << "#include \"../svgi_el.h\"" << std::endl;
+    ss << "" << std::endl;
+    ss << "namespace Lewzen {" << std::endl;
+    ss << "    /**" << std::endl;
+    ss << "    * " << comment << std::endl;
+    ss << "    */" << std::endl;
+    ss << "    class SVGI" << dom_to_pascal(tag) << " : public virtual SVGIElement, public virtual SVG" << dom_to_pascal(tag) << " {" << std::endl;
+    ss << "    public:" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Constructor of circle." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        SVGI" << dom_to_pascal(tag) << "();" << std::endl;
+    ss << "    protected:" << std::endl;
+    ss << "        virtual void _bind_getter_setter() override;" << std::endl;
+    ss << std::endl;
+    ss << "        /// Tag" << std::endl;
+    ss << "    public:" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Get tag name of this element." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @return tag name." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual const std::string get_tag() const override;" << std::endl;
+    ss << std::endl;
+    ss << "        /// " << dom_to_pascal(tag) << "" << std::endl;
+    for (auto &p : attributes) ss << p->domain();
+    ss << "    private:" << std::endl;
+    ss << "        std::set<int> bound;" << std::endl;
+    ss << "        std::set<int> modified;" << std::endl;
+    ss << "        const std::array<std::function<void(const std::string &)>, " << attributes.size() << "> _attr_on_assign = {" << std::endl;
+    for (auto &p : attributes) ss << p->on_assign();
+    ss << "        };" << std::endl;
+    ss << "        const std::array<std::function<void()>, " << attributes.size() << "> _attr_on_bind = {" << std::endl;
+    for (auto &p : attributes) ss << p->on_bind();
+    ss << "        };" << std::endl;
+    ss << "        const std::array<std::function<const std::string()>, " << attributes.size() << "> _attr_commit = {" << std::endl;
+    for (auto &p : attributes) ss << p->on_commit();
+    ss << "        };" << std::endl;
+    ss << "" << std::endl;
+    ss << "        /// Operators" << std::endl;
+    ss << "    public:" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Commit all changes and get DOM commands." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual const std::string commit() override;" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Deep copy this SVG element." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual std::shared_ptr<SVGElement> clone() const override;" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Deep copy this SVG element." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        std::shared_ptr<SVGI" << dom_to_pascal(tag) << "> clone(bool identity) const;" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Assigning SVG element by deep copy." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual SVGI" << dom_to_pascal(tag) << " &operator=(const SVGI" << dom_to_pascal(tag) << " &element);" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * SVG substraction, returning differences." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual const std::string operator-(const SVGElement &element) const override;" << std::endl;
+    ss << "    };" << std::endl;
+    ss << "}" << std::endl;
+    ss << "#endif" << std::endl;
+    return ss.str();
+}
+
 const std::string Makefile(const std::vector<std::string> &tags) {
     std::stringstream ss;
     ss << "objects = \\" << std::endl;
     for (int i = 0; i < tags.size(); i++) {
-        ss << "\tsvg_" << tags[i] << ".o";
+        ss << "\tsvgi_" << tags[i] << ".o";
         if (i < tags.size() - 1) ss << "\\";
         ss << std::endl;
     }
@@ -591,7 +737,7 @@ const std::string Makefile(const std::vector<std::string> &tags) {
     ss << ".PHONY: all" << std::endl;
     ss << "all: $(objects)" << std::endl;
     ss << std::endl;
-    for (auto &tag : tags) ss << "svg_" << tag << ".o: svg_" << tag << ".cpp svg_" << tag << ".h" << std::endl << "\t$(cc) -c svg_" << tag << ".cpp" << std::endl;
+    for (auto &tag : tags) ss << "svgi_" << tag << ".o: svgi_" << tag << ".cpp svgi_" << tag << ".h" << std::endl << "\t$(cc) -w -c svgi_" << tag << ".cpp" << std::endl;
     ss << std::endl;
     ss << ".PHONY: all" << std::endl;
     ss << "clean:" << std::endl;
@@ -609,34 +755,34 @@ const std::string json_to_source(const std::string &path) {
     std::string comment = j["comment"];
     comment = std::regex_replace(comment, std::regex("\n"), "\n        * ");
     std::vector<std::shared_ptr<Attribute>> attributes;
+    int _i = 0;
     for (auto &atr : j["attributes"]) {
         std::string name = atr["name"];
         std::string type = atr["type"];
         std::string acom = atr["comment"];
-        attributes.push_back(std::make_shared<StringAttribute>(tag, name, acom));
+        attributes.push_back(std::make_shared<Attribute>(tag, name, type, acom, _i++));
     }
 
-    std::ofstream o1(out_dir + "/svg_" + dom_to_snake(tag) + ".h");
+    std::ofstream o1(out_dir + "/svgi_" + dom_to_snake(tag) + ".h");
     o1 << HeaderFile(tag, comment, attributes);
 
-    std::ofstream o2(out_dir + "/svg_" + dom_to_snake(tag) + ".cpp");
+    std::ofstream o2(out_dir + "/svgi_" + dom_to_snake(tag) + ".cpp");
     o2 << CPPFile(tag, comment, attributes);
 
     std::cout << "done : " << tag << std::endl;
     return tag;
 }
-*/
 
 int main(int argc, char **argv) {
     std::vector<std::string> tags;
-    /*for (const auto &file : fs::directory_iterator(json_dir)) {
+    for (const auto &file : fs::directory_iterator(json_dir)) {
         auto tag = json_to_source(file.path());
         if (tag != "") tags.push_back(dom_to_snake(tag));
-    }*/
+    }
     
     std::ofstream o1(out_dir + "/Makefile");
-    //o1 << Makefile(tags);
-    //std::cout << "Makefile done." << std::endl;
+    o1 << Makefile(tags);
+    std::cout << "Makefile done." << std::endl;
 
     o1 = std::ofstream(base_dir + "/svgi_el.cpp");
     o1 << SVGICPP();

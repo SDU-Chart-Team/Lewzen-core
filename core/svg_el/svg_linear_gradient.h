@@ -183,7 +183,7 @@ namespace Lewzen {
         *
         * @relatesalso SVGLinearGradient
         */
-        virtual std::shared_ptr<SVGLinearGradient> clone(bool identity) const;
+        std::shared_ptr<SVGLinearGradient> clone(bool identity) const;
         /**
         * Assigning SVG element by deep copy.
         *

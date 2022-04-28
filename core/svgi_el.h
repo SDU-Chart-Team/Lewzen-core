@@ -2812,7 +2812,7 @@ namespace Lewzen {
         *
         * @relatesalso SVGIElement
         */
-        const std::string commit();
+        virtual const std::string commit();
         /**
         * Deep copy this SVG element.
         *
@@ -2824,7 +2824,7 @@ namespace Lewzen {
         *
         * @relatesalso SVGIElement
         */
-        virtual std::shared_ptr<SVGIElement> clone(bool identity) const;
+        std::shared_ptr<SVGIElement> clone(bool identity) const;
         /**
         * Assigning SVG element by deep copy.
         *
@@ -2857,4 +2857,24 @@ namespace Lewzen {
         virtual const std::string operator-(const SVGElement &element) const;
     };
 }
+
+#include "svgi_el/svgi_radial_gradient.h"
+#include "svgi_el/svgi_circle.h"
+#include "svgi_el/svgi_ellipse.h"
+#include "svgi_el/svgi_path.h"
+#include "svgi_el/svgi_line.h"
+#include "svgi_el/svgi_g.h"
+#include "svgi_el/svgi_mask.h"
+#include "svgi_el/svgi_rect.h"
+#include "svgi_el/svgi_image.h"
+#include "svgi_el/svgi_text.h"
+#include "svgi_el/svgi_pattern.h"
+#include "svgi_el/svgi_polyline.h"
+#include "svgi_el/svgi_marker.h"
+#include "svgi_el/svgi_polygon.h"
+#include "svgi_el/svgi_defs.h"
+#include "svgi_el/svgi_foreign_object.h"
+#include "svgi_el/svgi_linear_gradient.h"
+#include "svgi_el/svgi_stop.h"
+#include "svgi_el/svgi_use.h"
 #endif

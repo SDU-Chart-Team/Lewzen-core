@@ -42,6 +42,9 @@ namespace Lewzen {
         void __commit_impl(AttrColor &u) const {
             u.commit();
         }
+        void __commit_impl(AttrCoordinate &u) const {
+            u.commit();
+        }
         void __commit_impl(AttrAnything &u) const {
             u.commit();
         }
@@ -116,6 +119,9 @@ namespace Lewzen {
             _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
         }
         void _TupleImpl(AttrColor &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
+            u.set_getter(getter), u.set_setter(setter);
+        }
+        void _TupleImpl(AttrCoordinate &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
             u.set_getter(getter), u.set_setter(setter);
         }
         void _TupleImpl(AttrAnything &u, std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {
@@ -207,6 +213,228 @@ namespace Lewzen {
         template<int i>
         decltype(std::get<i>(_tuple)) &at() {
             return std::get<i>(_tuple);
+        }
+
+    /// Callback
+    public:
+        /**
+        * Set callback for assignment operation.
+        *
+        * @param on_assign callback function.
+        */
+        void callback_assign(std::function<void(const std::string &)> on_assign) { __callback_assign<0, Ts...>(on_assign); }
+        /**
+        * Remove callback for assignment operation.
+        */
+        void callback_assign() { __callback_assign<0, Ts...>([](const std::string &last){}); }
+        template<std::size_t i, typename L>
+        void __callback_assign(std::function<void(const std::string &)> on_assign) const {
+            auto u = std::get<i>(_tuple);
+            __callback_assign_impl(u, on_assign);
+        }
+        template<std::size_t i, typename F, typename S, typename ...R>
+        void __callback_assign(std::function<void(const std::string &)> on_assign) const {
+            auto u = std::get<i>(_tuple);
+            __callback_assign_impl(u, on_assign);
+            __callback_assign<i + 1, S, R...>(on_assign);
+        }
+        template<typename I>
+        void __callback_assign_impl(I &u, std::function<void(const std::string &)> on_assign) const {
+            _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
+        }
+        void __callback_assign_impl(AttrColor &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrCoordinate &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrAnything &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrInteger &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrListOfNumbers &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrURL &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrTransformList &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrPercentage &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrLength &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrIRI &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrPaint &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrName &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrAngle &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrOpacityValue &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrNumber &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        void __callback_assign_impl(AttrFuncIRI &u, std::function<void(const std::string &)> on_assign) const {
+            u.callback_assign(on_assign);
+        }
+        /**
+        * Set callback for binding function operation.
+        *
+        * @param on_bind_func callback function.
+        */
+        void callback_bind_func(std::function<void()> on_bind_func) { __callback_bind_func<0, Ts...>(on_bind_func); }
+        /**
+        * Remove callback for binding function operation.
+        */
+        void callback_bind_func() { __callback_bind_func<0, Ts...>([](){}); }
+        template<std::size_t i, typename L>
+        void __callback_bind_func(std::function<void()> on_bind_func) const {
+            auto u = std::get<i>(_tuple);
+            __callback_bind_func_impl(u, on_bind_func);
+        }
+        template<std::size_t i, typename F, typename S, typename ...R>
+        void __callback_bind_func(std::function<void()> on_bind_func) const {
+            auto u = std::get<i>(_tuple);
+            __callback_bind_func_impl(u, on_bind_func);
+            __callback_bind_func<i + 1, S, R...>(on_bind_func);
+        }
+        template<typename I>
+        void __callback_bind_func_impl(I &u, std::function<void()> on_bind_func) const {
+            _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
+        }
+        void __callback_bind_func_impl(AttrColor &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrCoordinate &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrAnything &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrInteger &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrListOfNumbers &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrURL &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrTransformList &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrPercentage &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrLength &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrIRI &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrPaint &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrName &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrAngle &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrOpacityValue &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrNumber &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        void __callback_bind_func_impl(AttrFuncIRI &u, std::function<void()> on_bind_func) const {
+            u.callback_bind_func(on_bind_func);
+        }
+        /**
+        * Set callback for binding pointer operation.
+        *
+        * @param on_bind_ptr callback function.
+        */
+        void callback_bind_ptr(std::function<void()> on_bind_ptr) { __callback_bind_ptr<0, Ts...>(on_bind_ptr); }
+        /**
+        * Remove callback for binding pointer operation.
+        */
+        void callback_bind_ptr() { __callback_bind_ptr<0, Ts...>([](){}); }
+        template<std::size_t i, typename L>
+        void __callback_bind_ptr(std::function<void()> on_bind_ptr) const {
+            auto u = std::get<i>(_tuple);
+            __callback_bind_ptr_impl(u, on_bind_ptr);
+        }
+        template<std::size_t i, typename F, typename S, typename ...R>
+        void __callback_bind_ptr(std::function<void()> on_bind_ptr) const {
+            auto u = std::get<i>(_tuple);
+            __callback_bind_ptr_impl(u, on_bind_ptr);
+            __callback_bind_ptr<i + 1, S, R...>(on_bind_ptr);
+        }
+        template<typename I>
+        void __callback_bind_ptr_impl(I &u, std::function<void()> on_bind_ptr) const {
+            _LZ_WARNING("Found unsupported ctype \"" << typeid(u).name() << "\" in Tuple, which only supports SVG attributes.");
+        }
+        void __callback_bind_ptr_impl(AttrColor &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrCoordinate &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrAnything &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrInteger &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrListOfNumbers &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrURL &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrTransformList &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrPercentage &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrLength &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrIRI &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrPaint &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrName &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrAngle &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrOpacityValue &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrNumber &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
+        }
+        void __callback_bind_ptr_impl(AttrFuncIRI &u, std::function<void()> on_bind_ptr) const {
+            u.callback_bind_ptr(on_bind_ptr);
         }
     };
 }

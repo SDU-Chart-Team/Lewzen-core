@@ -167,7 +167,7 @@ namespace Lewzen {
         *
         * @relatesalso SVGRect
         */
-        virtual std::shared_ptr<SVGRect> clone(bool identity) const;
+        std::shared_ptr<SVGRect> clone(bool identity) const;
         /**
         * Assigning SVG element by deep copy.
         *

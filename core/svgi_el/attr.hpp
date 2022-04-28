@@ -143,6 +143,7 @@ namespace Lewzen {
 }
 
 #include "attr/attr_color.hpp"
+#include "attr/attr_coordinate.hpp"
 #include "attr/attr_anything.hpp"
 #include "attr/attr_integer.hpp"
 #include "attr/attr_list-of-numbers.hpp"

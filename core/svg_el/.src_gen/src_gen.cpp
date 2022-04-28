@@ -779,7 +779,7 @@ const std::string HeaderFile(const std::string &tag, const std::string &comment,
     ss << "        *" << std::endl;
     ss << "        * @relatesalso SVG" << dom_to_pascal(tag) << "" << std::endl;
     ss << "        */" << std::endl;
-    ss << "        virtual std::shared_ptr<SVG" << dom_to_pascal(tag) << "> clone(bool identity) const;" << std::endl;
+    ss << "        std::shared_ptr<SVG" << dom_to_pascal(tag) << "> clone(bool identity) const;" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Assigning SVG element by deep copy." << std::endl;
     ss << "        *" << std::endl;

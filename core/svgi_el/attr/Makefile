@@ -3,6 +3,7 @@ objects = \
 	attr_tuple.hpp.gch\
 	attr_enumerate.hpp.gch\
 	attr_color.hpp.gch\
+	attr_coordinate.hpp.gch\
 	attr_anything.hpp.gch\
 	attr_integer.hpp.gch\
 	attr_list-of-numbers.hpp.gch\
@@ -24,6 +25,8 @@ all: $(objects)
 
 attr_color.hpp.gch: attr_color.hpp
 	$(cc) -c attr_color.hpp
+attr_coordinate.hpp.gch: attr_coordinate.hpp
+	$(cc) -c attr_coordinate.hpp
 attr_anything.hpp.gch: attr_anything.hpp
 	$(cc) -c attr_anything.hpp
 attr_integer.hpp.gch: attr_integer.hpp
