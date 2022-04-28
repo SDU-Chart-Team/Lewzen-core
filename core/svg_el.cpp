@@ -83,7 +83,6 @@ namespace Lewzen {
         _onfocusout = STR_NULL;
         _alignment_baseline = STR_NULL;
         _baseline_shift = STR_NULL;
-        _clip = STR_NULL;
         _clip_path = STR_NULL;
         _clip_rule = STR_NULL;
         _color = STR_NULL;
@@ -150,156 +149,6 @@ namespace Lewzen {
         _attribute_hash = 0;
         _inner_hash = 0;
         _outer_hash = 0;
-    }
-    SVGElement::SVGElement(const SVGElement &element) {
-        _id = element.get_id();
-        _lang = element.get_lang();
-        _tabindex = element.get_tabindex();
-        _xmlZbase = element.get_xmlZbase();
-        _xmlZlang = element.get_xmlZlang();
-        _xmlZspace = element.get_xmlZspace();
-        _class = element.get_class();
-        _style = element.get_style();
-        _onbegin = element.get_onbegin();
-        _onend = element.get_onend();
-        _onrepeat = element.get_onrepeat();
-        _onabort = element.get_onabort();
-        _onerror = element.get_onerror();
-        _onresize = element.get_onresize();
-        _onscroll = element.get_onscroll();
-        _onunload = element.get_onunload();
-        _oncopy = element.get_oncopy();
-        _oncut = element.get_oncut();
-        _onpaste = element.get_onpaste();
-        _oncancel = element.get_oncancel();
-        _oncanplay = element.get_oncanplay();
-        _oncanplaythrough = element.get_oncanplaythrough();
-        _onchange = element.get_onchange();
-        _onclick = element.get_onclick();
-        _onclose = element.get_onclose();
-        _oncuechange = element.get_oncuechange();
-        _ondblclick = element.get_ondblclick();
-        _ondrag = element.get_ondrag();
-        _ondragend = element.get_ondragend();
-        _ondragenter = element.get_ondragenter();
-        _ondragleave = element.get_ondragleave();
-        _ondragover = element.get_ondragover();
-        _ondragstart = element.get_ondragstart();
-        _ondrop = element.get_ondrop();
-        _ondurationchange = element.get_ondurationchange();
-        _onemptied = element.get_onemptied();
-        _onended = element.get_onended();
-        _onfocus = element.get_onfocus();
-        _oninput = element.get_oninput();
-        _oninvalid = element.get_oninvalid();
-        _onkeydown = element.get_onkeydown();
-        _onkeypress = element.get_onkeypress();
-        _onkeyup = element.get_onkeyup();
-        _onload = element.get_onload();
-        _onloadeddata = element.get_onloadeddata();
-        _onloadedmetadata = element.get_onloadedmetadata();
-        _onloadstart = element.get_onloadstart();
-        _onmousedown = element.get_onmousedown();
-        _onmouseenter = element.get_onmouseenter();
-        _onmouseleave = element.get_onmouseleave();
-        _onmousemove = element.get_onmousemove();
-        _onmouseout = element.get_onmouseout();
-        _onmouseover = element.get_onmouseover();
-        _onmouseup = element.get_onmouseup();
-        _onmousewheel = element.get_onmousewheel();
-        _onpause = element.get_onpause();
-        _onplay = element.get_onplay();
-        _onplaying = element.get_onplaying();
-        _onprogress = element.get_onprogress();
-        _onratechange = element.get_onratechange();
-        _onreset = element.get_onreset();
-        _onseeked = element.get_onseeked();
-        _onseeking = element.get_onseeking();
-        _onselect = element.get_onselect();
-        _onshow = element.get_onshow();
-        _onstalled = element.get_onstalled();
-        _onsubmit = element.get_onsubmit();
-        _onsuspend = element.get_onsuspend();
-        _ontimeupdate = element.get_ontimeupdate();
-        _ontoggle = element.get_ontoggle();
-        _onvolumechange = element.get_onvolumechange();
-        _onwaiting = element.get_onwaiting();
-        _onactivate = element.get_onactivate();
-        _onfocusin = element.get_onfocusin();
-        _onfocusout = element.get_onfocusout();
-        _alignment_baseline = element.get_alignment_baseline();
-        _baseline_shift = element.get_baseline_shift();
-        _clip = element.get_clip();
-        _clip_path = element.get_clip_path();
-        _clip_rule = element.get_clip_rule();
-        _color = element.get_color();
-        _color_interpolation = element.get_color_interpolation();
-        _color_interpolation_filters = element.get_color_interpolation_filters();
-        _color_profile = element.get_color_profile();
-        _color_rendering = element.get_color_rendering();
-        _cursor = element.get_cursor();
-        _d = element.get_d();
-        _direction = element.get_direction();
-        _display = element.get_display();
-        _dominant_baseline = element.get_dominant_baseline();
-        _enable_background = element.get_enable_background();
-        _fill = element.get_fill();
-        _fill_opacity = element.get_fill_opacity();
-        _fill_rule = element.get_fill_rule();
-        _filter = element.get_filter();
-        _flood_color = element.get_flood_color();
-        _flood_opacity = element.get_flood_opacity();
-        _font_family = element.get_font_family();
-        _font_size = element.get_font_size();
-        _font_size_adjust = element.get_font_size_adjust();
-        _font_stretch = element.get_font_stretch();
-        _font_style = element.get_font_style();
-        _font_variant = element.get_font_variant();
-        _font_weight = element.get_font_weight();
-        _glyph_orientation_horizontal = element.get_glyph_orientation_horizontal();
-        _glyph_orientation_vertical = element.get_glyph_orientation_vertical();
-        _image_rendering = element.get_image_rendering();
-        _kerning = element.get_kerning();
-        _letter_spacing = element.get_letter_spacing();
-        _lighting_color = element.get_lighting_color();
-        _marker_end = element.get_marker_end();
-        _marker_mid = element.get_marker_mid();
-        _marker_start = element.get_marker_start();
-        _mask = element.get_mask();
-        _opacity = element.get_opacity();
-        _overflow = element.get_overflow();
-        _pointer_events = element.get_pointer_events();
-        _shape_rendering = element.get_shape_rendering();
-        _solid_color = element.get_solid_color();
-        _solid_opacity = element.get_solid_opacity();
-        _stop_color = element.get_stop_color();
-        _stop_opacity = element.get_stop_opacity();
-        _stroke = element.get_stroke();
-        _stroke_dasharray = element.get_stroke_dasharray();
-        _stroke_dashoffset = element.get_stroke_dashoffset();
-        _stroke_linecap = element.get_stroke_linecap();
-        _stroke_linejoin = element.get_stroke_linejoin();
-        _stroke_miterlimit = element.get_stroke_miterlimit();
-        _stroke_opacity = element.get_stroke_opacity();
-        _stroke_width = element.get_stroke_width();
-        _text_anchor = element.get_text_anchor();
-        _text_decoration = element.get_text_decoration();
-        _text_rendering = element.get_text_rendering();
-        _transform = element.get_transform();
-        _unicode_bidi = element.get_unicode_bidi();
-        _vector_effect = element.get_vector_effect();
-        _visibility = element.get_visibility();
-        _word_spacing = element.get_word_spacing();
-        _writing_mode = element.get_writing_mode();
-
-        _inner_text = element.get_inner_text();
-        for (auto p : element.get_inner_elements()) {
-            _inner_elements.push_back(p->clone());
-        }
-
-        _attribute_hash = element.get_attribute_hash();
-        _inner_hash = element.get_inner_hash();
-        _outer_hash = element.get_outer_hash();
     }
 
     const std::string SVGElement::get_tag() const {
@@ -844,13 +693,6 @@ namespace Lewzen {
         _baseline_shift = baseline_shift;
         update_attribute_hash();
     }
-    const std::string SVGElement::get_clip() const {
-        return _clip;
-    }
-    void SVGElement::set_clip(const std::string &clip) {
-        _clip = clip;
-        update_attribute_hash();
-    }
     const std::string SVGElement::get_clip_path() const {
         return _clip_path;
     }
@@ -1297,22 +1139,36 @@ namespace Lewzen {
     }
     void SVGElement::add_inner_element(const std::shared_ptr<SVGElement> &inner_element) {
         _inner_elements.push_back(inner_element);
-        inner_element->_parent_elements.push_back(shared_from_this());
+        if (auto sp = inner_element->_parent_element.lock()) {
+            auto &els = sp->_inner_elements;
+            els.erase(std::remove(els.begin(), els.end(), inner_element), els.end());
+        }
+        inner_element->_parent_element = shared_from_this();
         update_inner_hash();
     }
-    void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element) {
-        _inner_elements.erase(std::remove(_inner_elements.begin(), _inner_elements.end(), inner_element), _inner_elements.end());
-        auto parents = inner_element->_parent_elements;
-        parents.erase(std::remove_if(parents.begin(), parents.end(), [inner_element](auto &p){
-            return !(p.owner_before(inner_element) || inner_element.owner_before(p));
-        }), parents.end());
+    void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element, bool remove_all) {
+        bool success;
+        std::vector<std::shared_ptr<SVGElement>> removed;
+        _inner_elements.erase(std::remove_if(_inner_elements.begin(), _inner_elements.end(),
+                                [&](const std::shared_ptr<SVGElement>& _inner_element) { 
+                                    if (success && !remove_all) return false;
+                                    if (_inner_element->get_outer_hash() == inner_element->get_outer_hash()) {
+                                        success = true;
+                                        removed.push_back(_inner_element);
+                                        return true;
+                                    }
+                                    return false;
+                                }), _inner_elements.end());
+        success = false;
+        for (auto &p : removed) p->_parent_element = std::weak_ptr<SVGElement>();
         update_inner_hash();
     }
     const std::vector<std::shared_ptr<SVGElement>> SVGElement::get_inner_elements() const {
         return _inner_elements;
     }
     void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {
-        for (auto p : _inner_elements) remove_inner_element(p);
+        auto tmp = _inner_elements;
+        for (auto p : tmp) remove_inner_element(p);
         for (auto p : inner_elements) add_inner_element(p);
         update_inner_hash();
     }
@@ -1397,7 +1253,6 @@ namespace Lewzen {
         if (_onfocusout != STR_NULL) ss << " onfocusout=\"" << _onfocusout << "\"";
         if (_alignment_baseline != STR_NULL) ss << " alignment-baseline=\"" << _alignment_baseline << "\"";
         if (_baseline_shift != STR_NULL) ss << " baseline-shift=\"" << _baseline_shift << "\"";
-        if (_clip != STR_NULL) ss << " clip=\"" << _clip << "\"";
         if (_clip_path != STR_NULL) ss << " clip-path=\"" << _clip_path << "\"";
         if (_clip_rule != STR_NULL) ss << " clip-rule=\"" << _clip_rule << "\"";
         if (_color != STR_NULL) ss << " color=\"" << _color << "\"";
@@ -1469,7 +1324,7 @@ namespace Lewzen {
         ss << "<" << get_tag();
 
         const std::string _attributes = get_attributes();
-        if (_attributes != "") ss << " " << _attributes;
+        if (_attributes != "") ss << _attributes;
 
         auto _inner_svg = inner_SVG();
         if (_inner_svg == "") {
@@ -1490,8 +1345,8 @@ namespace Lewzen {
         _outer_hash = str_hash(ss.str());
 
         // update parent element
-        for (auto wp : _parent_elements) {
-            if (auto sp = wp.lock()) sp->update_inner_hash();
+        if (auto sp = _parent_element.lock()) {
+            sp->update_inner_hash();
         }
     }
     void SVGElement::update_attribute_hash() {
@@ -1522,7 +1377,160 @@ namespace Lewzen {
     }
 
     std::shared_ptr<SVGElement> SVGElement::clone() const {
-        return std::make_shared<SVGElement>(*this);
+        auto cloned =  std::make_shared<SVGElement>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGElement::operator=(const SVGElement &element) {
+        _id = element.get_id();
+        _lang = element.get_lang();
+        _tabindex = element.get_tabindex();
+        _xmlZbase = element.get_xmlZbase();
+        _xmlZlang = element.get_xmlZlang();
+        _xmlZspace = element.get_xmlZspace();
+        _class = element.get_class();
+        _style = element.get_style();
+        _onbegin = element.get_onbegin();
+        _onend = element.get_onend();
+        _onrepeat = element.get_onrepeat();
+        _onabort = element.get_onabort();
+        _onerror = element.get_onerror();
+        _onresize = element.get_onresize();
+        _onscroll = element.get_onscroll();
+        _onunload = element.get_onunload();
+        _oncopy = element.get_oncopy();
+        _oncut = element.get_oncut();
+        _onpaste = element.get_onpaste();
+        _oncancel = element.get_oncancel();
+        _oncanplay = element.get_oncanplay();
+        _oncanplaythrough = element.get_oncanplaythrough();
+        _onchange = element.get_onchange();
+        _onclick = element.get_onclick();
+        _onclose = element.get_onclose();
+        _oncuechange = element.get_oncuechange();
+        _ondblclick = element.get_ondblclick();
+        _ondrag = element.get_ondrag();
+        _ondragend = element.get_ondragend();
+        _ondragenter = element.get_ondragenter();
+        _ondragleave = element.get_ondragleave();
+        _ondragover = element.get_ondragover();
+        _ondragstart = element.get_ondragstart();
+        _ondrop = element.get_ondrop();
+        _ondurationchange = element.get_ondurationchange();
+        _onemptied = element.get_onemptied();
+        _onended = element.get_onended();
+        _onfocus = element.get_onfocus();
+        _oninput = element.get_oninput();
+        _oninvalid = element.get_oninvalid();
+        _onkeydown = element.get_onkeydown();
+        _onkeypress = element.get_onkeypress();
+        _onkeyup = element.get_onkeyup();
+        _onload = element.get_onload();
+        _onloadeddata = element.get_onloadeddata();
+        _onloadedmetadata = element.get_onloadedmetadata();
+        _onloadstart = element.get_onloadstart();
+        _onmousedown = element.get_onmousedown();
+        _onmouseenter = element.get_onmouseenter();
+        _onmouseleave = element.get_onmouseleave();
+        _onmousemove = element.get_onmousemove();
+        _onmouseout = element.get_onmouseout();
+        _onmouseover = element.get_onmouseover();
+        _onmouseup = element.get_onmouseup();
+        _onmousewheel = element.get_onmousewheel();
+        _onpause = element.get_onpause();
+        _onplay = element.get_onplay();
+        _onplaying = element.get_onplaying();
+        _onprogress = element.get_onprogress();
+        _onratechange = element.get_onratechange();
+        _onreset = element.get_onreset();
+        _onseeked = element.get_onseeked();
+        _onseeking = element.get_onseeking();
+        _onselect = element.get_onselect();
+        _onshow = element.get_onshow();
+        _onstalled = element.get_onstalled();
+        _onsubmit = element.get_onsubmit();
+        _onsuspend = element.get_onsuspend();
+        _ontimeupdate = element.get_ontimeupdate();
+        _ontoggle = element.get_ontoggle();
+        _onvolumechange = element.get_onvolumechange();
+        _onwaiting = element.get_onwaiting();
+        _onactivate = element.get_onactivate();
+        _onfocusin = element.get_onfocusin();
+        _onfocusout = element.get_onfocusout();
+        _alignment_baseline = element.get_alignment_baseline();
+        _baseline_shift = element.get_baseline_shift();
+        _clip_path = element.get_clip_path();
+        _clip_rule = element.get_clip_rule();
+        _color = element.get_color();
+        _color_interpolation = element.get_color_interpolation();
+        _color_interpolation_filters = element.get_color_interpolation_filters();
+        _color_profile = element.get_color_profile();
+        _color_rendering = element.get_color_rendering();
+        _cursor = element.get_cursor();
+        _d = element.get_d();
+        _direction = element.get_direction();
+        _display = element.get_display();
+        _dominant_baseline = element.get_dominant_baseline();
+        _enable_background = element.get_enable_background();
+        _fill = element.get_fill();
+        _fill_opacity = element.get_fill_opacity();
+        _fill_rule = element.get_fill_rule();
+        _filter = element.get_filter();
+        _flood_color = element.get_flood_color();
+        _flood_opacity = element.get_flood_opacity();
+        _font_family = element.get_font_family();
+        _font_size = element.get_font_size();
+        _font_size_adjust = element.get_font_size_adjust();
+        _font_stretch = element.get_font_stretch();
+        _font_style = element.get_font_style();
+        _font_variant = element.get_font_variant();
+        _font_weight = element.get_font_weight();
+        _glyph_orientation_horizontal = element.get_glyph_orientation_horizontal();
+        _glyph_orientation_vertical = element.get_glyph_orientation_vertical();
+        _image_rendering = element.get_image_rendering();
+        _kerning = element.get_kerning();
+        _letter_spacing = element.get_letter_spacing();
+        _lighting_color = element.get_lighting_color();
+        _marker_end = element.get_marker_end();
+        _marker_mid = element.get_marker_mid();
+        _marker_start = element.get_marker_start();
+        _mask = element.get_mask();
+        _opacity = element.get_opacity();
+        _overflow = element.get_overflow();
+        _pointer_events = element.get_pointer_events();
+        _shape_rendering = element.get_shape_rendering();
+        _solid_color = element.get_solid_color();
+        _solid_opacity = element.get_solid_opacity();
+        _stop_color = element.get_stop_color();
+        _stop_opacity = element.get_stop_opacity();
+        _stroke = element.get_stroke();
+        _stroke_dasharray = element.get_stroke_dasharray();
+        _stroke_dashoffset = element.get_stroke_dashoffset();
+        _stroke_linecap = element.get_stroke_linecap();
+        _stroke_linejoin = element.get_stroke_linejoin();
+        _stroke_miterlimit = element.get_stroke_miterlimit();
+        _stroke_opacity = element.get_stroke_opacity();
+        _stroke_width = element.get_stroke_width();
+        _text_anchor = element.get_text_anchor();
+        _text_decoration = element.get_text_decoration();
+        _text_rendering = element.get_text_rendering();
+        _transform = element.get_transform();
+        _unicode_bidi = element.get_unicode_bidi();
+        _vector_effect = element.get_vector_effect();
+        _visibility = element.get_visibility();
+        _word_spacing = element.get_word_spacing();
+        _writing_mode = element.get_writing_mode();
+
+        _inner_text = element.get_inner_text();
+        for (auto p : element.get_inner_elements()) {
+            auto cloned = p->clone();
+            _inner_elements.push_back(cloned);
+            p->_parent_element = cloned;
+        }
+
+        _attribute_hash = element.get_attribute_hash();
+        _inner_hash = element.get_inner_hash();
+        _outer_hash = element.get_outer_hash();
     }
     bool SVGElement::operator==(const SVGElement &element) const {
         return element.get_outer_hash() == get_outer_hash();
@@ -1544,8 +1552,7 @@ namespace Lewzen {
         auto _element = static_cast<const SVGElement &>(element);
 
         // attribute differ
-        if (element.get_attribute_hash() == get_attribute_hash()) return ss.str();
-        ss << attribute_differ(_element);
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
 
         // inner differ
         if (element.get_inner_hash() == get_inner_hash()) return ss.str();
@@ -1556,12 +1563,13 @@ namespace Lewzen {
         // extract change relation
         std::vector<_el_idx> removal;
         std::vector<_el_idx> addition;
+        std::vector<std::pair<_el_idx, _el_idx>> unchanged;
         std::vector<std::pair<_el_idx, _el_idx>> changed;
-        inner_differ(element, removal, addition, changed);
+        inner_differ(element, removal, addition, unchanged, changed);
         // remove
-        int n = element.get_inner_elements().size();
-        int *removed = new int[n],
-               *indices = new int[n];
+        int m = _inner_elements.size(), n = element.get_inner_elements().size();
+        int *indices = new int[m], *removed = new int[n];
+        std::fill(indices, indices + m, 0); std::fill(removed, removed + n, 0);
         for (auto &r : removal) removed[r.idx] = 1;
         for (int i = 1; i < n; i++) removed[i] += removed[i - 1];
         for (auto &r : removal) ss << "remove " << r.idx - (r.idx > 0 ? removed[r.idx - 1] : 0) << std::endl;
@@ -1578,20 +1586,28 @@ namespace Lewzen {
             ss << "parent" << std::endl;
         }
         // sort
+        for (auto &c : unchanged) {
+            auto &a = c.first; auto &b = c.second;
+            indices[b.idx - removed[b.idx]] = a.idx;
+        }
         for (auto &c : changed) {
             auto &a = c.first; auto &b = c.second;
             indices[b.idx - removed[b.idx]] =  a.idx;
         }
         for (int i = 0; i < addition.size(); i++) {
             auto &a = addition[i];
-            indices[changed.size() + i] = a.idx;
+            indices[unchanged.size() + i] = a.idx;
         }
-        ss << "sort \"";
-        for (int i = 0; i < n; i++) {
-            ss << indices[i];
-            if (i < n - 1) ss << ", ";
+        bool ordered = true;
+        for (int i = 0; i < m && ordered; i++) if (indices[i] != i) ordered = false;
+        if (!ordered) {
+            ss << "sort \"";
+            for (int i = 0; i < m; i++) {
+                ss << indices[i];
+                if (i < m - 1) ss << ",";
+            }
+            ss << "\"" << std::endl;
         }
-        ss << "\"" << std::endl;
         delete[] removed; delete[] indices;
 
         return ss.str();
@@ -1599,565 +1615,555 @@ namespace Lewzen {
     const std::string SVGElement::attribute_differ(const SVGElement &element) const {
         std::stringstream ss;
 
-        if (get_tag() != element.get_tag()) {
-            auto svg = outer_SVG();
-            ss << "replace " << svg.size() << std::endl << svg << std::endl;
-        }
-        auto _element = static_cast<const SVGElement &>(element);
-
-        if (_id != _element.get_id()) {
+        if (_id != element.get_id()) {
             if (_id == STR_NULL) ss << "reset id" << std::endl;
             else ss << "modify id \"" << _id << "\"" << std::endl;
         }
-        if (_lang != _element.get_lang()) {
+        if (_lang != element.get_lang()) {
             if (_lang == STR_NULL) ss << "reset lang" << std::endl;
             else ss << "modify lang \"" << _lang << "\"" << std::endl;
         }
-        if (_tabindex != _element.get_tabindex()) {
+        if (_tabindex != element.get_tabindex()) {
             if (_tabindex == STR_NULL) ss << "reset tabindex" << std::endl;
             else ss << "modify tabindex \"" << _tabindex << "\"" << std::endl;
         }
-        if (_xmlZbase != _element.get_xmlZbase()) {
+        if (_xmlZbase != element.get_xmlZbase()) {
             if (_xmlZbase == STR_NULL) ss << "reset xml:base" << std::endl;
             else ss << "modify xml:base \"" << _xmlZbase << "\"" << std::endl;
         }
-        if (_xmlZlang != _element.get_xmlZlang()) {
+        if (_xmlZlang != element.get_xmlZlang()) {
             if (_xmlZlang == STR_NULL) ss << "reset xml:lang" << std::endl;
             else ss << "modify xml:lang \"" << _xmlZlang << "\"" << std::endl;
         }
-        if (_xmlZspace != _element.get_xmlZspace()) {
+        if (_xmlZspace != element.get_xmlZspace()) {
             if (_xmlZspace == STR_NULL) ss << "reset xml:space" << std::endl;
             else ss << "modify xml:space \"" << _xmlZspace << "\"" << std::endl;
         }
-        if (_class != _element.get_class()) {
+        if (_class != element.get_class()) {
             if (_class == STR_NULL) ss << "reset class" << std::endl;
             else ss << "modify class \"" << _class << "\"" << std::endl;
         }
-        if (_style != _element.get_style()) {
+        if (_style != element.get_style()) {
             if (_style == STR_NULL) ss << "reset style" << std::endl;
             else ss << "modify style \"" << _style << "\"" << std::endl;
         }
-        if (_onbegin != _element.get_onbegin()) {
+        if (_onbegin != element.get_onbegin()) {
             if (_onbegin == STR_NULL) ss << "reset onbegin" << std::endl;
             else ss << "modify onbegin \"" << _onbegin << "\"" << std::endl;
         }
-        if (_onend != _element.get_onend()) {
+        if (_onend != element.get_onend()) {
             if (_onend == STR_NULL) ss << "reset onend" << std::endl;
             else ss << "modify onend \"" << _onend << "\"" << std::endl;
         }
-        if (_onrepeat != _element.get_onrepeat()) {
+        if (_onrepeat != element.get_onrepeat()) {
             if (_onrepeat == STR_NULL) ss << "reset onrepeat" << std::endl;
             else ss << "modify onrepeat \"" << _onrepeat << "\"" << std::endl;
         }
-        if (_onabort != _element.get_onabort()) {
+        if (_onabort != element.get_onabort()) {
             if (_onabort == STR_NULL) ss << "reset onabort" << std::endl;
             else ss << "modify onabort \"" << _onabort << "\"" << std::endl;
         }
-        if (_onerror != _element.get_onerror()) {
+        if (_onerror != element.get_onerror()) {
             if (_onerror == STR_NULL) ss << "reset onerror" << std::endl;
             else ss << "modify onerror \"" << _onerror << "\"" << std::endl;
         }
-        if (_onresize != _element.get_onresize()) {
+        if (_onresize != element.get_onresize()) {
             if (_onresize == STR_NULL) ss << "reset onresize" << std::endl;
             else ss << "modify onresize \"" << _onresize << "\"" << std::endl;
         }
-        if (_onscroll != _element.get_onscroll()) {
+        if (_onscroll != element.get_onscroll()) {
             if (_onscroll == STR_NULL) ss << "reset onscroll" << std::endl;
             else ss << "modify onscroll \"" << _onscroll << "\"" << std::endl;
         }
-        if (_onunload != _element.get_onunload()) {
+        if (_onunload != element.get_onunload()) {
             if (_onunload == STR_NULL) ss << "reset onunload" << std::endl;
             else ss << "modify onunload \"" << _onunload << "\"" << std::endl;
         }
-        if (_oncopy != _element.get_oncopy()) {
+        if (_oncopy != element.get_oncopy()) {
             if (_oncopy == STR_NULL) ss << "reset oncopy" << std::endl;
             else ss << "modify oncopy \"" << _oncopy << "\"" << std::endl;
         }
-        if (_oncut != _element.get_oncut()) {
+        if (_oncut != element.get_oncut()) {
             if (_oncut == STR_NULL) ss << "reset oncut" << std::endl;
             else ss << "modify oncut \"" << _oncut << "\"" << std::endl;
         }
-        if (_onpaste != _element.get_onpaste()) {
+        if (_onpaste != element.get_onpaste()) {
             if (_onpaste == STR_NULL) ss << "reset onpaste" << std::endl;
             else ss << "modify onpaste \"" << _onpaste << "\"" << std::endl;
         }
-        if (_oncancel != _element.get_oncancel()) {
+        if (_oncancel != element.get_oncancel()) {
             if (_oncancel == STR_NULL) ss << "reset oncancel" << std::endl;
             else ss << "modify oncancel \"" << _oncancel << "\"" << std::endl;
         }
-        if (_oncanplay != _element.get_oncanplay()) {
+        if (_oncanplay != element.get_oncanplay()) {
             if (_oncanplay == STR_NULL) ss << "reset oncanplay" << std::endl;
             else ss << "modify oncanplay \"" << _oncanplay << "\"" << std::endl;
         }
-        if (_oncanplaythrough != _element.get_oncanplaythrough()) {
+        if (_oncanplaythrough != element.get_oncanplaythrough()) {
             if (_oncanplaythrough == STR_NULL) ss << "reset oncanplaythrough" << std::endl;
             else ss << "modify oncanplaythrough \"" << _oncanplaythrough << "\"" << std::endl;
         }
-        if (_onchange != _element.get_onchange()) {
+        if (_onchange != element.get_onchange()) {
             if (_onchange == STR_NULL) ss << "reset onchange" << std::endl;
             else ss << "modify onchange \"" << _onchange << "\"" << std::endl;
         }
-        if (_onclick != _element.get_onclick()) {
+        if (_onclick != element.get_onclick()) {
             if (_onclick == STR_NULL) ss << "reset onclick" << std::endl;
             else ss << "modify onclick \"" << _onclick << "\"" << std::endl;
         }
-        if (_onclose != _element.get_onclose()) {
+        if (_onclose != element.get_onclose()) {
             if (_onclose == STR_NULL) ss << "reset onclose" << std::endl;
             else ss << "modify onclose \"" << _onclose << "\"" << std::endl;
         }
-        if (_oncuechange != _element.get_oncuechange()) {
+        if (_oncuechange != element.get_oncuechange()) {
             if (_oncuechange == STR_NULL) ss << "reset oncuechange" << std::endl;
             else ss << "modify oncuechange \"" << _oncuechange << "\"" << std::endl;
         }
-        if (_ondblclick != _element.get_ondblclick()) {
+        if (_ondblclick != element.get_ondblclick()) {
             if (_ondblclick == STR_NULL) ss << "reset ondblclick" << std::endl;
             else ss << "modify ondblclick \"" << _ondblclick << "\"" << std::endl;
         }
-        if (_ondrag != _element.get_ondrag()) {
+        if (_ondrag != element.get_ondrag()) {
             if (_ondrag == STR_NULL) ss << "reset ondrag" << std::endl;
             else ss << "modify ondrag \"" << _ondrag << "\"" << std::endl;
         }
-        if (_ondragend != _element.get_ondragend()) {
+        if (_ondragend != element.get_ondragend()) {
             if (_ondragend == STR_NULL) ss << "reset ondragend" << std::endl;
             else ss << "modify ondragend \"" << _ondragend << "\"" << std::endl;
         }
-        if (_ondragenter != _element.get_ondragenter()) {
+        if (_ondragenter != element.get_ondragenter()) {
             if (_ondragenter == STR_NULL) ss << "reset ondragenter" << std::endl;
             else ss << "modify ondragenter \"" << _ondragenter << "\"" << std::endl;
         }
-        if (_ondragleave != _element.get_ondragleave()) {
+        if (_ondragleave != element.get_ondragleave()) {
             if (_ondragleave == STR_NULL) ss << "reset ondragleave" << std::endl;
             else ss << "modify ondragleave \"" << _ondragleave << "\"" << std::endl;
         }
-        if (_ondragover != _element.get_ondragover()) {
+        if (_ondragover != element.get_ondragover()) {
             if (_ondragover == STR_NULL) ss << "reset ondragover" << std::endl;
             else ss << "modify ondragover \"" << _ondragover << "\"" << std::endl;
         }
-        if (_ondragstart != _element.get_ondragstart()) {
+        if (_ondragstart != element.get_ondragstart()) {
             if (_ondragstart == STR_NULL) ss << "reset ondragstart" << std::endl;
             else ss << "modify ondragstart \"" << _ondragstart << "\"" << std::endl;
         }
-        if (_ondrop != _element.get_ondrop()) {
+        if (_ondrop != element.get_ondrop()) {
             if (_ondrop == STR_NULL) ss << "reset ondrop" << std::endl;
             else ss << "modify ondrop \"" << _ondrop << "\"" << std::endl;
         }
-        if (_ondurationchange != _element.get_ondurationchange()) {
+        if (_ondurationchange != element.get_ondurationchange()) {
             if (_ondurationchange == STR_NULL) ss << "reset ondurationchange" << std::endl;
             else ss << "modify ondurationchange \"" << _ondurationchange << "\"" << std::endl;
         }
-        if (_onemptied != _element.get_onemptied()) {
+        if (_onemptied != element.get_onemptied()) {
             if (_onemptied == STR_NULL) ss << "reset onemptied" << std::endl;
             else ss << "modify onemptied \"" << _onemptied << "\"" << std::endl;
         }
-        if (_onended != _element.get_onended()) {
+        if (_onended != element.get_onended()) {
             if (_onended == STR_NULL) ss << "reset onended" << std::endl;
             else ss << "modify onended \"" << _onended << "\"" << std::endl;
         }
-        if (_onfocus != _element.get_onfocus()) {
+        if (_onfocus != element.get_onfocus()) {
             if (_onfocus == STR_NULL) ss << "reset onfocus" << std::endl;
             else ss << "modify onfocus \"" << _onfocus << "\"" << std::endl;
         }
-        if (_oninput != _element.get_oninput()) {
+        if (_oninput != element.get_oninput()) {
             if (_oninput == STR_NULL) ss << "reset oninput" << std::endl;
             else ss << "modify oninput \"" << _oninput << "\"" << std::endl;
         }
-        if (_oninvalid != _element.get_oninvalid()) {
+        if (_oninvalid != element.get_oninvalid()) {
             if (_oninvalid == STR_NULL) ss << "reset oninvalid" << std::endl;
             else ss << "modify oninvalid \"" << _oninvalid << "\"" << std::endl;
         }
-        if (_onkeydown != _element.get_onkeydown()) {
+        if (_onkeydown != element.get_onkeydown()) {
             if (_onkeydown == STR_NULL) ss << "reset onkeydown" << std::endl;
             else ss << "modify onkeydown \"" << _onkeydown << "\"" << std::endl;
         }
-        if (_onkeypress != _element.get_onkeypress()) {
+        if (_onkeypress != element.get_onkeypress()) {
             if (_onkeypress == STR_NULL) ss << "reset onkeypress" << std::endl;
             else ss << "modify onkeypress \"" << _onkeypress << "\"" << std::endl;
         }
-        if (_onkeyup != _element.get_onkeyup()) {
+        if (_onkeyup != element.get_onkeyup()) {
             if (_onkeyup == STR_NULL) ss << "reset onkeyup" << std::endl;
             else ss << "modify onkeyup \"" << _onkeyup << "\"" << std::endl;
         }
-        if (_onload != _element.get_onload()) {
+        if (_onload != element.get_onload()) {
             if (_onload == STR_NULL) ss << "reset onload" << std::endl;
             else ss << "modify onload \"" << _onload << "\"" << std::endl;
         }
-        if (_onloadeddata != _element.get_onloadeddata()) {
+        if (_onloadeddata != element.get_onloadeddata()) {
             if (_onloadeddata == STR_NULL) ss << "reset onloadeddata" << std::endl;
             else ss << "modify onloadeddata \"" << _onloadeddata << "\"" << std::endl;
         }
-        if (_onloadedmetadata != _element.get_onloadedmetadata()) {
+        if (_onloadedmetadata != element.get_onloadedmetadata()) {
             if (_onloadedmetadata == STR_NULL) ss << "reset onloadedmetadata" << std::endl;
             else ss << "modify onloadedmetadata \"" << _onloadedmetadata << "\"" << std::endl;
         }
-        if (_onloadstart != _element.get_onloadstart()) {
+        if (_onloadstart != element.get_onloadstart()) {
             if (_onloadstart == STR_NULL) ss << "reset onloadstart" << std::endl;
             else ss << "modify onloadstart \"" << _onloadstart << "\"" << std::endl;
         }
-        if (_onmousedown != _element.get_onmousedown()) {
+        if (_onmousedown != element.get_onmousedown()) {
             if (_onmousedown == STR_NULL) ss << "reset onmousedown" << std::endl;
             else ss << "modify onmousedown \"" << _onmousedown << "\"" << std::endl;
         }
-        if (_onmouseenter != _element.get_onmouseenter()) {
+        if (_onmouseenter != element.get_onmouseenter()) {
             if (_onmouseenter == STR_NULL) ss << "reset onmouseenter" << std::endl;
             else ss << "modify onmouseenter \"" << _onmouseenter << "\"" << std::endl;
         }
-        if (_onmouseleave != _element.get_onmouseleave()) {
+        if (_onmouseleave != element.get_onmouseleave()) {
             if (_onmouseleave == STR_NULL) ss << "reset onmouseleave" << std::endl;
             else ss << "modify onmouseleave \"" << _onmouseleave << "\"" << std::endl;
         }
-        if (_onmousemove != _element.get_onmousemove()) {
+        if (_onmousemove != element.get_onmousemove()) {
             if (_onmousemove == STR_NULL) ss << "reset onmousemove" << std::endl;
             else ss << "modify onmousemove \"" << _onmousemove << "\"" << std::endl;
         }
-        if (_onmouseout != _element.get_onmouseout()) {
+        if (_onmouseout != element.get_onmouseout()) {
             if (_onmouseout == STR_NULL) ss << "reset onmouseout" << std::endl;
             else ss << "modify onmouseout \"" << _onmouseout << "\"" << std::endl;
         }
-        if (_onmouseover != _element.get_onmouseover()) {
+        if (_onmouseover != element.get_onmouseover()) {
             if (_onmouseover == STR_NULL) ss << "reset onmouseover" << std::endl;
             else ss << "modify onmouseover \"" << _onmouseover << "\"" << std::endl;
         }
-        if (_onmouseup != _element.get_onmouseup()) {
+        if (_onmouseup != element.get_onmouseup()) {
             if (_onmouseup == STR_NULL) ss << "reset onmouseup" << std::endl;
             else ss << "modify onmouseup \"" << _onmouseup << "\"" << std::endl;
         }
-        if (_onmousewheel != _element.get_onmousewheel()) {
+        if (_onmousewheel != element.get_onmousewheel()) {
             if (_onmousewheel == STR_NULL) ss << "reset onmousewheel" << std::endl;
             else ss << "modify onmousewheel \"" << _onmousewheel << "\"" << std::endl;
         }
-        if (_onpause != _element.get_onpause()) {
+        if (_onpause != element.get_onpause()) {
             if (_onpause == STR_NULL) ss << "reset onpause" << std::endl;
             else ss << "modify onpause \"" << _onpause << "\"" << std::endl;
         }
-        if (_onplay != _element.get_onplay()) {
+        if (_onplay != element.get_onplay()) {
             if (_onplay == STR_NULL) ss << "reset onplay" << std::endl;
             else ss << "modify onplay \"" << _onplay << "\"" << std::endl;
         }
-        if (_onplaying != _element.get_onplaying()) {
+        if (_onplaying != element.get_onplaying()) {
             if (_onplaying == STR_NULL) ss << "reset onplaying" << std::endl;
             else ss << "modify onplaying \"" << _onplaying << "\"" << std::endl;
         }
-        if (_onprogress != _element.get_onprogress()) {
+        if (_onprogress != element.get_onprogress()) {
             if (_onprogress == STR_NULL) ss << "reset onprogress" << std::endl;
             else ss << "modify onprogress \"" << _onprogress << "\"" << std::endl;
         }
-        if (_onratechange != _element.get_onratechange()) {
+        if (_onratechange != element.get_onratechange()) {
             if (_onratechange == STR_NULL) ss << "reset onratechange" << std::endl;
             else ss << "modify onratechange \"" << _onratechange << "\"" << std::endl;
         }
-        if (_onreset != _element.get_onreset()) {
+        if (_onreset != element.get_onreset()) {
             if (_onreset == STR_NULL) ss << "reset onreset" << std::endl;
             else ss << "modify onreset \"" << _onreset << "\"" << std::endl;
         }
-        if (_onseeked != _element.get_onseeked()) {
+        if (_onseeked != element.get_onseeked()) {
             if (_onseeked == STR_NULL) ss << "reset onseeked" << std::endl;
             else ss << "modify onseeked \"" << _onseeked << "\"" << std::endl;
         }
-        if (_onseeking != _element.get_onseeking()) {
+        if (_onseeking != element.get_onseeking()) {
             if (_onseeking == STR_NULL) ss << "reset onseeking" << std::endl;
             else ss << "modify onseeking \"" << _onseeking << "\"" << std::endl;
         }
-        if (_onselect != _element.get_onselect()) {
+        if (_onselect != element.get_onselect()) {
             if (_onselect == STR_NULL) ss << "reset onselect" << std::endl;
             else ss << "modify onselect \"" << _onselect << "\"" << std::endl;
         }
-        if (_onshow != _element.get_onshow()) {
+        if (_onshow != element.get_onshow()) {
             if (_onshow == STR_NULL) ss << "reset onshow" << std::endl;
             else ss << "modify onshow \"" << _onshow << "\"" << std::endl;
         }
-        if (_onstalled != _element.get_onstalled()) {
+        if (_onstalled != element.get_onstalled()) {
             if (_onstalled == STR_NULL) ss << "reset onstalled" << std::endl;
             else ss << "modify onstalled \"" << _onstalled << "\"" << std::endl;
         }
-        if (_onsubmit != _element.get_onsubmit()) {
+        if (_onsubmit != element.get_onsubmit()) {
             if (_onsubmit == STR_NULL) ss << "reset onsubmit" << std::endl;
             else ss << "modify onsubmit \"" << _onsubmit << "\"" << std::endl;
         }
-        if (_onsuspend != _element.get_onsuspend()) {
+        if (_onsuspend != element.get_onsuspend()) {
             if (_onsuspend == STR_NULL) ss << "reset onsuspend" << std::endl;
             else ss << "modify onsuspend \"" << _onsuspend << "\"" << std::endl;
         }
-        if (_ontimeupdate != _element.get_ontimeupdate()) {
+        if (_ontimeupdate != element.get_ontimeupdate()) {
             if (_ontimeupdate == STR_NULL) ss << "reset ontimeupdate" << std::endl;
             else ss << "modify ontimeupdate \"" << _ontimeupdate << "\"" << std::endl;
         }
-        if (_ontoggle != _element.get_ontoggle()) {
+        if (_ontoggle != element.get_ontoggle()) {
             if (_ontoggle == STR_NULL) ss << "reset ontoggle" << std::endl;
             else ss << "modify ontoggle \"" << _ontoggle << "\"" << std::endl;
         }
-        if (_onvolumechange != _element.get_onvolumechange()) {
+        if (_onvolumechange != element.get_onvolumechange()) {
             if (_onvolumechange == STR_NULL) ss << "reset onvolumechange" << std::endl;
             else ss << "modify onvolumechange \"" << _onvolumechange << "\"" << std::endl;
         }
-        if (_onwaiting != _element.get_onwaiting()) {
+        if (_onwaiting != element.get_onwaiting()) {
             if (_onwaiting == STR_NULL) ss << "reset onwaiting" << std::endl;
             else ss << "modify onwaiting \"" << _onwaiting << "\"" << std::endl;
         }
-        if (_onactivate != _element.get_onactivate()) {
+        if (_onactivate != element.get_onactivate()) {
             if (_onactivate == STR_NULL) ss << "reset onactivate" << std::endl;
             else ss << "modify onactivate \"" << _onactivate << "\"" << std::endl;
         }
-        if (_onfocusin != _element.get_onfocusin()) {
+        if (_onfocusin != element.get_onfocusin()) {
             if (_onfocusin == STR_NULL) ss << "reset onfocusin" << std::endl;
             else ss << "modify onfocusin \"" << _onfocusin << "\"" << std::endl;
         }
-        if (_onfocusout != _element.get_onfocusout()) {
+        if (_onfocusout != element.get_onfocusout()) {
             if (_onfocusout == STR_NULL) ss << "reset onfocusout" << std::endl;
             else ss << "modify onfocusout \"" << _onfocusout << "\"" << std::endl;
         }
-        if (_alignment_baseline != _element.get_alignment_baseline()) {
+        if (_alignment_baseline != element.get_alignment_baseline()) {
             if (_alignment_baseline == STR_NULL) ss << "reset alignment-baseline" << std::endl;
             else ss << "modify alignment-baseline \"" << _alignment_baseline << "\"" << std::endl;
         }
-        if (_baseline_shift != _element.get_baseline_shift()) {
+        if (_baseline_shift != element.get_baseline_shift()) {
             if (_baseline_shift == STR_NULL) ss << "reset baseline-shift" << std::endl;
             else ss << "modify baseline-shift \"" << _baseline_shift << "\"" << std::endl;
         }
-        if (_clip != _element.get_clip()) {
-            if (_clip == STR_NULL) ss << "reset clip" << std::endl;
-            else ss << "modify clip \"" << _clip << "\"" << std::endl;
-        }
-        if (_clip_path != _element.get_clip_path()) {
+        if (_clip_path != element.get_clip_path()) {
             if (_clip_path == STR_NULL) ss << "reset clip-path" << std::endl;
             else ss << "modify clip-path \"" << _clip_path << "\"" << std::endl;
         }
-        if (_clip_rule != _element.get_clip_rule()) {
+        if (_clip_rule != element.get_clip_rule()) {
             if (_clip_rule == STR_NULL) ss << "reset clip-rule" << std::endl;
             else ss << "modify clip-rule \"" << _clip_rule << "\"" << std::endl;
         }
-        if (_color != _element.get_color()) {
+        if (_color != element.get_color()) {
             if (_color == STR_NULL) ss << "reset color" << std::endl;
             else ss << "modify color \"" << _color << "\"" << std::endl;
         }
-        if (_color_interpolation != _element.get_color_interpolation()) {
+        if (_color_interpolation != element.get_color_interpolation()) {
             if (_color_interpolation == STR_NULL) ss << "reset color-interpolation" << std::endl;
             else ss << "modify color-interpolation \"" << _color_interpolation << "\"" << std::endl;
         }
-        if (_color_interpolation_filters != _element.get_color_interpolation_filters()) {
+        if (_color_interpolation_filters != element.get_color_interpolation_filters()) {
             if (_color_interpolation_filters == STR_NULL) ss << "reset color-interpolation-filters" << std::endl;
             else ss << "modify color-interpolation-filters \"" << _color_interpolation_filters << "\"" << std::endl;
         }
-        if (_color_profile != _element.get_color_profile()) {
+        if (_color_profile != element.get_color_profile()) {
             if (_color_profile == STR_NULL) ss << "reset color-profile" << std::endl;
             else ss << "modify color-profile \"" << _color_profile << "\"" << std::endl;
         }
-        if (_color_rendering != _element.get_color_rendering()) {
+        if (_color_rendering != element.get_color_rendering()) {
             if (_color_rendering == STR_NULL) ss << "reset color-rendering" << std::endl;
             else ss << "modify color-rendering \"" << _color_rendering << "\"" << std::endl;
         }
-        if (_cursor != _element.get_cursor()) {
+        if (_cursor != element.get_cursor()) {
             if (_cursor == STR_NULL) ss << "reset cursor" << std::endl;
             else ss << "modify cursor \"" << _cursor << "\"" << std::endl;
         }
-        if (_d != _element.get_d()) {
+        if (_d != element.get_d()) {
             if (_d == STR_NULL) ss << "reset d" << std::endl;
             else ss << "modify d \"" << _d << "\"" << std::endl;
         }
-        if (_direction != _element.get_direction()) {
+        if (_direction != element.get_direction()) {
             if (_direction == STR_NULL) ss << "reset direction" << std::endl;
             else ss << "modify direction \"" << _direction << "\"" << std::endl;
         }
-        if (_display != _element.get_display()) {
+        if (_display != element.get_display()) {
             if (_display == STR_NULL) ss << "reset display" << std::endl;
             else ss << "modify display \"" << _display << "\"" << std::endl;
         }
-        if (_dominant_baseline != _element.get_dominant_baseline()) {
+        if (_dominant_baseline != element.get_dominant_baseline()) {
             if (_dominant_baseline == STR_NULL) ss << "reset dominant-baseline" << std::endl;
             else ss << "modify dominant-baseline \"" << _dominant_baseline << "\"" << std::endl;
         }
-        if (_enable_background != _element.get_enable_background()) {
+        if (_enable_background != element.get_enable_background()) {
             if (_enable_background == STR_NULL) ss << "reset enable-background" << std::endl;
             else ss << "modify enable-background \"" << _enable_background << "\"" << std::endl;
         }
-        if (_fill != _element.get_fill()) {
+        if (_fill != element.get_fill()) {
             if (_fill == STR_NULL) ss << "reset fill" << std::endl;
             else ss << "modify fill \"" << _fill << "\"" << std::endl;
         }
-        if (_fill_opacity != _element.get_fill_opacity()) {
+        if (_fill_opacity != element.get_fill_opacity()) {
             if (_fill_opacity == STR_NULL) ss << "reset fill-opacity" << std::endl;
             else ss << "modify fill-opacity \"" << _fill_opacity << "\"" << std::endl;
         }
-        if (_fill_rule != _element.get_fill_rule()) {
+        if (_fill_rule != element.get_fill_rule()) {
             if (_fill_rule == STR_NULL) ss << "reset fill-rule" << std::endl;
             else ss << "modify fill-rule \"" << _fill_rule << "\"" << std::endl;
         }
-        if (_filter != _element.get_filter()) {
+        if (_filter != element.get_filter()) {
             if (_filter == STR_NULL) ss << "reset filter" << std::endl;
             else ss << "modify filter \"" << _filter << "\"" << std::endl;
         }
-        if (_flood_color != _element.get_flood_color()) {
+        if (_flood_color != element.get_flood_color()) {
             if (_flood_color == STR_NULL) ss << "reset flood-color" << std::endl;
             else ss << "modify flood-color \"" << _flood_color << "\"" << std::endl;
         }
-        if (_flood_opacity != _element.get_flood_opacity()) {
+        if (_flood_opacity != element.get_flood_opacity()) {
             if (_flood_opacity == STR_NULL) ss << "reset flood-opacity" << std::endl;
             else ss << "modify flood-opacity \"" << _flood_opacity << "\"" << std::endl;
         }
-        if (_font_family != _element.get_font_family()) {
+        if (_font_family != element.get_font_family()) {
             if (_font_family == STR_NULL) ss << "reset font-family" << std::endl;
             else ss << "modify font-family \"" << _font_family << "\"" << std::endl;
         }
-        if (_font_size != _element.get_font_size()) {
+        if (_font_size != element.get_font_size()) {
             if (_font_size == STR_NULL) ss << "reset font-size" << std::endl;
             else ss << "modify font-size \"" << _font_size << "\"" << std::endl;
         }
-        if (_font_size_adjust != _element.get_font_size_adjust()) {
+        if (_font_size_adjust != element.get_font_size_adjust()) {
             if (_font_size_adjust == STR_NULL) ss << "reset font-size-adjust" << std::endl;
             else ss << "modify font-size-adjust \"" << _font_size_adjust << "\"" << std::endl;
         }
-        if (_font_stretch != _element.get_font_stretch()) {
+        if (_font_stretch != element.get_font_stretch()) {
             if (_font_stretch == STR_NULL) ss << "reset font-stretch" << std::endl;
             else ss << "modify font-stretch \"" << _font_stretch << "\"" << std::endl;
         }
-        if (_font_style != _element.get_font_style()) {
+        if (_font_style != element.get_font_style()) {
             if (_font_style == STR_NULL) ss << "reset font-style" << std::endl;
             else ss << "modify font-style \"" << _font_style << "\"" << std::endl;
         }
-        if (_font_variant != _element.get_font_variant()) {
+        if (_font_variant != element.get_font_variant()) {
             if (_font_variant == STR_NULL) ss << "reset font-variant" << std::endl;
             else ss << "modify font-variant \"" << _font_variant << "\"" << std::endl;
         }
-        if (_font_weight != _element.get_font_weight()) {
+        if (_font_weight != element.get_font_weight()) {
             if (_font_weight == STR_NULL) ss << "reset font-weight" << std::endl;
             else ss << "modify font-weight \"" << _font_weight << "\"" << std::endl;
         }
-        if (_glyph_orientation_horizontal != _element.get_glyph_orientation_horizontal()) {
+        if (_glyph_orientation_horizontal != element.get_glyph_orientation_horizontal()) {
             if (_glyph_orientation_horizontal == STR_NULL) ss << "reset glyph-orientation-horizontal" << std::endl;
             else ss << "modify glyph-orientation-horizontal \"" << _glyph_orientation_horizontal << "\"" << std::endl;
         }
-        if (_glyph_orientation_vertical != _element.get_glyph_orientation_vertical()) {
+        if (_glyph_orientation_vertical != element.get_glyph_orientation_vertical()) {
             if (_glyph_orientation_vertical == STR_NULL) ss << "reset glyph-orientation-vertical" << std::endl;
             else ss << "modify glyph-orientation-vertical \"" << _glyph_orientation_vertical << "\"" << std::endl;
         }
-        if (_image_rendering != _element.get_image_rendering()) {
+        if (_image_rendering != element.get_image_rendering()) {
             if (_image_rendering == STR_NULL) ss << "reset image-rendering" << std::endl;
             else ss << "modify image-rendering \"" << _image_rendering << "\"" << std::endl;
         }
-        if (_kerning != _element.get_kerning()) {
+        if (_kerning != element.get_kerning()) {
             if (_kerning == STR_NULL) ss << "reset kerning" << std::endl;
             else ss << "modify kerning \"" << _kerning << "\"" << std::endl;
         }
-        if (_letter_spacing != _element.get_letter_spacing()) {
+        if (_letter_spacing != element.get_letter_spacing()) {
             if (_letter_spacing == STR_NULL) ss << "reset letter-spacing" << std::endl;
             else ss << "modify letter-spacing \"" << _letter_spacing << "\"" << std::endl;
         }
-        if (_lighting_color != _element.get_lighting_color()) {
+        if (_lighting_color != element.get_lighting_color()) {
             if (_lighting_color == STR_NULL) ss << "reset lighting-color" << std::endl;
             else ss << "modify lighting-color \"" << _lighting_color << "\"" << std::endl;
         }
-        if (_marker_end != _element.get_marker_end()) {
+        if (_marker_end != element.get_marker_end()) {
             if (_marker_end == STR_NULL) ss << "reset marker-end" << std::endl;
             else ss << "modify marker-end \"" << _marker_end << "\"" << std::endl;
         }
-        if (_marker_mid != _element.get_marker_mid()) {
+        if (_marker_mid != element.get_marker_mid()) {
             if (_marker_mid == STR_NULL) ss << "reset marker-mid" << std::endl;
             else ss << "modify marker-mid \"" << _marker_mid << "\"" << std::endl;
         }
-        if (_marker_start != _element.get_marker_start()) {
+        if (_marker_start != element.get_marker_start()) {
             if (_marker_start == STR_NULL) ss << "reset marker-start" << std::endl;
             else ss << "modify marker-start \"" << _marker_start << "\"" << std::endl;
         }
-        if (_mask != _element.get_mask()) {
+        if (_mask != element.get_mask()) {
             if (_mask == STR_NULL) ss << "reset mask" << std::endl;
             else ss << "modify mask \"" << _mask << "\"" << std::endl;
         }
-        if (_opacity != _element.get_opacity()) {
+        if (_opacity != element.get_opacity()) {
             if (_opacity == STR_NULL) ss << "reset opacity" << std::endl;
             else ss << "modify opacity \"" << _opacity << "\"" << std::endl;
         }
-        if (_overflow != _element.get_overflow()) {
+        if (_overflow != element.get_overflow()) {
             if (_overflow == STR_NULL) ss << "reset overflow" << std::endl;
             else ss << "modify overflow \"" << _overflow << "\"" << std::endl;
         }
-        if (_pointer_events != _element.get_pointer_events()) {
+        if (_pointer_events != element.get_pointer_events()) {
             if (_pointer_events == STR_NULL) ss << "reset pointer-events" << std::endl;
             else ss << "modify pointer-events \"" << _pointer_events << "\"" << std::endl;
         }
-        if (_shape_rendering != _element.get_shape_rendering()) {
+        if (_shape_rendering != element.get_shape_rendering()) {
             if (_shape_rendering == STR_NULL) ss << "reset shape-rendering" << std::endl;
             else ss << "modify shape-rendering \"" << _shape_rendering << "\"" << std::endl;
         }
-        if (_solid_color != _element.get_solid_color()) {
+        if (_solid_color != element.get_solid_color()) {
             if (_solid_color == STR_NULL) ss << "reset solid-color" << std::endl;
             else ss << "modify solid-color \"" << _solid_color << "\"" << std::endl;
         }
-        if (_solid_opacity != _element.get_solid_opacity()) {
+        if (_solid_opacity != element.get_solid_opacity()) {
             if (_solid_opacity == STR_NULL) ss << "reset solid-opacity" << std::endl;
             else ss << "modify solid-opacity \"" << _solid_opacity << "\"" << std::endl;
         }
-        if (_stop_color != _element.get_stop_color()) {
+        if (_stop_color != element.get_stop_color()) {
             if (_stop_color == STR_NULL) ss << "reset stop-color" << std::endl;
             else ss << "modify stop-color \"" << _stop_color << "\"" << std::endl;
         }
-        if (_stop_opacity != _element.get_stop_opacity()) {
+        if (_stop_opacity != element.get_stop_opacity()) {
             if (_stop_opacity == STR_NULL) ss << "reset stop-opacity" << std::endl;
             else ss << "modify stop-opacity \"" << _stop_opacity << "\"" << std::endl;
         }
-        if (_stroke != _element.get_stroke()) {
+        if (_stroke != element.get_stroke()) {
             if (_stroke == STR_NULL) ss << "reset stroke" << std::endl;
             else ss << "modify stroke \"" << _stroke << "\"" << std::endl;
         }
-        if (_stroke_dasharray != _element.get_stroke_dasharray()) {
+        if (_stroke_dasharray != element.get_stroke_dasharray()) {
             if (_stroke_dasharray == STR_NULL) ss << "reset stroke-dasharray" << std::endl;
             else ss << "modify stroke-dasharray \"" << _stroke_dasharray << "\"" << std::endl;
         }
-        if (_stroke_dashoffset != _element.get_stroke_dashoffset()) {
+        if (_stroke_dashoffset != element.get_stroke_dashoffset()) {
             if (_stroke_dashoffset == STR_NULL) ss << "reset stroke-dashoffset" << std::endl;
             else ss << "modify stroke-dashoffset \"" << _stroke_dashoffset << "\"" << std::endl;
         }
-        if (_stroke_linecap != _element.get_stroke_linecap()) {
+        if (_stroke_linecap != element.get_stroke_linecap()) {
             if (_stroke_linecap == STR_NULL) ss << "reset stroke-linecap" << std::endl;
             else ss << "modify stroke-linecap \"" << _stroke_linecap << "\"" << std::endl;
         }
-        if (_stroke_linejoin != _element.get_stroke_linejoin()) {
+        if (_stroke_linejoin != element.get_stroke_linejoin()) {
             if (_stroke_linejoin == STR_NULL) ss << "reset stroke-linejoin" << std::endl;
             else ss << "modify stroke-linejoin \"" << _stroke_linejoin << "\"" << std::endl;
         }
-        if (_stroke_miterlimit != _element.get_stroke_miterlimit()) {
+        if (_stroke_miterlimit != element.get_stroke_miterlimit()) {
             if (_stroke_miterlimit == STR_NULL) ss << "reset stroke-miterlimit" << std::endl;
             else ss << "modify stroke-miterlimit \"" << _stroke_miterlimit << "\"" << std::endl;
         }
-        if (_stroke_opacity != _element.get_stroke_opacity()) {
+        if (_stroke_opacity != element.get_stroke_opacity()) {
             if (_stroke_opacity == STR_NULL) ss << "reset stroke-opacity" << std::endl;
             else ss << "modify stroke-opacity \"" << _stroke_opacity << "\"" << std::endl;
         }
-        if (_stroke_width != _element.get_stroke_width()) {
+        if (_stroke_width != element.get_stroke_width()) {
             if (_stroke_width == STR_NULL) ss << "reset stroke-width" << std::endl;
             else ss << "modify stroke-width \"" << _stroke_width << "\"" << std::endl;
         }
-        if (_text_anchor != _element.get_text_anchor()) {
+        if (_text_anchor != element.get_text_anchor()) {
             if (_text_anchor == STR_NULL) ss << "reset text-anchor" << std::endl;
             else ss << "modify text-anchor \"" << _text_anchor << "\"" << std::endl;
         }
-        if (_text_decoration != _element.get_text_decoration()) {
+        if (_text_decoration != element.get_text_decoration()) {
             if (_text_decoration == STR_NULL) ss << "reset text-decoration" << std::endl;
             else ss << "modify text-decoration \"" << _text_decoration << "\"" << std::endl;
         }
-        if (_text_rendering != _element.get_text_rendering()) {
+        if (_text_rendering != element.get_text_rendering()) {
             if (_text_rendering == STR_NULL) ss << "reset text-rendering" << std::endl;
             else ss << "modify text-rendering \"" << _text_rendering << "\"" << std::endl;
         }
-        if (_transform != _element.get_transform()) {
+        if (_transform != element.get_transform()) {
             if (_transform == STR_NULL) ss << "reset transform" << std::endl;
             else ss << "modify transform \"" << _transform << "\"" << std::endl;
         }
-        if (_unicode_bidi != _element.get_unicode_bidi()) {
+        if (_unicode_bidi != element.get_unicode_bidi()) {
             if (_unicode_bidi == STR_NULL) ss << "reset unicode-bidi" << std::endl;
             else ss << "modify unicode-bidi \"" << _unicode_bidi << "\"" << std::endl;
         }
-        if (_vector_effect != _element.get_vector_effect()) {
+        if (_vector_effect != element.get_vector_effect()) {
             if (_vector_effect == STR_NULL) ss << "reset vector-effect" << std::endl;
             else ss << "modify vector-effect \"" << _vector_effect << "\"" << std::endl;
         }
-        if (_visibility != _element.get_visibility()) {
+        if (_visibility != element.get_visibility()) {
             if (_visibility == STR_NULL) ss << "reset visibility" << std::endl;
             else ss << "modify visibility \"" << _visibility << "\"" << std::endl;
         }
-        if (_word_spacing != _element.get_word_spacing()) {
+        if (_word_spacing != element.get_word_spacing()) {
             if (_word_spacing == STR_NULL) ss << "reset word-spacing" << std::endl;
             else ss << "modify word-spacing \"" << _word_spacing << "\"" << std::endl;
         }
-        if (_writing_mode != _element.get_writing_mode()) {
+        if (_writing_mode != element.get_writing_mode()) {
             if (_writing_mode == STR_NULL) ss << "reset writing-mode" << std::endl;
             else ss << "modify writing-mode \"" << _writing_mode << "\"" << std::endl;
         }
@@ -2167,6 +2173,7 @@ namespace Lewzen {
     const std::string SVGElement::inner_differ(const SVGElement &element,
             std::vector<_el_idx> &removal,
             std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &unchanged,
             std::vector<std::pair<_el_idx, _el_idx>> &changed) const {
         std::unordered_map<std::string, std::set<_el_idx>> tags_map;
         std::set<_el_idx> A, B;
@@ -2189,6 +2196,7 @@ namespace Lewzen {
             if (match.idx >= 0) {
                 tags_map[tag].erase(match);
                 A.erase(a), B.erase(match);
+                unchanged.push_back({a, match});
             }
         }
         c = 0;

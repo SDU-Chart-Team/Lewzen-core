@@ -5,11 +5,6 @@ namespace Lewzen {
         _points = STR_NULL;
         _path_length = STR_NULL;
     }
-    SVGPolygon::SVGPolygon(const SVGPolygon &element) {
-        _points = element.get_points();
-        _path_length = element.get_path_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGPolygon::get_tag() const {
         return "polygon";
     }
@@ -37,7 +32,24 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGPolygon::clone() const {
-        return std::make_shared<SVGPolygon>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGPolygon> SVGPolygon::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGPolygon>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGPolygon::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGPolygon &>(element);
+        return operator=(_element);
+    }
+    SVGPolygon &SVGPolygon::operator=(const SVGPolygon &element) {
+        SVGElement::operator=(element);
+
+        _points = element.get_points();
+        _path_length = element.get_path_length();
+        return *this;
     }
     const std::string SVGPolygon::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -46,11 +58,19 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGPolygon &>(element);
 
-        if (_points != _element.get_points()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGPolygon::attribute_differ(const SVGPolygon &element) const {
+        std::stringstream ss;
+
+        if (_points != element.get_points()) {
             if (_points == STR_NULL) ss << "reset points" << std::endl;
             else ss << "modify points \"" << _points << "\"" << std::endl;
         }
-        if (_path_length != _element.get_path_length()) {
+        if (_path_length != element.get_path_length()) {
             if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
             else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }

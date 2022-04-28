@@ -24,7 +24,7 @@
         },
         {
             "name": "rx",
-            "type": "auto|<length>|<percentage>r",
+            "type": "auto|<length>|<percentage>",
             "comment": "The horizontal corner radius of the rect. Defaults to ry if it is specified. \nValue type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes"
         },
         {

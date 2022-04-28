@@ -14,10 +14,6 @@ namespace Lewzen {
         * Constructor of foreignObject.
         */
         SVGForeignObject();
-        /**
-        * Deep copy of foreignObject.
-        */
-        SVGForeignObject(const SVGForeignObject &element);
 
         /// Tag
     public:
@@ -26,7 +22,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// ForeignObject
     private:
@@ -102,22 +98,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGForeignObject &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGForeignObject
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGForeignObject
+        */
+        std::shared_ptr<SVGForeignObject> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGForeignObject
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGForeignObject
+        */
+        virtual SVGForeignObject &operator=(const SVGForeignObject &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

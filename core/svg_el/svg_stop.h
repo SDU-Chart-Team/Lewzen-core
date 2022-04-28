@@ -14,10 +14,6 @@ namespace Lewzen {
         * Constructor of stop.
         */
         SVGStop();
-        /**
-        * Deep copy of stop.
-        */
-        SVGStop(const SVGStop &element);
 
         /// Tag
     public:
@@ -26,7 +22,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// Stop
     private:
@@ -52,28 +48,28 @@ namespace Lewzen {
         void set_offset(const std::string &offset);
         /**
         * This attribute defines the color of the gradient stop. It can be used as a CSS property. 
-        * Value type: currentcolor|<color>|<icccolor>; Default value: black; Animatable: yes
+        * Value type: currentcolor|<color>|<color>:icccolor; Default value: black; Animatable: yes
         *
         * @return the stop-color
         */
         const std::string get_stop_color() const;
         /**
         * This attribute defines the color of the gradient stop. It can be used as a CSS property. 
-        * Value type: currentcolor|<color>|<icccolor>; Default value: black; Animatable: yes
+        * Value type: currentcolor|<color>|<color>:icccolor; Default value: black; Animatable: yes
         *
         * @param  the stop-color
         */
         void set_stop_color(const std::string &stop_color);
         /**
         * This attribute defines the opacity of the gradient stop. It can be used as a CSS property. 
-        * Value type: <opacity>; Default value: 1; Animatable: yes
+        * Value type: <opacity-value>; Default value: 1; Animatable: yes
         *
         * @return the stop-opacity
         */
         const std::string get_stop_opacity() const;
         /**
         * This attribute defines the opacity of the gradient stop. It can be used as a CSS property. 
-        * Value type: <opacity>; Default value: 1; Animatable: yes
+        * Value type: <opacity-value>; Default value: 1; Animatable: yes
         *
         * @param  the stop-opacity
         */
@@ -86,22 +82,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGStop &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGStop
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGStop
+        */
+        std::shared_ptr<SVGStop> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGStop
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGStop
+        */
+        virtual SVGStop &operator=(const SVGStop &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

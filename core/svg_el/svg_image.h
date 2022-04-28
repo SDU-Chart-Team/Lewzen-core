@@ -16,10 +16,6 @@ namespace Lewzen {
         * Constructor of image.
         */
         SVGImage();
-        /**
-        * Deep copy of image.
-        */
-        SVGImage(const SVGImage &element);
 
         /// Tag
     public:
@@ -28,7 +24,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// Image
     private:
@@ -152,22 +148,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGImage &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGImage
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGImage
+        */
+        std::shared_ptr<SVGImage> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGImage
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGImage
+        */
+        virtual SVGImage &operator=(const SVGImage &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

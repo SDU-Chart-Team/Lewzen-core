@@ -11,23 +11,24 @@ namespace Lewzen {
     class PointCoordinateSystem: public CoordinateSystem {
     private:
         // origin
-        std::shared_ptr<Point2D> _origin;
+        std::weak_ptr<Point2D> _origin;
         // vertex
-        std::shared_ptr<Point2D> _vertex;
+        std::weak_ptr<Point2D> _vertex;
+        std::shared_ptr<Point2D> _vertex_default;
     public:
         /**
         * Constructor of PointCoordinateSystem. Unit is equal to CanvasCoordinateSystem.
         *
         * @param origin the origin of point coordinate system. 
         */
-        PointCoordinateSystem(const std::shared_ptr<Point2D> &origin);
+        PointCoordinateSystem(const std::weak_ptr<Point2D> &origin);
         /**
         * Constructor of PointCoordinateSystem. Unit is equal to CanvasCoordinateSystem.
         *
         * @param origin the origin of point coordinate system. 
         * @param vertex the (1, 1) of point relative coordinate system. default: (origin.x + 1, origin.y + 1).
         */
-        PointCoordinateSystem(const std::shared_ptr<Point2D> &origin, const std::shared_ptr<Point2D> &vertex);
+        PointCoordinateSystem(const std::weak_ptr<Point2D> &origin, const std::weak_ptr<Point2D> &vertex);
         /**
         * Deep copy of this coordinate system.
         */
@@ -37,13 +38,13 @@ namespace Lewzen {
         *
         * @return the origin of point coordinate system.
         */
-        const std::shared_ptr<Point2D> get_origin() const;
+        const std::weak_ptr<Point2D> get_origin() const;
         /**
         * Get vertex of PointCoordinateSystem.
         *
         * @return the vertex of point coordinate system. for relative coordinate system.
         */
-        const std::shared_ptr<Point2D> get_vertex() const;
+        const std::weak_ptr<Point2D> get_vertex() const;
         /**
         * Deep copy of this coordinate system.
         *

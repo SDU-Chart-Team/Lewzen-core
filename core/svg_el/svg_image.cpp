@@ -11,17 +11,6 @@ namespace Lewzen {
         _preserve_aspect_ratio = STR_NULL;
         _crossorigin = STR_NULL;
     }
-    SVGImage::SVGImage(const SVGImage &element) {
-        _width = element.get_width();
-        _height = element.get_height();
-        _x = element.get_x();
-        _y = element.get_y();
-        _href = element.get_href();
-        _xlinkZhref = element.get_xlinkZhref();
-        _preserve_aspect_ratio = element.get_preserve_aspect_ratio();
-        _crossorigin = element.get_crossorigin();
-        new (this)SVGElement(element);
-    }
     const std::string SVGImage::get_tag() const {
         return "image";
     }
@@ -97,7 +86,30 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGImage::clone() const {
-        return std::make_shared<SVGImage>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGImage> SVGImage::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGImage>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGImage::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGImage &>(element);
+        return operator=(_element);
+    }
+    SVGImage &SVGImage::operator=(const SVGImage &element) {
+        SVGElement::operator=(element);
+
+        _width = element.get_width();
+        _height = element.get_height();
+        _x = element.get_x();
+        _y = element.get_y();
+        _href = element.get_href();
+        _xlinkZhref = element.get_xlinkZhref();
+        _preserve_aspect_ratio = element.get_preserve_aspect_ratio();
+        _crossorigin = element.get_crossorigin();
+        return *this;
     }
     const std::string SVGImage::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -106,35 +118,43 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGImage &>(element);
 
-        if (_width != _element.get_width()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGImage::attribute_differ(const SVGImage &element) const {
+        std::stringstream ss;
+
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }
-        if (_height != _element.get_height()) {
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_x != _element.get_x()) {
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }
-        if (_href != _element.get_href()) {
+        if (_href != element.get_href()) {
             if (_href == STR_NULL) ss << "reset href" << std::endl;
             else ss << "modify href \"" << _href << "\"" << std::endl;
         }
-        if (_xlinkZhref != _element.get_xlinkZhref()) {
+        if (_xlinkZhref != element.get_xlinkZhref()) {
             if (_xlinkZhref == STR_NULL) ss << "reset xlink:href" << std::endl;
             else ss << "modify xlink:href \"" << _xlinkZhref << "\"" << std::endl;
         }
-        if (_preserve_aspect_ratio != _element.get_preserve_aspect_ratio()) {
+        if (_preserve_aspect_ratio != element.get_preserve_aspect_ratio()) {
             if (_preserve_aspect_ratio == STR_NULL) ss << "reset preserveAspectRatio" << std::endl;
             else ss << "modify preserveAspectRatio \"" << _preserve_aspect_ratio << "\"" << std::endl;
         }
-        if (_crossorigin != _element.get_crossorigin()) {
+        if (_crossorigin != element.get_crossorigin()) {
             if (_crossorigin == STR_NULL) ss << "reset crossorigin" << std::endl;
             else ss << "modify crossorigin \"" << _crossorigin << "\"" << std::endl;
         }

@@ -14,10 +14,6 @@ namespace Lewzen {
         * Constructor of polyline.
         */
         SVGPolyline();
-        /**
-        * Deep copy of polyline.
-        */
-        SVGPolyline(const SVGPolyline &element);
 
         /// Tag
     public:
@@ -26,7 +22,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// Polyline
     private:
@@ -36,14 +32,14 @@ namespace Lewzen {
     public:
         /**
         * This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. 
-        * Value type: <number>+ ; Default value: ""; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: ""; Animatable: yes
         *
         * @return the points
         */
         const std::string get_points() const;
         /**
         * This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. 
-        * Value type: <number>+ ; Default value: ""; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: ""; Animatable: yes
         *
         * @param  the points
         */
@@ -70,22 +66,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGPolyline &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGPolyline
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGPolyline
+        */
+        std::shared_ptr<SVGPolyline> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGPolyline
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGPolyline
+        */
+        virtual SVGPolyline &operator=(const SVGPolyline &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

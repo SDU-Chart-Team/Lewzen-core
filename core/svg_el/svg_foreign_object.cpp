@@ -7,13 +7,6 @@ namespace Lewzen {
         _x = STR_NULL;
         _y = STR_NULL;
     }
-    SVGForeignObject::SVGForeignObject(const SVGForeignObject &element) {
-        _width = element.get_width();
-        _height = element.get_height();
-        _x = element.get_x();
-        _y = element.get_y();
-        new (this)SVGElement(element);
-    }
     const std::string SVGForeignObject::get_tag() const {
         return "foreignObject";
     }
@@ -57,7 +50,26 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGForeignObject::clone() const {
-        return std::make_shared<SVGForeignObject>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGForeignObject> SVGForeignObject::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGForeignObject>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGForeignObject::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGForeignObject &>(element);
+        return operator=(_element);
+    }
+    SVGForeignObject &SVGForeignObject::operator=(const SVGForeignObject &element) {
+        SVGElement::operator=(element);
+
+        _width = element.get_width();
+        _height = element.get_height();
+        _x = element.get_x();
+        _y = element.get_y();
+        return *this;
     }
     const std::string SVGForeignObject::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -66,19 +78,27 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGForeignObject &>(element);
 
-        if (_width != _element.get_width()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGForeignObject::attribute_differ(const SVGForeignObject &element) const {
+        std::stringstream ss;
+
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }
-        if (_height != _element.get_height()) {
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_x != _element.get_x()) {
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }

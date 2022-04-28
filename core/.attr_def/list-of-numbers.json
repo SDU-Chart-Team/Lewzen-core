@@ -1,0 +1,81 @@
+{
+    "type": "list-of-numbers",
+    "includes": [
+        "sstream"
+    ],
+    "comment": "A list consists of a separated sequence of values. Unless explicitly described differently, lists within SVG's XML attributes can be either comma-separated (with optional white space before or after the comma), or white space-separated.",
+    "accepts": [
+        {
+            "ctype": "std::vector<int>",
+            "cname": "vec_int",
+            "to_string": "return _vec_int_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_int_to_str(const std::vector<int> &attr);",
+                    "comment": "Convert vector of integer to string.",
+                    "implementation": "std::stringstream ss;\nfor(int i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        },
+        {
+            "ctype": "std::vector<long>",
+            "cname": "vec_long",
+            "to_string": "return _vec_long_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_long_to_str(const std::vector<long> &attr);",
+                    "comment": "Convert vector of loong to string.",
+                    "implementation": "std::stringstream ss;\nfor(long i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        },
+        {
+            "ctype": "std::vector<long long int>",
+            "cname": "vec_ll",
+            "to_string": "return _vec_ll_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_ll_to_str(const std::vector<long long int> &attr);",
+                    "comment": "Convert vector of long long integer to string.",
+                    "implementation": "std::stringstream ss;\nfor(long long int i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        },
+        {
+            "ctype": "std::vector<double>",
+            "cname": "vec_double",
+            "to_string": "return _vec_double_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_double_to_str(const std::vector<double> &attr);",
+                    "comment": "Convert vector of double to string.",
+                    "implementation": "std::stringstream ss;\nfor(double i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        },
+        {
+            "ctype": "std::vector<float>",
+            "cname": "vec_float",
+            "to_string": "return _vec_float_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_float_to_str(const std::vector<float> &attr);",
+                    "comment": "Convert vector of float to string.",
+                    "implementation": "std::stringstream ss;\nfor(float i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        },
+        {
+            "ctype": "std::vector<long double>",
+            "cname": "vec_ld",
+            "to_string": "return _vec_ld_to_str(attr);",
+            "additional_funcs": [
+                {
+                    "declaration": "static const std::string _vec_ld_to_str(const std::vector<long double> &attr);",
+                    "comment": "Convert vector of long double to string.",
+                    "implementation": "std::stringstream ss;\nfor(long double i = 0; i < attr.size(); ++i) {\n    if(i > 0) ss << \" \";\n    ss << attr[i];\n}\nreturn ss.str();"
+                }
+            ]
+        }
+    ]
+}

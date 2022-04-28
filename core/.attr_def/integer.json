@@ -1,0 +1,36 @@
+{
+    "type": "integer",
+    "includes": [
+        "regex"
+    ],
+    "comment": "An <integer> is specified as an optional sign character (+ or -) followed by one or more digits 0 to 9:\n```\ninteger ::= [+-]? [0-9]+\n```\nIf the sign character is not present, the number is non-negative.\nUnless stated otherwise for a particular attribute or property, the range for an <integer> encompasses (at a minimum) -2147483648 to 2147483647.\nWithin the SVG DOM, an <integer> is represented as a number or an SVGAnimatedInteger.",
+    "accepts": [
+        {
+            "ctype": "int",
+            "cname": "integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long",
+            "cname": "long",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long long int",
+            "cname": "long integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "std::string",
+            "cname": "legal string",
+            "to_string": "if (!is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \\\"\" << attr << \"\\\" to Integer.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
+            "additional_funcs": [
+                {
+                    "declaration": "static bool is_legal_string(const std::string &attr);",
+                    "comment": "Check if a string is legal as a Integer attribute.",
+                    "implementation": "std::regex re(R\"(^[+-]?[0-9]+$)\");\nreturn std::regex_match(attr, re);"
+                }
+            ]
+        }
+    ]
+}

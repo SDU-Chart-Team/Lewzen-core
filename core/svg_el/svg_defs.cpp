@@ -3,9 +3,6 @@
 namespace Lewzen {
     SVGDefs::SVGDefs() {
     }
-    SVGDefs::SVGDefs(const SVGDefs &element) {
-        new (this)SVGElement(element);
-    }
     const std::string SVGDefs::get_tag() const {
         return "defs";
     }
@@ -17,7 +14,22 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGDefs::clone() const {
-        return std::make_shared<SVGDefs>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGDefs> SVGDefs::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGDefs>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGDefs::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGDefs &>(element);
+        return operator=(_element);
+    }
+    SVGDefs &SVGDefs::operator=(const SVGDefs &element) {
+        SVGElement::operator=(element);
+
+        return *this;
     }
     const std::string SVGDefs::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -25,6 +37,14 @@ namespace Lewzen {
         ss << SVGElement::operator-(element);
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGDefs &>(element);
+
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGDefs::attribute_differ(const SVGDefs &element) const {
+        std::stringstream ss;
 
 
         return ss.str();

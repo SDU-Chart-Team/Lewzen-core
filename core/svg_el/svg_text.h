@@ -14,10 +14,6 @@ namespace Lewzen {
         * Constructor of text.
         */
         SVGText();
-        /**
-        * Deep copy of text.
-        */
-        SVGText(const SVGText &element);
 
         /// Tag
     public:
@@ -26,7 +22,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// Text
     private:
@@ -102,14 +98,14 @@ namespace Lewzen {
         void set_dy(const std::string &dy);
         /**
         * Rotates orientation of each individual glyph. Can rotate glyphs individually. 
-        * Value type: <list-of-number> ; Default value: none; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
         * @return the rotate
         */
         const std::string get_rotate() const;
         /**
         * Rotates orientation of each individual glyph. Can rotate glyphs individually. 
-        * Value type: <list-of-number> ; Default value: none; Animatable: yes
+        * Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
         * @param  the rotate
         */
@@ -150,22 +146,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGText &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGText
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGText
+        */
+        std::shared_ptr<SVGText> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGText
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGText
+        */
+        virtual SVGText &operator=(const SVGText &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

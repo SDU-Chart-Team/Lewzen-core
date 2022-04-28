@@ -9,15 +9,6 @@ namespace Lewzen {
         _y = STR_NULL;
         _width = STR_NULL;
     }
-    SVGMask::SVGMask(const SVGMask &element) {
-        _height = element.get_height();
-        _mask_content_units = element.get_mask_content_units();
-        _mask_units = element.get_mask_units();
-        _x = element.get_x();
-        _y = element.get_y();
-        _width = element.get_width();
-        new (this)SVGElement(element);
-    }
     const std::string SVGMask::get_tag() const {
         return "mask";
     }
@@ -77,7 +68,28 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGMask::clone() const {
-        return std::make_shared<SVGMask>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGMask> SVGMask::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGMask>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGMask::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGMask &>(element);
+        return operator=(_element);
+    }
+    SVGMask &SVGMask::operator=(const SVGMask &element) {
+        SVGElement::operator=(element);
+
+        _height = element.get_height();
+        _mask_content_units = element.get_mask_content_units();
+        _mask_units = element.get_mask_units();
+        _x = element.get_x();
+        _y = element.get_y();
+        _width = element.get_width();
+        return *this;
     }
     const std::string SVGMask::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -86,27 +98,35 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGMask &>(element);
 
-        if (_height != _element.get_height()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGMask::attribute_differ(const SVGMask &element) const {
+        std::stringstream ss;
+
+        if (_height != element.get_height()) {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_mask_content_units != _element.get_mask_content_units()) {
+        if (_mask_content_units != element.get_mask_content_units()) {
             if (_mask_content_units == STR_NULL) ss << "reset maskContentUnits" << std::endl;
             else ss << "modify maskContentUnits \"" << _mask_content_units << "\"" << std::endl;
         }
-        if (_mask_units != _element.get_mask_units()) {
+        if (_mask_units != element.get_mask_units()) {
             if (_mask_units == STR_NULL) ss << "reset maskUnits" << std::endl;
             else ss << "modify maskUnits \"" << _mask_units << "\"" << std::endl;
         }
-        if (_x != _element.get_x()) {
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }
-        if (_width != _element.get_width()) {
+        if (_width != element.get_width()) {
             if (_width == STR_NULL) ss << "reset width" << std::endl;
             else ss << "modify width \"" << _width << "\"" << std::endl;
         }

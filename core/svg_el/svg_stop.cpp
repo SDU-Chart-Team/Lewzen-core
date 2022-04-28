@@ -6,12 +6,6 @@ namespace Lewzen {
         _stop_color = STR_NULL;
         _stop_opacity = STR_NULL;
     }
-    SVGStop::SVGStop(const SVGStop &element) {
-        _offset = element.get_offset();
-        _stop_color = element.get_stop_color();
-        _stop_opacity = element.get_stop_opacity();
-        new (this)SVGElement(element);
-    }
     const std::string SVGStop::get_tag() const {
         return "stop";
     }
@@ -47,7 +41,25 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGStop::clone() const {
-        return std::make_shared<SVGStop>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGStop> SVGStop::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGStop>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGStop::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGStop &>(element);
+        return operator=(_element);
+    }
+    SVGStop &SVGStop::operator=(const SVGStop &element) {
+        SVGElement::operator=(element);
+
+        _offset = element.get_offset();
+        _stop_color = element.get_stop_color();
+        _stop_opacity = element.get_stop_opacity();
+        return *this;
     }
     const std::string SVGStop::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -56,15 +68,23 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGStop &>(element);
 
-        if (_offset != _element.get_offset()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGStop::attribute_differ(const SVGStop &element) const {
+        std::stringstream ss;
+
+        if (_offset != element.get_offset()) {
             if (_offset == STR_NULL) ss << "reset offset" << std::endl;
             else ss << "modify offset \"" << _offset << "\"" << std::endl;
         }
-        if (_stop_color != _element.get_stop_color()) {
+        if (_stop_color != element.get_stop_color()) {
             if (_stop_color == STR_NULL) ss << "reset stop-color" << std::endl;
             else ss << "modify stop-color \"" << _stop_color << "\"" << std::endl;
         }
-        if (_stop_opacity != _element.get_stop_opacity()) {
+        if (_stop_opacity != element.get_stop_opacity()) {
             if (_stop_opacity == STR_NULL) ss << "reset stop-opacity" << std::endl;
             else ss << "modify stop-opacity \"" << _stop_opacity << "\"" << std::endl;
         }

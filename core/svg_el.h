@@ -16,10 +16,6 @@ namespace Lewzen {
         * Constructor of SVG element.
         */
         SVGElement();
-        /**
-        * Deep copy of SVG element.
-        */
-        SVGElement(const SVGElement &element);
 
         /// Tag
     public:
@@ -28,7 +24,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const;
 
         /// Element
     private:
@@ -185,8 +181,6 @@ namespace Lewzen {
         std::string _alignment_baseline;
     private:
         std::string _baseline_shift;
-    private:
-        std::string _clip;
     private:
         std::string _clip_path;
     private:
@@ -1255,20 +1249,6 @@ namespace Lewzen {
         */
         void set_baseline_shift(const std::string &baseline_shift);
         /**
-        * It defines what portion of an element is visible. 
-        * Value: auto|<shape()>|inherit; Animatable: Yes
-        *
-        * @return the clip
-        */
-        const std::string get_clip() const;
-        /**
-        * It defines what portion of an element is visible. 
-        * Value: auto|<shape()>|inherit; Animatable: Yes
-        *
-        * @param  the clip
-        */
-        void set_clip(const std::string &clip);
-        /**
         * It binds the element it is applied to with a given <clipPath> element. 
         * Value: none|<FuncIRI>|inherit; Animatable: Yes
         *
@@ -1368,14 +1348,14 @@ namespace Lewzen {
         void set_color_rendering(const std::string &color_rendering);
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
-        * Value: <FuncIRI>|<keywords>|inherit; Animatable: Yes
+        * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @return the cursor
         */
         const std::string get_cursor() const;
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
-        * Value: <FuncIRI>|<keywords>|inherit; Animatable: Yes
+        * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @param  the cursor
         */
@@ -1717,42 +1697,42 @@ namespace Lewzen {
         */
         void set_lighting_color(const std::string &lighting_color);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-end
         */
         const std::string get_marker_end() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-end
         */
         void set_marker_end(const std::string &marker_end);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-mid
         */
         const std::string get_marker_mid() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-mid
         */
         void set_marker_mid(const std::string &marker_mid);
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-start
         */
         const std::string get_marker_start() const;
         /**
-        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <path> element or basic shape. 
+        * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-start
@@ -1815,14 +1795,14 @@ namespace Lewzen {
         */
         void set_pointer_events(const std::string &pointer_events);
         /**
-        * Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. 
+        * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @return the shape-rendering
         */
         const std::string get_shape_rendering() const;
         /**
-        * Hints about what tradeoffs to make as the browser renders <path> element or basic shapes. 
+        * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @param  the shape-rendering
@@ -1858,14 +1838,14 @@ namespace Lewzen {
         void set_solid_opacity(const std::string &solid_opacity);
         /**
         * Indicates what color to use at that gradient stop. 
-        * Value: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes
+        * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @return the stop-color
         */
         const std::string get_stop_color() const;
         /**
         * Indicates what color to use at that gradient stop. 
-        * Value: currentcolor|<color>|<icccolor>|inherit; Animatable: Yes
+        * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @param  the stop-color
         */
@@ -1900,14 +1880,14 @@ namespace Lewzen {
         void set_stroke(const std::string &stroke);
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
-        * Value: none|<dasharray>; Animatable: Yes
+        * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @return the stroke-dasharray
         */
         const std::string get_stroke_dasharray() const;
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
-        * Value: none|<dasharray>; Animatable: Yes
+        * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @param  the stroke-dasharray
         */
@@ -2068,14 +2048,14 @@ namespace Lewzen {
         void set_unicode_bidi(const std::string &unicode_bidi);
         /**
         * Specifies the vector effect to use when drawing an object. 
-        * Value: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes
+        * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @return the vector-effect
         */
         const std::string get_vector_effect() const;
         /**
         * Specifies the vector effect to use when drawing an object. 
-        * Value: default|non-scaling-stroke|inherit|<uri>; Animatable: Yes
+        * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @param  the vector-effect
         */
@@ -2129,7 +2109,7 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const;
         /**
         * Returning differences on attributes.
         *
@@ -2138,10 +2118,10 @@ namespace Lewzen {
         const std::string attribute_differ(const SVGElement &element) const;
         
         /// Inner SVG
-    private:
+    protected:
         std::string _inner_text;
         std::vector<std::shared_ptr<SVGElement>> _inner_elements;
-        std::vector<std::weak_ptr<SVGElement>> _parent_elements;
+        std::weak_ptr<SVGElement> _parent_element;
     protected:
         struct _el_idx {
             std::shared_ptr<SVGElement> ptr;
@@ -2159,6 +2139,7 @@ namespace Lewzen {
         const std::string inner_differ(const SVGElement &element,
             std::vector<_el_idx> &removal,
             std::vector<_el_idx> &addition,
+            std::vector<std::pair<_el_idx, _el_idx>> &unchanged,
             std::vector<std::pair<_el_idx, _el_idx>> &changed) const;
     public:
         /**
@@ -2186,11 +2167,12 @@ namespace Lewzen {
         */
         void add_inner_element(const std::shared_ptr<SVGElement> &element);
         /**
-        * Remove a sub element from this SVG element.
+        * Remove a child element or child elements from this SVG element, based on content.
         *
         * @param element an inner element.
+        * @param remove_all if to remove all occurances.
         */
-        void remove_inner_element(const std::shared_ptr<SVGElement> &element);
+        void remove_inner_element(const std::shared_ptr<SVGElement> &element, bool remove_all = false);
         /**
         * Get inner SVG elements list in this SVG element.
         *
@@ -2265,6 +2247,12 @@ namespace Lewzen {
         * @relatesalso SVGElement
         */
         virtual std::shared_ptr<SVGElement> clone() const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGElement
+        */
+        virtual SVGElement &operator=(const SVGElement &element);
         /**
         * Compare two SVG elements.
         *

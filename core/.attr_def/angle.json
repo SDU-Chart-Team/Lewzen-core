@@ -1,0 +1,51 @@
+{
+    "type": "angle",
+    "includes": [
+        "regex"
+    ],
+    "comment": "Angles are specified in one of two ways. When used in the value of a property in a stylesheet, an <angle> is defined as follows:\n```\nangle ::= number (~\"deg\" | ~\"grad\" | ~\"rad\")?\n```\nwhere deg indicates degrees, grad indicates grads and rad indicates radians.\nFor properties defined in CSS2, an angle unit identifier must be provided. For angle values in SVG-specific properties and their corresponding presentation attributes, the angle unit identifier is optional. If not provided, the angle value is assumed to be in degrees. In presentation attributes for all properties, whether defined in SVG1.1 or in CSS2, the angle identifier, if specified, must be in lower case.\nWhen angles are used in an SVG attribute, <angle> is instead defined as follows:\n```\nangle ::= number (\"deg\" | \"grad\" | \"rad\")?\n```\nThe unit identifiers in such <angle> values must be in lower case.\nIn the SVG DOM, <angle> values are represented using SVGAngle or SVGAnimatedAngle objects.",
+    "accepts": [
+        {
+            "ctype": "int",
+            "cname": "integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "float",
+            "cname": "float",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "double",
+            "cname": "double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long",
+            "cname": "long",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long long int",
+            "cname": "long integer",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "long double",
+            "cname": "long double",
+            "to_string": "return std::to_string(attr);"
+        },
+        {
+            "ctype": "std::string",
+            "cname": "legal string",
+            "to_string": "if (!is_legal_string(attr)) {\n    _LZ_WARNING(\"Illegal string when converting \\\"\" << attr << \"\\\" to Angle.\")\n    return STR_NULL;\n} else {\n    return attr;\n}",
+            "additional_funcs": [
+                {
+                    "declaration": "static bool is_legal_string(const std::string &attr);",
+                    "comment": "Check if a string is legal as a Angle attribute.",
+                    "implementation": "std::regex re(R\"(^(([+-]?[0-9]+)([Ee]([+-]?[0-9]+))?|[+-]?[0-9]*\\.[0-9]+([Ee]([+-]?[0-9]+))?)(deg|grad|rad)?$)\");\nreturn std::regex_match(attr, re);"
+                }
+            ]
+        }
+    ]
+}

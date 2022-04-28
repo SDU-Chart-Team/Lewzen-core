@@ -1,0 +1,12 @@
+{
+    "type": "URL",
+    "includes": [],
+    "comment": "A Uniform Resource Locator.\nA URL is a sequence of Unicode characters, building an address to an internal or external resource.\nBefore SVG 2, the more limited IRI content type was used instead, because the URL specification was not standardized before.",
+    "accepts": [
+        {
+            "ctype": "std::string",
+            "cname": "string",
+            "to_string": "return attr;"
+        }
+    ]
+}

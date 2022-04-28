@@ -6,7 +6,7 @@
 
 namespace Lewzen {
     /**
-    * The <path> SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.
+    * The <anything>:path SVG element is the generic element to define a shape. All the basic shapes can be created with a path element.
     */
     class SVGPath: public SVGElement {
     public:
@@ -14,10 +14,6 @@ namespace Lewzen {
         * Constructor of path.
         */
         SVGPath();
-        /**
-        * Deep copy of path.
-        */
-        SVGPath(const SVGPath &element);
 
         /// Tag
     public:
@@ -26,7 +22,7 @@ namespace Lewzen {
         *
         * @return tag name.
         */
-        const std::string get_tag() const;
+        virtual const std::string get_tag() const override;
 
         /// Path
     private:
@@ -70,22 +66,46 @@ namespace Lewzen {
         *
         * @return outer SVG.
         */
-        const std::string get_attributes() const;
+        virtual const std::string get_attributes() const override;
+        /**
+        * Returning differences on attributes.
+        *
+        * @return DOM Commands.
+        */
+        const std::string attribute_differ(const SVGPath &element) const;
 
         /// Operators
     public:
         /**
         * Deep copy this SVG element.
         *
-        * @relatesalso SVGElement
+        * @relatesalso SVGPath
         */
-        std::shared_ptr<SVGElement> clone() const;
+        virtual std::shared_ptr<SVGElement> clone() const override;
+        /**
+        * Deep copy this SVG element.
+        *
+        * @relatesalso SVGPath
+        */
+        std::shared_ptr<SVGPath> clone(bool identity) const;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGPath
+        */
+        virtual SVGElement &operator=(const SVGElement &element) override;
+        /**
+        * Assigning SVG element by deep copy.
+        *
+        * @relatesalso SVGPath
+        */
+        virtual SVGPath &operator=(const SVGPath &element);
         /**
         * SVG substraction, returning differences.
         *
         * @relatesalso SVGElement
         */
-        const std::string operator-(const SVGElement &element) const;
+        virtual const std::string operator-(const SVGElement &element) const override;
     };
 }
 #endif

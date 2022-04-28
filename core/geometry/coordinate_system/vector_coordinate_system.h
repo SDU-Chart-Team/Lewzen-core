@@ -11,9 +11,9 @@ namespace Lewzen {
     class VectorCoordinateSystem: public CoordinateSystem {
     private:
         // origin
-        std::shared_ptr<Point2D> _A;
+        std::weak_ptr<Point2D> _A;
         // vertex
-        std::shared_ptr<Point2D> _B;
+        std::weak_ptr<Point2D> _B;
     public:
         /**
         * Constructor of VectorCoordinateSystem. Unit is equal to CanvasCoordinateSystem.
@@ -21,7 +21,7 @@ namespace Lewzen {
         * @param A the origin of vector coordinate system.
         * @param B vector AB means x-axis of point coordinate system, .
         */
-        VectorCoordinateSystem(const std::shared_ptr<Point2D> &A, const std::shared_ptr<Point2D> &B);
+        VectorCoordinateSystem(const std::weak_ptr<Point2D> &A, const std::weak_ptr<Point2D> &B);
         /**
         * Deep copy of this coordinate system.
         */
@@ -31,13 +31,13 @@ namespace Lewzen {
         *
         * @return A point of vector coordinate system.
         */
-        const std::shared_ptr<Point2D> get_A() const;
+        const std::weak_ptr<Point2D> get_A() const;
         /**
         * Get B of VectorCoordinateSystem.
         *
         * @return B point of vector coordinate system.
         */
-        const std::shared_ptr<Point2D> get_B() const;
+        const std::weak_ptr<Point2D> get_B() const;
         /**
         * Deep copy of this coordinate system.
         *

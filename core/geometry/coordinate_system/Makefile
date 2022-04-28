@@ -6,7 +6,7 @@ objects = \
 	point_relative_coordinate_system.o\
 	vector_coordinate_system.o\
 	vector_relative_coordinate_system.o
-cc = g++
+cc = g++ -w
 
 .PHONY: all
 all: $(objects)

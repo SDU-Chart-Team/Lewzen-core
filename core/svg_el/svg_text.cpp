@@ -10,16 +10,6 @@ namespace Lewzen {
         _length_adjust = STR_NULL;
         _text_length = STR_NULL;
     }
-    SVGText::SVGText(const SVGText &element) {
-        _x = element.get_x();
-        _y = element.get_y();
-        _dx = element.get_dx();
-        _dy = element.get_dy();
-        _rotate = element.get_rotate();
-        _length_adjust = element.get_length_adjust();
-        _text_length = element.get_text_length();
-        new (this)SVGElement(element);
-    }
     const std::string SVGText::get_tag() const {
         return "text";
     }
@@ -87,7 +77,29 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGText::clone() const {
-        return std::make_shared<SVGText>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGText> SVGText::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGText>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGText::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGText &>(element);
+        return operator=(_element);
+    }
+    SVGText &SVGText::operator=(const SVGText &element) {
+        SVGElement::operator=(element);
+
+        _x = element.get_x();
+        _y = element.get_y();
+        _dx = element.get_dx();
+        _dy = element.get_dy();
+        _rotate = element.get_rotate();
+        _length_adjust = element.get_length_adjust();
+        _text_length = element.get_text_length();
+        return *this;
     }
     const std::string SVGText::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -96,31 +108,39 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGText &>(element);
 
-        if (_x != _element.get_x()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGText::attribute_differ(const SVGText &element) const {
+        std::stringstream ss;
+
+        if (_x != element.get_x()) {
             if (_x == STR_NULL) ss << "reset x" << std::endl;
             else ss << "modify x \"" << _x << "\"" << std::endl;
         }
-        if (_y != _element.get_y()) {
+        if (_y != element.get_y()) {
             if (_y == STR_NULL) ss << "reset y" << std::endl;
             else ss << "modify y \"" << _y << "\"" << std::endl;
         }
-        if (_dx != _element.get_dx()) {
+        if (_dx != element.get_dx()) {
             if (_dx == STR_NULL) ss << "reset dx" << std::endl;
             else ss << "modify dx \"" << _dx << "\"" << std::endl;
         }
-        if (_dy != _element.get_dy()) {
+        if (_dy != element.get_dy()) {
             if (_dy == STR_NULL) ss << "reset dy" << std::endl;
             else ss << "modify dy \"" << _dy << "\"" << std::endl;
         }
-        if (_rotate != _element.get_rotate()) {
+        if (_rotate != element.get_rotate()) {
             if (_rotate == STR_NULL) ss << "reset rotate" << std::endl;
             else ss << "modify rotate \"" << _rotate << "\"" << std::endl;
         }
-        if (_length_adjust != _element.get_length_adjust()) {
+        if (_length_adjust != element.get_length_adjust()) {
             if (_length_adjust == STR_NULL) ss << "reset lengthAdjust" << std::endl;
             else ss << "modify lengthAdjust \"" << _length_adjust << "\"" << std::endl;
         }
-        if (_text_length != _element.get_text_length()) {
+        if (_text_length != element.get_text_length()) {
             if (_text_length == STR_NULL) ss << "reset textLength" << std::endl;
             else ss << "modify textLength \"" << _text_length << "\"" << std::endl;
         }

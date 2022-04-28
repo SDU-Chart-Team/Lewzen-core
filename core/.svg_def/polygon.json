@@ -4,8 +4,8 @@
     "attributes": [
         {
             "name": "points",
-            "type": "<number>+",
-            "comment": "This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. \nValue type: <number>+ ; Default value: \"\"; Animatable: yes"
+            "type": "<list-of-numbers>",
+            "comment": "This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. \nValue type: <list-of-numbers> ; Default value: \"\"; Animatable: yes"
         },
         {
             "name": "pathLength",

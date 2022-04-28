@@ -13,19 +13,6 @@ namespace Lewzen {
         _r = STR_NULL;
         _spread_method = STR_NULL;
     }
-    SVGRadialGradient::SVGRadialGradient(const SVGRadialGradient &element) {
-        _cx = element.get_cx();
-        _cy = element.get_cy();
-        _fr = element.get_fr();
-        _fx = element.get_fx();
-        _fy = element.get_fy();
-        _gradient_units = element.get_gradient_units();
-        _gradient_transform = element.get_gradient_transform();
-        _href = element.get_href();
-        _r = element.get_r();
-        _spread_method = element.get_spread_method();
-        new (this)SVGElement(element);
-    }
     const std::string SVGRadialGradient::get_tag() const {
         return "radialGradient";
     }
@@ -117,7 +104,32 @@ namespace Lewzen {
         return ss.str();
     }
     std::shared_ptr<SVGElement> SVGRadialGradient::clone() const {
-        return std::make_shared<SVGRadialGradient>(*this);
+        return clone(true);
+    }
+    std::shared_ptr<SVGRadialGradient> SVGRadialGradient::clone(bool identity) const {
+        auto cloned =  std::make_shared<SVGRadialGradient>();
+        *cloned = *this;
+        return cloned;
+    }
+    SVGElement &SVGRadialGradient::operator=(const SVGElement &element) {
+        if (get_tag() != element.get_tag()) return *this;
+        auto _element = static_cast<const SVGRadialGradient &>(element);
+        return operator=(_element);
+    }
+    SVGRadialGradient &SVGRadialGradient::operator=(const SVGRadialGradient &element) {
+        SVGElement::operator=(element);
+
+        _cx = element.get_cx();
+        _cy = element.get_cy();
+        _fr = element.get_fr();
+        _fx = element.get_fx();
+        _fy = element.get_fy();
+        _gradient_units = element.get_gradient_units();
+        _gradient_transform = element.get_gradient_transform();
+        _href = element.get_href();
+        _r = element.get_r();
+        _spread_method = element.get_spread_method();
+        return *this;
     }
     const std::string SVGRadialGradient::operator-(const SVGElement &element) const {
         std::stringstream ss;
@@ -126,43 +138,51 @@ namespace Lewzen {
         if (get_tag() != element.get_tag()) return ss.str();
         auto _element = static_cast<const SVGRadialGradient &>(element);
 
-        if (_cx != _element.get_cx()) {
+        // attribute differ
+        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);
+
+        return ss.str();
+    }
+    const std::string SVGRadialGradient::attribute_differ(const SVGRadialGradient &element) const {
+        std::stringstream ss;
+
+        if (_cx != element.get_cx()) {
             if (_cx == STR_NULL) ss << "reset cx" << std::endl;
             else ss << "modify cx \"" << _cx << "\"" << std::endl;
         }
-        if (_cy != _element.get_cy()) {
+        if (_cy != element.get_cy()) {
             if (_cy == STR_NULL) ss << "reset cy" << std::endl;
             else ss << "modify cy \"" << _cy << "\"" << std::endl;
         }
-        if (_fr != _element.get_fr()) {
+        if (_fr != element.get_fr()) {
             if (_fr == STR_NULL) ss << "reset fr" << std::endl;
             else ss << "modify fr \"" << _fr << "\"" << std::endl;
         }
-        if (_fx != _element.get_fx()) {
+        if (_fx != element.get_fx()) {
             if (_fx == STR_NULL) ss << "reset fx" << std::endl;
             else ss << "modify fx \"" << _fx << "\"" << std::endl;
         }
-        if (_fy != _element.get_fy()) {
+        if (_fy != element.get_fy()) {
             if (_fy == STR_NULL) ss << "reset fy" << std::endl;
             else ss << "modify fy \"" << _fy << "\"" << std::endl;
         }
-        if (_gradient_units != _element.get_gradient_units()) {
+        if (_gradient_units != element.get_gradient_units()) {
             if (_gradient_units == STR_NULL) ss << "reset gradientUnits" << std::endl;
             else ss << "modify gradientUnits \"" << _gradient_units << "\"" << std::endl;
         }
-        if (_gradient_transform != _element.get_gradient_transform()) {
+        if (_gradient_transform != element.get_gradient_transform()) {
             if (_gradient_transform == STR_NULL) ss << "reset gradientTransform" << std::endl;
             else ss << "modify gradientTransform \"" << _gradient_transform << "\"" << std::endl;
         }
-        if (_href != _element.get_href()) {
+        if (_href != element.get_href()) {
             if (_href == STR_NULL) ss << "reset href" << std::endl;
             else ss << "modify href \"" << _href << "\"" << std::endl;
         }
-        if (_r != _element.get_r()) {
+        if (_r != element.get_r()) {
             if (_r == STR_NULL) ss << "reset r" << std::endl;
             else ss << "modify r \"" << _r << "\"" << std::endl;
         }
-        if (_spread_method != _element.get_spread_method()) {
+        if (_spread_method != element.get_spread_method()) {
             if (_spread_method == STR_NULL) ss << "reset spreadMethod" << std::endl;
             else ss << "modify spreadMethod \"" << _spread_method << "\"" << std::endl;
         }
