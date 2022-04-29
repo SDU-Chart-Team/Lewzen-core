@@ -64,7 +64,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIImage &SVGIImage::operator=(const SVGIImage &element) {
-        SVGImage::operator=(static_cast<SVGImage>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Width = element.Width;
         Height = element.Height;
         X = element.X;
@@ -78,6 +78,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIImage::operator-(const SVGElement &element) const {
-        return SVGImage::operator-(static_cast<SVGImage>(*this));
+        return SVGImage::operator-(element);
     }
 }

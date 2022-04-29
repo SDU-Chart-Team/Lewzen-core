@@ -646,7 +646,7 @@ namespace Lewzen {
             auto &s = changed[a];
             if (s == STR_NULL) continue;
             ss << "child " << b - removed[b] << std::endl;
-            ss << s << std::endl;
+            ss << s;
             ss << "parent" << std::endl;
         }
         // sort
@@ -694,6 +694,42 @@ namespace Lewzen {
             _i_el_idx match = { nullptr, -1 };
             for (auto &b : tags_map[tag]) {
                 if (b.ptr->get_outer_hash() == a.ptr->get_outer_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                unchanged.push_back({a.idx, match.idx});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements_commit) { // with inner hash equal
+            auto &tag  = _a->get_tag();
+            _i_el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _i_el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_inner_hash() == a.ptr->get_inner_hash()) {
+                    match = b;
+                    break;
+                }
+            }
+            if (match.idx >= 0) {
+                tags_map[tag].erase(match);
+                A.erase(a), B.erase(match);
+                unchanged.push_back({a.idx, match.idx});
+            }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements_commit) { // with attribute hash equal
+            auto &tag  = _a->get_tag();
+            _i_el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag)) continue;
+            _i_el_idx match = { nullptr, -1 };
+            for (auto &b : tags_map[tag]) {
+                if (b.ptr->get_attribute_hash() == a.ptr->get_attribute_hash()) {
                     match = b;
                     break;
                 }

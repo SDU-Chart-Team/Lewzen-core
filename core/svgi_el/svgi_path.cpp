@@ -40,7 +40,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIPath &SVGIPath::operator=(const SVGIPath &element) {
-        SVGPath::operator=(static_cast<SVGPath>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         D = element.D;
         PathLength = element.PathLength;
 
@@ -48,6 +48,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIPath::operator-(const SVGElement &element) const {
-        return SVGPath::operator-(static_cast<SVGPath>(*this));
+        return SVGPath::operator-(element);
     }
 }

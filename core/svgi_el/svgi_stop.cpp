@@ -44,7 +44,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIStop &SVGIStop::operator=(const SVGIStop &element) {
-        SVGStop::operator=(static_cast<SVGStop>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Offset = element.Offset;
         StopColor = element.StopColor;
         StopOpacity = element.StopOpacity;
@@ -53,6 +53,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIStop::operator-(const SVGElement &element) const {
-        return SVGStop::operator-(static_cast<SVGStop>(*this));
+        return SVGStop::operator-(element);
     }
 }

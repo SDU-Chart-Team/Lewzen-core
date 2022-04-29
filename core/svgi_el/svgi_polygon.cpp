@@ -40,7 +40,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIPolygon &SVGIPolygon::operator=(const SVGIPolygon &element) {
-        SVGPolygon::operator=(static_cast<SVGPolygon>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Points = element.Points;
         PathLength = element.PathLength;
 
@@ -48,6 +48,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIPolygon::operator-(const SVGElement &element) const {
-        return SVGPolygon::operator-(static_cast<SVGPolygon>(*this));
+        return SVGPolygon::operator-(element);
     }
 }

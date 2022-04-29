@@ -60,7 +60,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIText &SVGIText::operator=(const SVGIText &element) {
-        SVGText::operator=(static_cast<SVGText>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         X = element.X;
         Y = element.Y;
         Dx = element.Dx;
@@ -73,6 +73,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIText::operator-(const SVGElement &element) const {
-        return SVGText::operator-(static_cast<SVGText>(*this));
+        return SVGText::operator-(element);
     }
 }

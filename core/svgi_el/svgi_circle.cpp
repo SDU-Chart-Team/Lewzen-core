@@ -48,7 +48,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGICircle &SVGICircle::operator=(const SVGICircle &element) {
-        SVGCircle::operator=(static_cast<SVGCircle>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Cx = element.Cx;
         Cy = element.Cy;
         R = element.R;
@@ -58,6 +58,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGICircle::operator-(const SVGElement &element) const {
-        return SVGCircle::operator-(static_cast<SVGCircle>(*this));
+        return SVGCircle::operator-(element);
     }
 }

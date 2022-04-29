@@ -52,7 +52,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIUse &SVGIUse::operator=(const SVGIUse &element) {
-        SVGUse::operator=(static_cast<SVGUse>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Href = element.Href;
         X = element.X;
         Y = element.Y;
@@ -63,6 +63,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIUse::operator-(const SVGElement &element) const {
-        return SVGUse::operator-(static_cast<SVGUse>(*this));
+        return SVGUse::operator-(element);
     }
 }

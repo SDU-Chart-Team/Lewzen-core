@@ -64,7 +64,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIMarker &SVGIMarker::operator=(const SVGIMarker &element) {
-        SVGMarker::operator=(static_cast<SVGMarker>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         MarkerHeight = element.MarkerHeight;
         MarkerUnits = element.MarkerUnits;
         MarkerWidth = element.MarkerWidth;
@@ -78,6 +78,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIMarker::operator-(const SVGElement &element) const {
-        return SVGMarker::operator-(static_cast<SVGMarker>(*this));
+        return SVGMarker::operator-(element);
     }
 }

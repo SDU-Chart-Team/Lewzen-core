@@ -64,7 +64,7 @@
 
 - 减号
 
-    `operator-()`：比较差异，返回修改命令(domCMD)。“A-B”的结果表示B如何转变为A。修改中的最小粒度为属性。
+    `operator-()`：比较差异，返回DOM命令(domCMD)。“A-B”的结果表示B如何转变为A。修改中的最小粒度为属性。
 
     差异算法：「[algorithm/svg_el_diff.md](../../algorithm/svg_el_diff.md)」。
 

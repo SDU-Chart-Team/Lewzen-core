@@ -40,7 +40,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIPolyline &SVGIPolyline::operator=(const SVGIPolyline &element) {
-        SVGPolyline::operator=(static_cast<SVGPolyline>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Points = element.Points;
         PathLength = element.PathLength;
 
@@ -48,6 +48,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIPolyline::operator-(const SVGElement &element) const {
-        return SVGPolyline::operator-(static_cast<SVGPolyline>(*this));
+        return SVGPolyline::operator-(element);
     }
 }

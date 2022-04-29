@@ -64,7 +64,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGILinearGradient &SVGILinearGradient::operator=(const SVGILinearGradient &element) {
-        SVGLinearGradient::operator=(static_cast<SVGLinearGradient>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         GradientUnits = element.GradientUnits;
         GradientTransform = element.GradientTransform;
         Href = element.Href;
@@ -78,6 +78,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGILinearGradient::operator-(const SVGElement &element) const {
-        return SVGLinearGradient::operator-(static_cast<SVGLinearGradient>(*this));
+        return SVGLinearGradient::operator-(element);
     }
 }

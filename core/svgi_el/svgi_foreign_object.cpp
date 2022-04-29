@@ -48,7 +48,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIForeignObject &SVGIForeignObject::operator=(const SVGIForeignObject &element) {
-        SVGForeignObject::operator=(static_cast<SVGForeignObject>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Width = element.Width;
         Height = element.Height;
         X = element.X;
@@ -58,6 +58,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIForeignObject::operator-(const SVGElement &element) const {
-        return SVGForeignObject::operator-(static_cast<SVGForeignObject>(*this));
+        return SVGForeignObject::operator-(element);
     }
 }
