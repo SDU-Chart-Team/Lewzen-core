@@ -2,6 +2,7 @@
 #define __LZ_COORDINATE__
 #include <string>
 #include <memory>
+#include <stdexcept>
 #include "point.h"
 
 namespace Lewzen {
