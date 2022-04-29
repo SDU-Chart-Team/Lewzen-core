@@ -32,12 +32,12 @@ namespace Lewzen {
         return cloned;
     }
     SVGIG &SVGIG::operator=(const SVGIG &element) {
-        SVGG::operator=(static_cast<SVGG>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
 
         _bind_getter_setter();
         return *this;
     }
     const std::string SVGIG::operator-(const SVGElement &element) const {
-        return SVGG::operator-(static_cast<SVGG>(*this));
+        return SVGG::operator-(element);
     }
 }

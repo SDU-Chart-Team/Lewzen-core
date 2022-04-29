@@ -56,7 +56,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIMask &SVGIMask::operator=(const SVGIMask &element) {
-        SVGMask::operator=(static_cast<SVGMask>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Height = element.Height;
         MaskContentUnits = element.MaskContentUnits;
         MaskUnits = element.MaskUnits;
@@ -68,6 +68,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIMask::operator-(const SVGElement &element) const {
-        return SVGMask::operator-(static_cast<SVGMask>(*this));
+        return SVGMask::operator-(element);
     }
 }

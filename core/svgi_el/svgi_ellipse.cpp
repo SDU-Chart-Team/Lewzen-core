@@ -52,7 +52,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIEllipse &SVGIEllipse::operator=(const SVGIEllipse &element) {
-        SVGEllipse::operator=(static_cast<SVGEllipse>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Cx = element.Cx;
         Cy = element.Cy;
         Rx = element.Rx;
@@ -63,6 +63,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIEllipse::operator-(const SVGElement &element) const {
-        return SVGEllipse::operator-(static_cast<SVGEllipse>(*this));
+        return SVGEllipse::operator-(element);
     }
 }

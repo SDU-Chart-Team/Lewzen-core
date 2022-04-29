@@ -72,7 +72,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIPattern &SVGIPattern::operator=(const SVGIPattern &element) {
-        SVGPattern::operator=(static_cast<SVGPattern>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         Height = element.Height;
         Href = element.Href;
         PatternContentUnits = element.PatternContentUnits;
@@ -88,6 +88,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIPattern::operator-(const SVGElement &element) const {
-        return SVGPattern::operator-(static_cast<SVGPattern>(*this));
+        return SVGPattern::operator-(element);
     }
 }

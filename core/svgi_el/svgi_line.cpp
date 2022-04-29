@@ -52,7 +52,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGILine &SVGILine::operator=(const SVGILine &element) {
-        SVGLine::operator=(static_cast<SVGLine>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         X1 = element.X1;
         X2 = element.X2;
         Y1 = element.Y1;
@@ -63,6 +63,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGILine::operator-(const SVGElement &element) const {
-        return SVGLine::operator-(static_cast<SVGLine>(*this));
+        return SVGLine::operator-(element);
     }
 }

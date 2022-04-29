@@ -60,7 +60,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGIRect &SVGIRect::operator=(const SVGIRect &element) {
-        SVGRect::operator=(static_cast<SVGRect>(*this));
+        SVGIElement::operator=(static_cast<SVGIElement>(element));
         X = element.X;
         Y = element.Y;
         Width = element.Width;
@@ -73,6 +73,6 @@ namespace Lewzen {
         return *this;
     }
     const std::string SVGIRect::operator-(const SVGElement &element) const {
-        return SVGRect::operator-(static_cast<SVGRect>(*this));
+        return SVGRect::operator-(element);
     }
 }
