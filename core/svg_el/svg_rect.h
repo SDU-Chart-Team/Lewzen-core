@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <rect> element is a basic SVG shape that draws rectangles, defined by their position, width, and height. The rectangles may have their corners rounded.
     */
-    class SVGRect: public SVGElement {
+    class SVGRect: public virtual SVGElement {
     public:
         /**
         * Constructor of rect.

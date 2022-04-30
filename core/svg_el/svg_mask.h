@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <mask> element defines an alpha mask for compositing the current object into the background. A mask is used/referenced using the mask property.
     */
-    class SVGMask: public SVGElement {
+    class SVGMask: public virtual SVGElement {
     public:
         /**
         * Constructor of mask.

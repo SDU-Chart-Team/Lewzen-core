@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <line> element is an SVG basic shape used to create a line connecting two points.
     */
-    class SVGLine: public SVGElement {
+    class SVGLine: public virtual SVGElement {
     public:
         /**
         * Constructor of line.

@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <use> element takes nodes from within the SVG document, and duplicates them somewhere else.
     */
-    class SVGUse: public SVGElement {
+    class SVGUse: public virtual SVGElement {
     public:
         /**
         * Constructor of use.

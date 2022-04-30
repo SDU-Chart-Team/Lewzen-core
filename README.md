@@ -112,9 +112,9 @@
         ```cpp
         auto p1 = std::make_shared<SVGCircle>();
         auto p2 = std::make_shared<SVGICircle>();
-        el->add_inner_element(p1); // add
-        el->remove_inner_element(p2); // remove
-        el->remove_inner_element(p2, true); // remove all
+        el->append(p1); // add
+        el->remove(p2); // remove
+        el->remove(p2, true); // remove all
         ```
 
         An element can be child of only one parent. If an child element is added to another parent element, it will be first removed from original parent. Removing an element is based on content rather than pointer.
@@ -325,5 +325,5 @@
 - g++
 
     ```shell
-    g++ <your works> lewzen-core.lib -o <your app>
+    g++ -o <your app> <your works> lewzen.lib 
     ```

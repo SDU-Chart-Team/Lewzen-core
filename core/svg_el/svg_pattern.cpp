@@ -112,9 +112,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGPattern::operator=(const SVGElement &element) {
-        if (get_tag() != element.get_tag()) return *this;
-        auto _element = static_cast<const SVGPattern &>(element);
-        return operator=(_element);
+        SVGElement::operator=(element);
     }
     SVGPattern &SVGPattern::operator=(const SVGPattern &element) {
         SVGElement::operator=(element);
@@ -136,7 +134,7 @@ namespace Lewzen {
 
         ss << SVGElement::operator-(element);
         if (get_tag() != element.get_tag()) return ss.str();
-        auto _element = static_cast<const SVGPattern &>(element);
+        auto _element = dynamic_cast<const SVGPattern &>(element);
 
         // attribute differ
         if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);

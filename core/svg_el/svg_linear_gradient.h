@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <linearGradient> element lets authors define linear gradients to apply to other SVG elements.
     */
-    class SVGLinearGradient: public SVGElement {
+    class SVGLinearGradient: public virtual SVGElement {
     public:
         /**
         * Constructor of linearGradient.

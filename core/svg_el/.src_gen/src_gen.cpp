@@ -730,7 +730,7 @@ const std::string HeaderFile(const std::string &tag, const std::string &comment,
     ss << "    /**" << std::endl;
     ss << "    * " << comment << std::endl;
     ss << "    */" << std::endl;
-    ss << "    class SVG" << dom_to_pascal(tag) << ": public SVGElement {" << std::endl;
+    ss << "    class SVG" << dom_to_pascal(tag) << ": public virtual SVGElement {" << std::endl;
     ss << "    public:" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Constructor of " << tag << "." << std::endl;
@@ -833,9 +833,7 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << "        return cloned;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVGElement &SVG" << dom_to_pascal(tag) << "::operator=(const SVGElement &element) {" << std::endl;
-    ss << "        if (get_tag() != element.get_tag()) return *this;" << std::endl;
-    ss << "        auto _element = static_cast<const SVG" << dom_to_pascal(tag) << " &>(element);" << std::endl;
-    ss << "        return operator=(_element);" << std::endl;
+    ss << "        SVGElement::operator=(element);" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVG" << dom_to_pascal(tag) << " &SVG" << dom_to_pascal(tag) << "::operator=(const SVG" << dom_to_pascal(tag) << " &element) {" << std::endl;
     ss << "        SVGElement::operator=(element);" << std::endl;
@@ -848,7 +846,7 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << std::endl;
     ss << "        ss << SVGElement::operator-(element);" << std::endl;
     ss << "        if (get_tag() != element.get_tag()) return ss.str();" << std::endl;
-    ss << "        auto _element = static_cast<const SVG" << dom_to_pascal(tag) << " &>(element);" << std::endl;
+    ss << "        auto _element = dynamic_cast<const SVG" << dom_to_pascal(tag) << " &>(element);" << std::endl;
     ss << std::endl;
     ss << "        // attribute differ" << std::endl;
     ss << "        if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);" << std::endl;

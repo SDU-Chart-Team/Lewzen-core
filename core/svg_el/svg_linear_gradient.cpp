@@ -94,9 +94,7 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGLinearGradient::operator=(const SVGElement &element) {
-        if (get_tag() != element.get_tag()) return *this;
-        auto _element = static_cast<const SVGLinearGradient &>(element);
-        return operator=(_element);
+        SVGElement::operator=(element);
     }
     SVGLinearGradient &SVGLinearGradient::operator=(const SVGLinearGradient &element) {
         SVGElement::operator=(element);
@@ -116,7 +114,7 @@ namespace Lewzen {
 
         ss << SVGElement::operator-(element);
         if (get_tag() != element.get_tag()) return ss.str();
-        auto _element = static_cast<const SVGLinearGradient &>(element);
+        auto _element = dynamic_cast<const SVGLinearGradient &>(element);
 
         // attribute differ
         if (element.get_attribute_hash() != get_attribute_hash()) ss << attribute_differ(_element);

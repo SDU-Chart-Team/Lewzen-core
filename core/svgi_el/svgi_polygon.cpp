@@ -16,6 +16,30 @@ namespace Lewzen {
     const std::string SVGIPolygon::get_tag() const {
         return "polygon";
     }
+    const std::string SVGIPolygon::inner_SVG() const {
+        return SVGIElement::inner_SVG();
+    }
+    void SVGIPolygon::set_inner_text(const std::string &text) {
+        SVGIElement::set_inner_text(text);
+    }
+    const std::string SVGIPolygon::get_inner_text() const {
+        return SVGIElement::get_inner_text();
+    }
+    void SVGIPolygon::append(const std::shared_ptr<SVGIElement> &inner_element) {
+        SVGIElement::add_inner_element(inner_element);
+    }
+    void SVGIPolygon::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
+        SVGIElement::remove_inner_element(inner_element, remove_all);
+    }
+    const std::vector<std::shared_ptr<SVGIElement>> SVGIPolygon::get_inner_elements() const {
+        return SVGIElement::get_inner_elements();
+    }
+    void SVGIPolygon::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
+        SVGIElement::set_inner_elements(inner_elements);
+    }
+    const std::string SVGIPolygon::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIPolygon::commit() {
         std::stringstream ss;
 
@@ -31,13 +55,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIPolygon::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGPolygon>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIPolygon> SVGIPolygon::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIPolygon>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIPolygon::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIPolygon &SVGIPolygon::operator=(const SVGIPolygon &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

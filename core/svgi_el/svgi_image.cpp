@@ -40,6 +40,30 @@ namespace Lewzen {
     const std::string SVGIImage::get_tag() const {
         return "image";
     }
+    const std::string SVGIImage::inner_SVG() const {
+        return SVGIElement::inner_SVG();
+    }
+    void SVGIImage::set_inner_text(const std::string &text) {
+        SVGIElement::set_inner_text(text);
+    }
+    const std::string SVGIImage::get_inner_text() const {
+        return SVGIElement::get_inner_text();
+    }
+    void SVGIImage::append(const std::shared_ptr<SVGIElement> &inner_element) {
+        SVGIElement::add_inner_element(inner_element);
+    }
+    void SVGIImage::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
+        SVGIElement::remove_inner_element(inner_element, remove_all);
+    }
+    const std::vector<std::shared_ptr<SVGIElement>> SVGIImage::get_inner_elements() const {
+        return SVGIElement::get_inner_elements();
+    }
+    void SVGIImage::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
+        SVGIElement::set_inner_elements(inner_elements);
+    }
+    const std::string SVGIImage::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIImage::commit() {
         std::stringstream ss;
 
@@ -55,13 +79,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIImage::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGImage>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIImage> SVGIImage::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIImage>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIImage::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIImage &SVGIImage::operator=(const SVGIImage &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));
