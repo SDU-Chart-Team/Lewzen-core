@@ -2,17 +2,20 @@ objects = \
 	utils.o\
     geometry.o\
 	svg_el.o\
-	svgi_el.o
-allobjs = $(shell find . -type f -iregex ".*\.o")
+	svgi_el.o\
+	core.o
 cc = g++
+ar = ar
+allobjs = ''
 
 .PHONY: all
-all: $(objects)
+all: sub_all
+	$(ar) rvs lewzen-core.lib $(shell find . -type f -iregex ".*\.o")
+sub_all: $(objects)
 	cd utils && make
 	cd geometry && make
 	cd svg_el && make
 	cd svgi_el && make
-	ar rvs lewzen.lib $(allobjs)
 
 utils.o: utils.cpp utils.h
 	$(cc) -c utils.cpp
@@ -22,6 +25,8 @@ svg_el.o: svg_el.cpp svg_el.h
 	$(cc) -c svg_el.cpp
 svgi_el.o: svgi_el.cpp svgi_el.h
 	$(cc) -w -c svgi_el.cpp
+core.o: core.cpp core.h
+	$(cc) -w -c core.cpp
 
 .PHONY: clean
 clean:

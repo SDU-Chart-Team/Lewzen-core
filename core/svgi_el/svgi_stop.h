@@ -420,18 +420,18 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 3> _attr_commit = {
             [this](){
                 Offset.commit();
-                if (Offset.get() == STR_NULL) return std::string("reset Offset");
-                else return std::string("modify Offset \"" + Offset.get() + "\"");
+                if (Offset.get() == STR_NULL) return std::string("reset offset");
+                else return std::string("modify offset \"" + Offset.get() + "\"");
             },
             [this](){
                 StopColor.commit();
-                if (StopColor.get() == STR_NULL) return std::string("reset StopColor");
-                else return std::string("modify StopColor \"" + StopColor.get() + "\"");
+                if (StopColor.get() == STR_NULL) return std::string("reset stop-color");
+                else return std::string("modify stop-color \"" + StopColor.get() + "\"");
             },
             [this](){
                 StopOpacity.commit();
-                if (StopOpacity.get() == STR_NULL) return std::string("reset StopOpacity");
-                else return std::string("modify StopOpacity \"" + StopOpacity.get() + "\"");
+                if (StopOpacity.get() == STR_NULL) return std::string("reset stop-opacity");
+                else return std::string("modify stop-opacity \"" + StopOpacity.get() + "\"");
             },
         };
 

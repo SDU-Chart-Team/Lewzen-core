@@ -403,13 +403,13 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 2> _attr_commit = {
             [this](){
                 D.commit();
-                if (D.get() == STR_NULL) return std::string("reset D");
-                else return std::string("modify D \"" + D.get() + "\"");
+                if (D.get() == STR_NULL) return std::string("reset d");
+                else return std::string("modify d \"" + D.get() + "\"");
             },
             [this](){
                 PathLength.commit();
-                if (PathLength.get() == STR_NULL) return std::string("reset PathLength");
-                else return std::string("modify PathLength \"" + PathLength.get() + "\"");
+                if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
+                else return std::string("modify pathLength \"" + PathLength.get() + "\"");
             },
         };
 

@@ -539,53 +539,53 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 10> _attr_commit = {
             [this](){
                 Cx.commit();
-                if (Cx.get() == STR_NULL) return std::string("reset Cx");
-                else return std::string("modify Cx \"" + Cx.get() + "\"");
+                if (Cx.get() == STR_NULL) return std::string("reset cx");
+                else return std::string("modify cx \"" + Cx.get() + "\"");
             },
             [this](){
                 Cy.commit();
-                if (Cy.get() == STR_NULL) return std::string("reset Cy");
-                else return std::string("modify Cy \"" + Cy.get() + "\"");
+                if (Cy.get() == STR_NULL) return std::string("reset cy");
+                else return std::string("modify cy \"" + Cy.get() + "\"");
             },
             [this](){
                 Fr.commit();
-                if (Fr.get() == STR_NULL) return std::string("reset Fr");
-                else return std::string("modify Fr \"" + Fr.get() + "\"");
+                if (Fr.get() == STR_NULL) return std::string("reset fr");
+                else return std::string("modify fr \"" + Fr.get() + "\"");
             },
             [this](){
                 Fx.commit();
-                if (Fx.get() == STR_NULL) return std::string("reset Fx");
-                else return std::string("modify Fx \"" + Fx.get() + "\"");
+                if (Fx.get() == STR_NULL) return std::string("reset fx");
+                else return std::string("modify fx \"" + Fx.get() + "\"");
             },
             [this](){
                 Fy.commit();
-                if (Fy.get() == STR_NULL) return std::string("reset Fy");
-                else return std::string("modify Fy \"" + Fy.get() + "\"");
+                if (Fy.get() == STR_NULL) return std::string("reset fy");
+                else return std::string("modify fy \"" + Fy.get() + "\"");
             },
             [this](){
                 GradientUnits.commit();
-                if (GradientUnits.get() == STR_NULL) return std::string("reset GradientUnits");
-                else return std::string("modify GradientUnits \"" + GradientUnits.get() + "\"");
+                if (GradientUnits.get() == STR_NULL) return std::string("reset gradientUnits");
+                else return std::string("modify gradientUnits \"" + GradientUnits.get() + "\"");
             },
             [this](){
                 GradientTransform.commit();
-                if (GradientTransform.get() == STR_NULL) return std::string("reset GradientTransform");
-                else return std::string("modify GradientTransform \"" + GradientTransform.get() + "\"");
+                if (GradientTransform.get() == STR_NULL) return std::string("reset gradientTransform");
+                else return std::string("modify gradientTransform \"" + GradientTransform.get() + "\"");
             },
             [this](){
                 Href.commit();
-                if (Href.get() == STR_NULL) return std::string("reset Href");
-                else return std::string("modify Href \"" + Href.get() + "\"");
+                if (Href.get() == STR_NULL) return std::string("reset href");
+                else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
                 R.commit();
-                if (R.get() == STR_NULL) return std::string("reset R");
-                else return std::string("modify R \"" + R.get() + "\"");
+                if (R.get() == STR_NULL) return std::string("reset r");
+                else return std::string("modify r \"" + R.get() + "\"");
             },
             [this](){
                 SpreadMethod.commit();
-                if (SpreadMethod.get() == STR_NULL) return std::string("reset SpreadMethod");
-                else return std::string("modify SpreadMethod \"" + SpreadMethod.get() + "\"");
+                if (SpreadMethod.get() == STR_NULL) return std::string("reset spreadMethod");
+                else return std::string("modify spreadMethod \"" + SpreadMethod.get() + "\"");
             },
         };
 

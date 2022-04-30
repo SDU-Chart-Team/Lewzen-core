@@ -471,33 +471,33 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 6> _attr_commit = {
             [this](){
                 Height.commit();
-                if (Height.get() == STR_NULL) return std::string("reset Height");
-                else return std::string("modify Height \"" + Height.get() + "\"");
+                if (Height.get() == STR_NULL) return std::string("reset height");
+                else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
                 MaskContentUnits.commit();
-                if (MaskContentUnits.get() == STR_NULL) return std::string("reset MaskContentUnits");
-                else return std::string("modify MaskContentUnits \"" + MaskContentUnits.get() + "\"");
+                if (MaskContentUnits.get() == STR_NULL) return std::string("reset maskContentUnits");
+                else return std::string("modify maskContentUnits \"" + MaskContentUnits.get() + "\"");
             },
             [this](){
                 MaskUnits.commit();
-                if (MaskUnits.get() == STR_NULL) return std::string("reset MaskUnits");
-                else return std::string("modify MaskUnits \"" + MaskUnits.get() + "\"");
+                if (MaskUnits.get() == STR_NULL) return std::string("reset maskUnits");
+                else return std::string("modify maskUnits \"" + MaskUnits.get() + "\"");
             },
             [this](){
                 X.commit();
-                if (X.get() == STR_NULL) return std::string("reset X");
-                else return std::string("modify X \"" + X.get() + "\"");
+                if (X.get() == STR_NULL) return std::string("reset x");
+                else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
                 Y.commit();
-                if (Y.get() == STR_NULL) return std::string("reset Y");
-                else return std::string("modify Y \"" + Y.get() + "\"");
+                if (Y.get() == STR_NULL) return std::string("reset y");
+                else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
                 Width.commit();
-                if (Width.get() == STR_NULL) return std::string("reset Width");
-                else return std::string("modify Width \"" + Width.get() + "\"");
+                if (Width.get() == STR_NULL) return std::string("reset width");
+                else return std::string("modify width \"" + Width.get() + "\"");
             },
         };
 

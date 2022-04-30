@@ -167,8 +167,8 @@ public:
         std::stringstream ss;
         ss << "            [this](){" << std::endl;
         ss << "                " + _name + ".commit();" << std::endl;
-        ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _name + "\");" << std::endl;
-        ss << "                else return std::string(\"modify " + _name + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
+        ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _rname + "\");" << std::endl;
+        ss << "                else return std::string(\"modify " + _rname + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
         ss << "            }," << std::endl;
         return ss.str();
     }

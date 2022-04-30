@@ -454,28 +454,28 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 5> _attr_commit = {
             [this](){
                 X1.commit();
-                if (X1.get() == STR_NULL) return std::string("reset X1");
-                else return std::string("modify X1 \"" + X1.get() + "\"");
+                if (X1.get() == STR_NULL) return std::string("reset x1");
+                else return std::string("modify x1 \"" + X1.get() + "\"");
             },
             [this](){
                 X2.commit();
-                if (X2.get() == STR_NULL) return std::string("reset X2");
-                else return std::string("modify X2 \"" + X2.get() + "\"");
+                if (X2.get() == STR_NULL) return std::string("reset x2");
+                else return std::string("modify x2 \"" + X2.get() + "\"");
             },
             [this](){
                 Y1.commit();
-                if (Y1.get() == STR_NULL) return std::string("reset Y1");
-                else return std::string("modify Y1 \"" + Y1.get() + "\"");
+                if (Y1.get() == STR_NULL) return std::string("reset y1");
+                else return std::string("modify y1 \"" + Y1.get() + "\"");
             },
             [this](){
                 Y2.commit();
-                if (Y2.get() == STR_NULL) return std::string("reset Y2");
-                else return std::string("modify Y2 \"" + Y2.get() + "\"");
+                if (Y2.get() == STR_NULL) return std::string("reset y2");
+                else return std::string("modify y2 \"" + Y2.get() + "\"");
             },
             [this](){
                 PathLength.commit();
-                if (PathLength.get() == STR_NULL) return std::string("reset PathLength");
-                else return std::string("modify PathLength \"" + PathLength.get() + "\"");
+                if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
+                else return std::string("modify pathLength \"" + PathLength.get() + "\"");
             },
         };
 

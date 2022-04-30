@@ -437,23 +437,23 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 4> _attr_commit = {
             [this](){
                 Cx.commit();
-                if (Cx.get() == STR_NULL) return std::string("reset Cx");
-                else return std::string("modify Cx \"" + Cx.get() + "\"");
+                if (Cx.get() == STR_NULL) return std::string("reset cx");
+                else return std::string("modify cx \"" + Cx.get() + "\"");
             },
             [this](){
                 Cy.commit();
-                if (Cy.get() == STR_NULL) return std::string("reset Cy");
-                else return std::string("modify Cy \"" + Cy.get() + "\"");
+                if (Cy.get() == STR_NULL) return std::string("reset cy");
+                else return std::string("modify cy \"" + Cy.get() + "\"");
             },
             [this](){
                 R.commit();
-                if (R.get() == STR_NULL) return std::string("reset R");
-                else return std::string("modify R \"" + R.get() + "\"");
+                if (R.get() == STR_NULL) return std::string("reset r");
+                else return std::string("modify r \"" + R.get() + "\"");
             },
             [this](){
                 PathLength.commit();
-                if (PathLength.get() == STR_NULL) return std::string("reset PathLength");
-                else return std::string("modify PathLength \"" + PathLength.get() + "\"");
+                if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
+                else return std::string("modify pathLength \"" + PathLength.get() + "\"");
             },
         };
 

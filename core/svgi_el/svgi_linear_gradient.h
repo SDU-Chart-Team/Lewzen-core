@@ -505,43 +505,43 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 8> _attr_commit = {
             [this](){
                 GradientUnits.commit();
-                if (GradientUnits.get() == STR_NULL) return std::string("reset GradientUnits");
-                else return std::string("modify GradientUnits \"" + GradientUnits.get() + "\"");
+                if (GradientUnits.get() == STR_NULL) return std::string("reset gradientUnits");
+                else return std::string("modify gradientUnits \"" + GradientUnits.get() + "\"");
             },
             [this](){
                 GradientTransform.commit();
-                if (GradientTransform.get() == STR_NULL) return std::string("reset GradientTransform");
-                else return std::string("modify GradientTransform \"" + GradientTransform.get() + "\"");
+                if (GradientTransform.get() == STR_NULL) return std::string("reset gradientTransform");
+                else return std::string("modify gradientTransform \"" + GradientTransform.get() + "\"");
             },
             [this](){
                 Href.commit();
-                if (Href.get() == STR_NULL) return std::string("reset Href");
-                else return std::string("modify Href \"" + Href.get() + "\"");
+                if (Href.get() == STR_NULL) return std::string("reset href");
+                else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
                 SpreadMethod.commit();
-                if (SpreadMethod.get() == STR_NULL) return std::string("reset SpreadMethod");
-                else return std::string("modify SpreadMethod \"" + SpreadMethod.get() + "\"");
+                if (SpreadMethod.get() == STR_NULL) return std::string("reset spreadMethod");
+                else return std::string("modify spreadMethod \"" + SpreadMethod.get() + "\"");
             },
             [this](){
                 X1.commit();
-                if (X1.get() == STR_NULL) return std::string("reset X1");
-                else return std::string("modify X1 \"" + X1.get() + "\"");
+                if (X1.get() == STR_NULL) return std::string("reset x1");
+                else return std::string("modify x1 \"" + X1.get() + "\"");
             },
             [this](){
                 X2.commit();
-                if (X2.get() == STR_NULL) return std::string("reset X2");
-                else return std::string("modify X2 \"" + X2.get() + "\"");
+                if (X2.get() == STR_NULL) return std::string("reset x2");
+                else return std::string("modify x2 \"" + X2.get() + "\"");
             },
             [this](){
                 Y1.commit();
-                if (Y1.get() == STR_NULL) return std::string("reset Y1");
-                else return std::string("modify Y1 \"" + Y1.get() + "\"");
+                if (Y1.get() == STR_NULL) return std::string("reset y1");
+                else return std::string("modify y1 \"" + Y1.get() + "\"");
             },
             [this](){
                 Y2.commit();
-                if (Y2.get() == STR_NULL) return std::string("reset Y2");
-                else return std::string("modify Y2 \"" + Y2.get() + "\"");
+                if (Y2.get() == STR_NULL) return std::string("reset y2");
+                else return std::string("modify y2 \"" + Y2.get() + "\"");
             },
         };
 

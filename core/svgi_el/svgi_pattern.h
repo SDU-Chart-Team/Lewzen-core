@@ -539,53 +539,53 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 10> _attr_commit = {
             [this](){
                 Height.commit();
-                if (Height.get() == STR_NULL) return std::string("reset Height");
-                else return std::string("modify Height \"" + Height.get() + "\"");
+                if (Height.get() == STR_NULL) return std::string("reset height");
+                else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
                 Href.commit();
-                if (Href.get() == STR_NULL) return std::string("reset Href");
-                else return std::string("modify Href \"" + Href.get() + "\"");
+                if (Href.get() == STR_NULL) return std::string("reset href");
+                else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
                 PatternContentUnits.commit();
-                if (PatternContentUnits.get() == STR_NULL) return std::string("reset PatternContentUnits");
-                else return std::string("modify PatternContentUnits \"" + PatternContentUnits.get() + "\"");
+                if (PatternContentUnits.get() == STR_NULL) return std::string("reset patternContentUnits");
+                else return std::string("modify patternContentUnits \"" + PatternContentUnits.get() + "\"");
             },
             [this](){
                 PatternTransform.commit();
-                if (PatternTransform.get() == STR_NULL) return std::string("reset PatternTransform");
-                else return std::string("modify PatternTransform \"" + PatternTransform.get() + "\"");
+                if (PatternTransform.get() == STR_NULL) return std::string("reset patternTransform");
+                else return std::string("modify patternTransform \"" + PatternTransform.get() + "\"");
             },
             [this](){
                 PatternUnits.commit();
-                if (PatternUnits.get() == STR_NULL) return std::string("reset PatternUnits");
-                else return std::string("modify PatternUnits \"" + PatternUnits.get() + "\"");
+                if (PatternUnits.get() == STR_NULL) return std::string("reset patternUnits");
+                else return std::string("modify patternUnits \"" + PatternUnits.get() + "\"");
             },
             [this](){
                 PreserveAspectRatio.commit();
-                if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset PreserveAspectRatio");
-                else return std::string("modify PreserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
+                if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
+                else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
                 ViewBox.commit();
-                if (ViewBox.get() == STR_NULL) return std::string("reset ViewBox");
-                else return std::string("modify ViewBox \"" + ViewBox.get() + "\"");
+                if (ViewBox.get() == STR_NULL) return std::string("reset viewBox");
+                else return std::string("modify viewBox \"" + ViewBox.get() + "\"");
             },
             [this](){
                 Width.commit();
-                if (Width.get() == STR_NULL) return std::string("reset Width");
-                else return std::string("modify Width \"" + Width.get() + "\"");
+                if (Width.get() == STR_NULL) return std::string("reset width");
+                else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
                 X.commit();
-                if (X.get() == STR_NULL) return std::string("reset X");
-                else return std::string("modify X \"" + X.get() + "\"");
+                if (X.get() == STR_NULL) return std::string("reset x");
+                else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
                 Y.commit();
-                if (Y.get() == STR_NULL) return std::string("reset Y");
-                else return std::string("modify Y \"" + Y.get() + "\"");
+                if (Y.get() == STR_NULL) return std::string("reset y");
+                else return std::string("modify y \"" + Y.get() + "\"");
             },
         };
 

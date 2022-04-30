@@ -504,43 +504,43 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 8> _attr_commit = {
             [this](){
                 MarkerHeight.commit();
-                if (MarkerHeight.get() == STR_NULL) return std::string("reset MarkerHeight");
-                else return std::string("modify MarkerHeight \"" + MarkerHeight.get() + "\"");
+                if (MarkerHeight.get() == STR_NULL) return std::string("reset markerHeight");
+                else return std::string("modify markerHeight \"" + MarkerHeight.get() + "\"");
             },
             [this](){
                 MarkerUnits.commit();
-                if (MarkerUnits.get() == STR_NULL) return std::string("reset MarkerUnits");
-                else return std::string("modify MarkerUnits \"" + MarkerUnits.get() + "\"");
+                if (MarkerUnits.get() == STR_NULL) return std::string("reset markerUnits");
+                else return std::string("modify markerUnits \"" + MarkerUnits.get() + "\"");
             },
             [this](){
                 MarkerWidth.commit();
-                if (MarkerWidth.get() == STR_NULL) return std::string("reset MarkerWidth");
-                else return std::string("modify MarkerWidth \"" + MarkerWidth.get() + "\"");
+                if (MarkerWidth.get() == STR_NULL) return std::string("reset markerWidth");
+                else return std::string("modify markerWidth \"" + MarkerWidth.get() + "\"");
             },
             [this](){
                 Orient.commit();
-                if (Orient.get() == STR_NULL) return std::string("reset Orient");
-                else return std::string("modify Orient \"" + Orient.get() + "\"");
+                if (Orient.get() == STR_NULL) return std::string("reset orient");
+                else return std::string("modify orient \"" + Orient.get() + "\"");
             },
             [this](){
                 PreserveAspectRatio.commit();
-                if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset PreserveAspectRatio");
-                else return std::string("modify PreserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
+                if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
+                else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
                 RefX.commit();
-                if (RefX.get() == STR_NULL) return std::string("reset RefX");
-                else return std::string("modify RefX \"" + RefX.get() + "\"");
+                if (RefX.get() == STR_NULL) return std::string("reset refX");
+                else return std::string("modify refX \"" + RefX.get() + "\"");
             },
             [this](){
                 RefY.commit();
-                if (RefY.get() == STR_NULL) return std::string("reset RefY");
-                else return std::string("modify RefY \"" + RefY.get() + "\"");
+                if (RefY.get() == STR_NULL) return std::string("reset refY");
+                else return std::string("modify refY \"" + RefY.get() + "\"");
             },
             [this](){
                 ViewBox.commit();
-                if (ViewBox.get() == STR_NULL) return std::string("reset ViewBox");
-                else return std::string("modify ViewBox \"" + ViewBox.get() + "\"");
+                if (ViewBox.get() == STR_NULL) return std::string("reset viewBox");
+                else return std::string("modify viewBox \"" + ViewBox.get() + "\"");
             },
         };
 
