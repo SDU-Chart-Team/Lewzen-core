@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <radialGradient> element lets authors define radial gradients that can be applied to fill or stroke of graphical elements.
     */
-    class SVGRadialGradient: public SVGElement {
+    class SVGRadialGradient: public virtual SVGElement {
     public:
         /**
         * Constructor of radialGradient.

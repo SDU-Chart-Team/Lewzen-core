@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <foreignObject> SVG element includes elements from a different XML namespace. In the context of a browser, it is most likely (X)HTML.
     */
-    class SVGForeignObject: public SVGElement {
+    class SVGForeignObject: public virtual SVGElement {
     public:
         /**
         * Constructor of foreignObject.

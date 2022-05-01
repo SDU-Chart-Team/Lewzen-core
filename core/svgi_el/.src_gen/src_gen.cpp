@@ -167,8 +167,8 @@ public:
         std::stringstream ss;
         ss << "            [this](){" << std::endl;
         ss << "                " + _name + ".commit();" << std::endl;
-        ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _name + "\");" << std::endl;
-        ss << "                else return std::string(\"modify " + _name + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
+        ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _rname + "\");" << std::endl;
+        ss << "                else return std::string(\"modify " + _rname + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
         ss << "            }," << std::endl;
         return ss.str();
     }
@@ -180,6 +180,12 @@ public:
         ss << "        " + _name + ".callback_assign(_attr_on_assign[" << _i << "]), " + _name + ".callback_bind_func(_attr_on_bind[" << _i << "]), " + _name + ".callback_bind_ptr(_attr_on_bind[" << _i << "]);" << std::endl;
         return ss.str();
     }
+    const std::string hide() const {
+        std::stringstream ss;
+        ss << "        using SVG" + dom_to_pascal(_tag) + "::get_" + dom_to_snake(_rname) + ";" << std::endl;
+        ss << "        using SVG" + dom_to_pascal(_tag) + "::set_" + dom_to_snake(_rname) + ";" << std::endl;
+        return ss.str();
+    }
     const std::string copy() const {
         std::stringstream ss;
         ss << "        " + _name + " = element." + _name + ";" << std::endl;
@@ -187,17 +193,9 @@ public:
     }
 };
 
+std::vector<std::shared_ptr<Attribute>> attributes_i;
+
 std::string SVGICPP() {
-    std::vector<std::shared_ptr<Attribute>> attributes;
-    std::ifstream i(json_dir + "/_svg._json");
-    json j; i >> j;
-    int _i = 0;
-    for (auto &atr : j["attributes"]) {
-        std::string name = atr["name"];
-        std::string type = atr["type"];
-        std::string acom = atr["comment"];
-        attributes.push_back(std::make_shared<Attribute>("element", name, type, acom, _i++));
-    }
     std::stringstream ss;
     ss << "#include <sstream>" << std::endl;
     ss << "#include <algorithm>" << std::endl;
@@ -210,7 +208,11 @@ std::string SVGICPP() {
     ss << "        _bind_getter_setter();" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGIElement::_bind_getter_setter() {" << std::endl;
-    for (auto &p : attributes) ss << p->get_set();
+    for (auto &p : attributes_i) ss << p->get_set();
+    ss << "" << std::endl;
+    ss << "        std::function<const std::string()> _getter_raw_html = std::bind(&SVGElement::get_raw_HTML, (SVGElement *)this);" << std::endl;
+    ss << "        std::function<void(const std::string &)> _setter_raw_html = std::bind(&SVGElement::set_raw_HTML, (SVGElement *)this, std::placeholders::_1);" << std::endl;
+    ss << "        RawHTML.set_getter(_getter_raw_html), RawHTML.set_setter(_setter_raw_html);" << std::endl;
     ss << "    }" << std::endl;
     ss << "" << std::endl;
     ss << "    const std::string SVGIElement::get_tag() const {" << std::endl;
@@ -218,24 +220,19 @@ std::string SVGICPP() {
     ss << "    }" << std::endl;
     ss << "" << std::endl;
     ss << "    const std::string SVGIElement::inner_SVG() const {" << std::endl;
-    ss << "        return SVGIElement::inner_SVG();" << std::endl;
+    ss << "        return SVGElement::inner_SVG();" << std::endl;
     ss << "    }" << std::endl;
-    ss << "    void SVGIElement::set_inner_text(const std::string &text) {" << std::endl;
-    ss << "        _inner_text_commit = text;" << std::endl;
+    ss << "    void SVGIElement::add(const std::shared_ptr<SVGIElement> &element, int index) {" << std::endl;
+    ss << "        if (index == -1) _inner_elements_commit.push_back(element);" << std::endl;
+    ss << "        else _inner_elements_commit.insert(_inner_elements_commit.begin() + index, element);" << std::endl;
     ss << "    }" << std::endl;
-    ss << "    const std::string SVGIElement::get_inner_text() const {" << std::endl;
-    ss << "        return SVGElement::get_inner_text();" << std::endl;
-    ss << "    }" << std::endl;
-    ss << "    void SVGIElement::add_inner_element(const std::shared_ptr<SVGIElement> &inner_element) {" << std::endl;
-    ss << "        _inner_elements_commit.push_back(inner_element);" << std::endl;
-    ss << "    }" << std::endl;
-    ss << "    void SVGIElement::remove_inner_element(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {" << std::endl;
+    ss << "    void SVGIElement::remove(const std::shared_ptr<SVGIElement> &element, bool remove_all) {" << std::endl;
     ss << "        bool success;" << std::endl;
     ss << "        std::vector<std::shared_ptr<SVGIElement>> removed;" << std::endl;
     ss << "        _inner_elements_commit.erase(std::remove_if(_inner_elements_commit.begin(), _inner_elements_commit.end()," << std::endl;
     ss << "                                [&](const std::shared_ptr<SVGIElement>& _inner_element) { " << std::endl;
     ss << "                                    if (success && !remove_all) return false;" << std::endl;
-    ss << "                                    if (_inner_element->get_outer_hash() == inner_element->get_outer_hash()) {" << std::endl;
+    ss << "                                    if (_inner_element->get_outer_hash() == element->get_outer_hash()) {" << std::endl;
     ss << "                                        success = true;" << std::endl;
     ss << "                                        removed.push_back(_inner_element);" << std::endl;
     ss << "                                        return true;" << std::endl;
@@ -245,12 +242,19 @@ std::string SVGICPP() {
     ss << "        success = false;" << std::endl;
     ss << "        for (auto &p : removed) p->_parent_element_commit = std::weak_ptr<SVGIElement>();" << std::endl;
     ss << "    }" << std::endl;
-    ss << "    const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::get_inner_elements() const {" << std::endl;
+    ss << "    void SVGIElement::remove(int index) {" << std::endl;
+    ss << "        _inner_elements_commit[index]->_parent_element = std::weak_ptr<SVGIElement>();" << std::endl;
+    ss << "        _inner_elements_commit.erase(_inner_elements_commit.begin() + index);" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    std::shared_ptr<SVGIElement> SVGIElement::child(int index) const {" << std::endl;
+    ss << "        return _inner_elements_commit[index];" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::children() const {" << std::endl;
     ss << "        return _inner_elements_commit;" << std::endl;
     ss << "    }" << std::endl;
-    ss << "    void SVGIElement::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {" << std::endl;
-    ss << "        for (auto p : _inner_elements_commit) remove_inner_element(p);" << std::endl;
-    ss << "        for (auto p : inner_elements) add_inner_element(p);" << std::endl;
+    ss << "    void SVGIElement::children(const std::vector<std::shared_ptr<SVGIElement>> &elements) {" << std::endl;
+    ss << "        while (_inner_elements_commit.size() > 0) remove(0);" << std::endl;
+    ss << "        for (auto p : elements) add(p);" << std::endl;
     ss << "    }" << std::endl;
     ss << "" << std::endl;
     ss << "    const std::string SVGIElement::outer_SVG() const {" << std::endl;
@@ -260,16 +264,15 @@ std::string SVGICPP() {
     ss << "    const std::string SVGIElement::commit() {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
     ss << "" << std::endl;
+    ss << "        _updated_raw_html = get_raw_HTML() != RawHTML.get_commit();" << std::endl;
+    ss << "        RawHTML.commit();" << std::endl;
+    ss << "        if (get_raw_HTML() != STR_NULL) return \"\";" << std::endl;
+    ss << "" << std::endl;
     ss << "        // attribute differ" << std::endl;
     ss << "        for (auto &i : bound) ss << _attr_commit[i]() << std::endl;" << std::endl;
     ss << "        for (auto &i : modified) ss << _attr_commit[i]() << std::endl;" << std::endl;
     ss << "        modified.clear();" << std::endl;
-    ss << "" << std::endl;
-    ss << "        // inner differ" << std::endl;
-    ss << "        if (_inner_text_commit != get_inner_text()) {" << std::endl;
-    ss << "            auto content = _inner_text_commit;" << std::endl;
-    ss << "            ss << \"content \" << content.size() << std::endl << content << std::endl;" << std::endl;
-    ss << "        }" << std::endl;
+    ss << "        " << std::endl;
     ss << "        // recursion" << std::endl;
     ss << "        std::vector<std::string> changed;" << std::endl;
     ss << "        for (auto &p : _inner_elements_commit) changed.push_back(p->commit());" << std::endl;
@@ -323,22 +326,32 @@ std::string SVGICPP() {
     ss << "        // commit inner changes" << std::endl;
     ss << "        _inner_elements_last.clear();" << std::endl;
     ss << "        SVGElement::set_inner_elements({});" << std::endl;
-    ss << "        for (auto &p : _inner_elements_commit) _inner_elements_last.push_back(p), SVGElement::add_inner_element(p);" << std::endl;
+    ss << "        for (auto &p : _inner_elements_commit) {" << std::endl;
+    ss << "            if (p->_updated_raw_html) p->_updated_raw_html = false;" << std::endl;
+    ss << "            _inner_elements_last.push_back(p);" << std::endl;
+    ss << "            SVGElement::add_inner_element(p);" << std::endl;
+    ss << "        }" << std::endl;
     ss << "" << std::endl;
     ss << "        return ss.str();" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGIElement::inner_differ_commit(std::vector<int> &removal," << std::endl;
     ss << "            std::vector<int> &addition," << std::endl;
     ss << "            std::vector<std::pair<int, int>> &unchanged) const {" << std::endl;
+    ss << "        std::function<const std::string(const std::shared_ptr<SVGIElement> &)> get_tag;" << std::endl;
+    ss << "        int _uc;" << std::endl;
+    ss << "        get_tag = [&](const std::shared_ptr<SVGIElement> &x){" << std::endl;
+    ss << "            if (x->_updated_raw_html) return std::string(\"#\") + std::to_string(_uc++);" << std::endl;
+    ss << "            return std::string(x->get_tag());" << std::endl;
+    ss << "        };" << std::endl;
     ss << "        std::unordered_map<std::string, std::set<_i_el_idx>> tags_map;" << std::endl;
     ss << "        std::set<_i_el_idx> A, B;" << std::endl;
     ss << "        int c = 0;" << std::endl;
     ss << "        for (auto &a : _inner_elements_commit) A.insert({a, c++}); c = 0;" << std::endl;
-    ss << "        for (auto &b : _inner_elements_last) tags_map[b->get_tag()].insert({b, c}), B.insert({b, c++});" << std::endl;
+    ss << "        for (auto &b : _inner_elements_last) tags_map[get_tag(b)].insert({b, c}), B.insert({b, c++});" << std::endl;
     ss << "" << std::endl;
     ss << "        c = 0;" << std::endl;
     ss << "        for (auto &_a : _inner_elements_commit) { // with outer hash equal" << std::endl;
-    ss << "            auto &tag  = _a->get_tag();" << std::endl;
+    ss << "            auto &tag  = get_tag(_a);" << std::endl;
     ss << "            _i_el_idx a = { _a, c++ };" << std::endl;
     ss << "            if (!A.count(a) || !tags_map.count(tag)) continue;" << std::endl;
     ss << "            _i_el_idx match = { nullptr, -1 };" << std::endl;
@@ -356,7 +369,7 @@ std::string SVGICPP() {
     ss << "        }" << std::endl;
     ss << "        c = 0;" << std::endl;
     ss << "        for (auto &_a : _inner_elements_commit) { // with inner hash equal" << std::endl;
-    ss << "            auto &tag  = _a->get_tag();" << std::endl;
+    ss << "            auto &tag  = get_tag(_a);" << std::endl;
     ss << "            _i_el_idx a = { _a, c++ };" << std::endl;
     ss << "            if (!A.count(a) || !tags_map.count(tag)) continue;" << std::endl;
     ss << "            _i_el_idx match = { nullptr, -1 };" << std::endl;
@@ -374,7 +387,7 @@ std::string SVGICPP() {
     ss << "        }" << std::endl;
     ss << "        c = 0;" << std::endl;
     ss << "        for (auto &_a : _inner_elements_commit) { // with attribute hash equal" << std::endl;
-    ss << "            auto &tag  = _a->get_tag();" << std::endl;
+    ss << "            auto &tag  = get_tag(_a);" << std::endl;
     ss << "            _i_el_idx a = { _a, c++ };" << std::endl;
     ss << "            if (!A.count(a) || !tags_map.count(tag)) continue;" << std::endl;
     ss << "            _i_el_idx match = { nullptr, -1 };" << std::endl;
@@ -389,6 +402,16 @@ std::string SVGICPP() {
     ss << "                A.erase(a), B.erase(match);" << std::endl;
     ss << "                unchanged.push_back({a.idx, match.idx});" << std::endl;
     ss << "            }" << std::endl;
+    ss << "        }" << std::endl;
+    ss << "        c = 0;" << std::endl;
+    ss << "        for (auto &_a : _inner_elements_commit) { // with tag equal" << std::endl;
+    ss << "            auto &tag  = get_tag(_a);" << std::endl;
+    ss << "            _i_el_idx a = { _a, c++ };" << std::endl;
+    ss << "            if (!A.count(a) || !tags_map.count(tag) || tags_map[tag].size() == 0) continue;" << std::endl;
+    ss << "            _i_el_idx match = *tags_map[tag].begin();" << std::endl;
+    ss << "            tags_map[tag].erase(match);" << std::endl;
+    ss << "            A.erase(a), B.erase(match);" << std::endl;
+    ss << "            unchanged.push_back({a.idx, match.idx});" << std::endl;
     ss << "        }" << std::endl;
     ss << "        for (auto &a : A) addition.push_back(a.idx);" << std::endl;
     ss << "        for (auto &b : B) removal.push_back(b.idx);" << std::endl;
@@ -409,7 +432,7 @@ std::string SVGICPP() {
     ss << "    }" << std::endl;
     ss << "    SVGIElement &SVGIElement::operator=(const SVGIElement &element) {" << std::endl;
     ss << "        SVGElement::operator=(element);" << std::endl;
-    for (auto &p : attributes) ss << p->copy();
+    for (auto &p : attributes_i) ss << p->copy();
     ss << std::endl;
     ss << "        _bind_getter_setter();" << std::endl;
     ss << "        return *this;" << std::endl;
@@ -428,16 +451,6 @@ std::string SVGICPP() {
 }
 
 std::string SVGIH(const std::vector<std::string> &tags) {
-    std::vector<std::shared_ptr<Attribute>> attributes;
-    std::ifstream i(json_dir + "/_svg._json");
-    json j; i >> j;
-    int _i = 0;
-    for (auto &atr : j["attributes"]) {
-        std::string name = atr["name"];
-        std::string type = atr["type"];
-        std::string acom = atr["comment"];
-        attributes.push_back(std::make_shared<Attribute>("element", name, type, acom, _i++));
-    }
     std::stringstream ss;
     ss << "#ifndef __LZ_SVGI_ELEMENT__" << std::endl;
     ss << "#define __LZ_SVGI_ELEMENT__" << std::endl;
@@ -467,20 +480,35 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        const std::string get_tag() const;" << std::endl;
     ss << "" << std::endl;
     ss << "        /// Attributes" << std::endl;
-    for (auto &p : attributes) ss << p->domain();
+    for (auto &p : attributes_i) ss << p->domain();
     ss << std::endl;
     ss << "    private:" << std::endl;
     ss << "        std::set<int> bound;" << std::endl;
     ss << "        std::set<int> modified;" << std::endl;
-    ss << "        const std::array<std::function<void(const std::string &)>, " << attributes.size() << "> _attr_on_assign = {" << std::endl;
-    for (auto &p : attributes) ss << p->on_assign();
+    ss << "        const std::array<std::function<void(const std::string &)>, " << attributes_i.size() << "> _attr_on_assign = {" << std::endl;
+    for (auto &p : attributes_i) ss << p->on_assign();
     ss << "        };" << std::endl;
-    ss << "        const std::array<std::function<void()>, " << attributes.size() << "> _attr_on_bind = {" << std::endl;
-    for (auto &p : attributes) ss << p->on_bind();
+    ss << "        const std::array<std::function<void()>, " << attributes_i.size() << "> _attr_on_bind = {" << std::endl;
+    for (auto &p : attributes_i) ss << p->on_bind();
     ss << "        };" << std::endl;
-    ss << "        const std::array<std::function<const std::string()>, " << attributes.size() << "> _attr_commit = {" << std::endl;
-    for (auto &p : attributes) ss << p->on_commit();
+    ss << "        const std::array<std::function<const std::string()>, " << attributes_i.size() << "> _attr_commit = {" << std::endl;
+    for (auto &p : attributes_i) ss << p->on_commit();
     ss << "        };" << std::endl;
+    ss << std::endl;
+    ss << "    private:" << std::endl;
+    ss << "        using SVGElement::inner_SVG;" << std::endl;
+    ss << "        using SVGElement::set_raw_HTML;" << std::endl;
+    ss << "        using SVGElement::get_raw_HTML;" << std::endl;
+    ss << "        using SVGElement::add_inner_element;" << std::endl;
+    ss << "        using SVGElement::remove_inner_element;" << std::endl;
+    ss << "        using SVGElement::get_inner_element;" << std::endl;
+    ss << "        using SVGElement::get_inner_elements;" << std::endl;
+    ss << "        using SVGElement::set_inner_elements;" << std::endl;
+    ss << "        using SVGElement::get_attribute_hash;" << std::endl;
+    ss << "        using SVGElement::get_inner_hash;" << std::endl;
+    ss << "        using SVGElement::get_outer_hash;" << std::endl;
+    ss << "    private:" << std::endl;
+    for (auto &p : attributes_i) ss << p->hide();
     ss << "    " << std::endl;
     ss << "        /// Inner SVG" << std::endl;
     ss << "    protected:" << std::endl;
@@ -488,6 +516,10 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        std::vector<std::shared_ptr<SVGIElement>> _inner_elements_commit;" << std::endl;
     ss << "        std::vector<std::shared_ptr<SVGIElement>> _inner_elements_last;" << std::endl;
     ss << "        std::weak_ptr<SVGIElement> _parent_element_commit;" << std::endl;
+    ss << "    public:" << std::endl;
+    ss << "        AttrAnything RawHTML;" << std::endl;
+    ss << "    private:" << std::endl;
+    ss << "        bool _updated_raw_html = false;" << std::endl;
     ss << "    protected:" << std::endl;
     ss << "        struct _i_el_idx {" << std::endl;
     ss << "            std::shared_ptr<SVGIElement> ptr;" << std::endl;
@@ -511,42 +543,43 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        */" << std::endl;
     ss << "        const std::string inner_SVG() const;" << std::endl;
     ss << "        /**" << std::endl;
-    ss << "        * Set inner string of this SVG element. SVG string or text." << std::endl;
-    ss << "        *" << std::endl;
-    ss << "        * @param element an inner string." << std::endl;
-    ss << "        */" << std::endl;
-    ss << "        void set_inner_text(const std::string &text);" << std::endl;
-    ss << "        /**" << std::endl;
-    ss << "        * Set inner string of this SVG element. SVG string or text." << std::endl;
-    ss << "        *" << std::endl;
-    ss << "        * @param element an inner string." << std::endl;
-    ss << "        */" << std::endl;
-    ss << "        const std::string get_inner_text() const;" << std::endl;
-    ss << "        /**" << std::endl;
     ss << "        * Add a sub element to this SVG element." << std::endl;
     ss << "        *" << std::endl;
     ss << "        * @param element an inner element." << std::endl;
+    ss << "        * @param index the index to be insert. default -1 means tail." << std::endl;
     ss << "        */" << std::endl;
-    ss << "        void add_inner_element(const std::shared_ptr<SVGIElement> &element);" << std::endl;
+    ss << "        void add(const std::shared_ptr<SVGIElement> &element, int index = -1);" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Remove a child element or child elements from this SVG element, based on content." << std::endl;
     ss << "        *" << std::endl;
     ss << "        * @param element an inner element." << std::endl;
     ss << "        * @param remove_all if to remove all occurances." << std::endl;
     ss << "        */" << std::endl;
-    ss << "        void remove_inner_element(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);" << std::endl;
+    ss << "        void remove(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Remove a child element or child elements from this SVG element, by index." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @param index the index of inner element." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        void remove(int index);" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Get inner SVG element in this SVG element, by index." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @return inner element." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        std::shared_ptr<SVGIElement> child(int index) const;" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Get inner SVG elements list in this SVG element." << std::endl;
     ss << "        *" << std::endl;
-    ss << "        * @return inner elements, readonly." << std::endl;
+    ss << "        * @return inner element list, readonly." << std::endl;
     ss << "        */" << std::endl;
-    ss << "        const std::vector<std::shared_ptr<SVGIElement>> get_inner_elements() const;" << std::endl;
+    ss << "        const std::vector<std::shared_ptr<SVGIElement>> children() const;" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Set inner SVG elements list in this SVG element." << std::endl;
     ss << "        *" << std::endl;
     ss << "        * @param inner_elements inner elements list." << std::endl;
     ss << "        */" << std::endl;
-    ss << "        void set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);" << std::endl;
+    ss << "        void children(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);" << std::endl;
     ss << "    " << std::endl;
     ss << "        /// Outer SVG" << std::endl;
     ss << "    public:" << std::endl;
@@ -638,6 +671,9 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::get_tag() const {" << std::endl;
     ss << "        return \"" << tag << "\";" << std::endl;
     ss << "    }" << std::endl;
+    ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::outer_SVG() const {" << std::endl;
+    ss << "        return SVGIElement::outer_SVG();" << std::endl;
+    ss << "    }" << std::endl;
     ss << "    const std::string SVGI" << dom_to_pascal(tag) << "::commit() {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
     ss << "" << std::endl;
@@ -653,13 +689,17 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << "    }" << std::endl;
     ss << "    std::shared_ptr<SVGElement> SVGI" << dom_to_pascal(tag) << "::clone() const {" << std::endl;
     ss << "        auto cloned = std::make_shared<SVGElement>();" << std::endl;
-    ss << "        *cloned = static_cast<SVG" << dom_to_pascal(tag) << ">(*this);" << std::endl;
+    ss << "        cloned->SVGElement::operator=(*this);" << std::endl;
     ss << "        return cloned;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    std::shared_ptr<SVGI" << dom_to_pascal(tag) << "> SVGI" << dom_to_pascal(tag) << "::clone(bool identity) const {" << std::endl;
     ss << "        auto cloned = std::make_shared<SVGI" << dom_to_pascal(tag) << ">();" << std::endl;
     ss << "        *cloned = *this;" << std::endl;
     ss << "        return cloned;" << std::endl;
+    ss << "    }" << std::endl;
+    ss << "    SVGElement &SVGI" << dom_to_pascal(tag) << "::operator=(const SVGElement &element) {" << std::endl;
+    ss << "        SVGElement::operator=(element);" << std::endl;
+    ss << "        return *this;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVGI" << dom_to_pascal(tag) << " &SVGI" << dom_to_pascal(tag) << "::operator=(const SVGI" << dom_to_pascal(tag) << " &element) {" << std::endl;
     ss << "        SVGIElement::operator=(static_cast<SVGIElement>(element));" << std::endl;
@@ -707,6 +747,21 @@ const std::string HeaderFile(const std::string &tag, const std::string &comment,
     ss << "        */" << std::endl;
     ss << "        virtual const std::string get_tag() const override;" << std::endl;
     ss << std::endl;
+    ss << "    private:" << std::endl;
+    ss << "        void add_inner_element(const std::shared_ptr<SVGElement> &element) = delete;" << std::endl;
+    ss << "        void remove_inner_element(const std::shared_ptr<SVGElement> &element, bool remove_all = false) = delete;" << std::endl;
+    for (auto &p : attributes) ss << p->hide();
+    for (auto &p : attributes_i) ss << p->hide();
+    ss << std::endl;
+    ss << "        /// Outer SVG" << std::endl;
+    ss << "    public:" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Get SVG of this SVG element." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @return outer SVG." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        const std::string outer_SVG() const;" << std::endl;
+    ss << std::endl;
     ss << "        /// " << dom_to_pascal(tag) << "" << std::endl;
     for (auto &p : attributes) ss << p->domain();
     ss << "    private:" << std::endl;
@@ -742,6 +797,12 @@ const std::string HeaderFile(const std::string &tag, const std::string &comment,
     ss << "        * @relatesalso SVGIElement" << std::endl;
     ss << "        */" << std::endl;
     ss << "        std::shared_ptr<SVGI" << dom_to_pascal(tag) << "> clone(bool identity) const;" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Assigning SVG element by deep copy." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @relatesalso SVGIElement" << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        virtual SVGElement &operator=(const SVGElement &element) override;" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Assigning SVG element by deep copy." << std::endl;
     ss << "        *" << std::endl;
@@ -810,6 +871,16 @@ const std::string json_to_source(const std::string &path) {
 }
 
 int main(int argc, char **argv) {
+    std::ifstream i(json_dir + "/_svg._json");
+    json j; i >> j;
+    int _i = 0;
+    for (auto &atr : j["attributes"]) {
+        std::string name = atr["name"];
+        std::string type = atr["type"];
+        std::string acom = atr["comment"];
+        attributes_i.push_back(std::make_shared<Attribute>("element", name, type, acom, _i++));
+    }
+
     std::vector<std::string> tags;
     for (const auto &file : fs::directory_iterator(json_dir)) {
         auto tag = json_to_source(file.path());

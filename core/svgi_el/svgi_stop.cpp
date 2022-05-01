@@ -20,6 +20,9 @@ namespace Lewzen {
     const std::string SVGIStop::get_tag() const {
         return "stop";
     }
+    const std::string SVGIStop::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIStop::commit() {
         std::stringstream ss;
 
@@ -35,13 +38,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIStop::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGStop>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIStop> SVGIStop::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIStop>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIStop::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIStop &SVGIStop::operator=(const SVGIStop &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

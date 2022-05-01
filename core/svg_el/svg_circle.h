@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <circle> SVG element is an SVG basic shape, used to draw circles based on a center point and a radius.
     */
-    class SVGCircle: public SVGElement {
+    class SVGCircle: public virtual SVGElement {
     public:
         /**
         * Constructor of circle.

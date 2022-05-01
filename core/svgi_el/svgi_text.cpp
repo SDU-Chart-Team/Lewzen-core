@@ -36,6 +36,9 @@ namespace Lewzen {
     const std::string SVGIText::get_tag() const {
         return "text";
     }
+    const std::string SVGIText::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIText::commit() {
         std::stringstream ss;
 
@@ -51,13 +54,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIText::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGText>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIText> SVGIText::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIText>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIText::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIText &SVGIText::operator=(const SVGIText &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

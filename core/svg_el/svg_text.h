@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The SVG <text> element draws a graphics element consisting of text. It's possible to apply a gradient, pattern, clipping path, mask, or filter to <text>, like any other SVG graphics element.
     */
-    class SVGText: public SVGElement {
+    class SVGText: public virtual SVGElement {
     public:
         /**
         * Constructor of text.

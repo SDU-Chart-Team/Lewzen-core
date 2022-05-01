@@ -16,6 +16,9 @@ namespace Lewzen {
     const std::string SVGIPolyline::get_tag() const {
         return "polyline";
     }
+    const std::string SVGIPolyline::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIPolyline::commit() {
         std::stringstream ss;
 
@@ -31,13 +34,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIPolyline::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGPolyline>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIPolyline> SVGIPolyline::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIPolyline>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIPolyline::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIPolyline &SVGIPolyline::operator=(const SVGIPolyline &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

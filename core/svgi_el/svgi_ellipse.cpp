@@ -28,6 +28,9 @@ namespace Lewzen {
     const std::string SVGIEllipse::get_tag() const {
         return "ellipse";
     }
+    const std::string SVGIEllipse::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIEllipse::commit() {
         std::stringstream ss;
 
@@ -43,13 +46,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIEllipse::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGEllipse>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIEllipse> SVGIEllipse::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIEllipse>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIEllipse::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIEllipse &SVGIEllipse::operator=(const SVGIEllipse &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

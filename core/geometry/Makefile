@@ -3,20 +3,20 @@ objects = \
 	point_func.o\
 	component_rotatable.o\
 	point.o
-cc = g++ -w
+cc = g++
 
 .PHONY: all
 all: $(objects)
 	cd coordinate_system && make
 
 coordinate_system.o: coordinate_system.cpp coordinate_system.h
-	$(cc) -c coordinate_system.cpp
+	$(cc) -w -c coordinate_system.cpp
 point_func.o: point_func.cpp point_func.h
-	$(cc) -c point_func.cpp
+	$(cc) -w -c point_func.cpp
 component_rotatable.o: component_rotatable.cpp component_rotatable.h
-	$(cc) -c component_rotatable.cpp
+	$(cc) -w -c component_rotatable.cpp
 point.o: point.cpp point.h
-	$(cc) -c point.cpp
+	$(cc) -w -c point.cpp
 
 .PHONY: clean
 clean:

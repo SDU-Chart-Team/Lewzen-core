@@ -24,6 +24,9 @@ namespace Lewzen {
     const std::string SVGIForeignObject::get_tag() const {
         return "foreignObject";
     }
+    const std::string SVGIForeignObject::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIForeignObject::commit() {
         std::stringstream ss;
 
@@ -39,13 +42,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIForeignObject::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGForeignObject>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIForeignObject> SVGIForeignObject::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIForeignObject>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIForeignObject::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIForeignObject &SVGIForeignObject::operator=(const SVGIForeignObject &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

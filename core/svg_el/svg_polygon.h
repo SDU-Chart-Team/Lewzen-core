@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <polygon> element defines a closed shape consisting of a set of connected straight line segments. The last point is connected to the first point.
     */
-    class SVGPolygon: public SVGElement {
+    class SVGPolygon: public virtual SVGElement {
     public:
         /**
         * Constructor of polygon.

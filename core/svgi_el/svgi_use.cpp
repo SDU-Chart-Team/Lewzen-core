@@ -28,6 +28,9 @@ namespace Lewzen {
     const std::string SVGIUse::get_tag() const {
         return "use";
     }
+    const std::string SVGIUse::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIUse::commit() {
         std::stringstream ss;
 
@@ -43,13 +46,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIUse::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGUse>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIUse> SVGIUse::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIUse>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIUse::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIUse &SVGIUse::operator=(const SVGIUse &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

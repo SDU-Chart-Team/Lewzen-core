@@ -24,6 +24,9 @@ namespace Lewzen {
     const std::string SVGICircle::get_tag() const {
         return "circle";
     }
+    const std::string SVGICircle::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGICircle::commit() {
         std::stringstream ss;
 
@@ -39,13 +42,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGICircle::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGCircle>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGICircle> SVGICircle::clone(bool identity) const {
         auto cloned = std::make_shared<SVGICircle>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGICircle::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGICircle &SVGICircle::operator=(const SVGICircle &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

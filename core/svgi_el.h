@@ -2040,695 +2040,985 @@ namespace Lewzen {
         const std::array<std::function<const std::string()>, 138> _attr_commit = {
             [this](){
                 Id.commit();
-                if (Id.get() == STR_NULL) return std::string("reset Id");
-                else return std::string("modify Id \"" + Id.get() + "\"");
+                if (Id.get() == STR_NULL) return std::string("reset id");
+                else return std::string("modify id \"" + Id.get() + "\"");
             },
             [this](){
                 Lang.commit();
-                if (Lang.get() == STR_NULL) return std::string("reset Lang");
-                else return std::string("modify Lang \"" + Lang.get() + "\"");
+                if (Lang.get() == STR_NULL) return std::string("reset lang");
+                else return std::string("modify lang \"" + Lang.get() + "\"");
             },
             [this](){
                 Tabindex.commit();
-                if (Tabindex.get() == STR_NULL) return std::string("reset Tabindex");
-                else return std::string("modify Tabindex \"" + Tabindex.get() + "\"");
+                if (Tabindex.get() == STR_NULL) return std::string("reset tabindex");
+                else return std::string("modify tabindex \"" + Tabindex.get() + "\"");
             },
             [this](){
                 XmlBase.commit();
-                if (XmlBase.get() == STR_NULL) return std::string("reset XmlBase");
-                else return std::string("modify XmlBase \"" + XmlBase.get() + "\"");
+                if (XmlBase.get() == STR_NULL) return std::string("reset xml:base");
+                else return std::string("modify xml:base \"" + XmlBase.get() + "\"");
             },
             [this](){
                 XmlLang.commit();
-                if (XmlLang.get() == STR_NULL) return std::string("reset XmlLang");
-                else return std::string("modify XmlLang \"" + XmlLang.get() + "\"");
+                if (XmlLang.get() == STR_NULL) return std::string("reset xml:lang");
+                else return std::string("modify xml:lang \"" + XmlLang.get() + "\"");
             },
             [this](){
                 XmlSpace.commit();
-                if (XmlSpace.get() == STR_NULL) return std::string("reset XmlSpace");
-                else return std::string("modify XmlSpace \"" + XmlSpace.get() + "\"");
+                if (XmlSpace.get() == STR_NULL) return std::string("reset xml:space");
+                else return std::string("modify xml:space \"" + XmlSpace.get() + "\"");
             },
             [this](){
                 Class.commit();
-                if (Class.get() == STR_NULL) return std::string("reset Class");
-                else return std::string("modify Class \"" + Class.get() + "\"");
+                if (Class.get() == STR_NULL) return std::string("reset class");
+                else return std::string("modify class \"" + Class.get() + "\"");
             },
             [this](){
                 Style.commit();
-                if (Style.get() == STR_NULL) return std::string("reset Style");
-                else return std::string("modify Style \"" + Style.get() + "\"");
+                if (Style.get() == STR_NULL) return std::string("reset style");
+                else return std::string("modify style \"" + Style.get() + "\"");
             },
             [this](){
                 Onbegin.commit();
-                if (Onbegin.get() == STR_NULL) return std::string("reset Onbegin");
-                else return std::string("modify Onbegin \"" + Onbegin.get() + "\"");
+                if (Onbegin.get() == STR_NULL) return std::string("reset onbegin");
+                else return std::string("modify onbegin \"" + Onbegin.get() + "\"");
             },
             [this](){
                 Onend.commit();
-                if (Onend.get() == STR_NULL) return std::string("reset Onend");
-                else return std::string("modify Onend \"" + Onend.get() + "\"");
+                if (Onend.get() == STR_NULL) return std::string("reset onend");
+                else return std::string("modify onend \"" + Onend.get() + "\"");
             },
             [this](){
                 Onrepeat.commit();
-                if (Onrepeat.get() == STR_NULL) return std::string("reset Onrepeat");
-                else return std::string("modify Onrepeat \"" + Onrepeat.get() + "\"");
+                if (Onrepeat.get() == STR_NULL) return std::string("reset onrepeat");
+                else return std::string("modify onrepeat \"" + Onrepeat.get() + "\"");
             },
             [this](){
                 Onabort.commit();
-                if (Onabort.get() == STR_NULL) return std::string("reset Onabort");
-                else return std::string("modify Onabort \"" + Onabort.get() + "\"");
+                if (Onabort.get() == STR_NULL) return std::string("reset onabort");
+                else return std::string("modify onabort \"" + Onabort.get() + "\"");
             },
             [this](){
                 Onerror.commit();
-                if (Onerror.get() == STR_NULL) return std::string("reset Onerror");
-                else return std::string("modify Onerror \"" + Onerror.get() + "\"");
+                if (Onerror.get() == STR_NULL) return std::string("reset onerror");
+                else return std::string("modify onerror \"" + Onerror.get() + "\"");
             },
             [this](){
                 Onresize.commit();
-                if (Onresize.get() == STR_NULL) return std::string("reset Onresize");
-                else return std::string("modify Onresize \"" + Onresize.get() + "\"");
+                if (Onresize.get() == STR_NULL) return std::string("reset onresize");
+                else return std::string("modify onresize \"" + Onresize.get() + "\"");
             },
             [this](){
                 Onscroll.commit();
-                if (Onscroll.get() == STR_NULL) return std::string("reset Onscroll");
-                else return std::string("modify Onscroll \"" + Onscroll.get() + "\"");
+                if (Onscroll.get() == STR_NULL) return std::string("reset onscroll");
+                else return std::string("modify onscroll \"" + Onscroll.get() + "\"");
             },
             [this](){
                 Onunload.commit();
-                if (Onunload.get() == STR_NULL) return std::string("reset Onunload");
-                else return std::string("modify Onunload \"" + Onunload.get() + "\"");
+                if (Onunload.get() == STR_NULL) return std::string("reset onunload");
+                else return std::string("modify onunload \"" + Onunload.get() + "\"");
             },
             [this](){
                 Oncopy.commit();
-                if (Oncopy.get() == STR_NULL) return std::string("reset Oncopy");
-                else return std::string("modify Oncopy \"" + Oncopy.get() + "\"");
+                if (Oncopy.get() == STR_NULL) return std::string("reset oncopy");
+                else return std::string("modify oncopy \"" + Oncopy.get() + "\"");
             },
             [this](){
                 Oncut.commit();
-                if (Oncut.get() == STR_NULL) return std::string("reset Oncut");
-                else return std::string("modify Oncut \"" + Oncut.get() + "\"");
+                if (Oncut.get() == STR_NULL) return std::string("reset oncut");
+                else return std::string("modify oncut \"" + Oncut.get() + "\"");
             },
             [this](){
                 Onpaste.commit();
-                if (Onpaste.get() == STR_NULL) return std::string("reset Onpaste");
-                else return std::string("modify Onpaste \"" + Onpaste.get() + "\"");
+                if (Onpaste.get() == STR_NULL) return std::string("reset onpaste");
+                else return std::string("modify onpaste \"" + Onpaste.get() + "\"");
             },
             [this](){
                 Oncancel.commit();
-                if (Oncancel.get() == STR_NULL) return std::string("reset Oncancel");
-                else return std::string("modify Oncancel \"" + Oncancel.get() + "\"");
+                if (Oncancel.get() == STR_NULL) return std::string("reset oncancel");
+                else return std::string("modify oncancel \"" + Oncancel.get() + "\"");
             },
             [this](){
                 Oncanplay.commit();
-                if (Oncanplay.get() == STR_NULL) return std::string("reset Oncanplay");
-                else return std::string("modify Oncanplay \"" + Oncanplay.get() + "\"");
+                if (Oncanplay.get() == STR_NULL) return std::string("reset oncanplay");
+                else return std::string("modify oncanplay \"" + Oncanplay.get() + "\"");
             },
             [this](){
                 Oncanplaythrough.commit();
-                if (Oncanplaythrough.get() == STR_NULL) return std::string("reset Oncanplaythrough");
-                else return std::string("modify Oncanplaythrough \"" + Oncanplaythrough.get() + "\"");
+                if (Oncanplaythrough.get() == STR_NULL) return std::string("reset oncanplaythrough");
+                else return std::string("modify oncanplaythrough \"" + Oncanplaythrough.get() + "\"");
             },
             [this](){
                 Onchange.commit();
-                if (Onchange.get() == STR_NULL) return std::string("reset Onchange");
-                else return std::string("modify Onchange \"" + Onchange.get() + "\"");
+                if (Onchange.get() == STR_NULL) return std::string("reset onchange");
+                else return std::string("modify onchange \"" + Onchange.get() + "\"");
             },
             [this](){
                 Onclick.commit();
-                if (Onclick.get() == STR_NULL) return std::string("reset Onclick");
-                else return std::string("modify Onclick \"" + Onclick.get() + "\"");
+                if (Onclick.get() == STR_NULL) return std::string("reset onclick");
+                else return std::string("modify onclick \"" + Onclick.get() + "\"");
             },
             [this](){
                 Onclose.commit();
-                if (Onclose.get() == STR_NULL) return std::string("reset Onclose");
-                else return std::string("modify Onclose \"" + Onclose.get() + "\"");
+                if (Onclose.get() == STR_NULL) return std::string("reset onclose");
+                else return std::string("modify onclose \"" + Onclose.get() + "\"");
             },
             [this](){
                 Oncuechange.commit();
-                if (Oncuechange.get() == STR_NULL) return std::string("reset Oncuechange");
-                else return std::string("modify Oncuechange \"" + Oncuechange.get() + "\"");
+                if (Oncuechange.get() == STR_NULL) return std::string("reset oncuechange");
+                else return std::string("modify oncuechange \"" + Oncuechange.get() + "\"");
             },
             [this](){
                 Ondblclick.commit();
-                if (Ondblclick.get() == STR_NULL) return std::string("reset Ondblclick");
-                else return std::string("modify Ondblclick \"" + Ondblclick.get() + "\"");
+                if (Ondblclick.get() == STR_NULL) return std::string("reset ondblclick");
+                else return std::string("modify ondblclick \"" + Ondblclick.get() + "\"");
             },
             [this](){
                 Ondrag.commit();
-                if (Ondrag.get() == STR_NULL) return std::string("reset Ondrag");
-                else return std::string("modify Ondrag \"" + Ondrag.get() + "\"");
+                if (Ondrag.get() == STR_NULL) return std::string("reset ondrag");
+                else return std::string("modify ondrag \"" + Ondrag.get() + "\"");
             },
             [this](){
                 Ondragend.commit();
-                if (Ondragend.get() == STR_NULL) return std::string("reset Ondragend");
-                else return std::string("modify Ondragend \"" + Ondragend.get() + "\"");
+                if (Ondragend.get() == STR_NULL) return std::string("reset ondragend");
+                else return std::string("modify ondragend \"" + Ondragend.get() + "\"");
             },
             [this](){
                 Ondragenter.commit();
-                if (Ondragenter.get() == STR_NULL) return std::string("reset Ondragenter");
-                else return std::string("modify Ondragenter \"" + Ondragenter.get() + "\"");
+                if (Ondragenter.get() == STR_NULL) return std::string("reset ondragenter");
+                else return std::string("modify ondragenter \"" + Ondragenter.get() + "\"");
             },
             [this](){
                 Ondragleave.commit();
-                if (Ondragleave.get() == STR_NULL) return std::string("reset Ondragleave");
-                else return std::string("modify Ondragleave \"" + Ondragleave.get() + "\"");
+                if (Ondragleave.get() == STR_NULL) return std::string("reset ondragleave");
+                else return std::string("modify ondragleave \"" + Ondragleave.get() + "\"");
             },
             [this](){
                 Ondragover.commit();
-                if (Ondragover.get() == STR_NULL) return std::string("reset Ondragover");
-                else return std::string("modify Ondragover \"" + Ondragover.get() + "\"");
+                if (Ondragover.get() == STR_NULL) return std::string("reset ondragover");
+                else return std::string("modify ondragover \"" + Ondragover.get() + "\"");
             },
             [this](){
                 Ondragstart.commit();
-                if (Ondragstart.get() == STR_NULL) return std::string("reset Ondragstart");
-                else return std::string("modify Ondragstart \"" + Ondragstart.get() + "\"");
+                if (Ondragstart.get() == STR_NULL) return std::string("reset ondragstart");
+                else return std::string("modify ondragstart \"" + Ondragstart.get() + "\"");
             },
             [this](){
                 Ondrop.commit();
-                if (Ondrop.get() == STR_NULL) return std::string("reset Ondrop");
-                else return std::string("modify Ondrop \"" + Ondrop.get() + "\"");
+                if (Ondrop.get() == STR_NULL) return std::string("reset ondrop");
+                else return std::string("modify ondrop \"" + Ondrop.get() + "\"");
             },
             [this](){
                 Ondurationchange.commit();
-                if (Ondurationchange.get() == STR_NULL) return std::string("reset Ondurationchange");
-                else return std::string("modify Ondurationchange \"" + Ondurationchange.get() + "\"");
+                if (Ondurationchange.get() == STR_NULL) return std::string("reset ondurationchange");
+                else return std::string("modify ondurationchange \"" + Ondurationchange.get() + "\"");
             },
             [this](){
                 Onemptied.commit();
-                if (Onemptied.get() == STR_NULL) return std::string("reset Onemptied");
-                else return std::string("modify Onemptied \"" + Onemptied.get() + "\"");
+                if (Onemptied.get() == STR_NULL) return std::string("reset onemptied");
+                else return std::string("modify onemptied \"" + Onemptied.get() + "\"");
             },
             [this](){
                 Onended.commit();
-                if (Onended.get() == STR_NULL) return std::string("reset Onended");
-                else return std::string("modify Onended \"" + Onended.get() + "\"");
+                if (Onended.get() == STR_NULL) return std::string("reset onended");
+                else return std::string("modify onended \"" + Onended.get() + "\"");
             },
             [this](){
                 Onfocus.commit();
-                if (Onfocus.get() == STR_NULL) return std::string("reset Onfocus");
-                else return std::string("modify Onfocus \"" + Onfocus.get() + "\"");
+                if (Onfocus.get() == STR_NULL) return std::string("reset onfocus");
+                else return std::string("modify onfocus \"" + Onfocus.get() + "\"");
             },
             [this](){
                 Oninput.commit();
-                if (Oninput.get() == STR_NULL) return std::string("reset Oninput");
-                else return std::string("modify Oninput \"" + Oninput.get() + "\"");
+                if (Oninput.get() == STR_NULL) return std::string("reset oninput");
+                else return std::string("modify oninput \"" + Oninput.get() + "\"");
             },
             [this](){
                 Oninvalid.commit();
-                if (Oninvalid.get() == STR_NULL) return std::string("reset Oninvalid");
-                else return std::string("modify Oninvalid \"" + Oninvalid.get() + "\"");
+                if (Oninvalid.get() == STR_NULL) return std::string("reset oninvalid");
+                else return std::string("modify oninvalid \"" + Oninvalid.get() + "\"");
             },
             [this](){
                 Onkeydown.commit();
-                if (Onkeydown.get() == STR_NULL) return std::string("reset Onkeydown");
-                else return std::string("modify Onkeydown \"" + Onkeydown.get() + "\"");
+                if (Onkeydown.get() == STR_NULL) return std::string("reset onkeydown");
+                else return std::string("modify onkeydown \"" + Onkeydown.get() + "\"");
             },
             [this](){
                 Onkeypress.commit();
-                if (Onkeypress.get() == STR_NULL) return std::string("reset Onkeypress");
-                else return std::string("modify Onkeypress \"" + Onkeypress.get() + "\"");
+                if (Onkeypress.get() == STR_NULL) return std::string("reset onkeypress");
+                else return std::string("modify onkeypress \"" + Onkeypress.get() + "\"");
             },
             [this](){
                 Onkeyup.commit();
-                if (Onkeyup.get() == STR_NULL) return std::string("reset Onkeyup");
-                else return std::string("modify Onkeyup \"" + Onkeyup.get() + "\"");
+                if (Onkeyup.get() == STR_NULL) return std::string("reset onkeyup");
+                else return std::string("modify onkeyup \"" + Onkeyup.get() + "\"");
             },
             [this](){
                 Onload.commit();
-                if (Onload.get() == STR_NULL) return std::string("reset Onload");
-                else return std::string("modify Onload \"" + Onload.get() + "\"");
+                if (Onload.get() == STR_NULL) return std::string("reset onload");
+                else return std::string("modify onload \"" + Onload.get() + "\"");
             },
             [this](){
                 Onloadeddata.commit();
-                if (Onloadeddata.get() == STR_NULL) return std::string("reset Onloadeddata");
-                else return std::string("modify Onloadeddata \"" + Onloadeddata.get() + "\"");
+                if (Onloadeddata.get() == STR_NULL) return std::string("reset onloadeddata");
+                else return std::string("modify onloadeddata \"" + Onloadeddata.get() + "\"");
             },
             [this](){
                 Onloadedmetadata.commit();
-                if (Onloadedmetadata.get() == STR_NULL) return std::string("reset Onloadedmetadata");
-                else return std::string("modify Onloadedmetadata \"" + Onloadedmetadata.get() + "\"");
+                if (Onloadedmetadata.get() == STR_NULL) return std::string("reset onloadedmetadata");
+                else return std::string("modify onloadedmetadata \"" + Onloadedmetadata.get() + "\"");
             },
             [this](){
                 Onloadstart.commit();
-                if (Onloadstart.get() == STR_NULL) return std::string("reset Onloadstart");
-                else return std::string("modify Onloadstart \"" + Onloadstart.get() + "\"");
+                if (Onloadstart.get() == STR_NULL) return std::string("reset onloadstart");
+                else return std::string("modify onloadstart \"" + Onloadstart.get() + "\"");
             },
             [this](){
                 Onmousedown.commit();
-                if (Onmousedown.get() == STR_NULL) return std::string("reset Onmousedown");
-                else return std::string("modify Onmousedown \"" + Onmousedown.get() + "\"");
+                if (Onmousedown.get() == STR_NULL) return std::string("reset onmousedown");
+                else return std::string("modify onmousedown \"" + Onmousedown.get() + "\"");
             },
             [this](){
                 Onmouseenter.commit();
-                if (Onmouseenter.get() == STR_NULL) return std::string("reset Onmouseenter");
-                else return std::string("modify Onmouseenter \"" + Onmouseenter.get() + "\"");
+                if (Onmouseenter.get() == STR_NULL) return std::string("reset onmouseenter");
+                else return std::string("modify onmouseenter \"" + Onmouseenter.get() + "\"");
             },
             [this](){
                 Onmouseleave.commit();
-                if (Onmouseleave.get() == STR_NULL) return std::string("reset Onmouseleave");
-                else return std::string("modify Onmouseleave \"" + Onmouseleave.get() + "\"");
+                if (Onmouseleave.get() == STR_NULL) return std::string("reset onmouseleave");
+                else return std::string("modify onmouseleave \"" + Onmouseleave.get() + "\"");
             },
             [this](){
                 Onmousemove.commit();
-                if (Onmousemove.get() == STR_NULL) return std::string("reset Onmousemove");
-                else return std::string("modify Onmousemove \"" + Onmousemove.get() + "\"");
+                if (Onmousemove.get() == STR_NULL) return std::string("reset onmousemove");
+                else return std::string("modify onmousemove \"" + Onmousemove.get() + "\"");
             },
             [this](){
                 Onmouseout.commit();
-                if (Onmouseout.get() == STR_NULL) return std::string("reset Onmouseout");
-                else return std::string("modify Onmouseout \"" + Onmouseout.get() + "\"");
+                if (Onmouseout.get() == STR_NULL) return std::string("reset onmouseout");
+                else return std::string("modify onmouseout \"" + Onmouseout.get() + "\"");
             },
             [this](){
                 Onmouseover.commit();
-                if (Onmouseover.get() == STR_NULL) return std::string("reset Onmouseover");
-                else return std::string("modify Onmouseover \"" + Onmouseover.get() + "\"");
+                if (Onmouseover.get() == STR_NULL) return std::string("reset onmouseover");
+                else return std::string("modify onmouseover \"" + Onmouseover.get() + "\"");
             },
             [this](){
                 Onmouseup.commit();
-                if (Onmouseup.get() == STR_NULL) return std::string("reset Onmouseup");
-                else return std::string("modify Onmouseup \"" + Onmouseup.get() + "\"");
+                if (Onmouseup.get() == STR_NULL) return std::string("reset onmouseup");
+                else return std::string("modify onmouseup \"" + Onmouseup.get() + "\"");
             },
             [this](){
                 Onmousewheel.commit();
-                if (Onmousewheel.get() == STR_NULL) return std::string("reset Onmousewheel");
-                else return std::string("modify Onmousewheel \"" + Onmousewheel.get() + "\"");
+                if (Onmousewheel.get() == STR_NULL) return std::string("reset onmousewheel");
+                else return std::string("modify onmousewheel \"" + Onmousewheel.get() + "\"");
             },
             [this](){
                 Onpause.commit();
-                if (Onpause.get() == STR_NULL) return std::string("reset Onpause");
-                else return std::string("modify Onpause \"" + Onpause.get() + "\"");
+                if (Onpause.get() == STR_NULL) return std::string("reset onpause");
+                else return std::string("modify onpause \"" + Onpause.get() + "\"");
             },
             [this](){
                 Onplay.commit();
-                if (Onplay.get() == STR_NULL) return std::string("reset Onplay");
-                else return std::string("modify Onplay \"" + Onplay.get() + "\"");
+                if (Onplay.get() == STR_NULL) return std::string("reset onplay");
+                else return std::string("modify onplay \"" + Onplay.get() + "\"");
             },
             [this](){
                 Onplaying.commit();
-                if (Onplaying.get() == STR_NULL) return std::string("reset Onplaying");
-                else return std::string("modify Onplaying \"" + Onplaying.get() + "\"");
+                if (Onplaying.get() == STR_NULL) return std::string("reset onplaying");
+                else return std::string("modify onplaying \"" + Onplaying.get() + "\"");
             },
             [this](){
                 Onprogress.commit();
-                if (Onprogress.get() == STR_NULL) return std::string("reset Onprogress");
-                else return std::string("modify Onprogress \"" + Onprogress.get() + "\"");
+                if (Onprogress.get() == STR_NULL) return std::string("reset onprogress");
+                else return std::string("modify onprogress \"" + Onprogress.get() + "\"");
             },
             [this](){
                 Onratechange.commit();
-                if (Onratechange.get() == STR_NULL) return std::string("reset Onratechange");
-                else return std::string("modify Onratechange \"" + Onratechange.get() + "\"");
+                if (Onratechange.get() == STR_NULL) return std::string("reset onratechange");
+                else return std::string("modify onratechange \"" + Onratechange.get() + "\"");
             },
             [this](){
                 Onreset.commit();
-                if (Onreset.get() == STR_NULL) return std::string("reset Onreset");
-                else return std::string("modify Onreset \"" + Onreset.get() + "\"");
+                if (Onreset.get() == STR_NULL) return std::string("reset onreset");
+                else return std::string("modify onreset \"" + Onreset.get() + "\"");
             },
             [this](){
                 Onseeked.commit();
-                if (Onseeked.get() == STR_NULL) return std::string("reset Onseeked");
-                else return std::string("modify Onseeked \"" + Onseeked.get() + "\"");
+                if (Onseeked.get() == STR_NULL) return std::string("reset onseeked");
+                else return std::string("modify onseeked \"" + Onseeked.get() + "\"");
             },
             [this](){
                 Onseeking.commit();
-                if (Onseeking.get() == STR_NULL) return std::string("reset Onseeking");
-                else return std::string("modify Onseeking \"" + Onseeking.get() + "\"");
+                if (Onseeking.get() == STR_NULL) return std::string("reset onseeking");
+                else return std::string("modify onseeking \"" + Onseeking.get() + "\"");
             },
             [this](){
                 Onselect.commit();
-                if (Onselect.get() == STR_NULL) return std::string("reset Onselect");
-                else return std::string("modify Onselect \"" + Onselect.get() + "\"");
+                if (Onselect.get() == STR_NULL) return std::string("reset onselect");
+                else return std::string("modify onselect \"" + Onselect.get() + "\"");
             },
             [this](){
                 Onshow.commit();
-                if (Onshow.get() == STR_NULL) return std::string("reset Onshow");
-                else return std::string("modify Onshow \"" + Onshow.get() + "\"");
+                if (Onshow.get() == STR_NULL) return std::string("reset onshow");
+                else return std::string("modify onshow \"" + Onshow.get() + "\"");
             },
             [this](){
                 Onstalled.commit();
-                if (Onstalled.get() == STR_NULL) return std::string("reset Onstalled");
-                else return std::string("modify Onstalled \"" + Onstalled.get() + "\"");
+                if (Onstalled.get() == STR_NULL) return std::string("reset onstalled");
+                else return std::string("modify onstalled \"" + Onstalled.get() + "\"");
             },
             [this](){
                 Onsubmit.commit();
-                if (Onsubmit.get() == STR_NULL) return std::string("reset Onsubmit");
-                else return std::string("modify Onsubmit \"" + Onsubmit.get() + "\"");
+                if (Onsubmit.get() == STR_NULL) return std::string("reset onsubmit");
+                else return std::string("modify onsubmit \"" + Onsubmit.get() + "\"");
             },
             [this](){
                 Onsuspend.commit();
-                if (Onsuspend.get() == STR_NULL) return std::string("reset Onsuspend");
-                else return std::string("modify Onsuspend \"" + Onsuspend.get() + "\"");
+                if (Onsuspend.get() == STR_NULL) return std::string("reset onsuspend");
+                else return std::string("modify onsuspend \"" + Onsuspend.get() + "\"");
             },
             [this](){
                 Ontimeupdate.commit();
-                if (Ontimeupdate.get() == STR_NULL) return std::string("reset Ontimeupdate");
-                else return std::string("modify Ontimeupdate \"" + Ontimeupdate.get() + "\"");
+                if (Ontimeupdate.get() == STR_NULL) return std::string("reset ontimeupdate");
+                else return std::string("modify ontimeupdate \"" + Ontimeupdate.get() + "\"");
             },
             [this](){
                 Ontoggle.commit();
-                if (Ontoggle.get() == STR_NULL) return std::string("reset Ontoggle");
-                else return std::string("modify Ontoggle \"" + Ontoggle.get() + "\"");
+                if (Ontoggle.get() == STR_NULL) return std::string("reset ontoggle");
+                else return std::string("modify ontoggle \"" + Ontoggle.get() + "\"");
             },
             [this](){
                 Onvolumechange.commit();
-                if (Onvolumechange.get() == STR_NULL) return std::string("reset Onvolumechange");
-                else return std::string("modify Onvolumechange \"" + Onvolumechange.get() + "\"");
+                if (Onvolumechange.get() == STR_NULL) return std::string("reset onvolumechange");
+                else return std::string("modify onvolumechange \"" + Onvolumechange.get() + "\"");
             },
             [this](){
                 Onwaiting.commit();
-                if (Onwaiting.get() == STR_NULL) return std::string("reset Onwaiting");
-                else return std::string("modify Onwaiting \"" + Onwaiting.get() + "\"");
+                if (Onwaiting.get() == STR_NULL) return std::string("reset onwaiting");
+                else return std::string("modify onwaiting \"" + Onwaiting.get() + "\"");
             },
             [this](){
                 Onactivate.commit();
-                if (Onactivate.get() == STR_NULL) return std::string("reset Onactivate");
-                else return std::string("modify Onactivate \"" + Onactivate.get() + "\"");
+                if (Onactivate.get() == STR_NULL) return std::string("reset onactivate");
+                else return std::string("modify onactivate \"" + Onactivate.get() + "\"");
             },
             [this](){
                 Onfocusin.commit();
-                if (Onfocusin.get() == STR_NULL) return std::string("reset Onfocusin");
-                else return std::string("modify Onfocusin \"" + Onfocusin.get() + "\"");
+                if (Onfocusin.get() == STR_NULL) return std::string("reset onfocusin");
+                else return std::string("modify onfocusin \"" + Onfocusin.get() + "\"");
             },
             [this](){
                 Onfocusout.commit();
-                if (Onfocusout.get() == STR_NULL) return std::string("reset Onfocusout");
-                else return std::string("modify Onfocusout \"" + Onfocusout.get() + "\"");
+                if (Onfocusout.get() == STR_NULL) return std::string("reset onfocusout");
+                else return std::string("modify onfocusout \"" + Onfocusout.get() + "\"");
             },
             [this](){
                 AlignmentBaseline.commit();
-                if (AlignmentBaseline.get() == STR_NULL) return std::string("reset AlignmentBaseline");
-                else return std::string("modify AlignmentBaseline \"" + AlignmentBaseline.get() + "\"");
+                if (AlignmentBaseline.get() == STR_NULL) return std::string("reset alignment-baseline");
+                else return std::string("modify alignment-baseline \"" + AlignmentBaseline.get() + "\"");
             },
             [this](){
                 BaselineShift.commit();
-                if (BaselineShift.get() == STR_NULL) return std::string("reset BaselineShift");
-                else return std::string("modify BaselineShift \"" + BaselineShift.get() + "\"");
+                if (BaselineShift.get() == STR_NULL) return std::string("reset baseline-shift");
+                else return std::string("modify baseline-shift \"" + BaselineShift.get() + "\"");
             },
             [this](){
                 ClipPath.commit();
-                if (ClipPath.get() == STR_NULL) return std::string("reset ClipPath");
-                else return std::string("modify ClipPath \"" + ClipPath.get() + "\"");
+                if (ClipPath.get() == STR_NULL) return std::string("reset clip-path");
+                else return std::string("modify clip-path \"" + ClipPath.get() + "\"");
             },
             [this](){
                 ClipRule.commit();
-                if (ClipRule.get() == STR_NULL) return std::string("reset ClipRule");
-                else return std::string("modify ClipRule \"" + ClipRule.get() + "\"");
+                if (ClipRule.get() == STR_NULL) return std::string("reset clip-rule");
+                else return std::string("modify clip-rule \"" + ClipRule.get() + "\"");
             },
             [this](){
                 Color.commit();
-                if (Color.get() == STR_NULL) return std::string("reset Color");
-                else return std::string("modify Color \"" + Color.get() + "\"");
+                if (Color.get() == STR_NULL) return std::string("reset color");
+                else return std::string("modify color \"" + Color.get() + "\"");
             },
             [this](){
                 ColorInterpolation.commit();
-                if (ColorInterpolation.get() == STR_NULL) return std::string("reset ColorInterpolation");
-                else return std::string("modify ColorInterpolation \"" + ColorInterpolation.get() + "\"");
+                if (ColorInterpolation.get() == STR_NULL) return std::string("reset color-interpolation");
+                else return std::string("modify color-interpolation \"" + ColorInterpolation.get() + "\"");
             },
             [this](){
                 ColorInterpolationFilters.commit();
-                if (ColorInterpolationFilters.get() == STR_NULL) return std::string("reset ColorInterpolationFilters");
-                else return std::string("modify ColorInterpolationFilters \"" + ColorInterpolationFilters.get() + "\"");
+                if (ColorInterpolationFilters.get() == STR_NULL) return std::string("reset color-interpolation-filters");
+                else return std::string("modify color-interpolation-filters \"" + ColorInterpolationFilters.get() + "\"");
             },
             [this](){
                 ColorProfile.commit();
-                if (ColorProfile.get() == STR_NULL) return std::string("reset ColorProfile");
-                else return std::string("modify ColorProfile \"" + ColorProfile.get() + "\"");
+                if (ColorProfile.get() == STR_NULL) return std::string("reset color-profile");
+                else return std::string("modify color-profile \"" + ColorProfile.get() + "\"");
             },
             [this](){
                 ColorRendering.commit();
-                if (ColorRendering.get() == STR_NULL) return std::string("reset ColorRendering");
-                else return std::string("modify ColorRendering \"" + ColorRendering.get() + "\"");
+                if (ColorRendering.get() == STR_NULL) return std::string("reset color-rendering");
+                else return std::string("modify color-rendering \"" + ColorRendering.get() + "\"");
             },
             [this](){
                 Cursor.commit();
-                if (Cursor.get() == STR_NULL) return std::string("reset Cursor");
-                else return std::string("modify Cursor \"" + Cursor.get() + "\"");
+                if (Cursor.get() == STR_NULL) return std::string("reset cursor");
+                else return std::string("modify cursor \"" + Cursor.get() + "\"");
             },
             [this](){
                 D.commit();
-                if (D.get() == STR_NULL) return std::string("reset D");
-                else return std::string("modify D \"" + D.get() + "\"");
+                if (D.get() == STR_NULL) return std::string("reset d");
+                else return std::string("modify d \"" + D.get() + "\"");
             },
             [this](){
                 Direction.commit();
-                if (Direction.get() == STR_NULL) return std::string("reset Direction");
-                else return std::string("modify Direction \"" + Direction.get() + "\"");
+                if (Direction.get() == STR_NULL) return std::string("reset direction");
+                else return std::string("modify direction \"" + Direction.get() + "\"");
             },
             [this](){
                 Display.commit();
-                if (Display.get() == STR_NULL) return std::string("reset Display");
-                else return std::string("modify Display \"" + Display.get() + "\"");
+                if (Display.get() == STR_NULL) return std::string("reset display");
+                else return std::string("modify display \"" + Display.get() + "\"");
             },
             [this](){
                 DominantBaseline.commit();
-                if (DominantBaseline.get() == STR_NULL) return std::string("reset DominantBaseline");
-                else return std::string("modify DominantBaseline \"" + DominantBaseline.get() + "\"");
+                if (DominantBaseline.get() == STR_NULL) return std::string("reset dominant-baseline");
+                else return std::string("modify dominant-baseline \"" + DominantBaseline.get() + "\"");
             },
             [this](){
                 EnableBackground.commit();
-                if (EnableBackground.get() == STR_NULL) return std::string("reset EnableBackground");
-                else return std::string("modify EnableBackground \"" + EnableBackground.get() + "\"");
+                if (EnableBackground.get() == STR_NULL) return std::string("reset enable-background");
+                else return std::string("modify enable-background \"" + EnableBackground.get() + "\"");
             },
             [this](){
                 Fill.commit();
-                if (Fill.get() == STR_NULL) return std::string("reset Fill");
-                else return std::string("modify Fill \"" + Fill.get() + "\"");
+                if (Fill.get() == STR_NULL) return std::string("reset fill");
+                else return std::string("modify fill \"" + Fill.get() + "\"");
             },
             [this](){
                 FillOpacity.commit();
-                if (FillOpacity.get() == STR_NULL) return std::string("reset FillOpacity");
-                else return std::string("modify FillOpacity \"" + FillOpacity.get() + "\"");
+                if (FillOpacity.get() == STR_NULL) return std::string("reset fill-opacity");
+                else return std::string("modify fill-opacity \"" + FillOpacity.get() + "\"");
             },
             [this](){
                 FillRule.commit();
-                if (FillRule.get() == STR_NULL) return std::string("reset FillRule");
-                else return std::string("modify FillRule \"" + FillRule.get() + "\"");
+                if (FillRule.get() == STR_NULL) return std::string("reset fill-rule");
+                else return std::string("modify fill-rule \"" + FillRule.get() + "\"");
             },
             [this](){
                 Filter.commit();
-                if (Filter.get() == STR_NULL) return std::string("reset Filter");
-                else return std::string("modify Filter \"" + Filter.get() + "\"");
+                if (Filter.get() == STR_NULL) return std::string("reset filter");
+                else return std::string("modify filter \"" + Filter.get() + "\"");
             },
             [this](){
                 FloodColor.commit();
-                if (FloodColor.get() == STR_NULL) return std::string("reset FloodColor");
-                else return std::string("modify FloodColor \"" + FloodColor.get() + "\"");
+                if (FloodColor.get() == STR_NULL) return std::string("reset flood-color");
+                else return std::string("modify flood-color \"" + FloodColor.get() + "\"");
             },
             [this](){
                 FloodOpacity.commit();
-                if (FloodOpacity.get() == STR_NULL) return std::string("reset FloodOpacity");
-                else return std::string("modify FloodOpacity \"" + FloodOpacity.get() + "\"");
+                if (FloodOpacity.get() == STR_NULL) return std::string("reset flood-opacity");
+                else return std::string("modify flood-opacity \"" + FloodOpacity.get() + "\"");
             },
             [this](){
                 FontFamily.commit();
-                if (FontFamily.get() == STR_NULL) return std::string("reset FontFamily");
-                else return std::string("modify FontFamily \"" + FontFamily.get() + "\"");
+                if (FontFamily.get() == STR_NULL) return std::string("reset font-family");
+                else return std::string("modify font-family \"" + FontFamily.get() + "\"");
             },
             [this](){
                 FontSize.commit();
-                if (FontSize.get() == STR_NULL) return std::string("reset FontSize");
-                else return std::string("modify FontSize \"" + FontSize.get() + "\"");
+                if (FontSize.get() == STR_NULL) return std::string("reset font-size");
+                else return std::string("modify font-size \"" + FontSize.get() + "\"");
             },
             [this](){
                 FontSizeAdjust.commit();
-                if (FontSizeAdjust.get() == STR_NULL) return std::string("reset FontSizeAdjust");
-                else return std::string("modify FontSizeAdjust \"" + FontSizeAdjust.get() + "\"");
+                if (FontSizeAdjust.get() == STR_NULL) return std::string("reset font-size-adjust");
+                else return std::string("modify font-size-adjust \"" + FontSizeAdjust.get() + "\"");
             },
             [this](){
                 FontStretch.commit();
-                if (FontStretch.get() == STR_NULL) return std::string("reset FontStretch");
-                else return std::string("modify FontStretch \"" + FontStretch.get() + "\"");
+                if (FontStretch.get() == STR_NULL) return std::string("reset font-stretch");
+                else return std::string("modify font-stretch \"" + FontStretch.get() + "\"");
             },
             [this](){
                 FontStyle.commit();
-                if (FontStyle.get() == STR_NULL) return std::string("reset FontStyle");
-                else return std::string("modify FontStyle \"" + FontStyle.get() + "\"");
+                if (FontStyle.get() == STR_NULL) return std::string("reset font-style");
+                else return std::string("modify font-style \"" + FontStyle.get() + "\"");
             },
             [this](){
                 FontVariant.commit();
-                if (FontVariant.get() == STR_NULL) return std::string("reset FontVariant");
-                else return std::string("modify FontVariant \"" + FontVariant.get() + "\"");
+                if (FontVariant.get() == STR_NULL) return std::string("reset font-variant");
+                else return std::string("modify font-variant \"" + FontVariant.get() + "\"");
             },
             [this](){
                 FontWeight.commit();
-                if (FontWeight.get() == STR_NULL) return std::string("reset FontWeight");
-                else return std::string("modify FontWeight \"" + FontWeight.get() + "\"");
+                if (FontWeight.get() == STR_NULL) return std::string("reset font-weight");
+                else return std::string("modify font-weight \"" + FontWeight.get() + "\"");
             },
             [this](){
                 GlyphOrientationHorizontal.commit();
-                if (GlyphOrientationHorizontal.get() == STR_NULL) return std::string("reset GlyphOrientationHorizontal");
-                else return std::string("modify GlyphOrientationHorizontal \"" + GlyphOrientationHorizontal.get() + "\"");
+                if (GlyphOrientationHorizontal.get() == STR_NULL) return std::string("reset glyph-orientation-horizontal");
+                else return std::string("modify glyph-orientation-horizontal \"" + GlyphOrientationHorizontal.get() + "\"");
             },
             [this](){
                 GlyphOrientationVertical.commit();
-                if (GlyphOrientationVertical.get() == STR_NULL) return std::string("reset GlyphOrientationVertical");
-                else return std::string("modify GlyphOrientationVertical \"" + GlyphOrientationVertical.get() + "\"");
+                if (GlyphOrientationVertical.get() == STR_NULL) return std::string("reset glyph-orientation-vertical");
+                else return std::string("modify glyph-orientation-vertical \"" + GlyphOrientationVertical.get() + "\"");
             },
             [this](){
                 ImageRendering.commit();
-                if (ImageRendering.get() == STR_NULL) return std::string("reset ImageRendering");
-                else return std::string("modify ImageRendering \"" + ImageRendering.get() + "\"");
+                if (ImageRendering.get() == STR_NULL) return std::string("reset image-rendering");
+                else return std::string("modify image-rendering \"" + ImageRendering.get() + "\"");
             },
             [this](){
                 Kerning.commit();
-                if (Kerning.get() == STR_NULL) return std::string("reset Kerning");
-                else return std::string("modify Kerning \"" + Kerning.get() + "\"");
+                if (Kerning.get() == STR_NULL) return std::string("reset kerning");
+                else return std::string("modify kerning \"" + Kerning.get() + "\"");
             },
             [this](){
                 LetterSpacing.commit();
-                if (LetterSpacing.get() == STR_NULL) return std::string("reset LetterSpacing");
-                else return std::string("modify LetterSpacing \"" + LetterSpacing.get() + "\"");
+                if (LetterSpacing.get() == STR_NULL) return std::string("reset letter-spacing");
+                else return std::string("modify letter-spacing \"" + LetterSpacing.get() + "\"");
             },
             [this](){
                 LightingColor.commit();
-                if (LightingColor.get() == STR_NULL) return std::string("reset LightingColor");
-                else return std::string("modify LightingColor \"" + LightingColor.get() + "\"");
+                if (LightingColor.get() == STR_NULL) return std::string("reset lighting-color");
+                else return std::string("modify lighting-color \"" + LightingColor.get() + "\"");
             },
             [this](){
                 MarkerEnd.commit();
-                if (MarkerEnd.get() == STR_NULL) return std::string("reset MarkerEnd");
-                else return std::string("modify MarkerEnd \"" + MarkerEnd.get() + "\"");
+                if (MarkerEnd.get() == STR_NULL) return std::string("reset marker-end");
+                else return std::string("modify marker-end \"" + MarkerEnd.get() + "\"");
             },
             [this](){
                 MarkerMid.commit();
-                if (MarkerMid.get() == STR_NULL) return std::string("reset MarkerMid");
-                else return std::string("modify MarkerMid \"" + MarkerMid.get() + "\"");
+                if (MarkerMid.get() == STR_NULL) return std::string("reset marker-mid");
+                else return std::string("modify marker-mid \"" + MarkerMid.get() + "\"");
             },
             [this](){
                 MarkerStart.commit();
-                if (MarkerStart.get() == STR_NULL) return std::string("reset MarkerStart");
-                else return std::string("modify MarkerStart \"" + MarkerStart.get() + "\"");
+                if (MarkerStart.get() == STR_NULL) return std::string("reset marker-start");
+                else return std::string("modify marker-start \"" + MarkerStart.get() + "\"");
             },
             [this](){
                 Mask.commit();
-                if (Mask.get() == STR_NULL) return std::string("reset Mask");
-                else return std::string("modify Mask \"" + Mask.get() + "\"");
+                if (Mask.get() == STR_NULL) return std::string("reset mask");
+                else return std::string("modify mask \"" + Mask.get() + "\"");
             },
             [this](){
                 Opacity.commit();
-                if (Opacity.get() == STR_NULL) return std::string("reset Opacity");
-                else return std::string("modify Opacity \"" + Opacity.get() + "\"");
+                if (Opacity.get() == STR_NULL) return std::string("reset opacity");
+                else return std::string("modify opacity \"" + Opacity.get() + "\"");
             },
             [this](){
                 Overflow.commit();
-                if (Overflow.get() == STR_NULL) return std::string("reset Overflow");
-                else return std::string("modify Overflow \"" + Overflow.get() + "\"");
+                if (Overflow.get() == STR_NULL) return std::string("reset overflow");
+                else return std::string("modify overflow \"" + Overflow.get() + "\"");
             },
             [this](){
                 PointerEvents.commit();
-                if (PointerEvents.get() == STR_NULL) return std::string("reset PointerEvents");
-                else return std::string("modify PointerEvents \"" + PointerEvents.get() + "\"");
+                if (PointerEvents.get() == STR_NULL) return std::string("reset pointer-events");
+                else return std::string("modify pointer-events \"" + PointerEvents.get() + "\"");
             },
             [this](){
                 ShapeRendering.commit();
-                if (ShapeRendering.get() == STR_NULL) return std::string("reset ShapeRendering");
-                else return std::string("modify ShapeRendering \"" + ShapeRendering.get() + "\"");
+                if (ShapeRendering.get() == STR_NULL) return std::string("reset shape-rendering");
+                else return std::string("modify shape-rendering \"" + ShapeRendering.get() + "\"");
             },
             [this](){
                 SolidColor.commit();
-                if (SolidColor.get() == STR_NULL) return std::string("reset SolidColor");
-                else return std::string("modify SolidColor \"" + SolidColor.get() + "\"");
+                if (SolidColor.get() == STR_NULL) return std::string("reset solid-color");
+                else return std::string("modify solid-color \"" + SolidColor.get() + "\"");
             },
             [this](){
                 SolidOpacity.commit();
-                if (SolidOpacity.get() == STR_NULL) return std::string("reset SolidOpacity");
-                else return std::string("modify SolidOpacity \"" + SolidOpacity.get() + "\"");
+                if (SolidOpacity.get() == STR_NULL) return std::string("reset solid-opacity");
+                else return std::string("modify solid-opacity \"" + SolidOpacity.get() + "\"");
             },
             [this](){
                 StopColor.commit();
-                if (StopColor.get() == STR_NULL) return std::string("reset StopColor");
-                else return std::string("modify StopColor \"" + StopColor.get() + "\"");
+                if (StopColor.get() == STR_NULL) return std::string("reset stop-color");
+                else return std::string("modify stop-color \"" + StopColor.get() + "\"");
             },
             [this](){
                 StopOpacity.commit();
-                if (StopOpacity.get() == STR_NULL) return std::string("reset StopOpacity");
-                else return std::string("modify StopOpacity \"" + StopOpacity.get() + "\"");
+                if (StopOpacity.get() == STR_NULL) return std::string("reset stop-opacity");
+                else return std::string("modify stop-opacity \"" + StopOpacity.get() + "\"");
             },
             [this](){
                 Stroke.commit();
-                if (Stroke.get() == STR_NULL) return std::string("reset Stroke");
-                else return std::string("modify Stroke \"" + Stroke.get() + "\"");
+                if (Stroke.get() == STR_NULL) return std::string("reset stroke");
+                else return std::string("modify stroke \"" + Stroke.get() + "\"");
             },
             [this](){
                 StrokeDasharray.commit();
-                if (StrokeDasharray.get() == STR_NULL) return std::string("reset StrokeDasharray");
-                else return std::string("modify StrokeDasharray \"" + StrokeDasharray.get() + "\"");
+                if (StrokeDasharray.get() == STR_NULL) return std::string("reset stroke-dasharray");
+                else return std::string("modify stroke-dasharray \"" + StrokeDasharray.get() + "\"");
             },
             [this](){
                 StrokeDashoffset.commit();
-                if (StrokeDashoffset.get() == STR_NULL) return std::string("reset StrokeDashoffset");
-                else return std::string("modify StrokeDashoffset \"" + StrokeDashoffset.get() + "\"");
+                if (StrokeDashoffset.get() == STR_NULL) return std::string("reset stroke-dashoffset");
+                else return std::string("modify stroke-dashoffset \"" + StrokeDashoffset.get() + "\"");
             },
             [this](){
                 StrokeLinecap.commit();
-                if (StrokeLinecap.get() == STR_NULL) return std::string("reset StrokeLinecap");
-                else return std::string("modify StrokeLinecap \"" + StrokeLinecap.get() + "\"");
+                if (StrokeLinecap.get() == STR_NULL) return std::string("reset stroke-linecap");
+                else return std::string("modify stroke-linecap \"" + StrokeLinecap.get() + "\"");
             },
             [this](){
                 StrokeLinejoin.commit();
-                if (StrokeLinejoin.get() == STR_NULL) return std::string("reset StrokeLinejoin");
-                else return std::string("modify StrokeLinejoin \"" + StrokeLinejoin.get() + "\"");
+                if (StrokeLinejoin.get() == STR_NULL) return std::string("reset stroke-linejoin");
+                else return std::string("modify stroke-linejoin \"" + StrokeLinejoin.get() + "\"");
             },
             [this](){
                 StrokeMiterlimit.commit();
-                if (StrokeMiterlimit.get() == STR_NULL) return std::string("reset StrokeMiterlimit");
-                else return std::string("modify StrokeMiterlimit \"" + StrokeMiterlimit.get() + "\"");
+                if (StrokeMiterlimit.get() == STR_NULL) return std::string("reset stroke-miterlimit");
+                else return std::string("modify stroke-miterlimit \"" + StrokeMiterlimit.get() + "\"");
             },
             [this](){
                 StrokeOpacity.commit();
-                if (StrokeOpacity.get() == STR_NULL) return std::string("reset StrokeOpacity");
-                else return std::string("modify StrokeOpacity \"" + StrokeOpacity.get() + "\"");
+                if (StrokeOpacity.get() == STR_NULL) return std::string("reset stroke-opacity");
+                else return std::string("modify stroke-opacity \"" + StrokeOpacity.get() + "\"");
             },
             [this](){
                 StrokeWidth.commit();
-                if (StrokeWidth.get() == STR_NULL) return std::string("reset StrokeWidth");
-                else return std::string("modify StrokeWidth \"" + StrokeWidth.get() + "\"");
+                if (StrokeWidth.get() == STR_NULL) return std::string("reset stroke-width");
+                else return std::string("modify stroke-width \"" + StrokeWidth.get() + "\"");
             },
             [this](){
                 TextAnchor.commit();
-                if (TextAnchor.get() == STR_NULL) return std::string("reset TextAnchor");
-                else return std::string("modify TextAnchor \"" + TextAnchor.get() + "\"");
+                if (TextAnchor.get() == STR_NULL) return std::string("reset text-anchor");
+                else return std::string("modify text-anchor \"" + TextAnchor.get() + "\"");
             },
             [this](){
                 TextDecoration.commit();
-                if (TextDecoration.get() == STR_NULL) return std::string("reset TextDecoration");
-                else return std::string("modify TextDecoration \"" + TextDecoration.get() + "\"");
+                if (TextDecoration.get() == STR_NULL) return std::string("reset text-decoration");
+                else return std::string("modify text-decoration \"" + TextDecoration.get() + "\"");
             },
             [this](){
                 TextRendering.commit();
-                if (TextRendering.get() == STR_NULL) return std::string("reset TextRendering");
-                else return std::string("modify TextRendering \"" + TextRendering.get() + "\"");
+                if (TextRendering.get() == STR_NULL) return std::string("reset text-rendering");
+                else return std::string("modify text-rendering \"" + TextRendering.get() + "\"");
             },
             [this](){
                 Transform.commit();
-                if (Transform.get() == STR_NULL) return std::string("reset Transform");
-                else return std::string("modify Transform \"" + Transform.get() + "\"");
+                if (Transform.get() == STR_NULL) return std::string("reset transform");
+                else return std::string("modify transform \"" + Transform.get() + "\"");
             },
             [this](){
                 UnicodeBidi.commit();
-                if (UnicodeBidi.get() == STR_NULL) return std::string("reset UnicodeBidi");
-                else return std::string("modify UnicodeBidi \"" + UnicodeBidi.get() + "\"");
+                if (UnicodeBidi.get() == STR_NULL) return std::string("reset unicode-bidi");
+                else return std::string("modify unicode-bidi \"" + UnicodeBidi.get() + "\"");
             },
             [this](){
                 VectorEffect.commit();
-                if (VectorEffect.get() == STR_NULL) return std::string("reset VectorEffect");
-                else return std::string("modify VectorEffect \"" + VectorEffect.get() + "\"");
+                if (VectorEffect.get() == STR_NULL) return std::string("reset vector-effect");
+                else return std::string("modify vector-effect \"" + VectorEffect.get() + "\"");
             },
             [this](){
                 Visibility.commit();
-                if (Visibility.get() == STR_NULL) return std::string("reset Visibility");
-                else return std::string("modify Visibility \"" + Visibility.get() + "\"");
+                if (Visibility.get() == STR_NULL) return std::string("reset visibility");
+                else return std::string("modify visibility \"" + Visibility.get() + "\"");
             },
             [this](){
                 WordSpacing.commit();
-                if (WordSpacing.get() == STR_NULL) return std::string("reset WordSpacing");
-                else return std::string("modify WordSpacing \"" + WordSpacing.get() + "\"");
+                if (WordSpacing.get() == STR_NULL) return std::string("reset word-spacing");
+                else return std::string("modify word-spacing \"" + WordSpacing.get() + "\"");
             },
             [this](){
                 WritingMode.commit();
-                if (WritingMode.get() == STR_NULL) return std::string("reset WritingMode");
-                else return std::string("modify WritingMode \"" + WritingMode.get() + "\"");
+                if (WritingMode.get() == STR_NULL) return std::string("reset writing-mode");
+                else return std::string("modify writing-mode \"" + WritingMode.get() + "\"");
             },
         };
+
+    private:
+        using SVGElement::inner_SVG;
+        using SVGElement::set_raw_HTML;
+        using SVGElement::get_raw_HTML;
+        using SVGElement::add_inner_element;
+        using SVGElement::remove_inner_element;
+        using SVGElement::get_inner_element;
+        using SVGElement::get_inner_elements;
+        using SVGElement::set_inner_elements;
+        using SVGElement::get_attribute_hash;
+        using SVGElement::get_inner_hash;
+        using SVGElement::get_outer_hash;
+    private:
+        using SVGElement::get_id;
+        using SVGElement::set_id;
+        using SVGElement::get_lang;
+        using SVGElement::set_lang;
+        using SVGElement::get_tabindex;
+        using SVGElement::set_tabindex;
+        using SVGElement::get_xmlZbase;
+        using SVGElement::set_xmlZbase;
+        using SVGElement::get_xmlZlang;
+        using SVGElement::set_xmlZlang;
+        using SVGElement::get_xmlZspace;
+        using SVGElement::set_xmlZspace;
+        using SVGElement::get_class;
+        using SVGElement::set_class;
+        using SVGElement::get_style;
+        using SVGElement::set_style;
+        using SVGElement::get_onbegin;
+        using SVGElement::set_onbegin;
+        using SVGElement::get_onend;
+        using SVGElement::set_onend;
+        using SVGElement::get_onrepeat;
+        using SVGElement::set_onrepeat;
+        using SVGElement::get_onabort;
+        using SVGElement::set_onabort;
+        using SVGElement::get_onerror;
+        using SVGElement::set_onerror;
+        using SVGElement::get_onresize;
+        using SVGElement::set_onresize;
+        using SVGElement::get_onscroll;
+        using SVGElement::set_onscroll;
+        using SVGElement::get_onunload;
+        using SVGElement::set_onunload;
+        using SVGElement::get_oncopy;
+        using SVGElement::set_oncopy;
+        using SVGElement::get_oncut;
+        using SVGElement::set_oncut;
+        using SVGElement::get_onpaste;
+        using SVGElement::set_onpaste;
+        using SVGElement::get_oncancel;
+        using SVGElement::set_oncancel;
+        using SVGElement::get_oncanplay;
+        using SVGElement::set_oncanplay;
+        using SVGElement::get_oncanplaythrough;
+        using SVGElement::set_oncanplaythrough;
+        using SVGElement::get_onchange;
+        using SVGElement::set_onchange;
+        using SVGElement::get_onclick;
+        using SVGElement::set_onclick;
+        using SVGElement::get_onclose;
+        using SVGElement::set_onclose;
+        using SVGElement::get_oncuechange;
+        using SVGElement::set_oncuechange;
+        using SVGElement::get_ondblclick;
+        using SVGElement::set_ondblclick;
+        using SVGElement::get_ondrag;
+        using SVGElement::set_ondrag;
+        using SVGElement::get_ondragend;
+        using SVGElement::set_ondragend;
+        using SVGElement::get_ondragenter;
+        using SVGElement::set_ondragenter;
+        using SVGElement::get_ondragleave;
+        using SVGElement::set_ondragleave;
+        using SVGElement::get_ondragover;
+        using SVGElement::set_ondragover;
+        using SVGElement::get_ondragstart;
+        using SVGElement::set_ondragstart;
+        using SVGElement::get_ondrop;
+        using SVGElement::set_ondrop;
+        using SVGElement::get_ondurationchange;
+        using SVGElement::set_ondurationchange;
+        using SVGElement::get_onemptied;
+        using SVGElement::set_onemptied;
+        using SVGElement::get_onended;
+        using SVGElement::set_onended;
+        using SVGElement::get_onfocus;
+        using SVGElement::set_onfocus;
+        using SVGElement::get_oninput;
+        using SVGElement::set_oninput;
+        using SVGElement::get_oninvalid;
+        using SVGElement::set_oninvalid;
+        using SVGElement::get_onkeydown;
+        using SVGElement::set_onkeydown;
+        using SVGElement::get_onkeypress;
+        using SVGElement::set_onkeypress;
+        using SVGElement::get_onkeyup;
+        using SVGElement::set_onkeyup;
+        using SVGElement::get_onload;
+        using SVGElement::set_onload;
+        using SVGElement::get_onloadeddata;
+        using SVGElement::set_onloadeddata;
+        using SVGElement::get_onloadedmetadata;
+        using SVGElement::set_onloadedmetadata;
+        using SVGElement::get_onloadstart;
+        using SVGElement::set_onloadstart;
+        using SVGElement::get_onmousedown;
+        using SVGElement::set_onmousedown;
+        using SVGElement::get_onmouseenter;
+        using SVGElement::set_onmouseenter;
+        using SVGElement::get_onmouseleave;
+        using SVGElement::set_onmouseleave;
+        using SVGElement::get_onmousemove;
+        using SVGElement::set_onmousemove;
+        using SVGElement::get_onmouseout;
+        using SVGElement::set_onmouseout;
+        using SVGElement::get_onmouseover;
+        using SVGElement::set_onmouseover;
+        using SVGElement::get_onmouseup;
+        using SVGElement::set_onmouseup;
+        using SVGElement::get_onmousewheel;
+        using SVGElement::set_onmousewheel;
+        using SVGElement::get_onpause;
+        using SVGElement::set_onpause;
+        using SVGElement::get_onplay;
+        using SVGElement::set_onplay;
+        using SVGElement::get_onplaying;
+        using SVGElement::set_onplaying;
+        using SVGElement::get_onprogress;
+        using SVGElement::set_onprogress;
+        using SVGElement::get_onratechange;
+        using SVGElement::set_onratechange;
+        using SVGElement::get_onreset;
+        using SVGElement::set_onreset;
+        using SVGElement::get_onseeked;
+        using SVGElement::set_onseeked;
+        using SVGElement::get_onseeking;
+        using SVGElement::set_onseeking;
+        using SVGElement::get_onselect;
+        using SVGElement::set_onselect;
+        using SVGElement::get_onshow;
+        using SVGElement::set_onshow;
+        using SVGElement::get_onstalled;
+        using SVGElement::set_onstalled;
+        using SVGElement::get_onsubmit;
+        using SVGElement::set_onsubmit;
+        using SVGElement::get_onsuspend;
+        using SVGElement::set_onsuspend;
+        using SVGElement::get_ontimeupdate;
+        using SVGElement::set_ontimeupdate;
+        using SVGElement::get_ontoggle;
+        using SVGElement::set_ontoggle;
+        using SVGElement::get_onvolumechange;
+        using SVGElement::set_onvolumechange;
+        using SVGElement::get_onwaiting;
+        using SVGElement::set_onwaiting;
+        using SVGElement::get_onactivate;
+        using SVGElement::set_onactivate;
+        using SVGElement::get_onfocusin;
+        using SVGElement::set_onfocusin;
+        using SVGElement::get_onfocusout;
+        using SVGElement::set_onfocusout;
+        using SVGElement::get_alignment_baseline;
+        using SVGElement::set_alignment_baseline;
+        using SVGElement::get_baseline_shift;
+        using SVGElement::set_baseline_shift;
+        using SVGElement::get_clip_path;
+        using SVGElement::set_clip_path;
+        using SVGElement::get_clip_rule;
+        using SVGElement::set_clip_rule;
+        using SVGElement::get_color;
+        using SVGElement::set_color;
+        using SVGElement::get_color_interpolation;
+        using SVGElement::set_color_interpolation;
+        using SVGElement::get_color_interpolation_filters;
+        using SVGElement::set_color_interpolation_filters;
+        using SVGElement::get_color_profile;
+        using SVGElement::set_color_profile;
+        using SVGElement::get_color_rendering;
+        using SVGElement::set_color_rendering;
+        using SVGElement::get_cursor;
+        using SVGElement::set_cursor;
+        using SVGElement::get_d;
+        using SVGElement::set_d;
+        using SVGElement::get_direction;
+        using SVGElement::set_direction;
+        using SVGElement::get_display;
+        using SVGElement::set_display;
+        using SVGElement::get_dominant_baseline;
+        using SVGElement::set_dominant_baseline;
+        using SVGElement::get_enable_background;
+        using SVGElement::set_enable_background;
+        using SVGElement::get_fill;
+        using SVGElement::set_fill;
+        using SVGElement::get_fill_opacity;
+        using SVGElement::set_fill_opacity;
+        using SVGElement::get_fill_rule;
+        using SVGElement::set_fill_rule;
+        using SVGElement::get_filter;
+        using SVGElement::set_filter;
+        using SVGElement::get_flood_color;
+        using SVGElement::set_flood_color;
+        using SVGElement::get_flood_opacity;
+        using SVGElement::set_flood_opacity;
+        using SVGElement::get_font_family;
+        using SVGElement::set_font_family;
+        using SVGElement::get_font_size;
+        using SVGElement::set_font_size;
+        using SVGElement::get_font_size_adjust;
+        using SVGElement::set_font_size_adjust;
+        using SVGElement::get_font_stretch;
+        using SVGElement::set_font_stretch;
+        using SVGElement::get_font_style;
+        using SVGElement::set_font_style;
+        using SVGElement::get_font_variant;
+        using SVGElement::set_font_variant;
+        using SVGElement::get_font_weight;
+        using SVGElement::set_font_weight;
+        using SVGElement::get_glyph_orientation_horizontal;
+        using SVGElement::set_glyph_orientation_horizontal;
+        using SVGElement::get_glyph_orientation_vertical;
+        using SVGElement::set_glyph_orientation_vertical;
+        using SVGElement::get_image_rendering;
+        using SVGElement::set_image_rendering;
+        using SVGElement::get_kerning;
+        using SVGElement::set_kerning;
+        using SVGElement::get_letter_spacing;
+        using SVGElement::set_letter_spacing;
+        using SVGElement::get_lighting_color;
+        using SVGElement::set_lighting_color;
+        using SVGElement::get_marker_end;
+        using SVGElement::set_marker_end;
+        using SVGElement::get_marker_mid;
+        using SVGElement::set_marker_mid;
+        using SVGElement::get_marker_start;
+        using SVGElement::set_marker_start;
+        using SVGElement::get_mask;
+        using SVGElement::set_mask;
+        using SVGElement::get_opacity;
+        using SVGElement::set_opacity;
+        using SVGElement::get_overflow;
+        using SVGElement::set_overflow;
+        using SVGElement::get_pointer_events;
+        using SVGElement::set_pointer_events;
+        using SVGElement::get_shape_rendering;
+        using SVGElement::set_shape_rendering;
+        using SVGElement::get_solid_color;
+        using SVGElement::set_solid_color;
+        using SVGElement::get_solid_opacity;
+        using SVGElement::set_solid_opacity;
+        using SVGElement::get_stop_color;
+        using SVGElement::set_stop_color;
+        using SVGElement::get_stop_opacity;
+        using SVGElement::set_stop_opacity;
+        using SVGElement::get_stroke;
+        using SVGElement::set_stroke;
+        using SVGElement::get_stroke_dasharray;
+        using SVGElement::set_stroke_dasharray;
+        using SVGElement::get_stroke_dashoffset;
+        using SVGElement::set_stroke_dashoffset;
+        using SVGElement::get_stroke_linecap;
+        using SVGElement::set_stroke_linecap;
+        using SVGElement::get_stroke_linejoin;
+        using SVGElement::set_stroke_linejoin;
+        using SVGElement::get_stroke_miterlimit;
+        using SVGElement::set_stroke_miterlimit;
+        using SVGElement::get_stroke_opacity;
+        using SVGElement::set_stroke_opacity;
+        using SVGElement::get_stroke_width;
+        using SVGElement::set_stroke_width;
+        using SVGElement::get_text_anchor;
+        using SVGElement::set_text_anchor;
+        using SVGElement::get_text_decoration;
+        using SVGElement::set_text_decoration;
+        using SVGElement::get_text_rendering;
+        using SVGElement::set_text_rendering;
+        using SVGElement::get_transform;
+        using SVGElement::set_transform;
+        using SVGElement::get_unicode_bidi;
+        using SVGElement::set_unicode_bidi;
+        using SVGElement::get_vector_effect;
+        using SVGElement::set_vector_effect;
+        using SVGElement::get_visibility;
+        using SVGElement::set_visibility;
+        using SVGElement::get_word_spacing;
+        using SVGElement::set_word_spacing;
+        using SVGElement::get_writing_mode;
+        using SVGElement::set_writing_mode;
     
         /// Inner SVG
     protected:
@@ -2736,6 +3026,10 @@ namespace Lewzen {
         std::vector<std::shared_ptr<SVGIElement>> _inner_elements_commit;
         std::vector<std::shared_ptr<SVGIElement>> _inner_elements_last;
         std::weak_ptr<SVGIElement> _parent_element_commit;
+    public:
+        AttrAnything RawHTML;
+    private:
+        bool _updated_raw_html = false;
     protected:
         struct _i_el_idx {
             std::shared_ptr<SVGIElement> ptr;
@@ -2759,42 +3053,43 @@ namespace Lewzen {
         */
         const std::string inner_SVG() const;
         /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        void set_inner_text(const std::string &text);
-        /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        const std::string get_inner_text() const;
-        /**
         * Add a sub element to this SVG element.
         *
         * @param element an inner element.
+        * @param index the index to be insert. default -1 means tail.
         */
-        void add_inner_element(const std::shared_ptr<SVGIElement> &element);
+        void add(const std::shared_ptr<SVGIElement> &element, int index = -1);
         /**
         * Remove a child element or child elements from this SVG element, based on content.
         *
         * @param element an inner element.
         * @param remove_all if to remove all occurances.
         */
-        void remove_inner_element(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);
+        void remove(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);
+        /**
+        * Remove a child element or child elements from this SVG element, by index.
+        *
+        * @param index the index of inner element.
+        */
+        void remove(int index);
+        /**
+        * Get inner SVG element in this SVG element, by index.
+        *
+        * @return inner element.
+        */
+        std::shared_ptr<SVGIElement> child(int index) const;
         /**
         * Get inner SVG elements list in this SVG element.
         *
-        * @return inner elements, readonly.
+        * @return inner element list, readonly.
         */
-        const std::vector<std::shared_ptr<SVGIElement>> get_inner_elements() const;
+        const std::vector<std::shared_ptr<SVGIElement>> children() const;
         /**
         * Set inner SVG elements list in this SVG element.
         *
         * @param inner_elements inner elements list.
         */
-        void set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);
+        void children(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);
     
         /// Outer SVG
     public:

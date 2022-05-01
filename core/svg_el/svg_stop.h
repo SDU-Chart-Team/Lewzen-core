@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The SVG <stop> element defines a color and its position to use on a gradient. This element is always a child of a <linearGradient> or <radialGradient> element.
     */
-    class SVGStop: public SVGElement {
+    class SVGStop: public virtual SVGElement {
     public:
         /**
         * Constructor of stop.

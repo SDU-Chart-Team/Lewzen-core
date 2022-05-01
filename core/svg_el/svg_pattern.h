@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <pattern> element defines a graphics object which can be redrawn at repeated x- and y-coordinate intervals ("tiled") to cover an area.
     */
-    class SVGPattern: public SVGElement {
+    class SVGPattern: public virtual SVGElement {
     public:
         /**
         * Constructor of pattern.

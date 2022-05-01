@@ -48,6 +48,9 @@ namespace Lewzen {
     const std::string SVGIRadialGradient::get_tag() const {
         return "radialGradient";
     }
+    const std::string SVGIRadialGradient::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIRadialGradient::commit() {
         std::stringstream ss;
 
@@ -63,13 +66,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIRadialGradient::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGRadialGradient>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIRadialGradient> SVGIRadialGradient::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIRadialGradient>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIRadialGradient::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIRadialGradient &SVGIRadialGradient::operator=(const SVGIRadialGradient &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));

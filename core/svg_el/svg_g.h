@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <g> SVG element is a container used to group other SVG elements.
     */
-    class SVGG: public SVGElement {
+    class SVGG: public virtual SVGElement {
     public:
         /**
         * Constructor of g.

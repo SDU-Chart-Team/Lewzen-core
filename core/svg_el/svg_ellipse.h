@@ -8,7 +8,7 @@ namespace Lewzen {
     /**
     * The <ellipse> element is an SVG basic shape, used to create ellipses based on a center coordinate, and both their x and y radius.
     */
-    class SVGEllipse: public SVGElement {
+    class SVGEllipse: public virtual SVGElement {
     public:
         /**
         * Constructor of ellipse.

@@ -32,6 +32,9 @@ namespace Lewzen {
     const std::string SVGIMask::get_tag() const {
         return "mask";
     }
+    const std::string SVGIMask::outer_SVG() const {
+        return SVGIElement::outer_SVG();
+    }
     const std::string SVGIMask::commit() {
         std::stringstream ss;
 
@@ -47,13 +50,17 @@ namespace Lewzen {
     }
     std::shared_ptr<SVGElement> SVGIMask::clone() const {
         auto cloned = std::make_shared<SVGElement>();
-        *cloned = static_cast<SVGMask>(*this);
+        cloned->SVGElement::operator=(*this);
         return cloned;
     }
     std::shared_ptr<SVGIMask> SVGIMask::clone(bool identity) const {
         auto cloned = std::make_shared<SVGIMask>();
         *cloned = *this;
         return cloned;
+    }
+    SVGElement &SVGIMask::operator=(const SVGElement &element) {
+        SVGElement::operator=(element);
+        return *this;
     }
     SVGIMask &SVGIMask::operator=(const SVGIMask &element) {
         SVGIElement::operator=(static_cast<SVGIElement>(element));
