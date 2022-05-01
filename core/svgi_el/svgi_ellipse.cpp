@@ -28,27 +28,6 @@ namespace Lewzen {
     const std::string SVGIEllipse::get_tag() const {
         return "ellipse";
     }
-    const std::string SVGIEllipse::inner_SVG() const {
-        return SVGIElement::inner_SVG();
-    }
-    void SVGIEllipse::set_inner_text(const std::string &text) {
-        SVGIElement::set_inner_text(text);
-    }
-    const std::string SVGIEllipse::get_inner_text() const {
-        return SVGIElement::get_inner_text();
-    }
-    void SVGIEllipse::append(const std::shared_ptr<SVGIElement> &inner_element) {
-        SVGIElement::add_inner_element(inner_element);
-    }
-    void SVGIEllipse::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
-        SVGIElement::remove_inner_element(inner_element, remove_all);
-    }
-    const std::vector<std::shared_ptr<SVGIElement>> SVGIEllipse::get_inner_elements() const {
-        return SVGIElement::get_inner_elements();
-    }
-    void SVGIEllipse::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
-        SVGIElement::set_inner_elements(inner_elements);
-    }
     const std::string SVGIEllipse::outer_SVG() const {
         return SVGIElement::outer_SVG();
     }

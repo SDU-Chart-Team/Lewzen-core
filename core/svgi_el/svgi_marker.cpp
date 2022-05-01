@@ -40,27 +40,6 @@ namespace Lewzen {
     const std::string SVGIMarker::get_tag() const {
         return "marker";
     }
-    const std::string SVGIMarker::inner_SVG() const {
-        return SVGIElement::inner_SVG();
-    }
-    void SVGIMarker::set_inner_text(const std::string &text) {
-        SVGIElement::set_inner_text(text);
-    }
-    const std::string SVGIMarker::get_inner_text() const {
-        return SVGIElement::get_inner_text();
-    }
-    void SVGIMarker::append(const std::shared_ptr<SVGIElement> &inner_element) {
-        SVGIElement::add_inner_element(inner_element);
-    }
-    void SVGIMarker::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
-        SVGIElement::remove_inner_element(inner_element, remove_all);
-    }
-    const std::vector<std::shared_ptr<SVGIElement>> SVGIMarker::get_inner_elements() const {
-        return SVGIElement::get_inner_elements();
-    }
-    void SVGIMarker::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
-        SVGIElement::set_inner_elements(inner_elements);
-    }
     const std::string SVGIMarker::outer_SVG() const {
         return SVGIElement::outer_SVG();
     }

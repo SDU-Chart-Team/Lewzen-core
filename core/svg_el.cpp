@@ -144,7 +144,7 @@ namespace Lewzen {
         _visibility = STR_NULL;
         _word_spacing = STR_NULL;
         _writing_mode = STR_NULL;
-        _inner_text = STR_NULL;
+        _raw_HTML = STR_NULL;
 
         _attribute_hash = 0;
         _inner_hash = 0;
@@ -1121,29 +1121,27 @@ namespace Lewzen {
         update_attribute_hash();
     }
 
-    const std::string SVGElement::inner_SVG() const {
+        const std::string SVGElement::inner_SVG() const {
         std::stringstream ss;
-        if (_inner_text != STR_NULL) ss << _inner_text << std::endl;
-        for (int i = 0; i < _inner_elements.size(); i++) {
-            if (i < _inner_elements.size() - 1) ss << _inner_elements[i]->outer_SVG() << std::endl;
-            else ss << _inner_elements[i]->outer_SVG();
-        }
+        if (_raw_HTML != STR_NULL) ss << _raw_HTML;
+        for (auto &p : _inner_elements) ss << p->outer_SVG();
         return ss.str();
     }
-    void SVGElement::set_inner_text(const std::string &text) {
-        _inner_text = text;
+    void SVGElement::set_raw_HTML(const std::string &text) {
+        _raw_HTML = text;
         update_inner_hash();
     }
-    const std::string SVGElement::get_inner_text() const {
-        return _inner_text;
+    const std::string SVGElement::get_raw_HTML() const {
+        return _raw_HTML;
     }
-    void SVGElement::add_inner_element(const std::shared_ptr<SVGElement> &inner_element) {
-        _inner_elements.push_back(inner_element);
+    void SVGElement::add_inner_element(const std::shared_ptr<SVGElement> &inner_element, int index) {
         if (auto sp = inner_element->_parent_element.lock()) {
             auto &els = sp->_inner_elements;
             els.erase(std::remove(els.begin(), els.end(), inner_element), els.end());
         }
         inner_element->_parent_element = shared_from_this();
+        if (index == -1) _inner_elements.push_back(inner_element);
+        else _inner_elements.insert(_inner_elements.begin() + index, inner_element);
         update_inner_hash();
     }
     void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element, bool remove_all) {
@@ -1163,12 +1161,19 @@ namespace Lewzen {
         for (auto &p : removed) p->_parent_element = std::weak_ptr<SVGElement>();
         update_inner_hash();
     }
+    void SVGElement::remove_inner_element(int index) {
+        _inner_elements[index]->_parent_element = std::weak_ptr<SVGElement>();
+        _inner_elements.erase(_inner_elements.begin() + index);
+        update_inner_hash();
+    }
+    std::shared_ptr<SVGElement> SVGElement::get_inner_element(int index) const {
+        return _inner_elements[index];
+    }
     const std::vector<std::shared_ptr<SVGElement>> SVGElement::get_inner_elements() const {
         return _inner_elements;
     }
     void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {
-        auto tmp = _inner_elements;
-        for (auto p : tmp) remove_inner_element(p);
+        while (_inner_elements.size() > 0) remove_inner_element(0);
         for (auto p : inner_elements) add_inner_element(p);
         update_inner_hash();
     }
@@ -1319,6 +1324,8 @@ namespace Lewzen {
     }
 
     const std::string SVGElement::outer_SVG() const {
+        if (_raw_HTML != STR_NULL) return _raw_HTML;
+
         std::stringstream ss;
 
         ss << "<" << get_tag();
@@ -1330,19 +1337,26 @@ namespace Lewzen {
         if (_inner_svg == "") {
             ss << "/>";
         } else {
-            ss << ">" << std::endl << _inner_svg << std::endl << "</" << get_tag() << ">";
+            ss << ">" << _inner_svg << "</" << get_tag() << ">";
         }
 
         return ss.str();
     }
 
     void SVGElement::update_outer_hash() {
+        // has raw html
+        if (_raw_HTML != STR_NULL) {
+            _attribute_hash = _inner_hash = 0;
+            _outer_hash = str_hash(_raw_HTML);
+        }
         // update outer hash by attribute hash and inner hash
-        std::stringstream ss;
-        ss << get_tag() << ",";
-        ss << _attribute_hash << ",";
-        ss << _inner_hash;
-        _outer_hash = str_hash(ss.str());
+        else {
+            std::stringstream ss;
+            ss << get_tag() << ",";
+            ss << _attribute_hash << ",";
+            ss << _inner_hash;
+            _outer_hash = str_hash(ss.str());
+        }
 
         // update parent element
         if (auto sp = _parent_element.lock()) {
@@ -1351,17 +1365,21 @@ namespace Lewzen {
     }
     void SVGElement::update_attribute_hash() {
         // update attribute hash
-        _attribute_hash = str_hash(get_attributes());
+        if (_raw_HTML == STR_NULL) {
+            _attribute_hash = str_hash(get_attributes());
+        }
 
         // update outer hash
         update_outer_hash();
     }
     void SVGElement::update_inner_hash() {
         // inner string + (inner elements)
-        std::stringstream ss;
-        ss << get_inner_text() << ",";
-        for (auto p : _inner_elements) ss << p->get_outer_hash() << ",";
-        _inner_hash = str_hash(ss.str());
+        if (_raw_HTML == STR_NULL) {
+            std::stringstream ss;
+            ss << get_raw_HTML() << ",";
+            for (auto p : _inner_elements) ss << p->get_outer_hash() << ",";
+            _inner_hash = str_hash(ss.str());
+        }
 
         // update outer hash
         update_outer_hash();
@@ -1521,7 +1539,7 @@ namespace Lewzen {
         _word_spacing = element.get_word_spacing();
         _writing_mode = element.get_writing_mode();
 
-        _inner_text = element.get_inner_text();
+        _raw_HTML = element.get_raw_HTML();
         for (auto p : element.get_inner_elements()) {
             auto cloned = p->clone();
             _inner_elements.push_back(cloned);
@@ -1556,10 +1574,7 @@ namespace Lewzen {
 
         // inner differ
         if (element.get_inner_hash() == get_inner_hash()) return ss.str();
-        if (element.get_inner_text() != get_inner_text()) {
-            auto content = get_inner_text();
-            ss << "content " << content.size() << std::endl << content << std::endl;
-        }
+
         // extract change relation
         std::vector<_el_idx> removal;
         std::vector<_el_idx> addition;
@@ -1596,7 +1611,7 @@ namespace Lewzen {
         }
         for (int i = 0; i < addition.size(); i++) {
             auto &a = addition[i];
-            indices[unchanged.size() + i] = a.idx;
+            indices[unchanged.size() + changed.size() + i] = a.idx;
         }
         bool ordered = true;
         for (int i = 0; i < m && ordered; i++) if (indices[i] != i) ordered = false;
@@ -2170,20 +2185,25 @@ namespace Lewzen {
 
         return ss.str();
     }
-    const std::string SVGElement::inner_differ(const SVGElement &element,
+    void SVGElement::inner_differ(const SVGElement &element,
             std::vector<_el_idx> &removal,
             std::vector<_el_idx> &addition,
             std::vector<std::pair<_el_idx, _el_idx>> &unchanged,
             std::vector<std::pair<_el_idx, _el_idx>> &changed) const {
+        std::function<const std::string(const std::shared_ptr<SVGElement> &)> get_tag;
+        get_tag = [](const std::shared_ptr<SVGElement> &x){
+            if (x->get_raw_HTML() != STR_NULL) return std::string("#") + std::to_string(x->get_outer_hash());
+            return std::string(x->get_tag());
+        };
         std::unordered_map<std::string, std::set<_el_idx>> tags_map;
         std::set<_el_idx> A, B;
         int c = 0;
         for (auto &a : _inner_elements) A.insert({a, c++}); c = 0;
-        for (auto &b : element.get_inner_elements()) tags_map[b->get_tag()].insert({b, c}), B.insert({b, c++});
+        for (auto &b : element.get_inner_elements()) tags_map[get_tag(b)].insert({b, c}), B.insert({b, c++});
 
         c = 0;
         for (auto &_a : _inner_elements) { // with outer hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _el_idx match = { nullptr, -1 };
@@ -2201,7 +2221,7 @@ namespace Lewzen {
         }
         c = 0;
         for (auto &_a : _inner_elements) { // with inner hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _el_idx match = { nullptr, -1 };
@@ -2219,7 +2239,7 @@ namespace Lewzen {
         }
         c = 0;
         for (auto &_a : _inner_elements) { // with attribute hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _el_idx match = { nullptr, -1 };
@@ -2237,7 +2257,7 @@ namespace Lewzen {
         }
         c = 0;
         for (auto &_a : _inner_elements) { // with tag equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag) || tags_map[tag].size() == 0) continue;
             _el_idx match = *tags_map[tag].begin();

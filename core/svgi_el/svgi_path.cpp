@@ -16,27 +16,6 @@ namespace Lewzen {
     const std::string SVGIPath::get_tag() const {
         return "path";
     }
-    const std::string SVGIPath::inner_SVG() const {
-        return SVGIElement::inner_SVG();
-    }
-    void SVGIPath::set_inner_text(const std::string &text) {
-        SVGIElement::set_inner_text(text);
-    }
-    const std::string SVGIPath::get_inner_text() const {
-        return SVGIElement::get_inner_text();
-    }
-    void SVGIPath::append(const std::shared_ptr<SVGIElement> &inner_element) {
-        SVGIElement::add_inner_element(inner_element);
-    }
-    void SVGIPath::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
-        SVGIElement::remove_inner_element(inner_element, remove_all);
-    }
-    const std::vector<std::shared_ptr<SVGIElement>> SVGIPath::get_inner_elements() const {
-        return SVGIElement::get_inner_elements();
-    }
-    void SVGIPath::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
-        SVGIElement::set_inner_elements(inner_elements);
-    }
     const std::string SVGIPath::outer_SVG() const {
         return SVGIElement::outer_SVG();
     }

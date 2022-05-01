@@ -561,6 +561,10 @@ namespace Lewzen {
         std::function<void(const std::string &)> _setter_writing_mode = std::bind(&SVGElement::set_writing_mode, (SVGElement *)this, std::placeholders::_1);
         WritingMode.set_getter(_getter_writing_mode), WritingMode.set_setter(_setter_writing_mode);
         WritingMode.callback_assign(_attr_on_assign[137]), WritingMode.callback_bind_func(_attr_on_bind[137]), WritingMode.callback_bind_ptr(_attr_on_bind[137]);
+
+        std::function<const std::string()> _getter_raw_html = std::bind(&SVGElement::get_raw_HTML, (SVGElement *)this);
+        std::function<void(const std::string &)> _setter_raw_html = std::bind(&SVGElement::set_raw_HTML, (SVGElement *)this, std::placeholders::_1);
+        RawHTML.set_getter(_getter_raw_html), RawHTML.set_setter(_setter_raw_html);
     }
 
     const std::string SVGIElement::get_tag() const {
@@ -568,24 +572,19 @@ namespace Lewzen {
     }
 
     const std::string SVGIElement::inner_SVG() const {
-        return SVGIElement::inner_SVG();
+        return SVGElement::inner_SVG();
     }
-    void SVGIElement::set_inner_text(const std::string &text) {
-        _inner_text_commit = text;
+    void SVGIElement::add(const std::shared_ptr<SVGIElement> &element, int index) {
+        if (index == -1) _inner_elements_commit.push_back(element);
+        else _inner_elements_commit.insert(_inner_elements_commit.begin() + index, element);
     }
-    const std::string SVGIElement::get_inner_text() const {
-        return SVGElement::get_inner_text();
-    }
-    void SVGIElement::add_inner_element(const std::shared_ptr<SVGIElement> &inner_element) {
-        _inner_elements_commit.push_back(inner_element);
-    }
-    void SVGIElement::remove_inner_element(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
+    void SVGIElement::remove(const std::shared_ptr<SVGIElement> &element, bool remove_all) {
         bool success;
         std::vector<std::shared_ptr<SVGIElement>> removed;
         _inner_elements_commit.erase(std::remove_if(_inner_elements_commit.begin(), _inner_elements_commit.end(),
                                 [&](const std::shared_ptr<SVGIElement>& _inner_element) { 
                                     if (success && !remove_all) return false;
-                                    if (_inner_element->get_outer_hash() == inner_element->get_outer_hash()) {
+                                    if (_inner_element->get_outer_hash() == element->get_outer_hash()) {
                                         success = true;
                                         removed.push_back(_inner_element);
                                         return true;
@@ -595,12 +594,19 @@ namespace Lewzen {
         success = false;
         for (auto &p : removed) p->_parent_element_commit = std::weak_ptr<SVGIElement>();
     }
-    const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::get_inner_elements() const {
+    void SVGIElement::remove(int index) {
+        _inner_elements_commit[index]->_parent_element = std::weak_ptr<SVGIElement>();
+        _inner_elements_commit.erase(_inner_elements_commit.begin() + index);
+    }
+    std::shared_ptr<SVGIElement> SVGIElement::child(int index) const {
+        return _inner_elements_commit[index];
+    }
+    const std::vector<std::shared_ptr<SVGIElement>> SVGIElement::children() const {
         return _inner_elements_commit;
     }
-    void SVGIElement::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
-        for (auto p : _inner_elements_commit) remove_inner_element(p);
-        for (auto p : inner_elements) add_inner_element(p);
+    void SVGIElement::children(const std::vector<std::shared_ptr<SVGIElement>> &elements) {
+        while (_inner_elements_commit.size() > 0) remove(0);
+        for (auto p : elements) add(p);
     }
 
     const std::string SVGIElement::outer_SVG() const {
@@ -610,16 +616,15 @@ namespace Lewzen {
     const std::string SVGIElement::commit() {
         std::stringstream ss;
 
+        _updated_raw_html = get_raw_HTML() != RawHTML.get_commit();
+        RawHTML.commit();
+        if (get_raw_HTML() != STR_NULL) return "";
+
         // attribute differ
         for (auto &i : bound) ss << _attr_commit[i]() << std::endl;
         for (auto &i : modified) ss << _attr_commit[i]() << std::endl;
         modified.clear();
-
-        // inner differ
-        if (_inner_text_commit != get_inner_text()) {
-            auto content = _inner_text_commit;
-            ss << "content " << content.size() << std::endl << content << std::endl;
-        }
+        
         // recursion
         std::vector<std::string> changed;
         for (auto &p : _inner_elements_commit) changed.push_back(p->commit());
@@ -673,22 +678,32 @@ namespace Lewzen {
         // commit inner changes
         _inner_elements_last.clear();
         SVGElement::set_inner_elements({});
-        for (auto &p : _inner_elements_commit) _inner_elements_last.push_back(p), SVGElement::add_inner_element(p);
+        for (auto &p : _inner_elements_commit) {
+            if (p->_updated_raw_html) p->_updated_raw_html = false;
+            _inner_elements_last.push_back(p);
+            SVGElement::add_inner_element(p);
+        }
 
         return ss.str();
     }
     void SVGIElement::inner_differ_commit(std::vector<int> &removal,
             std::vector<int> &addition,
             std::vector<std::pair<int, int>> &unchanged) const {
+        std::function<const std::string(const std::shared_ptr<SVGIElement> &)> get_tag;
+        int _uc;
+        get_tag = [&](const std::shared_ptr<SVGIElement> &x){
+            if (x->_updated_raw_html) return std::string("#") + std::to_string(_uc++);
+            return std::string(x->get_tag());
+        };
         std::unordered_map<std::string, std::set<_i_el_idx>> tags_map;
         std::set<_i_el_idx> A, B;
         int c = 0;
         for (auto &a : _inner_elements_commit) A.insert({a, c++}); c = 0;
-        for (auto &b : _inner_elements_last) tags_map[b->get_tag()].insert({b, c}), B.insert({b, c++});
+        for (auto &b : _inner_elements_last) tags_map[get_tag(b)].insert({b, c}), B.insert({b, c++});
 
         c = 0;
         for (auto &_a : _inner_elements_commit) { // with outer hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _i_el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _i_el_idx match = { nullptr, -1 };
@@ -706,7 +721,7 @@ namespace Lewzen {
         }
         c = 0;
         for (auto &_a : _inner_elements_commit) { // with inner hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _i_el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _i_el_idx match = { nullptr, -1 };
@@ -724,7 +739,7 @@ namespace Lewzen {
         }
         c = 0;
         for (auto &_a : _inner_elements_commit) { // with attribute hash equal
-            auto &tag  = _a->get_tag();
+            auto &tag  = get_tag(_a);
             _i_el_idx a = { _a, c++ };
             if (!A.count(a) || !tags_map.count(tag)) continue;
             _i_el_idx match = { nullptr, -1 };
@@ -739,6 +754,16 @@ namespace Lewzen {
                 A.erase(a), B.erase(match);
                 unchanged.push_back({a.idx, match.idx});
             }
+        }
+        c = 0;
+        for (auto &_a : _inner_elements_commit) { // with tag equal
+            auto &tag  = get_tag(_a);
+            _i_el_idx a = { _a, c++ };
+            if (!A.count(a) || !tags_map.count(tag) || tags_map[tag].size() == 0) continue;
+            _i_el_idx match = *tags_map[tag].begin();
+            tags_map[tag].erase(match);
+            A.erase(a), B.erase(match);
+            unchanged.push_back({a.idx, match.idx});
         }
         for (auto &a : A) addition.push_back(a.idx);
         for (auto &b : B) removal.push_back(b.idx);

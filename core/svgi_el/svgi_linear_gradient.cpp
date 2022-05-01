@@ -40,27 +40,6 @@ namespace Lewzen {
     const std::string SVGILinearGradient::get_tag() const {
         return "linearGradient";
     }
-    const std::string SVGILinearGradient::inner_SVG() const {
-        return SVGIElement::inner_SVG();
-    }
-    void SVGILinearGradient::set_inner_text(const std::string &text) {
-        SVGIElement::set_inner_text(text);
-    }
-    const std::string SVGILinearGradient::get_inner_text() const {
-        return SVGIElement::get_inner_text();
-    }
-    void SVGILinearGradient::append(const std::shared_ptr<SVGIElement> &inner_element) {
-        SVGIElement::add_inner_element(inner_element);
-    }
-    void SVGILinearGradient::remove(const std::shared_ptr<SVGIElement> &inner_element, bool remove_all) {
-        SVGIElement::remove_inner_element(inner_element, remove_all);
-    }
-    const std::vector<std::shared_ptr<SVGIElement>> SVGILinearGradient::get_inner_elements() const {
-        return SVGIElement::get_inner_elements();
-    }
-    void SVGILinearGradient::set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements) {
-        SVGIElement::set_inner_elements(inner_elements);
-    }
     const std::string SVGILinearGradient::outer_SVG() const {
         return SVGIElement::outer_SVG();
     }

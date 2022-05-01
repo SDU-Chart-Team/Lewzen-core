@@ -26,51 +26,6 @@ namespace Lewzen {
         */
         virtual const std::string get_tag() const override;
 
-        /// Inner SVG
-    public:
-        /**
-        * Get inner SVG of this SVG element.
-        *
-        * @return inner SVG.
-        */
-        const std::string inner_SVG() const;
-        /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        void set_inner_text(const std::string &text);
-        /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        const std::string get_inner_text() const;
-        /**
-        * Add a sub element to this SVG element.
-        *
-        * @param element an inner element.
-        */
-        void append(const std::shared_ptr<SVGIElement> &element);
-        /**
-        * Remove a child element or child elements from this SVG element, based on content.
-        *
-        * @param element an inner element.
-        * @param remove_all if to remove all occurances.
-        */
-        void remove(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);
-        /**
-        * Get inner SVG elements list in this SVG element.
-        *
-        * @return inner elements, readonly.
-        */
-        const std::vector<std::shared_ptr<SVGIElement>> get_inner_elements() const;
-        /**
-        * Set inner SVG elements list in this SVG element.
-        *
-        * @param inner_elements inner elements list.
-        */
-        void set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);
     private:
         void add_inner_element(const std::shared_ptr<SVGElement> &element) = delete;
         void remove_inner_element(const std::shared_ptr<SVGElement> &element, bool remove_all = false) = delete;

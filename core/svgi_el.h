@@ -2731,10 +2731,18 @@ namespace Lewzen {
         };
 
     private:
+        using SVGElement::inner_SVG;
+        using SVGElement::set_raw_HTML;
+        using SVGElement::get_raw_HTML;
         using SVGElement::add_inner_element;
         using SVGElement::remove_inner_element;
+        using SVGElement::get_inner_element;
         using SVGElement::get_inner_elements;
         using SVGElement::set_inner_elements;
+        using SVGElement::get_attribute_hash;
+        using SVGElement::get_inner_hash;
+        using SVGElement::get_outer_hash;
+    private:
         using SVGElement::get_id;
         using SVGElement::set_id;
         using SVGElement::get_lang;
@@ -3018,6 +3026,10 @@ namespace Lewzen {
         std::vector<std::shared_ptr<SVGIElement>> _inner_elements_commit;
         std::vector<std::shared_ptr<SVGIElement>> _inner_elements_last;
         std::weak_ptr<SVGIElement> _parent_element_commit;
+    public:
+        AttrAnything RawHTML;
+    private:
+        bool _updated_raw_html = false;
     protected:
         struct _i_el_idx {
             std::shared_ptr<SVGIElement> ptr;
@@ -3041,42 +3053,43 @@ namespace Lewzen {
         */
         const std::string inner_SVG() const;
         /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        void set_inner_text(const std::string &text);
-        /**
-        * Set inner string of this SVG element. SVG string or text.
-        *
-        * @param element an inner string.
-        */
-        const std::string get_inner_text() const;
-        /**
         * Add a sub element to this SVG element.
         *
         * @param element an inner element.
+        * @param index the index to be insert. default -1 means tail.
         */
-        void add_inner_element(const std::shared_ptr<SVGIElement> &element);
+        void add(const std::shared_ptr<SVGIElement> &element, int index = -1);
         /**
         * Remove a child element or child elements from this SVG element, based on content.
         *
         * @param element an inner element.
         * @param remove_all if to remove all occurances.
         */
-        void remove_inner_element(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);
+        void remove(const std::shared_ptr<SVGIElement> &element, bool remove_all = false);
+        /**
+        * Remove a child element or child elements from this SVG element, by index.
+        *
+        * @param index the index of inner element.
+        */
+        void remove(int index);
+        /**
+        * Get inner SVG element in this SVG element, by index.
+        *
+        * @return inner element.
+        */
+        std::shared_ptr<SVGIElement> child(int index) const;
         /**
         * Get inner SVG elements list in this SVG element.
         *
-        * @return inner elements, readonly.
+        * @return inner element list, readonly.
         */
-        const std::vector<std::shared_ptr<SVGIElement>> get_inner_elements() const;
+        const std::vector<std::shared_ptr<SVGIElement>> children() const;
         /**
         * Set inner SVG elements list in this SVG element.
         *
         * @param inner_elements inner elements list.
         */
-        void set_inner_elements(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);
+        void children(const std::vector<std::shared_ptr<SVGIElement>> &inner_elements);
     
         /// Outer SVG
     public:
