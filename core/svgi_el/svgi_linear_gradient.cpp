@@ -1,7 +1,7 @@
 #include "svgi_linear_gradient.h"
 
 namespace Lewzen {
-    SVGILinearGradient::SVGILinearGradient(): SVGIElement() {}
+    SVGILinearGradient::SVGILinearGradient(): SVGIElement() { SVGILinearGradient::_bind_getter_setter(); }
     void SVGILinearGradient::_bind_getter_setter() {
         std::function<const std::string()> _getter_gradient_units = std::bind(&SVGLinearGradient::get_gradient_units, (SVGLinearGradient *)this);
         std::function<void(const std::string &)> _setter_gradient_units = std::bind(&SVGLinearGradient::set_gradient_units, (SVGLinearGradient *)this, std::placeholders::_1);

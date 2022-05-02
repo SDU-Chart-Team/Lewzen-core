@@ -1,7 +1,7 @@
 #include "svgi_foreign_object.h"
 
 namespace Lewzen {
-    SVGIForeignObject::SVGIForeignObject(): SVGIElement() {}
+    SVGIForeignObject::SVGIForeignObject(): SVGIElement() { SVGIForeignObject::_bind_getter_setter(); }
     void SVGIForeignObject::_bind_getter_setter() {
         std::function<const std::string()> _getter_width = std::bind(&SVGForeignObject::get_width, (SVGForeignObject *)this);
         std::function<void(const std::string &)> _setter_width = std::bind(&SVGForeignObject::set_width, (SVGForeignObject *)this, std::placeholders::_1);

@@ -1,7 +1,7 @@
 #include "svgi_use.h"
 
 namespace Lewzen {
-    SVGIUse::SVGIUse(): SVGIElement() {}
+    SVGIUse::SVGIUse(): SVGIElement() { SVGIUse::_bind_getter_setter(); }
     void SVGIUse::_bind_getter_setter() {
         std::function<const std::string()> _getter_href = std::bind(&SVGUse::get_href, (SVGUse *)this);
         std::function<void(const std::string &)> _setter_href = std::bind(&SVGUse::set_href, (SVGUse *)this, std::placeholders::_1);

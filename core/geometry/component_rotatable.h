@@ -12,13 +12,17 @@ namespace Lewzen {
     class ComponentRotatable: public std::enable_shared_from_this<ComponentRotatable>{
     private:
         double _theta;
-        std::weak_ptr<Point2D> _rotate_center;
-        std::weak_ptr<Point2D> _area_vertex;
+        std::shared_ptr<Point2D> _rotate_center;
+        std::shared_ptr<Point2D> _area_vertex;
         std::weak_ptr<SVGIElement> _svg_element_interface;
         std::string _rotate_trans;
     protected:
         virtual std::weak_ptr<ComponentRotatable> get_parent() const = 0;
         const std::string get_rotate() const;
+        template <typename T>
+        std::shared_ptr<T> shared_from_base() {
+            return std::static_pointer_cast<T>(shared_from_this());
+        }
     public:
         /**
         * Constructor of ComponentRotatable.
@@ -48,25 +52,39 @@ namespace Lewzen {
         *
         * @return weak pointer of rotate center.
         */
-        const std::weak_ptr<Point2D> get_rotate_center() const;
+        const Point2D get_rotate_center() const;
         /**
         * Set the rotate center.
         *
         * @param rotate_center weak pointer of rotate center.
         */
-        void set_rotate_center(const std::weak_ptr<Point2D> &rotate_center);
+        void set_rotate_center(const Point2D &rotate_center);
+        /**
+        * Set the rotate center.
+        *
+        * @param x x of rotate center.
+        * @param y y of rotate center.
+        */
+        void set_rotate_center(const double &x, const double &y);
         /**
         * Get the area vertex.
         *
         * @return weak pointer of area vertex.
         */
-        const std::weak_ptr<Point2D> get_area_vertex() const;
+        const Point2D get_area_vertex() const;
         /**
         * Set the area vertex.
         *
         * @param area_vertex weak pointer of area vertex.
         */
-        void set_area_vertex(const std::weak_ptr<Point2D> &area_vertex);
+        void set_area_vertex(const Point2D &area_vertex);
+        /**
+        * Set the area vertex.
+        *
+        * @param x x of area vertex.
+        * @param y y of area vertex.
+        */
+        void set_area_vertex(const double &x, const double &y);
         /**
         * Get the svgi.
         *

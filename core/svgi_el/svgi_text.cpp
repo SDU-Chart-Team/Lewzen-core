@@ -1,7 +1,7 @@
 #include "svgi_text.h"
 
 namespace Lewzen {
-    SVGIText::SVGIText(): SVGIElement() {}
+    SVGIText::SVGIText(): SVGIElement() { SVGIText::_bind_getter_setter(); }
     void SVGIText::_bind_getter_setter() {
         std::function<const std::string()> _getter_x = std::bind(&SVGText::get_x, (SVGText *)this);
         std::function<void(const std::string &)> _setter_x = std::bind(&SVGText::set_x, (SVGText *)this, std::placeholders::_1);

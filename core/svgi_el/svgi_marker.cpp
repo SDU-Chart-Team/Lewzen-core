@@ -1,7 +1,7 @@
 #include "svgi_marker.h"
 
 namespace Lewzen {
-    SVGIMarker::SVGIMarker(): SVGIElement() {}
+    SVGIMarker::SVGIMarker(): SVGIElement() { SVGIMarker::_bind_getter_setter(); }
     void SVGIMarker::_bind_getter_setter() {
         std::function<const std::string()> _getter_marker_height = std::bind(&SVGMarker::get_marker_height, (SVGMarker *)this);
         std::function<void(const std::string &)> _setter_marker_height = std::bind(&SVGMarker::set_marker_height, (SVGMarker *)this, std::placeholders::_1);

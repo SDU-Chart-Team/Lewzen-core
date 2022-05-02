@@ -5,6 +5,11 @@
 #include "point.h"
 
 namespace Lewzen {
+    /**
+    * Create point in CanvasCoordinateSystem.
+    */
+    Point2D canvas_point(const double &x, const double &y);
+
     /// Transformations
     /**
     * Do linear transformation on 2D point.

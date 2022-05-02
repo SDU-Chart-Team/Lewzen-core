@@ -1,7 +1,7 @@
 #include "svgi_polyline.h"
 
 namespace Lewzen {
-    SVGIPolyline::SVGIPolyline(): SVGIElement() {}
+    SVGIPolyline::SVGIPolyline(): SVGIElement() { SVGIPolyline::_bind_getter_setter(); }
     void SVGIPolyline::_bind_getter_setter() {
         std::function<const std::string()> _getter_points = std::bind(&SVGPolyline::get_points, (SVGPolyline *)this);
         std::function<void(const std::string &)> _setter_points = std::bind(&SVGPolyline::set_points, (SVGPolyline *)this, std::placeholders::_1);

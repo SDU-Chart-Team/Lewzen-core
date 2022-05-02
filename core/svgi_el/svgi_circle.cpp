@@ -1,7 +1,7 @@
 #include "svgi_circle.h"
 
 namespace Lewzen {
-    SVGICircle::SVGICircle(): SVGIElement() {}
+    SVGICircle::SVGICircle(): SVGIElement() { SVGICircle::_bind_getter_setter(); }
     void SVGICircle::_bind_getter_setter() {
         std::function<const std::string()> _getter_cx = std::bind(&SVGCircle::get_cx, (SVGCircle *)this);
         std::function<void(const std::string &)> _setter_cx = std::bind(&SVGCircle::set_cx, (SVGCircle *)this, std::placeholders::_1);

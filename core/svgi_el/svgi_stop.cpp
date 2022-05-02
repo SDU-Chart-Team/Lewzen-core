@@ -1,7 +1,7 @@
 #include "svgi_stop.h"
 
 namespace Lewzen {
-    SVGIStop::SVGIStop(): SVGIElement() {}
+    SVGIStop::SVGIStop(): SVGIElement() { SVGIStop::_bind_getter_setter(); }
     void SVGIStop::_bind_getter_setter() {
         std::function<const std::string()> _getter_offset = std::bind(&SVGStop::get_offset, (SVGStop *)this);
         std::function<void(const std::string &)> _setter_offset = std::bind(&SVGStop::set_offset, (SVGStop *)this, std::placeholders::_1);

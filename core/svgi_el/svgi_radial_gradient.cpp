@@ -1,7 +1,7 @@
 #include "svgi_radial_gradient.h"
 
 namespace Lewzen {
-    SVGIRadialGradient::SVGIRadialGradient(): SVGIElement() {}
+    SVGIRadialGradient::SVGIRadialGradient(): SVGIElement() { SVGIRadialGradient::_bind_getter_setter(); }
     void SVGIRadialGradient::_bind_getter_setter() {
         std::function<const std::string()> _getter_cx = std::bind(&SVGRadialGradient::get_cx, (SVGRadialGradient *)this);
         std::function<void(const std::string &)> _setter_cx = std::bind(&SVGRadialGradient::set_cx, (SVGRadialGradient *)this, std::placeholders::_1);
