@@ -1,7 +1,7 @@
 #include "svgi_polygon.h"
 
 namespace Lewzen {
-    SVGIPolygon::SVGIPolygon(): SVGIElement() {}
+    SVGIPolygon::SVGIPolygon(): SVGIElement() { SVGIPolygon::_bind_getter_setter(); }
     void SVGIPolygon::_bind_getter_setter() {
         std::function<const std::string()> _getter_points = std::bind(&SVGPolygon::get_points, (SVGPolygon *)this);
         std::function<void(const std::string &)> _setter_points = std::bind(&SVGPolygon::set_points, (SVGPolygon *)this, std::placeholders::_1);

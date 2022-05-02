@@ -459,41 +459,49 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 8> _attr_commit = {
             [this](){
+                if (get_gradient_units() == GradientUnits.get_commit()) return std::string("");
                 GradientUnits.commit();
                 if (GradientUnits.get() == STR_NULL) return std::string("reset gradientUnits");
                 else return std::string("modify gradientUnits \"" + GradientUnits.get() + "\"");
             },
             [this](){
+                if (get_gradient_transform() == GradientTransform.get_commit()) return std::string("");
                 GradientTransform.commit();
                 if (GradientTransform.get() == STR_NULL) return std::string("reset gradientTransform");
                 else return std::string("modify gradientTransform \"" + GradientTransform.get() + "\"");
             },
             [this](){
+                if (get_href() == Href.get_commit()) return std::string("");
                 Href.commit();
                 if (Href.get() == STR_NULL) return std::string("reset href");
                 else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
+                if (get_spread_method() == SpreadMethod.get_commit()) return std::string("");
                 SpreadMethod.commit();
                 if (SpreadMethod.get() == STR_NULL) return std::string("reset spreadMethod");
                 else return std::string("modify spreadMethod \"" + SpreadMethod.get() + "\"");
             },
             [this](){
+                if (get_xQ() == X1.get_commit()) return std::string("");
                 X1.commit();
                 if (X1.get() == STR_NULL) return std::string("reset x1");
                 else return std::string("modify x1 \"" + X1.get() + "\"");
             },
             [this](){
+                if (get_xR() == X2.get_commit()) return std::string("");
                 X2.commit();
                 if (X2.get() == STR_NULL) return std::string("reset x2");
                 else return std::string("modify x2 \"" + X2.get() + "\"");
             },
             [this](){
+                if (get_yQ() == Y1.get_commit()) return std::string("");
                 Y1.commit();
                 if (Y1.get() == STR_NULL) return std::string("reset y1");
                 else return std::string("modify y1 \"" + Y1.get() + "\"");
             },
             [this](){
+                if (get_yR() == Y2.get_commit()) return std::string("");
                 Y2.commit();
                 if (Y2.get() == STR_NULL) return std::string("reset y2");
                 else return std::string("modify y2 \"" + Y2.get() + "\"");

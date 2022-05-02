@@ -1,7 +1,7 @@
 #include "svgi_ellipse.h"
 
 namespace Lewzen {
-    SVGIEllipse::SVGIEllipse(): SVGIElement() {}
+    SVGIEllipse::SVGIEllipse(): SVGIElement() { SVGIEllipse::_bind_getter_setter(); }
     void SVGIEllipse::_bind_getter_setter() {
         std::function<const std::string()> _getter_cx = std::bind(&SVGEllipse::get_cx, (SVGEllipse *)this);
         std::function<void(const std::string &)> _setter_cx = std::bind(&SVGEllipse::set_cx, (SVGEllipse *)this, std::placeholders::_1);

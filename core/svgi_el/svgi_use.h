@@ -408,26 +408,31 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 5> _attr_commit = {
             [this](){
+                if (get_href() == Href.get_commit()) return std::string("");
                 Href.commit();
                 if (Href.get() == STR_NULL) return std::string("reset href");
                 else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
+                if (get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
+                if (get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
+                if (get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
+                if (get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");

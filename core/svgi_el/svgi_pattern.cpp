@@ -1,7 +1,7 @@
 #include "svgi_pattern.h"
 
 namespace Lewzen {
-    SVGIPattern::SVGIPattern(): SVGIElement() {}
+    SVGIPattern::SVGIPattern(): SVGIElement() { SVGIPattern::_bind_getter_setter(); }
     void SVGIPattern::_bind_getter_setter() {
         std::function<const std::string()> _getter_height = std::bind(&SVGPattern::get_height, (SVGPattern *)this);
         std::function<void(const std::string &)> _setter_height = std::bind(&SVGPattern::set_height, (SVGPattern *)this, std::placeholders::_1);

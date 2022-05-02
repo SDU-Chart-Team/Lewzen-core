@@ -1,7 +1,7 @@
 #include "svgi_rect.h"
 
 namespace Lewzen {
-    SVGIRect::SVGIRect(): SVGIElement() {}
+    SVGIRect::SVGIRect(): SVGIElement() { SVGIRect::_bind_getter_setter(); }
     void SVGIRect::_bind_getter_setter() {
         std::function<const std::string()> _getter_x = std::bind(&SVGRect::get_x, (SVGRect *)this);
         std::function<void(const std::string &)> _setter_x = std::bind(&SVGRect::set_x, (SVGRect *)this, std::placeholders::_1);

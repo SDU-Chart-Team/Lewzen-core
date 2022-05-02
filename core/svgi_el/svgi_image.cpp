@@ -1,7 +1,7 @@
 #include "svgi_image.h"
 
 namespace Lewzen {
-    SVGIImage::SVGIImage(): SVGIElement() {}
+    SVGIImage::SVGIImage(): SVGIElement() { SVGIImage::_bind_getter_setter(); }
     void SVGIImage::_bind_getter_setter() {
         std::function<const std::string()> _getter_width = std::bind(&SVGImage::get_width, (SVGImage *)this);
         std::function<void(const std::string &)> _setter_width = std::bind(&SVGImage::set_width, (SVGImage *)this, std::placeholders::_1);

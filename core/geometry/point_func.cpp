@@ -5,6 +5,10 @@
 #include "point_func.h"
 
 namespace Lewzen {
+    Point2D canvas_point(const double &x, const double &y) {
+        return Point2D(x, y, CanvasCoordinateSystem());
+    }
+
     /// Transformations
     Point2D linear_transform(const double &m0, const double &m1, const double &m2, const double &m3, const Point2D &p) {
         return Point2D(m0 * p.get_x() + m1 * p.get_y(), m2 * p.get_x() + m3 * p.get_y(), p.get_coordinate_system()); 
@@ -46,7 +50,7 @@ namespace Lewzen {
         if (p.get_coordinate_system() != c.get_coordinate_system()) {
             throw coordinate_system_mismatch("Two points are not in the same coordinate system");
         }
-        return Point2D(c.get_x() + lambda * (c.get_x() - p.get_x()), c.get_y() + lambda * (c.get_y() - p.get_y()), p.get_coordinate_system());
+        return Point2D(c.get_x() + lambda * (p.get_x() - c.get_x()), c.get_y() + lambda * (p.get_y() - c.get_y()), p.get_coordinate_system());
     }
 
     Point2D center_rotate(const Point2D &p, const Point2D &c, double theta) {

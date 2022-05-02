@@ -14,27 +14,31 @@ namespace Lewzen {
     void ComponentRotatable::set_theta(double theta) {
         _theta = theta;
     }
-    const std::weak_ptr<Point2D> ComponentRotatable::get_rotate_center() const {
-        return _rotate_center;
+    const Point2D ComponentRotatable::get_rotate_center() const {
+        return *_rotate_center;
     }
-    void ComponentRotatable::set_rotate_center(const std::weak_ptr<Point2D> &rotate_center) {
-        if (auto sp = rotate_center.lock()) {
-            if (sp->get_coordinate_system() != get_coordinate_system()) throw coordinate_system_mismatch("Rotate center must be in this ComponentCoordinateSystem");
-            _rotate_center = rotate_center;
-        } else {
-            throw std::runtime_error("Null pointer when setting rotate center");
-        }
+    void ComponentRotatable::set_rotate_center(const Point2D &rotate_center) {
+        if (!_rotate_center) _rotate_center = std::make_shared<Point2D>(0, 0, get_coordinate_system());
+        if (rotate_center.get_coordinate_system() != get_coordinate_system()) throw coordinate_system_mismatch("Rotate center must be in this ComponentCoordinateSystem");
+        *_rotate_center = rotate_center;
     }
-    const std::weak_ptr<Point2D> ComponentRotatable::get_area_vertex() const {
-        return _area_vertex;
+    void ComponentRotatable::set_rotate_center(const double &x, const double &y) {
+        if (!_rotate_center) _rotate_center = std::make_shared<Point2D>(0, 0, get_coordinate_system());
+        _rotate_center->set_x(x);
+        _rotate_center->set_y(y);
     }
-    void ComponentRotatable::set_area_vertex(const std::weak_ptr<Point2D> &area_vertex) {
-        if (auto sp = area_vertex.lock()) {
-            if (sp->get_coordinate_system()  != get_coordinate_system()) throw coordinate_system_mismatch("Area vertex must be in this ComponentCoordinateSystem");
-            _area_vertex = area_vertex;
-        } else {
-            throw std::runtime_error("Null pointer when setting area vertex");
-        }
+    const Point2D ComponentRotatable::get_area_vertex() const {
+        return *_area_vertex;
+    }
+    void ComponentRotatable::set_area_vertex(const Point2D &area_vertex) {
+        if (!_area_vertex) _area_vertex = std::make_shared<Point2D>(0, 0, get_coordinate_system());
+        if (area_vertex.get_coordinate_system()  != get_coordinate_system()) throw coordinate_system_mismatch("Area vertex must be in this ComponentCoordinateSystem");
+        *_area_vertex = area_vertex;
+    }
+    void ComponentRotatable::set_area_vertex(const double &x, const double &y) {
+        if (!_area_vertex) _area_vertex = std::make_shared<Point2D>(0, 0, get_coordinate_system());
+        _area_vertex->set_x(x);
+        _area_vertex->set_y(y);
     }
     const std::weak_ptr<SVGIElement> ComponentRotatable::get_svg_element_interface() const {
         return _svg_element_interface;
@@ -44,43 +48,32 @@ namespace Lewzen {
     }
 
     void ComponentRotatable::update_transform() {
+        if (!_rotate_center) _rotate_center = std::make_shared<Point2D>(0, 0, get_coordinate_system());
         auto sp1 = _svg_element_interface.lock();
         auto sp2 = get_parent().lock();
-        auto sp3 = _rotate_center.lock();
-        if (sp1 && sp2 && sp3) {
-            auto _parent_trans = sp2->get_rotate();
-            if (_parent_trans != STR_NULL) _parent_trans.push_back(' ');
-            _rotate_trans = _parent_trans + "rotate(" + std::to_string(_theta) + "rad, " + std::to_string(sp3->get_x()) + ", " + std::to_string(sp3->get_y()) + ")";
-            sp1->Transform = _rotate_trans;
-        }
+        std::string _parent_trans = (sp2) ? sp2->get_rotate() : STR_NULL;
+        _rotate_trans = _parent_trans + (_parent_trans != STR_NULL ? " " : STR_NULL) +  "rotate(" + std::to_string(_theta / 3.141592653589793238462643383279502884L) + "rad, " + std::to_string(_rotate_center->get_x()) + ", " + std::to_string(_rotate_center->get_y()) + ")";
+        if (sp1) sp1->Transform = _rotate_trans;
     }
 
     Point2D ComponentRotatable::from_canvas(const Point2D &p) const {
         if (p.get_coordinate_system().get_type() != "CAN") {
             throw coordinate_system_mismatch("Point is not in canvas coordinate system");
         }
-        auto sp1 = _rotate_center.lock();
-        auto sp2 = _area_vertex.lock();
-        if (sp1 && sp2) {
-            Point2D pf = p;
-            if (auto pp = get_parent().lock()) pf = pp->from_canvas(p);
-            pf = create_point(pf.get_x(), pf.get_y());
-            return center_rotate(pf, *sp1, _theta);
+        auto pf = create_point(p.get_x(), p.get_y());
+        if (auto pp = get_parent().lock()) {
+            auto cp = pp->from_canvas(p);
+            pf.set_x(cp.get_x()), pf.set_y(cp.get_y());
         }
-        throw std::runtime_error("Null pointer when converting CanvasCoordinateSystem to ComponentCoordinateSystem");
+        return center_rotate(pf, *_rotate_center, _theta);
     }
     Point2D ComponentRotatable::to_canvas(const Point2D &p) const {
         if (p.get_coordinate_system() != get_coordinate_system()) {
             throw coordinate_system_mismatch("Point is not in this coordinate system");
         }
-        auto sp1 = _rotate_center.lock();
-        auto sp2 = _area_vertex.lock();
-        if (sp1 && sp2) {
-            Point2D pf = center_rotate(p, *sp1, -_theta);
-            if (auto pp = get_parent().lock()) return pp->to_canvas(pp->create_point(pf.get_x(), pf.get_y()));
-            return Point2D(pf.get_x(), pf.get_y(), CanvasCoordinateSystem());
-        }
-        throw std::runtime_error("Null pointer when converting CanvasCoordinateSystem to ComponentCoordinateSystem");
+        Point2D pf = center_rotate(p, *_rotate_center, -_theta);
+        if (auto pp = get_parent().lock()) return pp->to_canvas(pp->create_point(pf.get_x(), pf.get_y()));
+        return Point2D(pf.get_x(), pf.get_y(), CanvasCoordinateSystem());
     }
 
     const CoordinateSystem ComponentRotatable::get_coordinate_system() const {

@@ -29,12 +29,10 @@ namespace Lewzen {
             throw coordinate_system_mismatch("Point is not in this coordinate system");
         }
         if (auto sp = _component.lock()) {
-            auto sp1 = sp->get_rotate_center().lock();
-            auto sp2 = sp->get_area_vertex().lock();
-            if (sp1 && sp2) {
-                double dx = sp2->get_x() - sp1->get_x(), dy = sp2->get_y() - sp1->get_y();
-                return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, ComponentRelativeCoordinateSystem(sp));
-            }
+            auto &p1 = sp->get_rotate_center();
+            auto &p2 = sp->get_area_vertex();
+            double dx = p2.get_x() - p1.get_x(), dy = p2.get_y() - p1.get_y();
+            return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, ComponentRelativeCoordinateSystem(sp));
         }
         throw std::runtime_error("Null pointer when converting ComponentCoordinateSystem to ComponentRelativeCoordinateSystem");
     }

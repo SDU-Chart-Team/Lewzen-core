@@ -220,7 +220,7 @@
         <td>
 
         ```javascript
-        current.removeChild(childNodes[index]);
+        current.removeChild(current.childNodes[index]);
         ```
 
         </td>
@@ -234,9 +234,7 @@
         <td>
 
         ```javascript
-        var tmp = document.createElement('template');
-        tmp.innerHTML = htmlString.trim();
-        current.appendChild(div.firstChild);
+        current.insertAdjacentHTML('beforeend', xml);
         ```
 
         </td>

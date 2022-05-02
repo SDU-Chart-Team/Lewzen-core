@@ -166,6 +166,7 @@ public:
     const std::string on_commit() const {
         std::stringstream ss;
         ss << "            [this](){" << std::endl;
+        ss << "                if (get_" + dom_to_snake(_rname) + "() == " + _name + ".get_commit()) return std::string(\"\");" << std::endl;
         ss << "                " + _name + ".commit();" << std::endl;
         ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _rname + "\");" << std::endl;
         ss << "                else return std::string(\"modify " + _rname + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
@@ -663,7 +664,7 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << "#include \"svgi_" + dom_to_snake(tag) + ".h\"" << std::endl;
     ss << "" << std::endl;
     ss << "namespace Lewzen {" << std::endl;
-    ss << "    SVGI" << dom_to_pascal(tag) << "::SVGI" << dom_to_pascal(tag) << "(): SVGIElement() {}" << std::endl;
+    ss << "    SVGI" << dom_to_pascal(tag) << "::SVGI" << dom_to_pascal(tag) << "(): SVGIElement() { SVGI" << dom_to_pascal(tag) << "::_bind_getter_setter(); }" << std::endl;
     ss << "    void SVGI" << dom_to_pascal(tag) << "::_bind_getter_setter() {" << std::endl;
     for (auto &p : attributes) ss << p->get_set();
     ss << "        SVGIElement::_bind_getter_setter();" << std::endl;

@@ -1,7 +1,7 @@
 #include "svgi_mask.h"
 
 namespace Lewzen {
-    SVGIMask::SVGIMask(): SVGIElement() {}
+    SVGIMask::SVGIMask(): SVGIElement() { SVGIMask::_bind_getter_setter(); }
     void SVGIMask::_bind_getter_setter() {
         std::function<const std::string()> _getter_height = std::bind(&SVGMask::get_height, (SVGMask *)this);
         std::function<void(const std::string &)> _setter_height = std::bind(&SVGMask::set_height, (SVGMask *)this, std::placeholders::_1);

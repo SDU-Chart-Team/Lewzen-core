@@ -1,7 +1,7 @@
 #include "svgi_path.h"
 
 namespace Lewzen {
-    SVGIPath::SVGIPath(): SVGIElement() {}
+    SVGIPath::SVGIPath(): SVGIElement() { SVGIPath::_bind_getter_setter(); }
     void SVGIPath::_bind_getter_setter() {
         std::function<const std::string()> _getter_d = std::bind(&SVGPath::get_d, (SVGPath *)this);
         std::function<void(const std::string &)> _setter_d = std::bind(&SVGPath::set_d, (SVGPath *)this, std::placeholders::_1);

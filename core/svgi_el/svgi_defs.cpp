@@ -1,7 +1,7 @@
 #include "svgi_defs.h"
 
 namespace Lewzen {
-    SVGIDefs::SVGIDefs(): SVGIElement() {}
+    SVGIDefs::SVGIDefs(): SVGIElement() { SVGIDefs::_bind_getter_setter(); }
     void SVGIDefs::_bind_getter_setter() {
         SVGIElement::_bind_getter_setter();
     }

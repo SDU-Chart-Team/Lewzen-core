@@ -1,7 +1,7 @@
 #include "svgi_line.h"
 
 namespace Lewzen {
-    SVGILine::SVGILine(): SVGIElement() {}
+    SVGILine::SVGILine(): SVGIElement() { SVGILine::_bind_getter_setter(); }
     void SVGILine::_bind_getter_setter() {
         std::function<const std::string()> _getter_xQ = std::bind(&SVGLine::get_xQ, (SVGLine *)this);
         std::function<void(const std::string &)> _setter_xQ = std::bind(&SVGLine::set_xQ, (SVGLine *)this, std::placeholders::_1);
