@@ -2,11 +2,11 @@
 platform="$1"
 ver=$(date +%Y%m%d)
 
-if [ "$platform" = "linux" ]
+if [ "$platform" = "linux-g++" ]
 then
     cd core
     make cc=g++ ar=ar
-elif [ "$platform" = "win" ]
+elif [ "$platform" = "win-g++" ]
 then
     cd core
     make cc=x86_64-w64-mingw32-g++ ar=x86_64-w64-mingw32-ar
@@ -40,15 +40,15 @@ rm svgi_el/attr/Makefile
 
 cd ../..
 
-if [ "$platform" = "linux" ]
+if [ "$platform" = "linux-g++" ]
 then
-    tar -czvf lewzen-core-${ver}.tar.gz release/*
-elif [ "$platform" = "win" ]
+    tar -czvf ../lewzen-core-${ver}.tar.gz release/*
+    rm release/ -rf
+elif [ "$platform" = "win-g++" ]
 then
-    7z a -t7z -r lewzen-core-${ver}.7z release/*
+    7z a -t7z -r ../lewzen-core-${ver}.7z release/*
+    rm release/ -rf
 else
     echo unsupported platform.
     exit 1
 fi
-
-rm release/ -rf

@@ -15,6 +15,7 @@ namespace Lewzen {
         _theta = theta;
     }
     const Point2D ComponentRotatable::get_rotate_center() const {
+        if (!_rotate_center) return Point2D(0, 0, get_coordinate_system());
         return *_rotate_center;
     }
     void ComponentRotatable::set_rotate_center(const Point2D &rotate_center) {
@@ -28,6 +29,7 @@ namespace Lewzen {
         _rotate_center->set_y(y);
     }
     const Point2D ComponentRotatable::get_area_vertex() const {
+        if (!_rotate_center) return Point2D(0, 0, get_coordinate_system());
         return *_area_vertex;
     }
     void ComponentRotatable::set_area_vertex(const Point2D &area_vertex) {
@@ -65,14 +67,14 @@ namespace Lewzen {
             auto cp = pp->from_canvas(p);
             pf.set_x(cp.get_x()), pf.set_y(cp.get_y());
         }
-        return center_rotate(pf, *_rotate_center, _theta);
+        return center_rotate(pf, (!_rotate_center) ? Point2D(0, 0, get_coordinate_system()) : *_rotate_center, _theta);
     }
     Point2D ComponentRotatable::to_canvas(const Point2D &p) const {
         if (p.get_coordinate_system() != get_coordinate_system()) {
             throw coordinate_system_mismatch("Point is not in this coordinate system");
         }
-        Point2D pf = center_rotate(p, *_rotate_center, -_theta);
-        if (auto pp = get_parent().lock()) return pp->to_canvas(pp->create_point(pf.get_x(), pf.get_y()));
+        Point2D pf = center_rotate(p, (!_rotate_center) ? Point2D(0, 0, get_coordinate_system()) : *_rotate_center, -_theta);
+        if (auto pp = get_parent().lock())return pp->to_canvas(pp->create_point(pf.get_x(), pf.get_y()));
         return Point2D(pf.get_x(), pf.get_y(), CanvasCoordinateSystem());
     }
 
