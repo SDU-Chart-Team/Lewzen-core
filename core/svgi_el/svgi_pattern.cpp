@@ -55,8 +55,14 @@ namespace Lewzen {
         std::stringstream ss;
 
         // attribute differ
-        for (auto &i : bound) ss << _attr_commit[i]() << std::endl;
-        for (auto &i : modified) ss << _attr_commit[i]() << std::endl;
+        for (auto &i : bound) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
+        for (auto &i : modified) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
         modified.clear();
 
         // base class
