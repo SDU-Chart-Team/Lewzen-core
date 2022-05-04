@@ -54,7 +54,8 @@ namespace Lewzen {
         auto sp1 = _svg_element_interface.lock();
         auto sp2 = get_parent().lock();
         std::string _parent_trans = (sp2) ? sp2->get_rotate() : STR_NULL;
-        _rotate_trans = _parent_trans + (_parent_trans != STR_NULL ? " " : STR_NULL) +  "rotate(" + std::to_string(_theta / 3.141592653589793238462643383279502884L) + "rad, " + std::to_string(_rotate_center->get_x()) + ", " + std::to_string(_rotate_center->get_y()) + ")";
+        std::string _this_trans = (_theta != 0) ? ("rotate(" + std::to_string(_theta / 3.141592653589793238462643383279502884L * 180) + ", " + std::to_string(_rotate_center->get_x()) + ", " + std::to_string(_rotate_center->get_y()) + ")") : "";
+        _rotate_trans = _parent_trans + (_parent_trans != STR_NULL ? " " : STR_NULL) +  _this_trans;
         if (sp1) sp1->Transform = _rotate_trans;
     }
 

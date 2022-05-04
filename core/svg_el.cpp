@@ -1549,6 +1549,7 @@ namespace Lewzen {
         _attribute_hash = element.get_attribute_hash();
         _inner_hash = element.get_inner_hash();
         _outer_hash = element.get_outer_hash();
+        return *this;
     }
     bool SVGElement::operator==(const SVGElement &element) const {
         return element.get_outer_hash() == get_outer_hash();

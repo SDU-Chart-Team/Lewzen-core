@@ -6,7 +6,7 @@
 
 namespace Lewzen {
     /**
-    * The <rect> element is a basic SVG shape that draws rectangles, defined by their position, width, and height. The rectangles may have their corners rounded.
+    * The svg element is a container that defines a new coordinate system and viewport. It is used as the outermost element of SVG documents, but it can also be used to embed an SVG fragment inside an SVG or HTML document.
     */
     class SVGRect: public virtual SVGElement {
     public:
@@ -34,110 +34,82 @@ namespace Lewzen {
     private:
         std::string _height;
     private:
-        std::string _rx;
+        std::string _preserve_aspect_ratio;
     private:
-        std::string _ry;
-    private:
-        std::string _path_length;
+        std::string _view_box;
     public:
         /**
-        * The x coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed x coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @return the x
         */
         virtual const std::string get_x() const;
         /**
-        * The x coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed x coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the x
         */
         virtual void set_x(const std::string &x);
         /**
-        * The y coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed y coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @return the y
         */
         virtual const std::string get_y() const;
         /**
-        * The y coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed y coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the y
         */
         virtual void set_y(const std::string &y);
         /**
-        * The width of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed width of the rectangular viewport. (Not the width of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the width
         */
         virtual const std::string get_width() const;
         /**
-        * The width of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed width of the rectangular viewport. (Not the width of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the width
         */
         virtual void set_width(const std::string &width);
         /**
-        * The height of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed height of the rectangular viewport. (Not the height of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the height
         */
         virtual const std::string get_height() const;
         /**
-        * The height of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed height of the rectangular viewport. (Not the height of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the height
         */
         virtual void set_height(const std::string &height);
         /**
-        * The horizontal corner radius of the rect. Defaults to ry if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * How the svg fragment must be deformed if it is displayed with a different aspect ratio. Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes
         *
-        * @return the rx
+        * @return the preserveAspectRatio
         */
-        virtual const std::string get_rx() const;
+        virtual const std::string get_preserve_aspect_ratio() const;
         /**
-        * The horizontal corner radius of the rect. Defaults to ry if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * How the svg fragment must be deformed if it is displayed with a different aspect ratio. Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes
         *
-        * @param  the rx
+        * @param  the preserveAspectRatio
         */
-        virtual void set_rx(const std::string &rx);
+        virtual void set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio);
         /**
-        * The vertical corner radius of the rect. Defaults to rx if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The SVG viewport coordinates for the current SVG fragment. Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
-        * @return the ry
+        * @return the viewBox
         */
-        virtual const std::string get_ry() const;
+        virtual const std::string get_view_box() const;
         /**
-        * The vertical corner radius of the rect. Defaults to rx if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The SVG viewport coordinates for the current SVG fragment. Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         *
-        * @param  the ry
+        * @param  the viewBox
         */
-        virtual void set_ry(const std::string &ry);
-        /**
-        * The total length of the rectangle's perimeter, in user units. 
-        * Value type: <number> ; Default value: none; Animatable: yes
-        *
-        * @return the pathLength
-        */
-        virtual const std::string get_path_length() const;
-        /**
-        * The total length of the rectangle's perimeter, in user units. 
-        * Value type: <number> ; Default value: none; Animatable: yes
-        *
-        * @param  the pathLength
-        */
-        virtual void set_path_length(const std::string &path_length);
+        virtual void set_view_box(const std::string &view_box);
 
         /// Attributes
     protected:

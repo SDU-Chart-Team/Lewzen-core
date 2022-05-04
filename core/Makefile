@@ -6,11 +6,23 @@ objects = \
 	core.o
 cc = g++
 ar = ar
-allobjs = ''
 
+ifeq ($(OS),Windows_NT) 
+    platform = Windows
+else
+    platform = $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+endif
+ifeq ($(platform), Windows)
+.PHONY: all
+all: sub_all
+	$(ar) rvs lewzen-core.lib $(shell dir . /S /b | findstr /i ".*\.o$")
+endif
+ifeq ($(platform), Linux)
 .PHONY: all
 all: sub_all
 	$(ar) rvs lewzen-core.lib $(shell find . -type f -iregex ".*\.o")
+endif
+
 sub_all: $(objects)
 	cd utils && make
 	cd geometry && make

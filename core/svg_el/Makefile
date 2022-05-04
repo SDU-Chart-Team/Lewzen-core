@@ -16,6 +16,7 @@ objects = \
 	svg_defs.o\
 	svg_foreign_object.o\
 	svg_linear_gradient.o\
+	svg_rect.o\
 	svg_stop.o\
 	svg_use.o
 cc = g++
@@ -57,6 +58,8 @@ svg_foreign_object.o: svg_foreign_object.cpp svg_foreign_object.h
 	$(cc) -c svg_foreign_object.cpp
 svg_linear_gradient.o: svg_linear_gradient.cpp svg_linear_gradient.h
 	$(cc) -c svg_linear_gradient.cpp
+svg_rect.o: svg_rect.cpp svg_rect.h
+	$(cc) -c svg_rect.cpp
 svg_stop.o: svg_stop.cpp svg_stop.h
 	$(cc) -c svg_stop.cpp
 svg_use.o: svg_use.cpp svg_use.h

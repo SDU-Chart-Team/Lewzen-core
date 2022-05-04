@@ -461,6 +461,7 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     std::stringstream ss;
     ss << "#ifndef __LZ_SVGI_ELEMENT__" << std::endl;
     ss << "#define __LZ_SVGI_ELEMENT__" << std::endl;
+    ss << "#include <set>" << std::endl;
     ss << "#include \"svgi_el/attr.hpp\"" << std::endl;
     ss << "#include \"svg_el.h\"" << std::endl;
     ss << "" << std::endl;

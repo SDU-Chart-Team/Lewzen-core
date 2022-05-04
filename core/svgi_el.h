@@ -1,5 +1,6 @@
 #ifndef __LZ_SVGI_ELEMENT__
 #define __LZ_SVGI_ELEMENT__
+#include <set>
 #include "svgi_el/attr.hpp"
 #include "svg_el.h"
 
@@ -3308,6 +3309,7 @@ namespace Lewzen {
 #include "svgi_el/svgi_defs.h"
 #include "svgi_el/svgi_foreign_object.h"
 #include "svgi_el/svgi_linear_gradient.h"
+#include "svgi_el/svgi_rect.h"
 #include "svgi_el/svgi_stop.h"
 #include "svgi_el/svgi_use.h"
 #endif

@@ -333,6 +333,7 @@ std::string SVGCPP() {
     ss << "        _attribute_hash = element.get_attribute_hash();" << std::endl;
     ss << "        _inner_hash = element.get_inner_hash();" << std::endl;
     ss << "        _outer_hash = element.get_outer_hash();" << std::endl;
+    ss << "        return *this;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    bool SVGElement::operator==(const SVGElement &element) const {" << std::endl;
     ss << "        return element.get_outer_hash() == get_outer_hash();" << std::endl;
@@ -511,6 +512,7 @@ std::string SVGH(const std::vector<std::string> &tags) {
     ss << "#define __LZ_SVG_ELEMENT__" << std::endl;
     ss << "#include <string>" << std::endl;
     ss << "#include <vector>" << std::endl;
+    ss << "#include <set>" << std::endl;
     ss << "#include <memory>" << std::endl;
     ss << "#include <utility>" << std::endl;
     ss << "#include \"utils.h\"" << std::endl;
