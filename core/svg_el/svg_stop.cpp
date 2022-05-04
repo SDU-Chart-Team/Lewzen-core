@@ -49,10 +49,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGStop::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGStop &SVGStop::operator=(const SVGStop &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _offset = element.get_offset();
         _stop_color = element.get_stop_color();

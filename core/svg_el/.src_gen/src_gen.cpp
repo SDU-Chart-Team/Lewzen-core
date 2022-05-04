@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <set>
 #include <sstream>
 #include <memory>
 #include <iostream>
@@ -84,6 +85,9 @@ public:
     virtual const std::string str_operator_minus() const = 0;
 };
 
+std::vector<std::shared_ptr<Attribute>> _attributes;
+std::set<std::string> _attribute_names;
+
 class StringAttribute: public Attribute {
 public:
     StringAttribute(const std::string &tag, const std::string &name, const std::string &comment): Attribute(tag, name, comment) {
@@ -101,23 +105,25 @@ public:
         return ss.str();
     }
     const std::string getter_defination() const {
+        std::string override = (_attribute_names.count(_name) && _tag != "element") ? " override" : "";
         std::stringstream ss;
         ss << "        /**" << std::endl;
         ss << "        * " << _comment << std::endl;
         ss << "        *" << std::endl;
         ss << "        * @return the " << _name << std::endl;
         ss << "        */" << std::endl;
-        ss << "        const std::string get_" << dom_to_snake(_name) << "() const;" << std::endl;
+        ss << "        virtual const std::string get_" << dom_to_snake(_name) << "() const" << override << ";" << std::endl;
         return ss.str();
     }
     const std::string setter_defination() const {
+        std::string override = (_attribute_names.count(_name) && _tag != "element") ? " override" : "";
         std::stringstream ss;
         ss << "        /**" << std::endl;
         ss << "        * " << _comment << std::endl;
         ss << "        *" << std::endl;
         ss << "        * @param  the " << _name << std::endl;
         ss << "        */" << std::endl;
-        ss << "        void set_" << dom_to_snake(_name) << "(const std::string &" << ((dom_to_snake(_name) == "class") ? "cls" : dom_to_snake(_name)) << ");" << std::endl;
+        ss << "        virtual void set_" << dom_to_snake(_name) << "(const std::string &" << ((dom_to_snake(_name) == "class") ? "cls" : dom_to_snake(_name)) << ")" << override << ";" << std::endl;
         return ss.str();
     }
     const std::string getter_implemetation() const {
@@ -151,15 +157,6 @@ public:
 };
 
 std::string SVGCPP() {
-    std::vector<std::shared_ptr<Attribute>> attributes;
-    std::ifstream i(json_dir + "/_svg._json");
-    json j; i >> j;
-    for (auto &atr : j["attributes"]) {
-        std::string name = atr["name"];
-        std::string type = atr["type"];
-        std::string acom = atr["comment"];
-        attributes.push_back(std::make_shared<StringAttribute>("element", name, acom));
-    }
     std::stringstream ss;
     ss << "#include <sstream>" << std::endl;
     ss << "#include <algorithm>" << std::endl;
@@ -169,7 +166,7 @@ std::string SVGCPP() {
     ss << "" << std::endl;
     ss << "namespace Lewzen {" << std::endl;
     ss << "    SVGElement::SVGElement() {" << std::endl;
-    for (auto &p : attributes) ss << p->init_default();
+    for (auto &p : _attributes) ss << p->init_default();
     ss << "        _raw_HTML = STR_NULL;" << std::endl;
     ss << "" << std::endl;
     ss << "        _attribute_hash = 0;" << std::endl;
@@ -180,7 +177,7 @@ std::string SVGCPP() {
     ss << "    const std::string SVGElement::get_tag() const {" << std::endl;
     ss << "        return \"?\";" << std::endl;
     ss << "    }" << std::endl;
-    for (auto &p : attributes) ss << p->getter_implemetation() << p->setter_implemetation();
+    for (auto &p : _attributes) ss << p->getter_implemetation() << p->setter_implemetation();
     ss << "" << std::endl;
     ss << "        const std::string SVGElement::inner_SVG() const {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
@@ -242,7 +239,7 @@ std::string SVGCPP() {
     ss << "    const std::string SVGElement::get_attributes() const {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
     ss << "" << std::endl;
-    for (auto &p : attributes) ss << p->str_get_attributes();
+    for (auto &p : _attributes) ss << p->str_get_attributes();
     ss << "        " << std::endl;
     ss << "        return ss.str();" << std::endl;
     ss << "    }" << std::endl;
@@ -324,7 +321,7 @@ std::string SVGCPP() {
     ss << "        return cloned;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVGElement &SVGElement::operator=(const SVGElement &element) {" << std::endl;
-    for (auto &p : attributes) ss << p->init_clone();
+    for (auto &p : _attributes) ss << p->init_clone();
     ss << "" << std::endl;
     ss << "        _raw_HTML = element.get_raw_HTML();" << std::endl;
     ss << "        for (auto p : element.get_inner_elements()) {" << std::endl;
@@ -336,6 +333,7 @@ std::string SVGCPP() {
     ss << "        _attribute_hash = element.get_attribute_hash();" << std::endl;
     ss << "        _inner_hash = element.get_inner_hash();" << std::endl;
     ss << "        _outer_hash = element.get_outer_hash();" << std::endl;
+    ss << "        return *this;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    bool SVGElement::operator==(const SVGElement &element) const {" << std::endl;
     ss << "        return element.get_outer_hash() == get_outer_hash();" << std::endl;
@@ -417,7 +415,7 @@ std::string SVGCPP() {
     ss << "    const std::string SVGElement::attribute_differ(const SVGElement &element) const {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
     ss << "" << std::endl;
-    for (auto &p : attributes) ss << p->str_operator_minus();
+    for (auto &p : _attributes) ss << p->str_operator_minus();
     ss << std::endl;
     ss << "        return ss.str();" << std::endl;
     ss << "    }" << std::endl;
@@ -509,20 +507,12 @@ std::string SVGCPP() {
 }
 
 std::string SVGH(const std::vector<std::string> &tags) {
-    std::vector<std::shared_ptr<Attribute>> attributes;
-    std::ifstream i(json_dir + "/_svg._json");
-    json j; i >> j;
-    for (auto &atr : j["attributes"]) {
-        std::string name = atr["name"];
-        std::string type = atr["type"];
-        std::string acom = atr["comment"];
-        attributes.push_back(std::make_shared<StringAttribute>("element", name, acom));
-    }
     std::stringstream ss;
     ss << "#ifndef __LZ_SVG_ELEMENT__" << std::endl;
     ss << "#define __LZ_SVG_ELEMENT__" << std::endl;
     ss << "#include <string>" << std::endl;
     ss << "#include <vector>" << std::endl;
+    ss << "#include <set>" << std::endl;
     ss << "#include <memory>" << std::endl;
     ss << "#include <utility>" << std::endl;
     ss << "#include \"utils.h\"" << std::endl;
@@ -548,9 +538,9 @@ std::string SVGH(const std::vector<std::string> &tags) {
     ss << "        virtual const std::string get_tag() const;" << std::endl;
     ss << "" << std::endl;
     ss << "        /// Element" << std::endl;
-    for (auto &p : attributes) ss << p->private_domain();
+    for (auto &p : _attributes) ss << p->private_domain();
     ss << "    public:" << std::endl;
-    for (auto &p : attributes) ss << p->getter_defination() << p->setter_defination();
+    for (auto &p : _attributes) ss << p->getter_defination() << p->setter_defination();
     ss << "        /// Attributes" << std::endl;
     ss << "    protected:" << std::endl;
     ss << "        /**" << std::endl;
@@ -866,10 +856,11 @@ const std::string CPPFile(const std::string &tag, const std::string &comment, co
     ss << "        return cloned;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVGElement &SVG" << dom_to_pascal(tag) << "::operator=(const SVGElement &element) {" << std::endl;
-    ss << "        SVGElement::operator=(element);" << std::endl;
+    ss << "        return SVGElement::operator=(element);" << std::endl;
     ss << "    }" << std::endl;
     ss << "    SVG" << dom_to_pascal(tag) << " &SVG" << dom_to_pascal(tag) << "::operator=(const SVG" << dom_to_pascal(tag) << " &element) {" << std::endl;
     ss << "        SVGElement::operator=(element);" << std::endl;
+    ss << "        return *this;" << std::endl;
     ss << std::endl;
     for (auto &p : attributes) ss << p->init_clone();
     ss << "        return *this;" << std::endl;
@@ -946,6 +937,16 @@ const std::string json_to_source(const std::string &path) {
 }
 
 int main(int argc, char **argv) {
+    std::ifstream i(json_dir + "/_svg._json");
+    json j; i >> j;
+    for (auto &atr : j["attributes"]) {
+        std::string name = atr["name"];
+        std::string type = atr["type"];
+        std::string acom = atr["comment"];
+        _attributes.push_back(std::make_shared<StringAttribute>("element", name, acom));
+        _attribute_names.insert(name);
+    }
+
     std::vector<std::string> tags;
     for (const auto &file : fs::directory_iterator(json_dir)) {
         auto tag = json_to_source(file.path());

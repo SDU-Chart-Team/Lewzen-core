@@ -357,13 +357,13 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 2> _attr_commit = {
             [this](){
-                if (get_points() == Points.get_commit()) return std::string("");
+                if (SVGPolyline::get_points() == Points.get_commit()) return std::string("");
                 Points.commit();
                 if (Points.get() == STR_NULL) return std::string("reset points");
                 else return std::string("modify points \"" + Points.get() + "\"");
             },
             [this](){
-                if (get_path_length() == PathLength.get_commit()) return std::string("");
+                if (SVGPolyline::get_path_length() == PathLength.get_commit()) return std::string("");
                 PathLength.commit();
                 if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
                 else return std::string("modify pathLength \"" + PathLength.get() + "\"");

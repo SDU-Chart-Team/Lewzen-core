@@ -58,10 +58,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGForeignObject::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGForeignObject &SVGForeignObject::operator=(const SVGForeignObject &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _width = element.get_width();
         _height = element.get_height();

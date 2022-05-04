@@ -4,7 +4,7 @@
 
 namespace Lewzen {
     /**
-    * The <rect> element is a basic SVG shape that draws rectangles, defined by their position, width, and height. The rectangles may have their corners rounded.
+    * The svg element is a container that defines a new coordinate system and viewport. It is used as the outermost element of SVG documents, but it can also be used to embed an SVG fragment inside an SVG or HTML document.
     */
     class SVGIRect : public virtual SVGIElement, public virtual SVGRect {
     public:
@@ -35,12 +35,10 @@ namespace Lewzen {
         using SVGRect::set_width;
         using SVGRect::get_height;
         using SVGRect::set_height;
-        using SVGRect::get_rx;
-        using SVGRect::set_rx;
-        using SVGRect::get_ry;
-        using SVGRect::set_ry;
-        using SVGRect::get_path_length;
-        using SVGRect::set_path_length;
+        using SVGRect::get_preserve_aspect_ratio;
+        using SVGRect::set_preserve_aspect_ratio;
+        using SVGRect::get_view_box;
+        using SVGRect::set_view_box;
         using SVGElement::get_id;
         using SVGElement::set_id;
         using SVGElement::get_lang;
@@ -330,50 +328,38 @@ namespace Lewzen {
         /// Rect
     public:
         /**
-        * The x coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed x coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         */
         AttrEnumerate<AttrLength, AttrPercentage> X;
     public:
         /**
-        * The y coordinate of the rect. 
-        * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
+        * The displayed y coordinate of the svg container. No effect on outermost svg elements. Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         */
         AttrEnumerate<AttrLength, AttrPercentage> Y;
     public:
         /**
-        * The width of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed width of the rectangular viewport. (Not the width of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         */
         AttrEnumerate<AttrConstAuto, AttrLength, AttrPercentage> Width;
     public:
         /**
-        * The height of the rect. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The displayed height of the rectangular viewport. (Not the height of its coordinate system.) Value type: <length>|<percentage> ; Default value: auto; Animatable: yes
         */
         AttrEnumerate<AttrConstAuto, AttrLength, AttrPercentage> Height;
     public:
         /**
-        * The horizontal corner radius of the rect. Defaults to ry if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * How the svg fragment must be deformed if it is displayed with a different aspect ratio. Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes
         */
-        AttrEnumerate<AttrConstAuto, AttrLength, AttrPercentage> Rx;
+        AttrTuple<AttrEnumerate<AttrConstNone, AttrConstXMinYMin, AttrConstXMidYMin, AttrConstXMaxYMin, AttrConstXMinYMid, AttrConstXMidYMid, AttrConstXMaxYMid, AttrConstXMinYMax, AttrConstXMidYMax, AttrConstXMaxYMax>, AttrEnumerate<AttrConstMeet, AttrConstSlice>> PreserveAspectRatio;
     public:
         /**
-        * The vertical corner radius of the rect. Defaults to rx if it is specified. 
-        * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
+        * The SVG viewport coordinates for the current SVG fragment. Value type: <list-of-numbers> ; Default value: none; Animatable: yes
         */
-        AttrEnumerate<AttrConstAuto, AttrLength, AttrPercentage> Ry;
-    public:
-        /**
-        * The total length of the rectangle's perimeter, in user units. 
-        * Value type: <number> ; Default value: none; Animatable: yes
-        */
-        AttrNumber PathLength;
+        AttrListOfNumbers ViewBox;
     private:
         std::set<int> bound;
         std::set<int> modified;
-        const std::array<std::function<void(const std::string &)>, 7> _attr_on_assign = {
+        const std::array<std::function<void(const std::string &)>, 6> _attr_on_assign = {
             [this](const std::string &last){
                 if (X.get() == X.get_commit()) modified.erase(0);
                 else modified.insert(0);
@@ -395,22 +381,17 @@ namespace Lewzen {
                 bound.erase(3);
             },
             [this](const std::string &last){
-                if (Rx.get() == Rx.get_commit()) modified.erase(4);
+                if (PreserveAspectRatio.get() == PreserveAspectRatio.get_commit()) modified.erase(4);
                 else modified.insert(4);
                 bound.erase(4);
             },
             [this](const std::string &last){
-                if (Ry.get() == Ry.get_commit()) modified.erase(5);
+                if (ViewBox.get() == ViewBox.get_commit()) modified.erase(5);
                 else modified.insert(5);
                 bound.erase(5);
             },
-            [this](const std::string &last){
-                if (PathLength.get() == PathLength.get_commit()) modified.erase(6);
-                else modified.insert(6);
-                bound.erase(6);
-            },
         };
-        const std::array<std::function<void()>, 7> _attr_on_bind = {
+        const std::array<std::function<void()>, 6> _attr_on_bind = {
             std::bind([this](){
                 modified.erase(0);
                 bound.insert(0);
@@ -435,53 +416,43 @@ namespace Lewzen {
                 modified.erase(5);
                 bound.insert(5);
             }),
-            std::bind([this](){
-                modified.erase(6);
-                bound.insert(6);
-            }),
         };
-        const std::array<std::function<const std::string()>, 7> _attr_commit = {
+        const std::array<std::function<const std::string()>, 6> _attr_commit = {
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGRect::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGRect::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
-                if (get_width() == Width.get_commit()) return std::string("");
+                if (SVGRect::get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
-                if (get_height() == Height.get_commit()) return std::string("");
+                if (SVGRect::get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
-                if (get_rx() == Rx.get_commit()) return std::string("");
-                Rx.commit();
-                if (Rx.get() == STR_NULL) return std::string("reset rx");
-                else return std::string("modify rx \"" + Rx.get() + "\"");
+                if (SVGRect::get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
+                PreserveAspectRatio.commit();
+                if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
+                else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
-                if (get_ry() == Ry.get_commit()) return std::string("");
-                Ry.commit();
-                if (Ry.get() == STR_NULL) return std::string("reset ry");
-                else return std::string("modify ry \"" + Ry.get() + "\"");
-            },
-            [this](){
-                if (get_path_length() == PathLength.get_commit()) return std::string("");
-                PathLength.commit();
-                if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
-                else return std::string("modify pathLength \"" + PathLength.get() + "\"");
+                if (SVGRect::get_view_box() == ViewBox.get_commit()) return std::string("");
+                ViewBox.commit();
+                if (ViewBox.get() == STR_NULL) return std::string("reset viewBox");
+                else return std::string("modify viewBox \"" + ViewBox.get() + "\"");
             },
         };
 

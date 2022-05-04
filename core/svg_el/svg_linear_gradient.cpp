@@ -94,10 +94,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGLinearGradient::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGLinearGradient &SVGLinearGradient::operator=(const SVGLinearGradient &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _gradient_units = element.get_gradient_units();
         _gradient_transform = element.get_gradient_transform();

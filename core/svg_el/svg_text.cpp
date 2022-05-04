@@ -85,10 +85,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGText::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGText &SVGText::operator=(const SVGText &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _x = element.get_x();
         _y = element.get_y();

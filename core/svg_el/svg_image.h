@@ -49,97 +49,97 @@ namespace Lewzen {
         *
         * @return the width
         */
-        const std::string get_width() const;
+        virtual const std::string get_width() const;
         /**
         * The width the image renders at. Unlike HTML's <img>, this attribute is required.
         *
         * @param  the width
         */
-        void set_width(const std::string &width);
+        virtual void set_width(const std::string &width);
         /**
         * The height the image renders at. Unlike HTML's <img>, this attribute is required.
         *
         * @return the height
         */
-        const std::string get_height() const;
+        virtual const std::string get_height() const;
         /**
         * The height the image renders at. Unlike HTML's <img>, this attribute is required.
         *
         * @param  the height
         */
-        void set_height(const std::string &height);
+        virtual void set_height(const std::string &height);
         /**
         * Positions the image horizontally from the origin.
         *
         * @return the x
         */
-        const std::string get_x() const;
+        virtual const std::string get_x() const;
         /**
         * Positions the image horizontally from the origin.
         *
         * @param  the x
         */
-        void set_x(const std::string &x);
+        virtual void set_x(const std::string &x);
         /**
         * Positions the image vertically from the origin.
         *
         * @return the y
         */
-        const std::string get_y() const;
+        virtual const std::string get_y() const;
         /**
         * Positions the image vertically from the origin.
         *
         * @param  the y
         */
-        void set_y(const std::string &y);
+        virtual void set_y(const std::string &y);
         /**
         * Points at a URL for the image file.
         *
         * @return the href
         */
-        const std::string get_href() const;
+        virtual const std::string get_href() const;
         /**
         * Points at a URL for the image file.
         *
         * @param  the href
         */
-        void set_href(const std::string &href);
+        virtual void set_href(const std::string &href);
         /**
         * Points at a URL for the image file.
         *
         * @return the xlink:href
         */
-        const std::string get_xlinkZhref() const;
+        virtual const std::string get_xlinkZhref() const;
         /**
         * Points at a URL for the image file.
         *
         * @param  the xlink:href
         */
-        void set_xlinkZhref(const std::string &xlinkZhref);
+        virtual void set_xlinkZhref(const std::string &xlinkZhref);
         /**
         * how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. eg: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)
         *
         * @return the preserveAspectRatio
         */
-        const std::string get_preserve_aspect_ratio() const;
+        virtual const std::string get_preserve_aspect_ratio() const;
         /**
         * how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. eg: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)
         *
         * @param  the preserveAspectRatio
         */
-        void set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio);
+        virtual void set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio);
         /**
         * the value of the credentials flag for CORS requests.
         *
         * @return the crossorigin
         */
-        const std::string get_crossorigin() const;
+        virtual const std::string get_crossorigin() const;
         /**
         * the value of the credentials flag for CORS requests.
         *
         * @param  the crossorigin
         */
-        void set_crossorigin(const std::string &crossorigin);
+        virtual void set_crossorigin(const std::string &crossorigin);
 
         /// Attributes
     protected:

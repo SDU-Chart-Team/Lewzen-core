@@ -124,7 +124,7 @@ const std::string AttributeHPP(const std::vector<std::string> &tags) {
     ss << "        * @param attr attribute." << std::endl;
     ss << "        */" << std::endl;
     ss << "        template <typename T>" << std::endl;
-    ss << "        Attribute &operator=(const T &attr) { _LZ_WARNING(\"Calling Attribute.operator=, but no implementation.\") }" << std::endl;
+    ss << "        Attribute &operator=(const T &attr) { _LZ_WARNING(\"Calling Attribute.operator=, but no implementation.\") return *this; }" << std::endl;
     ss << "" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Bind attribute to a function. This will break value binding with bind_ptr." << std::endl;
@@ -308,6 +308,7 @@ const std::string ConstantHPP() {
     ss << "        AttrConstant &operator=(const T &attr)  {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling AttrConstant.set with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Bind attribute to a function. This will break value binding with bind_ptr. (This function will reset commit)" << std::endl;
@@ -328,6 +329,7 @@ const std::string ConstantHPP() {
     ss << "        AttrConstant &operator[](std::function<const T()>bind_func) {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling AttrConstant.set with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)" << std::endl;
@@ -348,6 +350,7 @@ const std::string ConstantHPP() {
     ss << "        AttrConstant &operator[](const std::weak_ptr<T> &bind_ptr) {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling AttrConstant.set with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "    " << std::endl;
     ss << "    private:" << std::endl;
@@ -397,6 +400,7 @@ const std::string ConstantHPP() {
     ss << "            auto _last = get_commit();" << std::endl;
     ss << "            _commit = std::bind(&AttrConstant::_from_con_val_legal_string, this);" << std::endl;
     ss << "            _on_assign(_last);" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Set attribute from legal string, conver to string. This will break value binding with bind_func and bind_ptr." << std::endl;
@@ -413,6 +417,7 @@ const std::string ConstantHPP() {
     ss << "        */" << std::endl;
     ss << "        AttrConstant &operator=(const char * attr) {" << std::endl;
     ss << "            operator=(std::string(attr));" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Bind attribute to a legal string function. This will break value binding with bind_ptr." << std::endl;
@@ -1251,6 +1256,7 @@ public:
         ss << "            auto _last = get_commit();" << std::endl;
         ss << "            _commit = std::bind(&Attr" << dom_to_pascal(_type) << "::_from_con_val_" << std::regex_replace(_cname, std::regex("\\s"), "_") << ", this);" << std::endl;
         ss << "            _on_assign(_last);" << std::endl;
+        ss << "            return *this;" << std::endl;
         ss << "        }" << std::endl;
         if (_ctype == "std::string") { // consider char *
             ss << "        /**" << std::endl;
@@ -1268,6 +1274,7 @@ public:
             ss << "        */" << std::endl;
             ss << "        Attr" << dom_to_pascal(_type) << " &operator=(const char * attr) {" << std::endl;
             ss << "            operator=(std::string(attr));" << std::endl;
+            ss << "            return *this;" << std::endl;
             ss << "        }" << std::endl;
         }
         ss << "        /**" << std::endl;
@@ -1413,6 +1420,7 @@ const std::string HPPFile(std::string typ, std::string comment, std::vector<std:
     ss << "        Attr" << dom_to_pascal(typ) << " &operator=(const T &attr) {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling Attr" << dom_to_pascal(typ) << ".set with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "" << std::endl;
     ss << "        /**" << std::endl;
@@ -1434,6 +1442,7 @@ const std::string HPPFile(std::string typ, std::string comment, std::vector<std:
     ss << "        Attr" << dom_to_pascal(typ) << " &operator[](std::function<const T()>bind_func) {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling Attr" << dom_to_pascal(typ) << ".bind with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     ss << "        /**" << std::endl;
     ss << "        * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)" << std::endl;
@@ -1454,6 +1463,7 @@ const std::string HPPFile(std::string typ, std::string comment, std::vector<std:
     ss << "        Attr" << dom_to_pascal(typ) << " &operator[](const std::weak_ptr<T> &bind_ptr) {" << std::endl;
     ss << "            _setter(STR_NULL);" << std::endl;
     ss << "            _LZ_WARNING(\"Calling Attr" << dom_to_pascal(typ) << ".bind with no implementation. Reset value.\")" << std::endl;
+    ss << "            return *this;" << std::endl;
     ss << "        }" << std::endl;
     for (auto &a : accepts) ss << std::endl << a.in_hpp_file();
     ss << std::endl;

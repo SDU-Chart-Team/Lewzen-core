@@ -67,10 +67,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGEllipse::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGEllipse &SVGEllipse::operator=(const SVGEllipse &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _cx = element.get_cx();
         _cy = element.get_cy();

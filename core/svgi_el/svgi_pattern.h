@@ -493,61 +493,61 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 10> _attr_commit = {
             [this](){
-                if (get_height() == Height.get_commit()) return std::string("");
+                if (SVGPattern::get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
-                if (get_href() == Href.get_commit()) return std::string("");
+                if (SVGPattern::get_href() == Href.get_commit()) return std::string("");
                 Href.commit();
                 if (Href.get() == STR_NULL) return std::string("reset href");
                 else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
-                if (get_pattern_content_units() == PatternContentUnits.get_commit()) return std::string("");
+                if (SVGPattern::get_pattern_content_units() == PatternContentUnits.get_commit()) return std::string("");
                 PatternContentUnits.commit();
                 if (PatternContentUnits.get() == STR_NULL) return std::string("reset patternContentUnits");
                 else return std::string("modify patternContentUnits \"" + PatternContentUnits.get() + "\"");
             },
             [this](){
-                if (get_pattern_transform() == PatternTransform.get_commit()) return std::string("");
+                if (SVGPattern::get_pattern_transform() == PatternTransform.get_commit()) return std::string("");
                 PatternTransform.commit();
                 if (PatternTransform.get() == STR_NULL) return std::string("reset patternTransform");
                 else return std::string("modify patternTransform \"" + PatternTransform.get() + "\"");
             },
             [this](){
-                if (get_pattern_units() == PatternUnits.get_commit()) return std::string("");
+                if (SVGPattern::get_pattern_units() == PatternUnits.get_commit()) return std::string("");
                 PatternUnits.commit();
                 if (PatternUnits.get() == STR_NULL) return std::string("reset patternUnits");
                 else return std::string("modify patternUnits \"" + PatternUnits.get() + "\"");
             },
             [this](){
-                if (get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
+                if (SVGPattern::get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
                 PreserveAspectRatio.commit();
                 if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
                 else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
-                if (get_view_box() == ViewBox.get_commit()) return std::string("");
+                if (SVGPattern::get_view_box() == ViewBox.get_commit()) return std::string("");
                 ViewBox.commit();
                 if (ViewBox.get() == STR_NULL) return std::string("reset viewBox");
                 else return std::string("modify viewBox \"" + ViewBox.get() + "\"");
             },
             [this](){
-                if (get_width() == Width.get_commit()) return std::string("");
+                if (SVGPattern::get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGPattern::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGPattern::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");

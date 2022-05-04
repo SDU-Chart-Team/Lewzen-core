@@ -166,7 +166,7 @@ public:
     const std::string on_commit() const {
         std::stringstream ss;
         ss << "            [this](){" << std::endl;
-        ss << "                if (get_" + dom_to_snake(_rname) + "() == " + _name + ".get_commit()) return std::string(\"\");" << std::endl;
+        ss << "                if (SVG" + dom_to_pascal(_tag) + "::get_" + dom_to_snake(_rname) + "() == " + _name + ".get_commit()) return std::string(\"\");" << std::endl;
         ss << "                " + _name + ".commit();" << std::endl;
         ss << "                if (" + _name + ".get() == STR_NULL) return std::string(\"reset " + _rname + "\");" << std::endl;
         ss << "                else return std::string(\"modify " + _rname + " \\\"\" + " + _name + ".get() + \"\\\"\");" << std::endl;
@@ -461,6 +461,7 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     std::stringstream ss;
     ss << "#ifndef __LZ_SVGI_ELEMENT__" << std::endl;
     ss << "#define __LZ_SVGI_ELEMENT__" << std::endl;
+    ss << "#include <set>" << std::endl;
     ss << "#include \"svgi_el/attr.hpp\"" << std::endl;
     ss << "#include \"svg_el.h\"" << std::endl;
     ss << "" << std::endl;

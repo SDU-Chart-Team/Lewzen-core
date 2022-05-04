@@ -10,6 +10,10 @@ elif [ "$platform" = "win-g++" ]
 then
     cd core
     make cc=x86_64-w64-mingw32-g++ ar=x86_64-w64-mingw32-ar
+elif [ "$platform" = "linux-clang++" ]
+then
+    cd core
+    make cc=clang++ ar=llvm-ar
 else
     echo unsupported platform.
     exit 1
@@ -42,11 +46,15 @@ cd ../..
 
 if [ "$platform" = "linux-g++" ]
 then
-    tar -czvf ../lewzen-core-${ver}.tar.gz release/*
+    tar -czvf ../lewzen-core-linux-g++-${ver}.tar.gz release/*
     rm release/ -rf
 elif [ "$platform" = "win-g++" ]
 then
-    7z a -t7z -r ../lewzen-core-${ver}.7z release/*
+    7z a -t7z -r ../lewzen-core-win-g++-${ver}.7z release/*
+    rm release/ -rf
+elif [ "$platform" = "linux-clang++" ]
+then
+    tar -czvf ../lewzen-core-linux-clang++-${ver}.tar.gz release/*
     rm release/ -rf
 else
     echo unsupported platform.

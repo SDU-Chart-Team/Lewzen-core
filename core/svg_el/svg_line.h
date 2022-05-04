@@ -42,70 +42,70 @@ namespace Lewzen {
         *
         * @return the x1
         */
-        const std::string get_xQ() const;
+        virtual const std::string get_xQ() const;
         /**
         * Defines the x-axis coordinate of the line starting point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @param  the x1
         */
-        void set_xQ(const std::string &xQ);
+        virtual void set_xQ(const std::string &xQ);
         /**
         * Defines the x-axis coordinate of the line ending point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @return the x2
         */
-        const std::string get_xR() const;
+        virtual const std::string get_xR() const;
         /**
         * Defines the x-axis coordinate of the line ending point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @param  the x2
         */
-        void set_xR(const std::string &xR);
+        virtual void set_xR(const std::string &xR);
         /**
         * Defines the y-axis coordinate of the line starting point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @return the y1
         */
-        const std::string get_yQ() const;
+        virtual const std::string get_yQ() const;
         /**
         * Defines the y-axis coordinate of the line starting point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @param  the y1
         */
-        void set_yQ(const std::string &yQ);
+        virtual void set_yQ(const std::string &yQ);
         /**
         * Defines the y-axis coordinate of the line ending point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @return the y2
         */
-        const std::string get_yR() const;
+        virtual const std::string get_yR() const;
         /**
         * Defines the y-axis coordinate of the line ending point. 
         * Value type: <length>|<percentage>|<number> ; Default value: 0; Animatable: yes
         *
         * @param  the y2
         */
-        void set_yR(const std::string &yR);
+        virtual void set_yR(const std::string &yR);
         /**
         * Defines the total path length in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @return the pathLength
         */
-        const std::string get_path_length() const;
+        virtual const std::string get_path_length() const;
         /**
         * Defines the total path length in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @param  the pathLength
         */
-        void set_path_length(const std::string &path_length);
+        virtual void set_path_length(const std::string &path_length);
 
         /// Attributes
     protected:

@@ -40,10 +40,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGPath::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGPath &SVGPath::operator=(const SVGPath &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _d = element.get_d();
         _path_length = element.get_path_length();

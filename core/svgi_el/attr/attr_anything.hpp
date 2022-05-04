@@ -94,6 +94,7 @@ namespace Lewzen {
         AttrAnything &operator=(const T &attr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAnything.set with no implementation. Reset value.")
+            return *this;
         }
 
         /**
@@ -115,6 +116,7 @@ namespace Lewzen {
         AttrAnything &operator[](std::function<const T()>bind_func) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAnything.bind with no implementation. Reset value.")
+            return *this;
         }
         /**
         * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)
@@ -135,6 +137,7 @@ namespace Lewzen {
         AttrAnything &operator[](const std::weak_ptr<T> &bind_ptr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAnything.bind with no implementation. Reset value.")
+            return *this;
         }
 
     private:
@@ -179,6 +182,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAnything::_from_con_val_string, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Set attribute from string, conver to string. This will break value binding with bind_func and bind_ptr.
@@ -195,6 +199,7 @@ namespace Lewzen {
         */
         AttrAnything &operator=(const char * attr) {
             operator=(std::string(attr));
+            return *this;
         }
         /**
         * Bind attribute to a string function. This will break value binding with bind_ptr.

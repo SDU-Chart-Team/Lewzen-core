@@ -91,6 +91,7 @@ namespace Lewzen {
         AttrListOfNumbers &operator=(const T &attr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrListOfNumbers.set with no implementation. Reset value.")
+            return *this;
         }
 
         /**
@@ -112,6 +113,7 @@ namespace Lewzen {
         AttrListOfNumbers &operator[](std::function<const T()>bind_func) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrListOfNumbers.bind with no implementation. Reset value.")
+            return *this;
         }
         /**
         * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)
@@ -132,6 +134,7 @@ namespace Lewzen {
         AttrListOfNumbers &operator[](const std::weak_ptr<T> &bind_ptr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrListOfNumbers.bind with no implementation. Reset value.")
+            return *this;
         }
 
     private:
@@ -176,6 +179,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_int, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_int function. This will break value binding with bind_ptr.
@@ -273,6 +277,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_long, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_long function. This will break value binding with bind_ptr.
@@ -370,6 +375,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_ll, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_ll function. This will break value binding with bind_ptr.
@@ -467,6 +473,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_double, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_double function. This will break value binding with bind_ptr.
@@ -564,6 +571,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_float, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_float function. This will break value binding with bind_ptr.
@@ -661,6 +669,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrListOfNumbers::_from_con_val_vec_ld, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a vec_ld function. This will break value binding with bind_ptr.

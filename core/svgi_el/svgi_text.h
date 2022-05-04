@@ -442,43 +442,43 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 7> _attr_commit = {
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGText::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGText::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
-                if (get_dx() == Dx.get_commit()) return std::string("");
+                if (SVGText::get_dx() == Dx.get_commit()) return std::string("");
                 Dx.commit();
                 if (Dx.get() == STR_NULL) return std::string("reset dx");
                 else return std::string("modify dx \"" + Dx.get() + "\"");
             },
             [this](){
-                if (get_dy() == Dy.get_commit()) return std::string("");
+                if (SVGText::get_dy() == Dy.get_commit()) return std::string("");
                 Dy.commit();
                 if (Dy.get() == STR_NULL) return std::string("reset dy");
                 else return std::string("modify dy \"" + Dy.get() + "\"");
             },
             [this](){
-                if (get_rotate() == Rotate.get_commit()) return std::string("");
+                if (SVGText::get_rotate() == Rotate.get_commit()) return std::string("");
                 Rotate.commit();
                 if (Rotate.get() == STR_NULL) return std::string("reset rotate");
                 else return std::string("modify rotate \"" + Rotate.get() + "\"");
             },
             [this](){
-                if (get_length_adjust() == LengthAdjust.get_commit()) return std::string("");
+                if (SVGText::get_length_adjust() == LengthAdjust.get_commit()) return std::string("");
                 LengthAdjust.commit();
                 if (LengthAdjust.get() == STR_NULL) return std::string("reset lengthAdjust");
                 else return std::string("modify lengthAdjust \"" + LengthAdjust.get() + "\"");
             },
             [this](){
-                if (get_text_length() == TextLength.get_commit()) return std::string("");
+                if (SVGText::get_text_length() == TextLength.get_commit()) return std::string("");
                 TextLength.commit();
                 if (TextLength.get() == STR_NULL) return std::string("reset textLength");
                 else return std::string("modify textLength \"" + TextLength.get() + "\"");

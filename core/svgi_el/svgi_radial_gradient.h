@@ -493,61 +493,61 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 10> _attr_commit = {
             [this](){
-                if (get_cx() == Cx.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_cx() == Cx.get_commit()) return std::string("");
                 Cx.commit();
                 if (Cx.get() == STR_NULL) return std::string("reset cx");
                 else return std::string("modify cx \"" + Cx.get() + "\"");
             },
             [this](){
-                if (get_cy() == Cy.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_cy() == Cy.get_commit()) return std::string("");
                 Cy.commit();
                 if (Cy.get() == STR_NULL) return std::string("reset cy");
                 else return std::string("modify cy \"" + Cy.get() + "\"");
             },
             [this](){
-                if (get_fr() == Fr.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_fr() == Fr.get_commit()) return std::string("");
                 Fr.commit();
                 if (Fr.get() == STR_NULL) return std::string("reset fr");
                 else return std::string("modify fr \"" + Fr.get() + "\"");
             },
             [this](){
-                if (get_fx() == Fx.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_fx() == Fx.get_commit()) return std::string("");
                 Fx.commit();
                 if (Fx.get() == STR_NULL) return std::string("reset fx");
                 else return std::string("modify fx \"" + Fx.get() + "\"");
             },
             [this](){
-                if (get_fy() == Fy.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_fy() == Fy.get_commit()) return std::string("");
                 Fy.commit();
                 if (Fy.get() == STR_NULL) return std::string("reset fy");
                 else return std::string("modify fy \"" + Fy.get() + "\"");
             },
             [this](){
-                if (get_gradient_units() == GradientUnits.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_gradient_units() == GradientUnits.get_commit()) return std::string("");
                 GradientUnits.commit();
                 if (GradientUnits.get() == STR_NULL) return std::string("reset gradientUnits");
                 else return std::string("modify gradientUnits \"" + GradientUnits.get() + "\"");
             },
             [this](){
-                if (get_gradient_transform() == GradientTransform.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_gradient_transform() == GradientTransform.get_commit()) return std::string("");
                 GradientTransform.commit();
                 if (GradientTransform.get() == STR_NULL) return std::string("reset gradientTransform");
                 else return std::string("modify gradientTransform \"" + GradientTransform.get() + "\"");
             },
             [this](){
-                if (get_href() == Href.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_href() == Href.get_commit()) return std::string("");
                 Href.commit();
                 if (Href.get() == STR_NULL) return std::string("reset href");
                 else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
-                if (get_r() == R.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_r() == R.get_commit()) return std::string("");
                 R.commit();
                 if (R.get() == STR_NULL) return std::string("reset r");
                 else return std::string("modify r \"" + R.get() + "\"");
             },
             [this](){
-                if (get_spread_method() == SpreadMethod.get_commit()) return std::string("");
+                if (SVGRadialGradient::get_spread_method() == SpreadMethod.get_commit()) return std::string("");
                 SpreadMethod.commit();
                 if (SpreadMethod.get() == STR_NULL) return std::string("reset spreadMethod");
                 else return std::string("modify spreadMethod \"" + SpreadMethod.get() + "\"");

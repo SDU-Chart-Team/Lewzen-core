@@ -44,84 +44,84 @@ namespace Lewzen {
         *
         * @return the height
         */
-        const std::string get_height() const;
+        virtual const std::string get_height() const;
         /**
         * This attribute defines the height of the masking area. 
         * Value type: <length> ; Default value: 120%; Animatable: yes
         *
         * @param  the height
         */
-        void set_height(const std::string &height);
+        virtual void set_height(const std::string &height);
         /**
         * This attribute defines the coordinate system for the contents of the <mask>. 
         * Value type: userSpaceOnUse|objectBoundingBox ; Default value: userSpaceOnUse; Animatable: yes.
         *
         * @return the maskContentUnits
         */
-        const std::string get_mask_content_units() const;
+        virtual const std::string get_mask_content_units() const;
         /**
         * This attribute defines the coordinate system for the contents of the <mask>. 
         * Value type: userSpaceOnUse|objectBoundingBox ; Default value: userSpaceOnUse; Animatable: yes.
         *
         * @param  the maskContentUnits
         */
-        void set_mask_content_units(const std::string &mask_content_units);
+        virtual void set_mask_content_units(const std::string &mask_content_units);
         /**
         * This attribute defines the coordinate system for attributes x, y, width and height on the <mask>. 
         * Value type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes
         *
         * @return the maskUnits
         */
-        const std::string get_mask_units() const;
+        virtual const std::string get_mask_units() const;
         /**
         * This attribute defines the coordinate system for attributes x, y, width and height on the <mask>. 
         * Value type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes
         *
         * @param  the maskUnits
         */
-        void set_mask_units(const std::string &mask_units);
+        virtual void set_mask_units(const std::string &mask_units);
         /**
         * This attribute defines the x-axis coordinate of the top-left corner of the masking area. 
         * Value type: <coordinate> ; Default value: -10%; Animatable: yes
         *
         * @return the x
         */
-        const std::string get_x() const;
+        virtual const std::string get_x() const;
         /**
         * This attribute defines the x-axis coordinate of the top-left corner of the masking area. 
         * Value type: <coordinate> ; Default value: -10%; Animatable: yes
         *
         * @param  the x
         */
-        void set_x(const std::string &x);
+        virtual void set_x(const std::string &x);
         /**
         * This attribute defines the y-axis coordinate of the top-left corner of the masking area. 
         * Value type: <coordinate> ; Default value: -10%; Animatable: yes
         *
         * @return the y
         */
-        const std::string get_y() const;
+        virtual const std::string get_y() const;
         /**
         * This attribute defines the y-axis coordinate of the top-left corner of the masking area. 
         * Value type: <coordinate> ; Default value: -10%; Animatable: yes
         *
         * @param  the y
         */
-        void set_y(const std::string &y);
+        virtual void set_y(const std::string &y);
         /**
         * This attribute defines the width of the masking area. 
         * Value type: <length> ; Default value: 120%; Animatable: yes
         *
         * @return the width
         */
-        const std::string get_width() const;
+        virtual const std::string get_width() const;
         /**
         * This attribute defines the width of the masking area. 
         * Value type: <length> ; Default value: 120%; Animatable: yes
         *
         * @param  the width
         */
-        void set_width(const std::string &width);
+        virtual void set_width(const std::string &width);
 
         /// Attributes
     protected:

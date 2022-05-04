@@ -112,10 +112,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGRadialGradient::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGRadialGradient &SVGRadialGradient::operator=(const SVGRadialGradient &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _cx = element.get_cx();
         _cy = element.get_cy();

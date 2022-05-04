@@ -102,6 +102,7 @@ namespace Lewzen {
         AttrAngle &operator=(const T &attr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAngle.set with no implementation. Reset value.")
+            return *this;
         }
 
         /**
@@ -123,6 +124,7 @@ namespace Lewzen {
         AttrAngle &operator[](std::function<const T()>bind_func) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAngle.bind with no implementation. Reset value.")
+            return *this;
         }
         /**
         * Bind attribute to a pointer. This will break value binding with bind_ptr. (This function will reset commit)
@@ -143,6 +145,7 @@ namespace Lewzen {
         AttrAngle &operator[](const std::weak_ptr<T> &bind_ptr) {
             _setter(STR_NULL);
             _LZ_WARNING("Calling AttrAngle.bind with no implementation. Reset value.")
+            return *this;
         }
 
     private:
@@ -187,6 +190,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_integer, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a integer function. This will break value binding with bind_ptr.
@@ -273,6 +277,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_float, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a float function. This will break value binding with bind_ptr.
@@ -359,6 +364,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_double, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a double function. This will break value binding with bind_ptr.
@@ -445,6 +451,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_long, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a long function. This will break value binding with bind_ptr.
@@ -531,6 +538,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_long_integer, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a long integer function. This will break value binding with bind_ptr.
@@ -617,6 +625,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_long_double, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Bind attribute to a long double function. This will break value binding with bind_ptr.
@@ -708,6 +717,7 @@ namespace Lewzen {
             auto _last = get_commit();
             _commit = std::bind(&AttrAngle::_from_con_val_legal_string, this);
             _on_assign(_last);
+            return *this;
         }
         /**
         * Set attribute from legal string, conver to string. This will break value binding with bind_func and bind_ptr.
@@ -724,6 +734,7 @@ namespace Lewzen {
         */
         AttrAngle &operator=(const char * attr) {
             operator=(std::string(attr));
+            return *this;
         }
         /**
         * Bind attribute to a legal string function. This will break value binding with bind_ptr.

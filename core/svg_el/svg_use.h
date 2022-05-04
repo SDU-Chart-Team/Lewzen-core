@@ -42,70 +42,70 @@ namespace Lewzen {
         *
         * @return the href
         */
-        const std::string get_href() const;
+        virtual const std::string get_href() const;
         /**
         * The URL to an element/fragment that needs to be duplicated. 
         * Value type: <URL> ; Default value: none; Animatable: yes
         *
         * @param  the href
         */
-        void set_href(const std::string &href);
+        virtual void set_href(const std::string &href);
         /**
         * The x coordinate of the use element. 
         * Value type: <coordinate> ; Default value: 0; Animatable: yes
         *
         * @return the x
         */
-        const std::string get_x() const;
+        virtual const std::string get_x() const;
         /**
         * The x coordinate of the use element. 
         * Value type: <coordinate> ; Default value: 0; Animatable: yes
         *
         * @param  the x
         */
-        void set_x(const std::string &x);
+        virtual void set_x(const std::string &x);
         /**
         * The y coordinate of the use element. 
         * Value type: <coordinate> ; Default value: 0; Animatable: yes
         *
         * @return the y
         */
-        const std::string get_y() const;
+        virtual const std::string get_y() const;
         /**
         * The y coordinate of the use element. 
         * Value type: <coordinate> ; Default value: 0; Animatable: yes
         *
         * @param  the y
         */
-        void set_y(const std::string &y);
+        virtual void set_y(const std::string &y);
         /**
         * The width of the use element. 
         * Value type: <length> ; Default value: 0; Animatable: yes
         *
         * @return the width
         */
-        const std::string get_width() const;
+        virtual const std::string get_width() const;
         /**
         * The width of the use element. 
         * Value type: <length> ; Default value: 0; Animatable: yes
         *
         * @param  the width
         */
-        void set_width(const std::string &width);
+        virtual void set_width(const std::string &width);
         /**
         * The width of the use element. 
         * Value type: <length> ; Default value: 0; Animatable: yes
         *
         * @return the height
         */
-        const std::string get_height() const;
+        virtual const std::string get_height() const;
         /**
         * The width of the use element. 
         * Value type: <length> ; Default value: 0; Animatable: yes
         *
         * @param  the height
         */
-        void set_height(const std::string &height);
+        virtual void set_height(const std::string &height);
 
         /// Attributes
     protected:

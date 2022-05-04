@@ -38,42 +38,42 @@ namespace Lewzen {
         *
         * @return the offset
         */
-        const std::string get_offset() const;
+        virtual const std::string get_offset() const;
         /**
         * This attribute defines where the gradient stop is placed along the gradient vector. 
         * Value type: <number>|<percentage>; Default value: 0; Animatable: yes
         *
         * @param  the offset
         */
-        void set_offset(const std::string &offset);
+        virtual void set_offset(const std::string &offset);
         /**
         * This attribute defines the color of the gradient stop. It can be used as a CSS property. 
         * Value type: currentcolor|<color>|<color>:icccolor; Default value: black; Animatable: yes
         *
         * @return the stop-color
         */
-        const std::string get_stop_color() const;
+        virtual const std::string get_stop_color() const override;
         /**
         * This attribute defines the color of the gradient stop. It can be used as a CSS property. 
         * Value type: currentcolor|<color>|<color>:icccolor; Default value: black; Animatable: yes
         *
         * @param  the stop-color
         */
-        void set_stop_color(const std::string &stop_color);
+        virtual void set_stop_color(const std::string &stop_color) override;
         /**
         * This attribute defines the opacity of the gradient stop. It can be used as a CSS property. 
         * Value type: <opacity-value>; Default value: 1; Animatable: yes
         *
         * @return the stop-opacity
         */
-        const std::string get_stop_opacity() const;
+        virtual const std::string get_stop_opacity() const override;
         /**
         * This attribute defines the opacity of the gradient stop. It can be used as a CSS property. 
         * Value type: <opacity-value>; Default value: 1; Animatable: yes
         *
         * @param  the stop-opacity
         */
-        void set_stop_opacity(const std::string &stop_opacity);
+        virtual void set_stop_opacity(const std::string &stop_opacity) override;
 
         /// Attributes
     protected:

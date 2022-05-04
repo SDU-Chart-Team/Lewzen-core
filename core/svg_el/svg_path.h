@@ -36,28 +36,28 @@ namespace Lewzen {
         *
         * @return the d
         */
-        const std::string get_d() const;
+        virtual const std::string get_d() const override;
         /**
         * This attribute defines the shape of the path. 
         * Value type: <string> ; Default value: ''; Animatable: yes
         *
         * @param  the d
         */
-        void set_d(const std::string &d);
+        virtual void set_d(const std::string &d) override;
         /**
         * This attribute lets authors specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @return the pathLength
         */
-        const std::string get_path_length() const;
+        virtual const std::string get_path_length() const;
         /**
         * This attribute lets authors specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @param  the pathLength
         */
-        void set_path_length(const std::string &path_length);
+        virtual void set_path_length(const std::string &path_length);
 
         /// Attributes
     protected:
