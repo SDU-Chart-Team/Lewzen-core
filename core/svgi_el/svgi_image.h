@@ -453,49 +453,49 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 8> _attr_commit = {
             [this](){
-                if (get_width() == Width.get_commit()) return std::string("");
+                if (SVGImage::get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
-                if (get_height() == Height.get_commit()) return std::string("");
+                if (SVGImage::get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGImage::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGImage::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
-                if (get_href() == Href.get_commit()) return std::string("");
+                if (SVGImage::get_href() == Href.get_commit()) return std::string("");
                 Href.commit();
                 if (Href.get() == STR_NULL) return std::string("reset href");
                 else return std::string("modify href \"" + Href.get() + "\"");
             },
             [this](){
-                if (get_xlinkZhref() == XlinkHref.get_commit()) return std::string("");
+                if (SVGImage::get_xlinkZhref() == XlinkHref.get_commit()) return std::string("");
                 XlinkHref.commit();
                 if (XlinkHref.get() == STR_NULL) return std::string("reset xlink:href");
                 else return std::string("modify xlink:href \"" + XlinkHref.get() + "\"");
             },
             [this](){
-                if (get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
+                if (SVGImage::get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
                 PreserveAspectRatio.commit();
                 if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
                 else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
-                if (get_crossorigin() == Crossorigin.get_commit()) return std::string("");
+                if (SVGImage::get_crossorigin() == Crossorigin.get_commit()) return std::string("");
                 Crossorigin.commit();
                 if (Crossorigin.get() == STR_NULL) return std::string("reset crossorigin");
                 else return std::string("modify crossorigin \"" + Crossorigin.get() + "\"");

@@ -442,43 +442,43 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 7> _attr_commit = {
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGRect::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGRect::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
-                if (get_width() == Width.get_commit()) return std::string("");
+                if (SVGRect::get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");
             },
             [this](){
-                if (get_height() == Height.get_commit()) return std::string("");
+                if (SVGRect::get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
-                if (get_rx() == Rx.get_commit()) return std::string("");
+                if (SVGRect::get_rx() == Rx.get_commit()) return std::string("");
                 Rx.commit();
                 if (Rx.get() == STR_NULL) return std::string("reset rx");
                 else return std::string("modify rx \"" + Rx.get() + "\"");
             },
             [this](){
-                if (get_ry() == Ry.get_commit()) return std::string("");
+                if (SVGRect::get_ry() == Ry.get_commit()) return std::string("");
                 Ry.commit();
                 if (Ry.get() == STR_NULL) return std::string("reset ry");
                 else return std::string("modify ry \"" + Ry.get() + "\"");
             },
             [this](){
-                if (get_path_length() == PathLength.get_commit()) return std::string("");
+                if (SVGRect::get_path_length() == PathLength.get_commit()) return std::string("");
                 PathLength.commit();
                 if (PathLength.get() == STR_NULL) return std::string("reset pathLength");
                 else return std::string("modify pathLength \"" + PathLength.get() + "\"");

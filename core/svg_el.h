@@ -310,1798 +310,1798 @@ namespace Lewzen {
         *
         * @return the id
         */
-        const std::string get_id() const;
+        virtual const std::string get_id() const;
         /**
         * Defines a unique identifier (ID) which must be unique in the whole document. Its purpose is to identify the element when linking (using a fragment identifier), scripting, or styling (with CSS). 
         * Value: Any valid ID string; Animatable: No
         *
         * @param  the id
         */
-        void set_id(const std::string &id);
+        virtual void set_id(const std::string &id);
         /**
         * Participates in defining the language of the element, the language that non-editable elements are written in or the language that editable elements should be written in. The tag contains one single entry value in the format defined in RFC 5646: Tags for Identifying Languages (also known as BCP 47). 
         * Value: Any valid language ID; Animatable: No
         *
         * @return the lang
         */
-        const std::string get_lang() const;
+        virtual const std::string get_lang() const;
         /**
         * Participates in defining the language of the element, the language that non-editable elements are written in or the language that editable elements should be written in. The tag contains one single entry value in the format defined in RFC 5646: Tags for Identifying Languages (also known as BCP 47). 
         * Value: Any valid language ID; Animatable: No
         *
         * @param  the lang
         */
-        void set_lang(const std::string &lang);
+        virtual void set_lang(const std::string &lang);
         /**
         * The tabindex SVG attribute allows you to control whether an element is focusable and to define the relative order of the element for the purposes of sequential focus navigation. 
         * Value type: <integer>; Animatable: No
         *
         * @return the tabindex
         */
-        const std::string get_tabindex() const;
+        virtual const std::string get_tabindex() const;
         /**
         * The tabindex SVG attribute allows you to control whether an element is focusable and to define the relative order of the element for the purposes of sequential focus navigation. 
         * Value type: <integer>; Animatable: No
         *
         * @param  the tabindex
         */
-        void set_tabindex(const std::string &tabindex);
+        virtual void set_tabindex(const std::string &tabindex);
         /**
         * Specifies a base IRI other than the base IRI of the document. 
         * Value type: <IRI>; Animatable: No
         *
         * @return the xml:base
         */
-        const std::string get_xmlZbase() const;
+        virtual const std::string get_xmlZbase() const;
         /**
         * Specifies a base IRI other than the base IRI of the document. 
         * Value type: <IRI>; Animatable: No
         *
         * @param  the xml:base
         */
-        void set_xmlZbase(const std::string &xmlZbase);
+        virtual void set_xmlZbase(const std::string &xmlZbase);
         /**
         * It is a universal attribute allowed in all XML dialects to mark up the natural human language that an element contains. It's almost identical in usage to HTML's lang, but in conforming XML 1.0 documents, it does not allow the use of a null attribute value (xml:lang="") to indicate an unknown language. Instead, use xml:lang="und". 
         * Value: Any valid language ID; Animatable: No
         *
         * @return the xml:lang
         */
-        const std::string get_xmlZlang() const;
+        virtual const std::string get_xmlZlang() const;
         /**
         * It is a universal attribute allowed in all XML dialects to mark up the natural human language that an element contains. It's almost identical in usage to HTML's lang, but in conforming XML 1.0 documents, it does not allow the use of a null attribute value (xml:lang="") to indicate an unknown language. Instead, use xml:lang="und". 
         * Value: Any valid language ID; Animatable: No
         *
         * @param  the xml:lang
         */
-        void set_xmlZlang(const std::string &xmlZlang);
+        virtual void set_xmlZlang(const std::string &xmlZlang);
         /**
         * SVG supports the standard XML attribute xml:space to specify the handling of white space characters within a given <text> element's character data. 
         * Value: default | preserve; Animatable: No
         *
         * @return the xml:space
         */
-        const std::string get_xmlZspace() const;
+        virtual const std::string get_xmlZspace() const;
         /**
         * SVG supports the standard XML attribute xml:space to specify the handling of white space characters within a given <text> element's character data. 
         * Value: default | preserve; Animatable: No
         *
         * @param  the xml:space
         */
-        void set_xmlZspace(const std::string &xmlZspace);
+        virtual void set_xmlZspace(const std::string &xmlZspace);
         /**
         * Assigns a class name or set of class names to an element. It functions identically to the class attribute in HTML. 
         * Value: Any valid ID string; Animatable: Yes
         *
         * @return the class
         */
-        const std::string get_class() const;
+        virtual const std::string get_class() const;
         /**
         * Assigns a class name or set of class names to an element. It functions identically to the class attribute in HTML. 
         * Value: Any valid ID string; Animatable: Yes
         *
         * @param  the class
         */
-        void set_class(const std::string &cls);
+        virtual void set_class(const std::string &cls);
         /**
         * It specifies style information for its element. It functions identically to the style attribute in HTML. 
         * Value: Any valid style string; Animatable: No
         *
         * @return the style
         */
-        const std::string get_style() const;
+        virtual const std::string get_style() const;
         /**
         * It specifies style information for its element. It functions identically to the style attribute in HTML. 
         * Value: Any valid style string; Animatable: No
         *
         * @param  the style
         */
-        void set_style(const std::string &style);
+        virtual void set_style(const std::string &style);
         /**
         * Event of onbegin.
         *
         * @return the onbegin
         */
-        const std::string get_onbegin() const;
+        virtual const std::string get_onbegin() const;
         /**
         * Event of onbegin.
         *
         * @param  the onbegin
         */
-        void set_onbegin(const std::string &onbegin);
+        virtual void set_onbegin(const std::string &onbegin);
         /**
         * Event of onend.
         *
         * @return the onend
         */
-        const std::string get_onend() const;
+        virtual const std::string get_onend() const;
         /**
         * Event of onend.
         *
         * @param  the onend
         */
-        void set_onend(const std::string &onend);
+        virtual void set_onend(const std::string &onend);
         /**
         * Event of onrepeat.
         *
         * @return the onrepeat
         */
-        const std::string get_onrepeat() const;
+        virtual const std::string get_onrepeat() const;
         /**
         * Event of onrepeat.
         *
         * @param  the onrepeat
         */
-        void set_onrepeat(const std::string &onrepeat);
+        virtual void set_onrepeat(const std::string &onrepeat);
         /**
         * Event of onabort.
         *
         * @return the onabort
         */
-        const std::string get_onabort() const;
+        virtual const std::string get_onabort() const;
         /**
         * Event of onabort.
         *
         * @param  the onabort
         */
-        void set_onabort(const std::string &onabort);
+        virtual void set_onabort(const std::string &onabort);
         /**
         * Event of onerror.
         *
         * @return the onerror
         */
-        const std::string get_onerror() const;
+        virtual const std::string get_onerror() const;
         /**
         * Event of onerror.
         *
         * @param  the onerror
         */
-        void set_onerror(const std::string &onerror);
+        virtual void set_onerror(const std::string &onerror);
         /**
         * Event of onresize.
         *
         * @return the onresize
         */
-        const std::string get_onresize() const;
+        virtual const std::string get_onresize() const;
         /**
         * Event of onresize.
         *
         * @param  the onresize
         */
-        void set_onresize(const std::string &onresize);
+        virtual void set_onresize(const std::string &onresize);
         /**
         * Event of onscroll.
         *
         * @return the onscroll
         */
-        const std::string get_onscroll() const;
+        virtual const std::string get_onscroll() const;
         /**
         * Event of onscroll.
         *
         * @param  the onscroll
         */
-        void set_onscroll(const std::string &onscroll);
+        virtual void set_onscroll(const std::string &onscroll);
         /**
         * Event of onunload.
         *
         * @return the onunload
         */
-        const std::string get_onunload() const;
+        virtual const std::string get_onunload() const;
         /**
         * Event of onunload.
         *
         * @param  the onunload
         */
-        void set_onunload(const std::string &onunload);
+        virtual void set_onunload(const std::string &onunload);
         /**
         * Event of oncopy.
         *
         * @return the oncopy
         */
-        const std::string get_oncopy() const;
+        virtual const std::string get_oncopy() const;
         /**
         * Event of oncopy.
         *
         * @param  the oncopy
         */
-        void set_oncopy(const std::string &oncopy);
+        virtual void set_oncopy(const std::string &oncopy);
         /**
         * Event of oncut.
         *
         * @return the oncut
         */
-        const std::string get_oncut() const;
+        virtual const std::string get_oncut() const;
         /**
         * Event of oncut.
         *
         * @param  the oncut
         */
-        void set_oncut(const std::string &oncut);
+        virtual void set_oncut(const std::string &oncut);
         /**
         * Event of onpaste.
         *
         * @return the onpaste
         */
-        const std::string get_onpaste() const;
+        virtual const std::string get_onpaste() const;
         /**
         * Event of onpaste.
         *
         * @param  the onpaste
         */
-        void set_onpaste(const std::string &onpaste);
+        virtual void set_onpaste(const std::string &onpaste);
         /**
         * Event of oncancel.
         *
         * @return the oncancel
         */
-        const std::string get_oncancel() const;
+        virtual const std::string get_oncancel() const;
         /**
         * Event of oncancel.
         *
         * @param  the oncancel
         */
-        void set_oncancel(const std::string &oncancel);
+        virtual void set_oncancel(const std::string &oncancel);
         /**
         * Event of oncanplay.
         *
         * @return the oncanplay
         */
-        const std::string get_oncanplay() const;
+        virtual const std::string get_oncanplay() const;
         /**
         * Event of oncanplay.
         *
         * @param  the oncanplay
         */
-        void set_oncanplay(const std::string &oncanplay);
+        virtual void set_oncanplay(const std::string &oncanplay);
         /**
         * Event of oncanplaythrough.
         *
         * @return the oncanplaythrough
         */
-        const std::string get_oncanplaythrough() const;
+        virtual const std::string get_oncanplaythrough() const;
         /**
         * Event of oncanplaythrough.
         *
         * @param  the oncanplaythrough
         */
-        void set_oncanplaythrough(const std::string &oncanplaythrough);
+        virtual void set_oncanplaythrough(const std::string &oncanplaythrough);
         /**
         * Event of onchange.
         *
         * @return the onchange
         */
-        const std::string get_onchange() const;
+        virtual const std::string get_onchange() const;
         /**
         * Event of onchange.
         *
         * @param  the onchange
         */
-        void set_onchange(const std::string &onchange);
+        virtual void set_onchange(const std::string &onchange);
         /**
         * Event of onclick.
         *
         * @return the onclick
         */
-        const std::string get_onclick() const;
+        virtual const std::string get_onclick() const;
         /**
         * Event of onclick.
         *
         * @param  the onclick
         */
-        void set_onclick(const std::string &onclick);
+        virtual void set_onclick(const std::string &onclick);
         /**
         * Event of onclose.
         *
         * @return the onclose
         */
-        const std::string get_onclose() const;
+        virtual const std::string get_onclose() const;
         /**
         * Event of onclose.
         *
         * @param  the onclose
         */
-        void set_onclose(const std::string &onclose);
+        virtual void set_onclose(const std::string &onclose);
         /**
         * Event of oncuechange.
         *
         * @return the oncuechange
         */
-        const std::string get_oncuechange() const;
+        virtual const std::string get_oncuechange() const;
         /**
         * Event of oncuechange.
         *
         * @param  the oncuechange
         */
-        void set_oncuechange(const std::string &oncuechange);
+        virtual void set_oncuechange(const std::string &oncuechange);
         /**
         * Event of ondblclick.
         *
         * @return the ondblclick
         */
-        const std::string get_ondblclick() const;
+        virtual const std::string get_ondblclick() const;
         /**
         * Event of ondblclick.
         *
         * @param  the ondblclick
         */
-        void set_ondblclick(const std::string &ondblclick);
+        virtual void set_ondblclick(const std::string &ondblclick);
         /**
         * Event of ondrag.
         *
         * @return the ondrag
         */
-        const std::string get_ondrag() const;
+        virtual const std::string get_ondrag() const;
         /**
         * Event of ondrag.
         *
         * @param  the ondrag
         */
-        void set_ondrag(const std::string &ondrag);
+        virtual void set_ondrag(const std::string &ondrag);
         /**
         * Event of ondragend.
         *
         * @return the ondragend
         */
-        const std::string get_ondragend() const;
+        virtual const std::string get_ondragend() const;
         /**
         * Event of ondragend.
         *
         * @param  the ondragend
         */
-        void set_ondragend(const std::string &ondragend);
+        virtual void set_ondragend(const std::string &ondragend);
         /**
         * Event of ondragenter.
         *
         * @return the ondragenter
         */
-        const std::string get_ondragenter() const;
+        virtual const std::string get_ondragenter() const;
         /**
         * Event of ondragenter.
         *
         * @param  the ondragenter
         */
-        void set_ondragenter(const std::string &ondragenter);
+        virtual void set_ondragenter(const std::string &ondragenter);
         /**
         * Event of ondragleave.
         *
         * @return the ondragleave
         */
-        const std::string get_ondragleave() const;
+        virtual const std::string get_ondragleave() const;
         /**
         * Event of ondragleave.
         *
         * @param  the ondragleave
         */
-        void set_ondragleave(const std::string &ondragleave);
+        virtual void set_ondragleave(const std::string &ondragleave);
         /**
         * Event of ondragover.
         *
         * @return the ondragover
         */
-        const std::string get_ondragover() const;
+        virtual const std::string get_ondragover() const;
         /**
         * Event of ondragover.
         *
         * @param  the ondragover
         */
-        void set_ondragover(const std::string &ondragover);
+        virtual void set_ondragover(const std::string &ondragover);
         /**
         * Event of ondragstart.
         *
         * @return the ondragstart
         */
-        const std::string get_ondragstart() const;
+        virtual const std::string get_ondragstart() const;
         /**
         * Event of ondragstart.
         *
         * @param  the ondragstart
         */
-        void set_ondragstart(const std::string &ondragstart);
+        virtual void set_ondragstart(const std::string &ondragstart);
         /**
         * Event of ondrop.
         *
         * @return the ondrop
         */
-        const std::string get_ondrop() const;
+        virtual const std::string get_ondrop() const;
         /**
         * Event of ondrop.
         *
         * @param  the ondrop
         */
-        void set_ondrop(const std::string &ondrop);
+        virtual void set_ondrop(const std::string &ondrop);
         /**
         * Event of ondurationchange.
         *
         * @return the ondurationchange
         */
-        const std::string get_ondurationchange() const;
+        virtual const std::string get_ondurationchange() const;
         /**
         * Event of ondurationchange.
         *
         * @param  the ondurationchange
         */
-        void set_ondurationchange(const std::string &ondurationchange);
+        virtual void set_ondurationchange(const std::string &ondurationchange);
         /**
         * Event of onemptied.
         *
         * @return the onemptied
         */
-        const std::string get_onemptied() const;
+        virtual const std::string get_onemptied() const;
         /**
         * Event of onemptied.
         *
         * @param  the onemptied
         */
-        void set_onemptied(const std::string &onemptied);
+        virtual void set_onemptied(const std::string &onemptied);
         /**
         * Event of onended.
         *
         * @return the onended
         */
-        const std::string get_onended() const;
+        virtual const std::string get_onended() const;
         /**
         * Event of onended.
         *
         * @param  the onended
         */
-        void set_onended(const std::string &onended);
+        virtual void set_onended(const std::string &onended);
         /**
         * Event of onfocus.
         *
         * @return the onfocus
         */
-        const std::string get_onfocus() const;
+        virtual const std::string get_onfocus() const;
         /**
         * Event of onfocus.
         *
         * @param  the onfocus
         */
-        void set_onfocus(const std::string &onfocus);
+        virtual void set_onfocus(const std::string &onfocus);
         /**
         * Event of oninput.
         *
         * @return the oninput
         */
-        const std::string get_oninput() const;
+        virtual const std::string get_oninput() const;
         /**
         * Event of oninput.
         *
         * @param  the oninput
         */
-        void set_oninput(const std::string &oninput);
+        virtual void set_oninput(const std::string &oninput);
         /**
         * Event of oninvalid.
         *
         * @return the oninvalid
         */
-        const std::string get_oninvalid() const;
+        virtual const std::string get_oninvalid() const;
         /**
         * Event of oninvalid.
         *
         * @param  the oninvalid
         */
-        void set_oninvalid(const std::string &oninvalid);
+        virtual void set_oninvalid(const std::string &oninvalid);
         /**
         * Event of onkeydown.
         *
         * @return the onkeydown
         */
-        const std::string get_onkeydown() const;
+        virtual const std::string get_onkeydown() const;
         /**
         * Event of onkeydown.
         *
         * @param  the onkeydown
         */
-        void set_onkeydown(const std::string &onkeydown);
+        virtual void set_onkeydown(const std::string &onkeydown);
         /**
         * Event of onkeypress.
         *
         * @return the onkeypress
         */
-        const std::string get_onkeypress() const;
+        virtual const std::string get_onkeypress() const;
         /**
         * Event of onkeypress.
         *
         * @param  the onkeypress
         */
-        void set_onkeypress(const std::string &onkeypress);
+        virtual void set_onkeypress(const std::string &onkeypress);
         /**
         * Event of onkeyup.
         *
         * @return the onkeyup
         */
-        const std::string get_onkeyup() const;
+        virtual const std::string get_onkeyup() const;
         /**
         * Event of onkeyup.
         *
         * @param  the onkeyup
         */
-        void set_onkeyup(const std::string &onkeyup);
+        virtual void set_onkeyup(const std::string &onkeyup);
         /**
         * Event of onload.
         *
         * @return the onload
         */
-        const std::string get_onload() const;
+        virtual const std::string get_onload() const;
         /**
         * Event of onload.
         *
         * @param  the onload
         */
-        void set_onload(const std::string &onload);
+        virtual void set_onload(const std::string &onload);
         /**
         * Event of onloadeddata.
         *
         * @return the onloadeddata
         */
-        const std::string get_onloadeddata() const;
+        virtual const std::string get_onloadeddata() const;
         /**
         * Event of onloadeddata.
         *
         * @param  the onloadeddata
         */
-        void set_onloadeddata(const std::string &onloadeddata);
+        virtual void set_onloadeddata(const std::string &onloadeddata);
         /**
         * Event of onloadedmetadata.
         *
         * @return the onloadedmetadata
         */
-        const std::string get_onloadedmetadata() const;
+        virtual const std::string get_onloadedmetadata() const;
         /**
         * Event of onloadedmetadata.
         *
         * @param  the onloadedmetadata
         */
-        void set_onloadedmetadata(const std::string &onloadedmetadata);
+        virtual void set_onloadedmetadata(const std::string &onloadedmetadata);
         /**
         * Event of onloadstart.
         *
         * @return the onloadstart
         */
-        const std::string get_onloadstart() const;
+        virtual const std::string get_onloadstart() const;
         /**
         * Event of onloadstart.
         *
         * @param  the onloadstart
         */
-        void set_onloadstart(const std::string &onloadstart);
+        virtual void set_onloadstart(const std::string &onloadstart);
         /**
         * Event of onmousedown.
         *
         * @return the onmousedown
         */
-        const std::string get_onmousedown() const;
+        virtual const std::string get_onmousedown() const;
         /**
         * Event of onmousedown.
         *
         * @param  the onmousedown
         */
-        void set_onmousedown(const std::string &onmousedown);
+        virtual void set_onmousedown(const std::string &onmousedown);
         /**
         * Event of onmouseenter.
         *
         * @return the onmouseenter
         */
-        const std::string get_onmouseenter() const;
+        virtual const std::string get_onmouseenter() const;
         /**
         * Event of onmouseenter.
         *
         * @param  the onmouseenter
         */
-        void set_onmouseenter(const std::string &onmouseenter);
+        virtual void set_onmouseenter(const std::string &onmouseenter);
         /**
         * Event of onmouseleave.
         *
         * @return the onmouseleave
         */
-        const std::string get_onmouseleave() const;
+        virtual const std::string get_onmouseleave() const;
         /**
         * Event of onmouseleave.
         *
         * @param  the onmouseleave
         */
-        void set_onmouseleave(const std::string &onmouseleave);
+        virtual void set_onmouseleave(const std::string &onmouseleave);
         /**
         * Event of onmousemove.
         *
         * @return the onmousemove
         */
-        const std::string get_onmousemove() const;
+        virtual const std::string get_onmousemove() const;
         /**
         * Event of onmousemove.
         *
         * @param  the onmousemove
         */
-        void set_onmousemove(const std::string &onmousemove);
+        virtual void set_onmousemove(const std::string &onmousemove);
         /**
         * Event of onmouseout.
         *
         * @return the onmouseout
         */
-        const std::string get_onmouseout() const;
+        virtual const std::string get_onmouseout() const;
         /**
         * Event of onmouseout.
         *
         * @param  the onmouseout
         */
-        void set_onmouseout(const std::string &onmouseout);
+        virtual void set_onmouseout(const std::string &onmouseout);
         /**
         * Event of onmouseover.
         *
         * @return the onmouseover
         */
-        const std::string get_onmouseover() const;
+        virtual const std::string get_onmouseover() const;
         /**
         * Event of onmouseover.
         *
         * @param  the onmouseover
         */
-        void set_onmouseover(const std::string &onmouseover);
+        virtual void set_onmouseover(const std::string &onmouseover);
         /**
         * Event of onmouseup.
         *
         * @return the onmouseup
         */
-        const std::string get_onmouseup() const;
+        virtual const std::string get_onmouseup() const;
         /**
         * Event of onmouseup.
         *
         * @param  the onmouseup
         */
-        void set_onmouseup(const std::string &onmouseup);
+        virtual void set_onmouseup(const std::string &onmouseup);
         /**
         * Event of onmousewheel.
         *
         * @return the onmousewheel
         */
-        const std::string get_onmousewheel() const;
+        virtual const std::string get_onmousewheel() const;
         /**
         * Event of onmousewheel.
         *
         * @param  the onmousewheel
         */
-        void set_onmousewheel(const std::string &onmousewheel);
+        virtual void set_onmousewheel(const std::string &onmousewheel);
         /**
         * Event of onpause.
         *
         * @return the onpause
         */
-        const std::string get_onpause() const;
+        virtual const std::string get_onpause() const;
         /**
         * Event of onpause.
         *
         * @param  the onpause
         */
-        void set_onpause(const std::string &onpause);
+        virtual void set_onpause(const std::string &onpause);
         /**
         * Event of onplay.
         *
         * @return the onplay
         */
-        const std::string get_onplay() const;
+        virtual const std::string get_onplay() const;
         /**
         * Event of onplay.
         *
         * @param  the onplay
         */
-        void set_onplay(const std::string &onplay);
+        virtual void set_onplay(const std::string &onplay);
         /**
         * Event of onplaying.
         *
         * @return the onplaying
         */
-        const std::string get_onplaying() const;
+        virtual const std::string get_onplaying() const;
         /**
         * Event of onplaying.
         *
         * @param  the onplaying
         */
-        void set_onplaying(const std::string &onplaying);
+        virtual void set_onplaying(const std::string &onplaying);
         /**
         * Event of onprogress.
         *
         * @return the onprogress
         */
-        const std::string get_onprogress() const;
+        virtual const std::string get_onprogress() const;
         /**
         * Event of onprogress.
         *
         * @param  the onprogress
         */
-        void set_onprogress(const std::string &onprogress);
+        virtual void set_onprogress(const std::string &onprogress);
         /**
         * Event of onratechange.
         *
         * @return the onratechange
         */
-        const std::string get_onratechange() const;
+        virtual const std::string get_onratechange() const;
         /**
         * Event of onratechange.
         *
         * @param  the onratechange
         */
-        void set_onratechange(const std::string &onratechange);
+        virtual void set_onratechange(const std::string &onratechange);
         /**
         * Event of onreset.
         *
         * @return the onreset
         */
-        const std::string get_onreset() const;
+        virtual const std::string get_onreset() const;
         /**
         * Event of onreset.
         *
         * @param  the onreset
         */
-        void set_onreset(const std::string &onreset);
+        virtual void set_onreset(const std::string &onreset);
         /**
         * Event of onseeked.
         *
         * @return the onseeked
         */
-        const std::string get_onseeked() const;
+        virtual const std::string get_onseeked() const;
         /**
         * Event of onseeked.
         *
         * @param  the onseeked
         */
-        void set_onseeked(const std::string &onseeked);
+        virtual void set_onseeked(const std::string &onseeked);
         /**
         * Event of onseeking.
         *
         * @return the onseeking
         */
-        const std::string get_onseeking() const;
+        virtual const std::string get_onseeking() const;
         /**
         * Event of onseeking.
         *
         * @param  the onseeking
         */
-        void set_onseeking(const std::string &onseeking);
+        virtual void set_onseeking(const std::string &onseeking);
         /**
         * Event of onselect.
         *
         * @return the onselect
         */
-        const std::string get_onselect() const;
+        virtual const std::string get_onselect() const;
         /**
         * Event of onselect.
         *
         * @param  the onselect
         */
-        void set_onselect(const std::string &onselect);
+        virtual void set_onselect(const std::string &onselect);
         /**
         * Event of onshow.
         *
         * @return the onshow
         */
-        const std::string get_onshow() const;
+        virtual const std::string get_onshow() const;
         /**
         * Event of onshow.
         *
         * @param  the onshow
         */
-        void set_onshow(const std::string &onshow);
+        virtual void set_onshow(const std::string &onshow);
         /**
         * Event of onstalled.
         *
         * @return the onstalled
         */
-        const std::string get_onstalled() const;
+        virtual const std::string get_onstalled() const;
         /**
         * Event of onstalled.
         *
         * @param  the onstalled
         */
-        void set_onstalled(const std::string &onstalled);
+        virtual void set_onstalled(const std::string &onstalled);
         /**
         * Event of onsubmit.
         *
         * @return the onsubmit
         */
-        const std::string get_onsubmit() const;
+        virtual const std::string get_onsubmit() const;
         /**
         * Event of onsubmit.
         *
         * @param  the onsubmit
         */
-        void set_onsubmit(const std::string &onsubmit);
+        virtual void set_onsubmit(const std::string &onsubmit);
         /**
         * Event of onsuspend.
         *
         * @return the onsuspend
         */
-        const std::string get_onsuspend() const;
+        virtual const std::string get_onsuspend() const;
         /**
         * Event of onsuspend.
         *
         * @param  the onsuspend
         */
-        void set_onsuspend(const std::string &onsuspend);
+        virtual void set_onsuspend(const std::string &onsuspend);
         /**
         * Event of ontimeupdate.
         *
         * @return the ontimeupdate
         */
-        const std::string get_ontimeupdate() const;
+        virtual const std::string get_ontimeupdate() const;
         /**
         * Event of ontimeupdate.
         *
         * @param  the ontimeupdate
         */
-        void set_ontimeupdate(const std::string &ontimeupdate);
+        virtual void set_ontimeupdate(const std::string &ontimeupdate);
         /**
         * Event of ontoggle.
         *
         * @return the ontoggle
         */
-        const std::string get_ontoggle() const;
+        virtual const std::string get_ontoggle() const;
         /**
         * Event of ontoggle.
         *
         * @param  the ontoggle
         */
-        void set_ontoggle(const std::string &ontoggle);
+        virtual void set_ontoggle(const std::string &ontoggle);
         /**
         * Event of onvolumechange.
         *
         * @return the onvolumechange
         */
-        const std::string get_onvolumechange() const;
+        virtual const std::string get_onvolumechange() const;
         /**
         * Event of onvolumechange.
         *
         * @param  the onvolumechange
         */
-        void set_onvolumechange(const std::string &onvolumechange);
+        virtual void set_onvolumechange(const std::string &onvolumechange);
         /**
         * Event of onwaiting.
         *
         * @return the onwaiting
         */
-        const std::string get_onwaiting() const;
+        virtual const std::string get_onwaiting() const;
         /**
         * Event of onwaiting.
         *
         * @param  the onwaiting
         */
-        void set_onwaiting(const std::string &onwaiting);
+        virtual void set_onwaiting(const std::string &onwaiting);
         /**
         * Event of onactivate.
         *
         * @return the onactivate
         */
-        const std::string get_onactivate() const;
+        virtual const std::string get_onactivate() const;
         /**
         * Event of onactivate.
         *
         * @param  the onactivate
         */
-        void set_onactivate(const std::string &onactivate);
+        virtual void set_onactivate(const std::string &onactivate);
         /**
         * Event of onfocusin.
         *
         * @return the onfocusin
         */
-        const std::string get_onfocusin() const;
+        virtual const std::string get_onfocusin() const;
         /**
         * Event of onfocusin.
         *
         * @param  the onfocusin
         */
-        void set_onfocusin(const std::string &onfocusin);
+        virtual void set_onfocusin(const std::string &onfocusin);
         /**
         * Event of onfocusout.
         *
         * @return the onfocusout
         */
-        const std::string get_onfocusout() const;
+        virtual const std::string get_onfocusout() const;
         /**
         * Event of onfocusout.
         *
         * @param  the onfocusout
         */
-        void set_onfocusout(const std::string &onfocusout);
+        virtual void set_onfocusout(const std::string &onfocusout);
         /**
         * It specifies how an object is aligned along the font baseline with respect to its parent. 
         * Value: auto|baseline|before-edge|text-before-edge|middle|central|after-edge|text-after-edge|ideographic|alphabetic|hanging|mathematical|inherit; Animatable: Yes
         *
         * @return the alignment-baseline
         */
-        const std::string get_alignment_baseline() const;
+        virtual const std::string get_alignment_baseline() const;
         /**
         * It specifies how an object is aligned along the font baseline with respect to its parent. 
         * Value: auto|baseline|before-edge|text-before-edge|middle|central|after-edge|text-after-edge|ideographic|alphabetic|hanging|mathematical|inherit; Animatable: Yes
         *
         * @param  the alignment-baseline
         */
-        void set_alignment_baseline(const std::string &alignment_baseline);
+        virtual void set_alignment_baseline(const std::string &alignment_baseline);
         /**
         * It allows repositioning of the dominant-baseline relative to the dominant-baseline of the parent text content element. 
         * Value: auto|baseline|super|sub|<percentage>|<length>|inherit; Animatable: Yes
         *
         * @return the baseline-shift
         */
-        const std::string get_baseline_shift() const;
+        virtual const std::string get_baseline_shift() const;
         /**
         * It allows repositioning of the dominant-baseline relative to the dominant-baseline of the parent text content element. 
         * Value: auto|baseline|super|sub|<percentage>|<length>|inherit; Animatable: Yes
         *
         * @param  the baseline-shift
         */
-        void set_baseline_shift(const std::string &baseline_shift);
+        virtual void set_baseline_shift(const std::string &baseline_shift);
         /**
         * It binds the element it is applied to with a given <clipPath> element. 
         * Value: none|<FuncIRI>|inherit; Animatable: Yes
         *
         * @return the clip-path
         */
-        const std::string get_clip_path() const;
+        virtual const std::string get_clip_path() const;
         /**
         * It binds the element it is applied to with a given <clipPath> element. 
         * Value: none|<FuncIRI>|inherit; Animatable: Yes
         *
         * @param  the clip-path
         */
-        void set_clip_path(const std::string &clip_path);
+        virtual void set_clip_path(const std::string &clip_path);
         /**
         * It indicates how to determine what side of a path is inside a shape in order to know how a <clipPath> should clip its target. 
         * Value: nonezero|evenodd|inherit; Animatable: Yes
         *
         * @return the clip-rule
         */
-        const std::string get_clip_rule() const;
+        virtual const std::string get_clip_rule() const;
         /**
         * It indicates how to determine what side of a path is inside a shape in order to know how a <clipPath> should clip its target. 
         * Value: nonezero|evenodd|inherit; Animatable: Yes
         *
         * @param  the clip-rule
         */
-        void set_clip_rule(const std::string &clip_rule);
+        virtual void set_clip_rule(const std::string &clip_rule);
         /**
         * It provides a potential indirect value (currentcolor) for the fill, stroke, stop-color, flood-color and lighting-color presentation attributes. 
         * Value: <color>|inherit; Animatable: Yes
         *
         * @return the color
         */
-        const std::string get_color() const;
+        virtual const std::string get_color() const;
         /**
         * It provides a potential indirect value (currentcolor) for the fill, stroke, stop-color, flood-color and lighting-color presentation attributes. 
         * Value: <color>|inherit; Animatable: Yes
         *
         * @param  the color
         */
-        void set_color(const std::string &color);
+        virtual void set_color(const std::string &color);
         /**
         * It specifies the color space for gradient interpolations, color animations, and alpha compositing. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         *
         * @return the color-interpolation
         */
-        const std::string get_color_interpolation() const;
+        virtual const std::string get_color_interpolation() const;
         /**
         * It specifies the color space for gradient interpolations, color animations, and alpha compositing. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         *
         * @param  the color-interpolation
         */
-        void set_color_interpolation(const std::string &color_interpolation);
+        virtual void set_color_interpolation(const std::string &color_interpolation);
         /**
         * It specifies the color space for imaging operations performed via filter effects. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         *
         * @return the color-interpolation-filters
         */
-        const std::string get_color_interpolation_filters() const;
+        virtual const std::string get_color_interpolation_filters() const;
         /**
         * It specifies the color space for imaging operations performed via filter effects. 
         * Value: auto|sRGB|linearRGB|inherit; Animatable: Yes
         *
         * @param  the color-interpolation-filters
         */
-        void set_color_interpolation_filters(const std::string &color_interpolation_filters);
+        virtual void set_color_interpolation_filters(const std::string &color_interpolation_filters);
         /**
         * It defines which color profile a raster image included through the <image> element should use. 
         * Value: auto|sRGB|linearRGB|<name>|<IRI>|inherit; Animatable: Yes
         *
         * @return the color-profile
         */
-        const std::string get_color_profile() const;
+        virtual const std::string get_color_profile() const;
         /**
         * It defines which color profile a raster image included through the <image> element should use. 
         * Value: auto|sRGB|linearRGB|<name>|<IRI>|inherit; Animatable: Yes
         *
         * @param  the color-profile
         */
-        void set_color_profile(const std::string &color_profile);
+        virtual void set_color_profile(const std::string &color_profile);
         /**
         * It provides a hint to the browser about how to optimize its color interpolation and compositing operations. 
         * Value: auto|optimizeSpeed|optimizeQuality|inherit; Animatable: Yes
         *
         * @return the color-rendering
         */
-        const std::string get_color_rendering() const;
+        virtual const std::string get_color_rendering() const;
         /**
         * It provides a hint to the browser about how to optimize its color interpolation and compositing operations. 
         * Value: auto|optimizeSpeed|optimizeQuality|inherit; Animatable: Yes
         *
         * @param  the color-rendering
         */
-        void set_color_rendering(const std::string &color_rendering);
+        virtual void set_color_rendering(const std::string &color_rendering);
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
         * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @return the cursor
         */
-        const std::string get_cursor() const;
+        virtual const std::string get_cursor() const;
         /**
         * It specifies the mouse cursor displayed when the mouse pointer is over an element. 
         * Value: <FuncIRI>|<anything>:cursorKeywords|inherit; Animatable: Yes
         *
         * @param  the cursor
         */
-        void set_cursor(const std::string &cursor);
+        virtual void set_cursor(const std::string &cursor);
         /**
         * It defines a path to be drawn. 
         * Value: path()|none
         *
         * @return the d
         */
-        const std::string get_d() const;
+        virtual const std::string get_d() const;
         /**
         * It defines a path to be drawn. 
         * Value: path()|none
         *
         * @param  the d
         */
-        void set_d(const std::string &d);
+        virtual void set_d(const std::string &d);
         /**
         * It specifies the base writing direction of text. 
         * Value: ltr|rtl|inherit; Animatable: Yes
         *
         * @return the direction
         */
-        const std::string get_direction() const;
+        virtual const std::string get_direction() const;
         /**
         * It specifies the base writing direction of text. 
         * Value: ltr|rtl|inherit; Animatable: Yes
         *
         * @param  the direction
         */
-        void set_direction(const std::string &direction);
+        virtual void set_direction(const std::string &direction);
         /**
         * It allows to control the rendering of graphical or container elements. 
         * Value: see css display; Animatable: Yes
         *
         * @return the display
         */
-        const std::string get_display() const;
+        virtual const std::string get_display() const;
         /**
         * It allows to control the rendering of graphical or container elements. 
         * Value: see css display; Animatable: Yes
         *
         * @param  the display
         */
-        void set_display(const std::string &display);
+        virtual void set_display(const std::string &display);
         /**
         * It defines the baseline used to align the box's text and inline-level contents. 
         * Value: auto|text-bottom|alphabetic|ideographic|middle|central| mathematical|hanging|text-top; Animatable: Yes
         *
         * @return the dominant-baseline
         */
-        const std::string get_dominant_baseline() const;
+        virtual const std::string get_dominant_baseline() const;
         /**
         * It defines the baseline used to align the box's text and inline-level contents. 
         * Value: auto|text-bottom|alphabetic|ideographic|middle|central| mathematical|hanging|text-top; Animatable: Yes
         *
         * @param  the dominant-baseline
         */
-        void set_dominant_baseline(const std::string &dominant_baseline);
+        virtual void set_dominant_baseline(const std::string &dominant_baseline);
         /**
         * It tells the browser how to manage the accumulation of the background image. 
         * Value: accumulate|new|inherit; Animatable: No
         *
         * @return the enable-background
         */
-        const std::string get_enable_background() const;
+        virtual const std::string get_enable_background() const;
         /**
         * It tells the browser how to manage the accumulation of the background image. 
         * Value: accumulate|new|inherit; Animatable: No
         *
         * @param  the enable-background
         */
-        void set_enable_background(const std::string &enable_background);
+        virtual void set_enable_background(const std::string &enable_background);
         /**
         * It defines the color of the inside of the graphical element it applies to. 
         * Value: <paint>; Animatable: Yes
         *
         * @return the fill
         */
-        const std::string get_fill() const;
+        virtual const std::string get_fill() const;
         /**
         * It defines the color of the inside of the graphical element it applies to. 
         * Value: <paint>; Animatable: Yes
         *
         * @param  the fill
         */
-        void set_fill(const std::string &fill);
+        virtual void set_fill(const std::string &fill);
         /**
         * It specifies the opacity of the color or the content the current object is filled with. 
         * Value: <number>|<percentage>; Animatable: Yes
         *
         * @return the fill-opacity
         */
-        const std::string get_fill_opacity() const;
+        virtual const std::string get_fill_opacity() const;
         /**
         * It specifies the opacity of the color or the content the current object is filled with. 
         * Value: <number>|<percentage>; Animatable: Yes
         *
         * @param  the fill-opacity
         */
-        void set_fill_opacity(const std::string &fill_opacity);
+        virtual void set_fill_opacity(const std::string &fill_opacity);
         /**
         * It indicates how to determine what side of a path is inside a shape. 
         * Value: nonzero|evenodd|inherit; Animatable: Yes
         *
         * @return the fill-rule
         */
-        const std::string get_fill_rule() const;
+        virtual const std::string get_fill_rule() const;
         /**
         * It indicates how to determine what side of a path is inside a shape. 
         * Value: nonzero|evenodd|inherit; Animatable: Yes
         *
         * @param  the fill-rule
         */
-        void set_fill_rule(const std::string &fill_rule);
+        virtual void set_fill_rule(const std::string &fill_rule);
         /**
         * It defines the filter effects defined by the <filter> element that shall be applied to its element. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the filter
         */
-        const std::string get_filter() const;
+        virtual const std::string get_filter() const;
         /**
         * It defines the filter effects defined by the <filter> element that shall be applied to its element. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the filter
         */
-        void set_filter(const std::string &filter);
+        virtual void set_filter(const std::string &filter);
         /**
         * It indicates what color to use to flood the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <color>; Animatable: Yes
         *
         * @return the flood-color
         */
-        const std::string get_flood_color() const;
+        virtual const std::string get_flood_color() const;
         /**
         * It indicates what color to use to flood the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <color>; Animatable: Yes
         *
         * @param  the flood-color
         */
-        void set_flood_color(const std::string &flood_color);
+        virtual void set_flood_color(const std::string &flood_color);
         /**
         * It indicates the opacity value to use across the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <number>|<percentage>; Animatable: Yes
         *
         * @return the flood-opacity
         */
-        const std::string get_flood_opacity() const;
+        virtual const std::string get_flood_opacity() const;
         /**
         * It indicates the opacity value to use across the current filter primitive subregion defined through the <feFlood> or <feDropShadow> element. 
         * Value: <number>|<percentage>; Animatable: Yes
         *
         * @param  the flood-opacity
         */
-        void set_flood_opacity(const std::string &flood_opacity);
+        virtual void set_flood_opacity(const std::string &flood_opacity);
         /**
         * It indicates which font family will be used to render the text of the element. 
         * Value: see css font-family; Animatable: Yes
         *
         * @return the font-family
         */
-        const std::string get_font_family() const;
+        virtual const std::string get_font_family() const;
         /**
         * It indicates which font family will be used to render the text of the element. 
         * Value: see css font-family; Animatable: Yes
         *
         * @param  the font-family
         */
-        void set_font_family(const std::string &font_family);
+        virtual void set_font_family(const std::string &font_family);
         /**
         * It specifies the size of the font. 
         * Value: see css font-size; Animatable: Yes
         *
         * @return the font-size
         */
-        const std::string get_font_size() const;
+        virtual const std::string get_font_size() const;
         /**
         * It specifies the size of the font. 
         * Value: see css font-size; Animatable: Yes
         *
         * @param  the font-size
         */
-        void set_font_size(const std::string &font_size);
+        virtual void set_font_size(const std::string &font_size);
         /**
         * It specifies that the font size should be chosen based on the height of lowercase letters rather than the height of capital letters. 
         * Value: <number>|none|inherit; Animatable: Yes
         *
         * @return the font-size-adjust
         */
-        const std::string get_font_size_adjust() const;
+        virtual const std::string get_font_size_adjust() const;
         /**
         * It specifies that the font size should be chosen based on the height of lowercase letters rather than the height of capital letters. 
         * Value: <number>|none|inherit; Animatable: Yes
         *
         * @param  the font-size-adjust
         */
-        void set_font_size_adjust(const std::string &font_size_adjust);
+        virtual void set_font_size_adjust(const std::string &font_size_adjust);
         /**
         * It selects a normal, condensed, or expanded face from a font. 
         * Value: see css font-stretch; Animatable: Yes
         *
         * @return the font-stretch
         */
-        const std::string get_font_stretch() const;
+        virtual const std::string get_font_stretch() const;
         /**
         * It selects a normal, condensed, or expanded face from a font. 
         * Value: see css font-stretch; Animatable: Yes
         *
         * @param  the font-stretch
         */
-        void set_font_stretch(const std::string &font_stretch);
+        virtual void set_font_stretch(const std::string &font_stretch);
         /**
         * It specifies whether a font should be styled with a normal, italic, or oblique face from its font-family. 
         * Value: normal|italic|oblique; Animatable: Yes
         *
         * @return the font-style
         */
-        const std::string get_font_style() const;
+        virtual const std::string get_font_style() const;
         /**
         * It specifies whether a font should be styled with a normal, italic, or oblique face from its font-family. 
         * Value: normal|italic|oblique; Animatable: Yes
         *
         * @param  the font-style
         */
-        void set_font_style(const std::string &font_style);
+        virtual void set_font_style(const std::string &font_style);
         /**
         * It specifies whether a font should be used with some of their variation such as small caps or ligatures. 
         * Value: see css font-variant; Animatable: Yes
         *
         * @return the font-variant
         */
-        const std::string get_font_variant() const;
+        virtual const std::string get_font_variant() const;
         /**
         * It specifies whether a font should be used with some of their variation such as small caps or ligatures. 
         * Value: see css font-variant; Animatable: Yes
         *
         * @param  the font-variant
         */
-        void set_font_variant(const std::string &font_variant);
+        virtual void set_font_variant(const std::string &font_variant);
         /**
         * It specifies the weight (or boldness) of the font. 
         * Value: normal|bold|lighter|bolder|100|200|300|400|500|600|700|800|900; Animatable: Yes
         *
         * @return the font-weight
         */
-        const std::string get_font_weight() const;
+        virtual const std::string get_font_weight() const;
         /**
         * It specifies the weight (or boldness) of the font. 
         * Value: normal|bold|lighter|bolder|100|200|300|400|500|600|700|800|900; Animatable: Yes
         *
         * @param  the font-weight
         */
-        void set_font_weight(const std::string &font_weight);
+        virtual void set_font_weight(const std::string &font_weight);
         /**
         * It controls glyph orientation when the inline-progression-direction is horizontal. 
         * Value: <angle>|inherit; Animatable: No
         *
         * @return the glyph-orientation-horizontal
         */
-        const std::string get_glyph_orientation_horizontal() const;
+        virtual const std::string get_glyph_orientation_horizontal() const;
         /**
         * It controls glyph orientation when the inline-progression-direction is horizontal. 
         * Value: <angle>|inherit; Animatable: No
         *
         * @param  the glyph-orientation-horizontal
         */
-        void set_glyph_orientation_horizontal(const std::string &glyph_orientation_horizontal);
+        virtual void set_glyph_orientation_horizontal(const std::string &glyph_orientation_horizontal);
         /**
         * It controls glyph orientation when the inline-progression-direction is vertical. 
         * Value: auto|<angle>|inherit; Animatable: No
         *
         * @return the glyph-orientation-vertical
         */
-        const std::string get_glyph_orientation_vertical() const;
+        virtual const std::string get_glyph_orientation_vertical() const;
         /**
         * It controls glyph orientation when the inline-progression-direction is vertical. 
         * Value: auto|<angle>|inherit; Animatable: No
         *
         * @param  the glyph-orientation-vertical
         */
-        void set_glyph_orientation_vertical(const std::string &glyph_orientation_vertical);
+        virtual void set_glyph_orientation_vertical(const std::string &glyph_orientation_vertical);
         /**
         * It provides a hint to the browser about how to make speed vs. quality tradeoffs as it performs image processing. 
         * Value: auto|optimizeQuality|optimizeSpeed; Animatable: Yes
         *
         * @return the image-rendering
         */
-        const std::string get_image_rendering() const;
+        virtual const std::string get_image_rendering() const;
         /**
         * It provides a hint to the browser about how to make speed vs. quality tradeoffs as it performs image processing. 
         * Value: auto|optimizeQuality|optimizeSpeed; Animatable: Yes
         *
         * @param  the image-rendering
         */
-        void set_image_rendering(const std::string &image_rendering);
+        virtual void set_image_rendering(const std::string &image_rendering);
         /**
         * It indicates whether the browser should adjust inter-glyph spacing. 
         * Value: auto|<length>|inherit; Animatable: Yes
         *
         * @return the kerning
         */
-        const std::string get_kerning() const;
+        virtual const std::string get_kerning() const;
         /**
         * It indicates whether the browser should adjust inter-glyph spacing. 
         * Value: auto|<length>|inherit; Animatable: Yes
         *
         * @param  the kerning
         */
-        void set_kerning(const std::string &kerning);
+        virtual void set_kerning(const std::string &kerning);
         /**
         * It controls spacing between text characters. 
         * Value: normal|<length>|inherit; Animatable: Yes
         *
         * @return the letter-spacing
         */
-        const std::string get_letter_spacing() const;
+        virtual const std::string get_letter_spacing() const;
         /**
         * It controls spacing between text characters. 
         * Value: normal|<length>|inherit; Animatable: Yes
         *
         * @param  the letter-spacing
         */
-        void set_letter_spacing(const std::string &letter_spacing);
+        virtual void set_letter_spacing(const std::string &letter_spacing);
         /**
         * It defines the color of the light source for filter primitives elements <feDiffuseLighting> and <feSpecularLighting>. 
         * Value: <color>; Animatable: Yes
         *
         * @return the lighting-color
         */
-        const std::string get_lighting_color() const;
+        virtual const std::string get_lighting_color() const;
         /**
         * It defines the color of the light source for filter primitives elements <feDiffuseLighting> and <feSpecularLighting>. 
         * Value: <color>; Animatable: Yes
         *
         * @param  the lighting-color
         */
-        void set_lighting_color(const std::string &lighting_color);
+        virtual void set_lighting_color(const std::string &lighting_color);
         /**
         * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-end
         */
-        const std::string get_marker_end() const;
+        virtual const std::string get_marker_end() const;
         /**
         * It defines the arrowhead or polymarker that will be drawn at the final vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-end
         */
-        void set_marker_end(const std::string &marker_end);
+        virtual void set_marker_end(const std::string &marker_end);
         /**
         * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-mid
         */
-        const std::string get_marker_mid() const;
+        virtual const std::string get_marker_mid() const;
         /**
         * It defines the arrowhead or polymarker that will be drawn at every vertex other than the first and last vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-mid
         */
-        void set_marker_mid(const std::string &marker_mid);
+        virtual void set_marker_mid(const std::string &marker_mid);
         /**
         * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @return the marker-start
         */
-        const std::string get_marker_start() const;
+        virtual const std::string get_marker_start() const;
         /**
         * It defines the arrowhead or polymarker that will be drawn at the first vertex of the given <anything>:path element or basic shape. 
         * Value: <FuncIRI>|none|inherit; Animatable: Yes
         *
         * @param  the marker-start
         */
-        void set_marker_start(const std::string &marker_start);
+        virtual void set_marker_start(const std::string &marker_start);
         /**
         * It alters the visibility of an element by either masking or clipping the image at specific points. 
         * Value: see css mask; Animatable: Yes
         *
         * @return the mask
         */
-        const std::string get_mask() const;
+        virtual const std::string get_mask() const;
         /**
         * It alters the visibility of an element by either masking or clipping the image at specific points. 
         * Value: see css mask; Animatable: Yes
         *
         * @param  the mask
         */
-        void set_mask(const std::string &mask);
+        virtual void set_mask(const std::string &mask);
         /**
         * It specifies the transparency of an object or a group of objects. 
         * Value: <opacity-value>; Animatable: Yes
         *
         * @return the opacity
         */
-        const std::string get_opacity() const;
+        virtual const std::string get_opacity() const;
         /**
         * It specifies the transparency of an object or a group of objects. 
         * Value: <opacity-value>; Animatable: Yes
         *
         * @param  the opacity
         */
-        void set_opacity(const std::string &opacity);
+        virtual void set_opacity(const std::string &opacity);
         /**
         * Specifies whether the content of a block-level element is clipped when it overflows the element's box. 
         * Value: visible|hidden|scroll|auto|inherit; Animatable: Yes
         *
         * @return the overflow
         */
-        const std::string get_overflow() const;
+        virtual const std::string get_overflow() const;
         /**
         * Specifies whether the content of a block-level element is clipped when it overflows the element's box. 
         * Value: visible|hidden|scroll|auto|inherit; Animatable: Yes
         *
         * @param  the overflow
         */
-        void set_overflow(const std::string &overflow);
+        virtual void set_overflow(const std::string &overflow);
         /**
         * Defines whether or when an element may be the target of a mouse event. 
         * Value: bounding-box|visiblePainted|visibleFil|visibleStroke|visible |painted|fill|stroke|all|none; Animatable: Yes
         *
         * @return the pointer-events
         */
-        const std::string get_pointer_events() const;
+        virtual const std::string get_pointer_events() const;
         /**
         * Defines whether or when an element may be the target of a mouse event. 
         * Value: bounding-box|visiblePainted|visibleFil|visibleStroke|visible |painted|fill|stroke|all|none; Animatable: Yes
         *
         * @param  the pointer-events
         */
-        void set_pointer_events(const std::string &pointer_events);
+        virtual void set_pointer_events(const std::string &pointer_events);
         /**
         * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @return the shape-rendering
         */
-        const std::string get_shape_rendering() const;
+        virtual const std::string get_shape_rendering() const;
         /**
         * Hints about what tradeoffs to make as the browser renders <anything>:path element or basic shapes. 
         * Value: auto|optimizeSpeed|crispEdges|geometricPrecision |inherit; Animatable: Yes
         *
         * @param  the shape-rendering
         */
-        void set_shape_rendering(const std::string &shape_rendering);
+        virtual void set_shape_rendering(const std::string &shape_rendering);
         /**
         * - 
         * Value:; Animatable: -
         *
         * @return the solid-color
         */
-        const std::string get_solid_color() const;
+        virtual const std::string get_solid_color() const;
         /**
         * - 
         * Value:; Animatable: -
         *
         * @param  the solid-color
         */
-        void set_solid_color(const std::string &solid_color);
+        virtual void set_solid_color(const std::string &solid_color);
         /**
         * - 
         * Value:; Animatable: -
         *
         * @return the solid-opacity
         */
-        const std::string get_solid_opacity() const;
+        virtual const std::string get_solid_opacity() const;
         /**
         * - 
         * Value:; Animatable: -
         *
         * @param  the solid-opacity
         */
-        void set_solid_opacity(const std::string &solid_opacity);
+        virtual void set_solid_opacity(const std::string &solid_opacity);
         /**
         * Indicates what color to use at that gradient stop. 
         * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @return the stop-color
         */
-        const std::string get_stop_color() const;
+        virtual const std::string get_stop_color() const;
         /**
         * Indicates what color to use at that gradient stop. 
         * Value: currentcolor|<color>|<color>:icccolor|inherit; Animatable: Yes
         *
         * @param  the stop-color
         */
-        void set_stop_color(const std::string &stop_color);
+        virtual void set_stop_color(const std::string &stop_color);
         /**
         * Defines the opacity of a given gradient stop. 
         * Value: <opacity-value>|inherit; Animatable: Yes
         *
         * @return the stop-opacity
         */
-        const std::string get_stop_opacity() const;
+        virtual const std::string get_stop_opacity() const;
         /**
         * Defines the opacity of a given gradient stop. 
         * Value: <opacity-value>|inherit; Animatable: Yes
         *
         * @param  the stop-opacity
         */
-        void set_stop_opacity(const std::string &stop_opacity);
+        virtual void set_stop_opacity(const std::string &stop_opacity);
         /**
         * Defines the color used to paint the outline of the shape. 
         * Value: <paint>; Animatable: Yes
         *
         * @return the stroke
         */
-        const std::string get_stroke() const;
+        virtual const std::string get_stroke() const;
         /**
         * Defines the color used to paint the outline of the shape. 
         * Value: <paint>; Animatable: Yes
         *
         * @param  the stroke
         */
-        void set_stroke(const std::string &stroke);
+        virtual void set_stroke(const std::string &stroke);
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
         * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @return the stroke-dasharray
         */
-        const std::string get_stroke_dasharray() const;
+        virtual const std::string get_stroke_dasharray() const;
         /**
         * Defines the pattern of dashes and gaps used to paint the outline of the shape. 
         * Value: none|<list-of-numbers>:dasharray; Animatable: Yes
         *
         * @param  the stroke-dasharray
         */
-        void set_stroke_dasharray(const std::string &stroke_dasharray);
+        virtual void set_stroke_dasharray(const std::string &stroke_dasharray);
         /**
         * Defines an offset on the rendering of the associated dash array. 
         * Value: <percentage>|<length>; Animatable: Yes
         *
         * @return the stroke-dashoffset
         */
-        const std::string get_stroke_dashoffset() const;
+        virtual const std::string get_stroke_dashoffset() const;
         /**
         * Defines an offset on the rendering of the associated dash array. 
         * Value: <percentage>|<length>; Animatable: Yes
         *
         * @param  the stroke-dashoffset
         */
-        void set_stroke_dashoffset(const std::string &stroke_dashoffset);
+        virtual void set_stroke_dashoffset(const std::string &stroke_dashoffset);
         /**
         * Defines the shape to be used at the end of open subpaths when they are stroked. 
         * Value: butt|round|square; Animatable: Yes
         *
         * @return the stroke-linecap
         */
-        const std::string get_stroke_linecap() const;
+        virtual const std::string get_stroke_linecap() const;
         /**
         * Defines the shape to be used at the end of open subpaths when they are stroked. 
         * Value: butt|round|square; Animatable: Yes
         *
         * @param  the stroke-linecap
         */
-        void set_stroke_linecap(const std::string &stroke_linecap);
+        virtual void set_stroke_linecap(const std::string &stroke_linecap);
         /**
         * Defines the shape to be used at the corners of paths when they are stroked. 
         * Value: arcs|bevel|miter|miter-clip|round; Animatable: Yes
         *
         * @return the stroke-linejoin
         */
-        const std::string get_stroke_linejoin() const;
+        virtual const std::string get_stroke_linejoin() const;
         /**
         * Defines the shape to be used at the corners of paths when they are stroked. 
         * Value: arcs|bevel|miter|miter-clip|round; Animatable: Yes
         *
         * @param  the stroke-linejoin
         */
-        void set_stroke_linejoin(const std::string &stroke_linejoin);
+        virtual void set_stroke_linejoin(const std::string &stroke_linejoin);
         /**
         * Defines a limit on the ratio of the miter length to the stroke-width used to draw a miter join. 
         * Value: <number>; Animatable: Yes
         *
         * @return the stroke-miterlimit
         */
-        const std::string get_stroke_miterlimit() const;
+        virtual const std::string get_stroke_miterlimit() const;
         /**
         * Defines a limit on the ratio of the miter length to the stroke-width used to draw a miter join. 
         * Value: <number>; Animatable: Yes
         *
         * @param  the stroke-miterlimit
         */
-        void set_stroke_miterlimit(const std::string &stroke_miterlimit);
+        virtual void set_stroke_miterlimit(const std::string &stroke_miterlimit);
         /**
         * Defines the opacity of the stroke of a shape. 
         * Value: <opacity-value>|<percentage>; Animatable: Yes
         *
         * @return the stroke-opacity
         */
-        const std::string get_stroke_opacity() const;
+        virtual const std::string get_stroke_opacity() const;
         /**
         * Defines the opacity of the stroke of a shape. 
         * Value: <opacity-value>|<percentage>; Animatable: Yes
         *
         * @param  the stroke-opacity
         */
-        void set_stroke_opacity(const std::string &stroke_opacity);
+        virtual void set_stroke_opacity(const std::string &stroke_opacity);
         /**
         * Defines the width of the stroke to be applied to the shape. 
         * Value: <length>|<percentage>; Animatable: Yes
         *
         * @return the stroke-width
         */
-        const std::string get_stroke_width() const;
+        virtual const std::string get_stroke_width() const;
         /**
         * Defines the width of the stroke to be applied to the shape. 
         * Value: <length>|<percentage>; Animatable: Yes
         *
         * @param  the stroke-width
         */
-        void set_stroke_width(const std::string &stroke_width);
+        virtual void set_stroke_width(const std::string &stroke_width);
         /**
         * Defines the vertical alignment a string of text. 
         * Value: start|middle|end|inherit; Animatable: Yes
         *
         * @return the text-anchor
         */
-        const std::string get_text_anchor() const;
+        virtual const std::string get_text_anchor() const;
         /**
         * Defines the vertical alignment a string of text. 
         * Value: start|middle|end|inherit; Animatable: Yes
         *
         * @param  the text-anchor
         */
-        void set_text_anchor(const std::string &text_anchor);
+        virtual void set_text_anchor(const std::string &text_anchor);
         /**
         * Sets the appearance of decorative lines on text. 
         * Value: none|underline|overline|line-through|blink|inherit; Animatable: Yes
         *
         * @return the text-decoration
         */
-        const std::string get_text_decoration() const;
+        virtual const std::string get_text_decoration() const;
         /**
         * Sets the appearance of decorative lines on text. 
         * Value: none|underline|overline|line-through|blink|inherit; Animatable: Yes
         *
         * @param  the text-decoration
         */
-        void set_text_decoration(const std::string &text_decoration);
+        virtual void set_text_decoration(const std::string &text_decoration);
         /**
         * Hints about what tradeoffs to make as the browser renders text. 
         * Value: auto|optimizeSpeed|optimizeLegibility|geometricPrecision|inherit; Animatable: Yes
         *
         * @return the text-rendering
         */
-        const std::string get_text_rendering() const;
+        virtual const std::string get_text_rendering() const;
         /**
         * Hints about what tradeoffs to make as the browser renders text. 
         * Value: auto|optimizeSpeed|optimizeLegibility|geometricPrecision|inherit; Animatable: Yes
         *
         * @param  the text-rendering
         */
-        void set_text_rendering(const std::string &text_rendering);
+        virtual void set_text_rendering(const std::string &text_rendering);
         /**
         * Defines a list of transform definitions that are applied to an element and the element's children. 
         * Value: <transform-list>; Animatable: Yes
         *
         * @return the transform
         */
-        const std::string get_transform() const;
+        virtual const std::string get_transform() const;
         /**
         * Defines a list of transform definitions that are applied to an element and the element's children. 
         * Value: <transform-list>; Animatable: Yes
         *
         * @param  the transform
         */
-        void set_transform(const std::string &transform);
+        virtual void set_transform(const std::string &transform);
         /**
         * - 
         * Value:; Animatable: -
         *
         * @return the unicode-bidi
         */
-        const std::string get_unicode_bidi() const;
+        virtual const std::string get_unicode_bidi() const;
         /**
         * - 
         * Value:; Animatable: -
         *
         * @param  the unicode-bidi
         */
-        void set_unicode_bidi(const std::string &unicode_bidi);
+        virtual void set_unicode_bidi(const std::string &unicode_bidi);
         /**
         * Specifies the vector effect to use when drawing an object. 
         * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @return the vector-effect
         */
-        const std::string get_vector_effect() const;
+        virtual const std::string get_vector_effect() const;
         /**
         * Specifies the vector effect to use when drawing an object. 
         * Value: default|non-scaling-stroke|inherit|<IRI>:uri; Animatable: Yes
         *
         * @param  the vector-effect
         */
-        void set_vector_effect(const std::string &vector_effect);
+        virtual void set_vector_effect(const std::string &vector_effect);
         /**
         * Lets you control the visibility of graphical elements. 
         * Value: visible|hidden|collapse|inherit; Animatable: Yes
         *
         * @return the visibility
         */
-        const std::string get_visibility() const;
+        virtual const std::string get_visibility() const;
         /**
         * Lets you control the visibility of graphical elements. 
         * Value: visible|hidden|collapse|inherit; Animatable: Yes
         *
         * @param  the visibility
         */
-        void set_visibility(const std::string &visibility);
+        virtual void set_visibility(const std::string &visibility);
         /**
         * Specifies spacing behavior between words. 
         * Value: <length>|inherit; Animatable: Yes
         *
         * @return the word-spacing
         */
-        const std::string get_word_spacing() const;
+        virtual const std::string get_word_spacing() const;
         /**
         * Specifies spacing behavior between words. 
         * Value: <length>|inherit; Animatable: Yes
         *
         * @param  the word-spacing
         */
-        void set_word_spacing(const std::string &word_spacing);
+        virtual void set_word_spacing(const std::string &word_spacing);
         /**
         * Specifies whether the initial inline-progression-direction for a <text> element shall be left-to-right, right-to-left, or top-to-bottom. 
         * Value: lr-tb|rl-tb|tb-rl|lr|rl|tb|inherit; Animatable: Yes
         *
         * @return the writing-mode
         */
-        const std::string get_writing_mode() const;
+        virtual const std::string get_writing_mode() const;
         /**
         * Specifies whether the initial inline-progression-direction for a <text> element shall be left-to-right, right-to-left, or top-to-bottom. 
         * Value: lr-tb|rl-tb|tb-rl|lr|rl|tb|inherit; Animatable: Yes
         *
         * @param  the writing-mode
         */
-        void set_writing_mode(const std::string &writing_mode);
+        virtual void set_writing_mode(const std::string &writing_mode);
         /// Attributes
     protected:
         /**

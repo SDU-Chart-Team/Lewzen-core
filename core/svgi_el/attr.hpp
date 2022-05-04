@@ -62,7 +62,7 @@ namespace Lewzen {
         * @param attr attribute.
         */
         template <typename T>
-        Attribute &operator=(const T &attr) { _LZ_WARNING("Calling Attribute.operator=, but no implementation.") }
+        Attribute &operator=(const T &attr) { _LZ_WARNING("Calling Attribute.operator=, but no implementation.") return *this; }
 
         /**
         * Bind attribute to a function. This will break value binding with bind_ptr.

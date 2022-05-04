@@ -425,37 +425,37 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 6> _attr_commit = {
             [this](){
-                if (get_height() == Height.get_commit()) return std::string("");
+                if (SVGMask::get_height() == Height.get_commit()) return std::string("");
                 Height.commit();
                 if (Height.get() == STR_NULL) return std::string("reset height");
                 else return std::string("modify height \"" + Height.get() + "\"");
             },
             [this](){
-                if (get_mask_content_units() == MaskContentUnits.get_commit()) return std::string("");
+                if (SVGMask::get_mask_content_units() == MaskContentUnits.get_commit()) return std::string("");
                 MaskContentUnits.commit();
                 if (MaskContentUnits.get() == STR_NULL) return std::string("reset maskContentUnits");
                 else return std::string("modify maskContentUnits \"" + MaskContentUnits.get() + "\"");
             },
             [this](){
-                if (get_mask_units() == MaskUnits.get_commit()) return std::string("");
+                if (SVGMask::get_mask_units() == MaskUnits.get_commit()) return std::string("");
                 MaskUnits.commit();
                 if (MaskUnits.get() == STR_NULL) return std::string("reset maskUnits");
                 else return std::string("modify maskUnits \"" + MaskUnits.get() + "\"");
             },
             [this](){
-                if (get_x() == X.get_commit()) return std::string("");
+                if (SVGMask::get_x() == X.get_commit()) return std::string("");
                 X.commit();
                 if (X.get() == STR_NULL) return std::string("reset x");
                 else return std::string("modify x \"" + X.get() + "\"");
             },
             [this](){
-                if (get_y() == Y.get_commit()) return std::string("");
+                if (SVGMask::get_y() == Y.get_commit()) return std::string("");
                 Y.commit();
                 if (Y.get() == STR_NULL) return std::string("reset y");
                 else return std::string("modify y \"" + Y.get() + "\"");
             },
             [this](){
-                if (get_width() == Width.get_commit()) return std::string("");
+                if (SVGMask::get_width() == Width.get_commit()) return std::string("");
                 Width.commit();
                 if (Width.get() == STR_NULL) return std::string("reset width");
                 else return std::string("modify width \"" + Width.get() + "\"");

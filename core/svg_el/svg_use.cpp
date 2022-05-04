@@ -67,10 +67,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGUse::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGUse &SVGUse::operator=(const SVGUse &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _href = element.get_href();
         _x = element.get_x();

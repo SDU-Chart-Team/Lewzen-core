@@ -2039,829 +2039,829 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 138> _attr_commit = {
             [this](){
-                if (get_id() == Id.get_commit()) return std::string("");
+                if (SVGElement::get_id() == Id.get_commit()) return std::string("");
                 Id.commit();
                 if (Id.get() == STR_NULL) return std::string("reset id");
                 else return std::string("modify id \"" + Id.get() + "\"");
             },
             [this](){
-                if (get_lang() == Lang.get_commit()) return std::string("");
+                if (SVGElement::get_lang() == Lang.get_commit()) return std::string("");
                 Lang.commit();
                 if (Lang.get() == STR_NULL) return std::string("reset lang");
                 else return std::string("modify lang \"" + Lang.get() + "\"");
             },
             [this](){
-                if (get_tabindex() == Tabindex.get_commit()) return std::string("");
+                if (SVGElement::get_tabindex() == Tabindex.get_commit()) return std::string("");
                 Tabindex.commit();
                 if (Tabindex.get() == STR_NULL) return std::string("reset tabindex");
                 else return std::string("modify tabindex \"" + Tabindex.get() + "\"");
             },
             [this](){
-                if (get_xmlZbase() == XmlBase.get_commit()) return std::string("");
+                if (SVGElement::get_xmlZbase() == XmlBase.get_commit()) return std::string("");
                 XmlBase.commit();
                 if (XmlBase.get() == STR_NULL) return std::string("reset xml:base");
                 else return std::string("modify xml:base \"" + XmlBase.get() + "\"");
             },
             [this](){
-                if (get_xmlZlang() == XmlLang.get_commit()) return std::string("");
+                if (SVGElement::get_xmlZlang() == XmlLang.get_commit()) return std::string("");
                 XmlLang.commit();
                 if (XmlLang.get() == STR_NULL) return std::string("reset xml:lang");
                 else return std::string("modify xml:lang \"" + XmlLang.get() + "\"");
             },
             [this](){
-                if (get_xmlZspace() == XmlSpace.get_commit()) return std::string("");
+                if (SVGElement::get_xmlZspace() == XmlSpace.get_commit()) return std::string("");
                 XmlSpace.commit();
                 if (XmlSpace.get() == STR_NULL) return std::string("reset xml:space");
                 else return std::string("modify xml:space \"" + XmlSpace.get() + "\"");
             },
             [this](){
-                if (get_class() == Class.get_commit()) return std::string("");
+                if (SVGElement::get_class() == Class.get_commit()) return std::string("");
                 Class.commit();
                 if (Class.get() == STR_NULL) return std::string("reset class");
                 else return std::string("modify class \"" + Class.get() + "\"");
             },
             [this](){
-                if (get_style() == Style.get_commit()) return std::string("");
+                if (SVGElement::get_style() == Style.get_commit()) return std::string("");
                 Style.commit();
                 if (Style.get() == STR_NULL) return std::string("reset style");
                 else return std::string("modify style \"" + Style.get() + "\"");
             },
             [this](){
-                if (get_onbegin() == Onbegin.get_commit()) return std::string("");
+                if (SVGElement::get_onbegin() == Onbegin.get_commit()) return std::string("");
                 Onbegin.commit();
                 if (Onbegin.get() == STR_NULL) return std::string("reset onbegin");
                 else return std::string("modify onbegin \"" + Onbegin.get() + "\"");
             },
             [this](){
-                if (get_onend() == Onend.get_commit()) return std::string("");
+                if (SVGElement::get_onend() == Onend.get_commit()) return std::string("");
                 Onend.commit();
                 if (Onend.get() == STR_NULL) return std::string("reset onend");
                 else return std::string("modify onend \"" + Onend.get() + "\"");
             },
             [this](){
-                if (get_onrepeat() == Onrepeat.get_commit()) return std::string("");
+                if (SVGElement::get_onrepeat() == Onrepeat.get_commit()) return std::string("");
                 Onrepeat.commit();
                 if (Onrepeat.get() == STR_NULL) return std::string("reset onrepeat");
                 else return std::string("modify onrepeat \"" + Onrepeat.get() + "\"");
             },
             [this](){
-                if (get_onabort() == Onabort.get_commit()) return std::string("");
+                if (SVGElement::get_onabort() == Onabort.get_commit()) return std::string("");
                 Onabort.commit();
                 if (Onabort.get() == STR_NULL) return std::string("reset onabort");
                 else return std::string("modify onabort \"" + Onabort.get() + "\"");
             },
             [this](){
-                if (get_onerror() == Onerror.get_commit()) return std::string("");
+                if (SVGElement::get_onerror() == Onerror.get_commit()) return std::string("");
                 Onerror.commit();
                 if (Onerror.get() == STR_NULL) return std::string("reset onerror");
                 else return std::string("modify onerror \"" + Onerror.get() + "\"");
             },
             [this](){
-                if (get_onresize() == Onresize.get_commit()) return std::string("");
+                if (SVGElement::get_onresize() == Onresize.get_commit()) return std::string("");
                 Onresize.commit();
                 if (Onresize.get() == STR_NULL) return std::string("reset onresize");
                 else return std::string("modify onresize \"" + Onresize.get() + "\"");
             },
             [this](){
-                if (get_onscroll() == Onscroll.get_commit()) return std::string("");
+                if (SVGElement::get_onscroll() == Onscroll.get_commit()) return std::string("");
                 Onscroll.commit();
                 if (Onscroll.get() == STR_NULL) return std::string("reset onscroll");
                 else return std::string("modify onscroll \"" + Onscroll.get() + "\"");
             },
             [this](){
-                if (get_onunload() == Onunload.get_commit()) return std::string("");
+                if (SVGElement::get_onunload() == Onunload.get_commit()) return std::string("");
                 Onunload.commit();
                 if (Onunload.get() == STR_NULL) return std::string("reset onunload");
                 else return std::string("modify onunload \"" + Onunload.get() + "\"");
             },
             [this](){
-                if (get_oncopy() == Oncopy.get_commit()) return std::string("");
+                if (SVGElement::get_oncopy() == Oncopy.get_commit()) return std::string("");
                 Oncopy.commit();
                 if (Oncopy.get() == STR_NULL) return std::string("reset oncopy");
                 else return std::string("modify oncopy \"" + Oncopy.get() + "\"");
             },
             [this](){
-                if (get_oncut() == Oncut.get_commit()) return std::string("");
+                if (SVGElement::get_oncut() == Oncut.get_commit()) return std::string("");
                 Oncut.commit();
                 if (Oncut.get() == STR_NULL) return std::string("reset oncut");
                 else return std::string("modify oncut \"" + Oncut.get() + "\"");
             },
             [this](){
-                if (get_onpaste() == Onpaste.get_commit()) return std::string("");
+                if (SVGElement::get_onpaste() == Onpaste.get_commit()) return std::string("");
                 Onpaste.commit();
                 if (Onpaste.get() == STR_NULL) return std::string("reset onpaste");
                 else return std::string("modify onpaste \"" + Onpaste.get() + "\"");
             },
             [this](){
-                if (get_oncancel() == Oncancel.get_commit()) return std::string("");
+                if (SVGElement::get_oncancel() == Oncancel.get_commit()) return std::string("");
                 Oncancel.commit();
                 if (Oncancel.get() == STR_NULL) return std::string("reset oncancel");
                 else return std::string("modify oncancel \"" + Oncancel.get() + "\"");
             },
             [this](){
-                if (get_oncanplay() == Oncanplay.get_commit()) return std::string("");
+                if (SVGElement::get_oncanplay() == Oncanplay.get_commit()) return std::string("");
                 Oncanplay.commit();
                 if (Oncanplay.get() == STR_NULL) return std::string("reset oncanplay");
                 else return std::string("modify oncanplay \"" + Oncanplay.get() + "\"");
             },
             [this](){
-                if (get_oncanplaythrough() == Oncanplaythrough.get_commit()) return std::string("");
+                if (SVGElement::get_oncanplaythrough() == Oncanplaythrough.get_commit()) return std::string("");
                 Oncanplaythrough.commit();
                 if (Oncanplaythrough.get() == STR_NULL) return std::string("reset oncanplaythrough");
                 else return std::string("modify oncanplaythrough \"" + Oncanplaythrough.get() + "\"");
             },
             [this](){
-                if (get_onchange() == Onchange.get_commit()) return std::string("");
+                if (SVGElement::get_onchange() == Onchange.get_commit()) return std::string("");
                 Onchange.commit();
                 if (Onchange.get() == STR_NULL) return std::string("reset onchange");
                 else return std::string("modify onchange \"" + Onchange.get() + "\"");
             },
             [this](){
-                if (get_onclick() == Onclick.get_commit()) return std::string("");
+                if (SVGElement::get_onclick() == Onclick.get_commit()) return std::string("");
                 Onclick.commit();
                 if (Onclick.get() == STR_NULL) return std::string("reset onclick");
                 else return std::string("modify onclick \"" + Onclick.get() + "\"");
             },
             [this](){
-                if (get_onclose() == Onclose.get_commit()) return std::string("");
+                if (SVGElement::get_onclose() == Onclose.get_commit()) return std::string("");
                 Onclose.commit();
                 if (Onclose.get() == STR_NULL) return std::string("reset onclose");
                 else return std::string("modify onclose \"" + Onclose.get() + "\"");
             },
             [this](){
-                if (get_oncuechange() == Oncuechange.get_commit()) return std::string("");
+                if (SVGElement::get_oncuechange() == Oncuechange.get_commit()) return std::string("");
                 Oncuechange.commit();
                 if (Oncuechange.get() == STR_NULL) return std::string("reset oncuechange");
                 else return std::string("modify oncuechange \"" + Oncuechange.get() + "\"");
             },
             [this](){
-                if (get_ondblclick() == Ondblclick.get_commit()) return std::string("");
+                if (SVGElement::get_ondblclick() == Ondblclick.get_commit()) return std::string("");
                 Ondblclick.commit();
                 if (Ondblclick.get() == STR_NULL) return std::string("reset ondblclick");
                 else return std::string("modify ondblclick \"" + Ondblclick.get() + "\"");
             },
             [this](){
-                if (get_ondrag() == Ondrag.get_commit()) return std::string("");
+                if (SVGElement::get_ondrag() == Ondrag.get_commit()) return std::string("");
                 Ondrag.commit();
                 if (Ondrag.get() == STR_NULL) return std::string("reset ondrag");
                 else return std::string("modify ondrag \"" + Ondrag.get() + "\"");
             },
             [this](){
-                if (get_ondragend() == Ondragend.get_commit()) return std::string("");
+                if (SVGElement::get_ondragend() == Ondragend.get_commit()) return std::string("");
                 Ondragend.commit();
                 if (Ondragend.get() == STR_NULL) return std::string("reset ondragend");
                 else return std::string("modify ondragend \"" + Ondragend.get() + "\"");
             },
             [this](){
-                if (get_ondragenter() == Ondragenter.get_commit()) return std::string("");
+                if (SVGElement::get_ondragenter() == Ondragenter.get_commit()) return std::string("");
                 Ondragenter.commit();
                 if (Ondragenter.get() == STR_NULL) return std::string("reset ondragenter");
                 else return std::string("modify ondragenter \"" + Ondragenter.get() + "\"");
             },
             [this](){
-                if (get_ondragleave() == Ondragleave.get_commit()) return std::string("");
+                if (SVGElement::get_ondragleave() == Ondragleave.get_commit()) return std::string("");
                 Ondragleave.commit();
                 if (Ondragleave.get() == STR_NULL) return std::string("reset ondragleave");
                 else return std::string("modify ondragleave \"" + Ondragleave.get() + "\"");
             },
             [this](){
-                if (get_ondragover() == Ondragover.get_commit()) return std::string("");
+                if (SVGElement::get_ondragover() == Ondragover.get_commit()) return std::string("");
                 Ondragover.commit();
                 if (Ondragover.get() == STR_NULL) return std::string("reset ondragover");
                 else return std::string("modify ondragover \"" + Ondragover.get() + "\"");
             },
             [this](){
-                if (get_ondragstart() == Ondragstart.get_commit()) return std::string("");
+                if (SVGElement::get_ondragstart() == Ondragstart.get_commit()) return std::string("");
                 Ondragstart.commit();
                 if (Ondragstart.get() == STR_NULL) return std::string("reset ondragstart");
                 else return std::string("modify ondragstart \"" + Ondragstart.get() + "\"");
             },
             [this](){
-                if (get_ondrop() == Ondrop.get_commit()) return std::string("");
+                if (SVGElement::get_ondrop() == Ondrop.get_commit()) return std::string("");
                 Ondrop.commit();
                 if (Ondrop.get() == STR_NULL) return std::string("reset ondrop");
                 else return std::string("modify ondrop \"" + Ondrop.get() + "\"");
             },
             [this](){
-                if (get_ondurationchange() == Ondurationchange.get_commit()) return std::string("");
+                if (SVGElement::get_ondurationchange() == Ondurationchange.get_commit()) return std::string("");
                 Ondurationchange.commit();
                 if (Ondurationchange.get() == STR_NULL) return std::string("reset ondurationchange");
                 else return std::string("modify ondurationchange \"" + Ondurationchange.get() + "\"");
             },
             [this](){
-                if (get_onemptied() == Onemptied.get_commit()) return std::string("");
+                if (SVGElement::get_onemptied() == Onemptied.get_commit()) return std::string("");
                 Onemptied.commit();
                 if (Onemptied.get() == STR_NULL) return std::string("reset onemptied");
                 else return std::string("modify onemptied \"" + Onemptied.get() + "\"");
             },
             [this](){
-                if (get_onended() == Onended.get_commit()) return std::string("");
+                if (SVGElement::get_onended() == Onended.get_commit()) return std::string("");
                 Onended.commit();
                 if (Onended.get() == STR_NULL) return std::string("reset onended");
                 else return std::string("modify onended \"" + Onended.get() + "\"");
             },
             [this](){
-                if (get_onfocus() == Onfocus.get_commit()) return std::string("");
+                if (SVGElement::get_onfocus() == Onfocus.get_commit()) return std::string("");
                 Onfocus.commit();
                 if (Onfocus.get() == STR_NULL) return std::string("reset onfocus");
                 else return std::string("modify onfocus \"" + Onfocus.get() + "\"");
             },
             [this](){
-                if (get_oninput() == Oninput.get_commit()) return std::string("");
+                if (SVGElement::get_oninput() == Oninput.get_commit()) return std::string("");
                 Oninput.commit();
                 if (Oninput.get() == STR_NULL) return std::string("reset oninput");
                 else return std::string("modify oninput \"" + Oninput.get() + "\"");
             },
             [this](){
-                if (get_oninvalid() == Oninvalid.get_commit()) return std::string("");
+                if (SVGElement::get_oninvalid() == Oninvalid.get_commit()) return std::string("");
                 Oninvalid.commit();
                 if (Oninvalid.get() == STR_NULL) return std::string("reset oninvalid");
                 else return std::string("modify oninvalid \"" + Oninvalid.get() + "\"");
             },
             [this](){
-                if (get_onkeydown() == Onkeydown.get_commit()) return std::string("");
+                if (SVGElement::get_onkeydown() == Onkeydown.get_commit()) return std::string("");
                 Onkeydown.commit();
                 if (Onkeydown.get() == STR_NULL) return std::string("reset onkeydown");
                 else return std::string("modify onkeydown \"" + Onkeydown.get() + "\"");
             },
             [this](){
-                if (get_onkeypress() == Onkeypress.get_commit()) return std::string("");
+                if (SVGElement::get_onkeypress() == Onkeypress.get_commit()) return std::string("");
                 Onkeypress.commit();
                 if (Onkeypress.get() == STR_NULL) return std::string("reset onkeypress");
                 else return std::string("modify onkeypress \"" + Onkeypress.get() + "\"");
             },
             [this](){
-                if (get_onkeyup() == Onkeyup.get_commit()) return std::string("");
+                if (SVGElement::get_onkeyup() == Onkeyup.get_commit()) return std::string("");
                 Onkeyup.commit();
                 if (Onkeyup.get() == STR_NULL) return std::string("reset onkeyup");
                 else return std::string("modify onkeyup \"" + Onkeyup.get() + "\"");
             },
             [this](){
-                if (get_onload() == Onload.get_commit()) return std::string("");
+                if (SVGElement::get_onload() == Onload.get_commit()) return std::string("");
                 Onload.commit();
                 if (Onload.get() == STR_NULL) return std::string("reset onload");
                 else return std::string("modify onload \"" + Onload.get() + "\"");
             },
             [this](){
-                if (get_onloadeddata() == Onloadeddata.get_commit()) return std::string("");
+                if (SVGElement::get_onloadeddata() == Onloadeddata.get_commit()) return std::string("");
                 Onloadeddata.commit();
                 if (Onloadeddata.get() == STR_NULL) return std::string("reset onloadeddata");
                 else return std::string("modify onloadeddata \"" + Onloadeddata.get() + "\"");
             },
             [this](){
-                if (get_onloadedmetadata() == Onloadedmetadata.get_commit()) return std::string("");
+                if (SVGElement::get_onloadedmetadata() == Onloadedmetadata.get_commit()) return std::string("");
                 Onloadedmetadata.commit();
                 if (Onloadedmetadata.get() == STR_NULL) return std::string("reset onloadedmetadata");
                 else return std::string("modify onloadedmetadata \"" + Onloadedmetadata.get() + "\"");
             },
             [this](){
-                if (get_onloadstart() == Onloadstart.get_commit()) return std::string("");
+                if (SVGElement::get_onloadstart() == Onloadstart.get_commit()) return std::string("");
                 Onloadstart.commit();
                 if (Onloadstart.get() == STR_NULL) return std::string("reset onloadstart");
                 else return std::string("modify onloadstart \"" + Onloadstart.get() + "\"");
             },
             [this](){
-                if (get_onmousedown() == Onmousedown.get_commit()) return std::string("");
+                if (SVGElement::get_onmousedown() == Onmousedown.get_commit()) return std::string("");
                 Onmousedown.commit();
                 if (Onmousedown.get() == STR_NULL) return std::string("reset onmousedown");
                 else return std::string("modify onmousedown \"" + Onmousedown.get() + "\"");
             },
             [this](){
-                if (get_onmouseenter() == Onmouseenter.get_commit()) return std::string("");
+                if (SVGElement::get_onmouseenter() == Onmouseenter.get_commit()) return std::string("");
                 Onmouseenter.commit();
                 if (Onmouseenter.get() == STR_NULL) return std::string("reset onmouseenter");
                 else return std::string("modify onmouseenter \"" + Onmouseenter.get() + "\"");
             },
             [this](){
-                if (get_onmouseleave() == Onmouseleave.get_commit()) return std::string("");
+                if (SVGElement::get_onmouseleave() == Onmouseleave.get_commit()) return std::string("");
                 Onmouseleave.commit();
                 if (Onmouseleave.get() == STR_NULL) return std::string("reset onmouseleave");
                 else return std::string("modify onmouseleave \"" + Onmouseleave.get() + "\"");
             },
             [this](){
-                if (get_onmousemove() == Onmousemove.get_commit()) return std::string("");
+                if (SVGElement::get_onmousemove() == Onmousemove.get_commit()) return std::string("");
                 Onmousemove.commit();
                 if (Onmousemove.get() == STR_NULL) return std::string("reset onmousemove");
                 else return std::string("modify onmousemove \"" + Onmousemove.get() + "\"");
             },
             [this](){
-                if (get_onmouseout() == Onmouseout.get_commit()) return std::string("");
+                if (SVGElement::get_onmouseout() == Onmouseout.get_commit()) return std::string("");
                 Onmouseout.commit();
                 if (Onmouseout.get() == STR_NULL) return std::string("reset onmouseout");
                 else return std::string("modify onmouseout \"" + Onmouseout.get() + "\"");
             },
             [this](){
-                if (get_onmouseover() == Onmouseover.get_commit()) return std::string("");
+                if (SVGElement::get_onmouseover() == Onmouseover.get_commit()) return std::string("");
                 Onmouseover.commit();
                 if (Onmouseover.get() == STR_NULL) return std::string("reset onmouseover");
                 else return std::string("modify onmouseover \"" + Onmouseover.get() + "\"");
             },
             [this](){
-                if (get_onmouseup() == Onmouseup.get_commit()) return std::string("");
+                if (SVGElement::get_onmouseup() == Onmouseup.get_commit()) return std::string("");
                 Onmouseup.commit();
                 if (Onmouseup.get() == STR_NULL) return std::string("reset onmouseup");
                 else return std::string("modify onmouseup \"" + Onmouseup.get() + "\"");
             },
             [this](){
-                if (get_onmousewheel() == Onmousewheel.get_commit()) return std::string("");
+                if (SVGElement::get_onmousewheel() == Onmousewheel.get_commit()) return std::string("");
                 Onmousewheel.commit();
                 if (Onmousewheel.get() == STR_NULL) return std::string("reset onmousewheel");
                 else return std::string("modify onmousewheel \"" + Onmousewheel.get() + "\"");
             },
             [this](){
-                if (get_onpause() == Onpause.get_commit()) return std::string("");
+                if (SVGElement::get_onpause() == Onpause.get_commit()) return std::string("");
                 Onpause.commit();
                 if (Onpause.get() == STR_NULL) return std::string("reset onpause");
                 else return std::string("modify onpause \"" + Onpause.get() + "\"");
             },
             [this](){
-                if (get_onplay() == Onplay.get_commit()) return std::string("");
+                if (SVGElement::get_onplay() == Onplay.get_commit()) return std::string("");
                 Onplay.commit();
                 if (Onplay.get() == STR_NULL) return std::string("reset onplay");
                 else return std::string("modify onplay \"" + Onplay.get() + "\"");
             },
             [this](){
-                if (get_onplaying() == Onplaying.get_commit()) return std::string("");
+                if (SVGElement::get_onplaying() == Onplaying.get_commit()) return std::string("");
                 Onplaying.commit();
                 if (Onplaying.get() == STR_NULL) return std::string("reset onplaying");
                 else return std::string("modify onplaying \"" + Onplaying.get() + "\"");
             },
             [this](){
-                if (get_onprogress() == Onprogress.get_commit()) return std::string("");
+                if (SVGElement::get_onprogress() == Onprogress.get_commit()) return std::string("");
                 Onprogress.commit();
                 if (Onprogress.get() == STR_NULL) return std::string("reset onprogress");
                 else return std::string("modify onprogress \"" + Onprogress.get() + "\"");
             },
             [this](){
-                if (get_onratechange() == Onratechange.get_commit()) return std::string("");
+                if (SVGElement::get_onratechange() == Onratechange.get_commit()) return std::string("");
                 Onratechange.commit();
                 if (Onratechange.get() == STR_NULL) return std::string("reset onratechange");
                 else return std::string("modify onratechange \"" + Onratechange.get() + "\"");
             },
             [this](){
-                if (get_onreset() == Onreset.get_commit()) return std::string("");
+                if (SVGElement::get_onreset() == Onreset.get_commit()) return std::string("");
                 Onreset.commit();
                 if (Onreset.get() == STR_NULL) return std::string("reset onreset");
                 else return std::string("modify onreset \"" + Onreset.get() + "\"");
             },
             [this](){
-                if (get_onseeked() == Onseeked.get_commit()) return std::string("");
+                if (SVGElement::get_onseeked() == Onseeked.get_commit()) return std::string("");
                 Onseeked.commit();
                 if (Onseeked.get() == STR_NULL) return std::string("reset onseeked");
                 else return std::string("modify onseeked \"" + Onseeked.get() + "\"");
             },
             [this](){
-                if (get_onseeking() == Onseeking.get_commit()) return std::string("");
+                if (SVGElement::get_onseeking() == Onseeking.get_commit()) return std::string("");
                 Onseeking.commit();
                 if (Onseeking.get() == STR_NULL) return std::string("reset onseeking");
                 else return std::string("modify onseeking \"" + Onseeking.get() + "\"");
             },
             [this](){
-                if (get_onselect() == Onselect.get_commit()) return std::string("");
+                if (SVGElement::get_onselect() == Onselect.get_commit()) return std::string("");
                 Onselect.commit();
                 if (Onselect.get() == STR_NULL) return std::string("reset onselect");
                 else return std::string("modify onselect \"" + Onselect.get() + "\"");
             },
             [this](){
-                if (get_onshow() == Onshow.get_commit()) return std::string("");
+                if (SVGElement::get_onshow() == Onshow.get_commit()) return std::string("");
                 Onshow.commit();
                 if (Onshow.get() == STR_NULL) return std::string("reset onshow");
                 else return std::string("modify onshow \"" + Onshow.get() + "\"");
             },
             [this](){
-                if (get_onstalled() == Onstalled.get_commit()) return std::string("");
+                if (SVGElement::get_onstalled() == Onstalled.get_commit()) return std::string("");
                 Onstalled.commit();
                 if (Onstalled.get() == STR_NULL) return std::string("reset onstalled");
                 else return std::string("modify onstalled \"" + Onstalled.get() + "\"");
             },
             [this](){
-                if (get_onsubmit() == Onsubmit.get_commit()) return std::string("");
+                if (SVGElement::get_onsubmit() == Onsubmit.get_commit()) return std::string("");
                 Onsubmit.commit();
                 if (Onsubmit.get() == STR_NULL) return std::string("reset onsubmit");
                 else return std::string("modify onsubmit \"" + Onsubmit.get() + "\"");
             },
             [this](){
-                if (get_onsuspend() == Onsuspend.get_commit()) return std::string("");
+                if (SVGElement::get_onsuspend() == Onsuspend.get_commit()) return std::string("");
                 Onsuspend.commit();
                 if (Onsuspend.get() == STR_NULL) return std::string("reset onsuspend");
                 else return std::string("modify onsuspend \"" + Onsuspend.get() + "\"");
             },
             [this](){
-                if (get_ontimeupdate() == Ontimeupdate.get_commit()) return std::string("");
+                if (SVGElement::get_ontimeupdate() == Ontimeupdate.get_commit()) return std::string("");
                 Ontimeupdate.commit();
                 if (Ontimeupdate.get() == STR_NULL) return std::string("reset ontimeupdate");
                 else return std::string("modify ontimeupdate \"" + Ontimeupdate.get() + "\"");
             },
             [this](){
-                if (get_ontoggle() == Ontoggle.get_commit()) return std::string("");
+                if (SVGElement::get_ontoggle() == Ontoggle.get_commit()) return std::string("");
                 Ontoggle.commit();
                 if (Ontoggle.get() == STR_NULL) return std::string("reset ontoggle");
                 else return std::string("modify ontoggle \"" + Ontoggle.get() + "\"");
             },
             [this](){
-                if (get_onvolumechange() == Onvolumechange.get_commit()) return std::string("");
+                if (SVGElement::get_onvolumechange() == Onvolumechange.get_commit()) return std::string("");
                 Onvolumechange.commit();
                 if (Onvolumechange.get() == STR_NULL) return std::string("reset onvolumechange");
                 else return std::string("modify onvolumechange \"" + Onvolumechange.get() + "\"");
             },
             [this](){
-                if (get_onwaiting() == Onwaiting.get_commit()) return std::string("");
+                if (SVGElement::get_onwaiting() == Onwaiting.get_commit()) return std::string("");
                 Onwaiting.commit();
                 if (Onwaiting.get() == STR_NULL) return std::string("reset onwaiting");
                 else return std::string("modify onwaiting \"" + Onwaiting.get() + "\"");
             },
             [this](){
-                if (get_onactivate() == Onactivate.get_commit()) return std::string("");
+                if (SVGElement::get_onactivate() == Onactivate.get_commit()) return std::string("");
                 Onactivate.commit();
                 if (Onactivate.get() == STR_NULL) return std::string("reset onactivate");
                 else return std::string("modify onactivate \"" + Onactivate.get() + "\"");
             },
             [this](){
-                if (get_onfocusin() == Onfocusin.get_commit()) return std::string("");
+                if (SVGElement::get_onfocusin() == Onfocusin.get_commit()) return std::string("");
                 Onfocusin.commit();
                 if (Onfocusin.get() == STR_NULL) return std::string("reset onfocusin");
                 else return std::string("modify onfocusin \"" + Onfocusin.get() + "\"");
             },
             [this](){
-                if (get_onfocusout() == Onfocusout.get_commit()) return std::string("");
+                if (SVGElement::get_onfocusout() == Onfocusout.get_commit()) return std::string("");
                 Onfocusout.commit();
                 if (Onfocusout.get() == STR_NULL) return std::string("reset onfocusout");
                 else return std::string("modify onfocusout \"" + Onfocusout.get() + "\"");
             },
             [this](){
-                if (get_alignment_baseline() == AlignmentBaseline.get_commit()) return std::string("");
+                if (SVGElement::get_alignment_baseline() == AlignmentBaseline.get_commit()) return std::string("");
                 AlignmentBaseline.commit();
                 if (AlignmentBaseline.get() == STR_NULL) return std::string("reset alignment-baseline");
                 else return std::string("modify alignment-baseline \"" + AlignmentBaseline.get() + "\"");
             },
             [this](){
-                if (get_baseline_shift() == BaselineShift.get_commit()) return std::string("");
+                if (SVGElement::get_baseline_shift() == BaselineShift.get_commit()) return std::string("");
                 BaselineShift.commit();
                 if (BaselineShift.get() == STR_NULL) return std::string("reset baseline-shift");
                 else return std::string("modify baseline-shift \"" + BaselineShift.get() + "\"");
             },
             [this](){
-                if (get_clip_path() == ClipPath.get_commit()) return std::string("");
+                if (SVGElement::get_clip_path() == ClipPath.get_commit()) return std::string("");
                 ClipPath.commit();
                 if (ClipPath.get() == STR_NULL) return std::string("reset clip-path");
                 else return std::string("modify clip-path \"" + ClipPath.get() + "\"");
             },
             [this](){
-                if (get_clip_rule() == ClipRule.get_commit()) return std::string("");
+                if (SVGElement::get_clip_rule() == ClipRule.get_commit()) return std::string("");
                 ClipRule.commit();
                 if (ClipRule.get() == STR_NULL) return std::string("reset clip-rule");
                 else return std::string("modify clip-rule \"" + ClipRule.get() + "\"");
             },
             [this](){
-                if (get_color() == Color.get_commit()) return std::string("");
+                if (SVGElement::get_color() == Color.get_commit()) return std::string("");
                 Color.commit();
                 if (Color.get() == STR_NULL) return std::string("reset color");
                 else return std::string("modify color \"" + Color.get() + "\"");
             },
             [this](){
-                if (get_color_interpolation() == ColorInterpolation.get_commit()) return std::string("");
+                if (SVGElement::get_color_interpolation() == ColorInterpolation.get_commit()) return std::string("");
                 ColorInterpolation.commit();
                 if (ColorInterpolation.get() == STR_NULL) return std::string("reset color-interpolation");
                 else return std::string("modify color-interpolation \"" + ColorInterpolation.get() + "\"");
             },
             [this](){
-                if (get_color_interpolation_filters() == ColorInterpolationFilters.get_commit()) return std::string("");
+                if (SVGElement::get_color_interpolation_filters() == ColorInterpolationFilters.get_commit()) return std::string("");
                 ColorInterpolationFilters.commit();
                 if (ColorInterpolationFilters.get() == STR_NULL) return std::string("reset color-interpolation-filters");
                 else return std::string("modify color-interpolation-filters \"" + ColorInterpolationFilters.get() + "\"");
             },
             [this](){
-                if (get_color_profile() == ColorProfile.get_commit()) return std::string("");
+                if (SVGElement::get_color_profile() == ColorProfile.get_commit()) return std::string("");
                 ColorProfile.commit();
                 if (ColorProfile.get() == STR_NULL) return std::string("reset color-profile");
                 else return std::string("modify color-profile \"" + ColorProfile.get() + "\"");
             },
             [this](){
-                if (get_color_rendering() == ColorRendering.get_commit()) return std::string("");
+                if (SVGElement::get_color_rendering() == ColorRendering.get_commit()) return std::string("");
                 ColorRendering.commit();
                 if (ColorRendering.get() == STR_NULL) return std::string("reset color-rendering");
                 else return std::string("modify color-rendering \"" + ColorRendering.get() + "\"");
             },
             [this](){
-                if (get_cursor() == Cursor.get_commit()) return std::string("");
+                if (SVGElement::get_cursor() == Cursor.get_commit()) return std::string("");
                 Cursor.commit();
                 if (Cursor.get() == STR_NULL) return std::string("reset cursor");
                 else return std::string("modify cursor \"" + Cursor.get() + "\"");
             },
             [this](){
-                if (get_d() == D.get_commit()) return std::string("");
+                if (SVGElement::get_d() == D.get_commit()) return std::string("");
                 D.commit();
                 if (D.get() == STR_NULL) return std::string("reset d");
                 else return std::string("modify d \"" + D.get() + "\"");
             },
             [this](){
-                if (get_direction() == Direction.get_commit()) return std::string("");
+                if (SVGElement::get_direction() == Direction.get_commit()) return std::string("");
                 Direction.commit();
                 if (Direction.get() == STR_NULL) return std::string("reset direction");
                 else return std::string("modify direction \"" + Direction.get() + "\"");
             },
             [this](){
-                if (get_display() == Display.get_commit()) return std::string("");
+                if (SVGElement::get_display() == Display.get_commit()) return std::string("");
                 Display.commit();
                 if (Display.get() == STR_NULL) return std::string("reset display");
                 else return std::string("modify display \"" + Display.get() + "\"");
             },
             [this](){
-                if (get_dominant_baseline() == DominantBaseline.get_commit()) return std::string("");
+                if (SVGElement::get_dominant_baseline() == DominantBaseline.get_commit()) return std::string("");
                 DominantBaseline.commit();
                 if (DominantBaseline.get() == STR_NULL) return std::string("reset dominant-baseline");
                 else return std::string("modify dominant-baseline \"" + DominantBaseline.get() + "\"");
             },
             [this](){
-                if (get_enable_background() == EnableBackground.get_commit()) return std::string("");
+                if (SVGElement::get_enable_background() == EnableBackground.get_commit()) return std::string("");
                 EnableBackground.commit();
                 if (EnableBackground.get() == STR_NULL) return std::string("reset enable-background");
                 else return std::string("modify enable-background \"" + EnableBackground.get() + "\"");
             },
             [this](){
-                if (get_fill() == Fill.get_commit()) return std::string("");
+                if (SVGElement::get_fill() == Fill.get_commit()) return std::string("");
                 Fill.commit();
                 if (Fill.get() == STR_NULL) return std::string("reset fill");
                 else return std::string("modify fill \"" + Fill.get() + "\"");
             },
             [this](){
-                if (get_fill_opacity() == FillOpacity.get_commit()) return std::string("");
+                if (SVGElement::get_fill_opacity() == FillOpacity.get_commit()) return std::string("");
                 FillOpacity.commit();
                 if (FillOpacity.get() == STR_NULL) return std::string("reset fill-opacity");
                 else return std::string("modify fill-opacity \"" + FillOpacity.get() + "\"");
             },
             [this](){
-                if (get_fill_rule() == FillRule.get_commit()) return std::string("");
+                if (SVGElement::get_fill_rule() == FillRule.get_commit()) return std::string("");
                 FillRule.commit();
                 if (FillRule.get() == STR_NULL) return std::string("reset fill-rule");
                 else return std::string("modify fill-rule \"" + FillRule.get() + "\"");
             },
             [this](){
-                if (get_filter() == Filter.get_commit()) return std::string("");
+                if (SVGElement::get_filter() == Filter.get_commit()) return std::string("");
                 Filter.commit();
                 if (Filter.get() == STR_NULL) return std::string("reset filter");
                 else return std::string("modify filter \"" + Filter.get() + "\"");
             },
             [this](){
-                if (get_flood_color() == FloodColor.get_commit()) return std::string("");
+                if (SVGElement::get_flood_color() == FloodColor.get_commit()) return std::string("");
                 FloodColor.commit();
                 if (FloodColor.get() == STR_NULL) return std::string("reset flood-color");
                 else return std::string("modify flood-color \"" + FloodColor.get() + "\"");
             },
             [this](){
-                if (get_flood_opacity() == FloodOpacity.get_commit()) return std::string("");
+                if (SVGElement::get_flood_opacity() == FloodOpacity.get_commit()) return std::string("");
                 FloodOpacity.commit();
                 if (FloodOpacity.get() == STR_NULL) return std::string("reset flood-opacity");
                 else return std::string("modify flood-opacity \"" + FloodOpacity.get() + "\"");
             },
             [this](){
-                if (get_font_family() == FontFamily.get_commit()) return std::string("");
+                if (SVGElement::get_font_family() == FontFamily.get_commit()) return std::string("");
                 FontFamily.commit();
                 if (FontFamily.get() == STR_NULL) return std::string("reset font-family");
                 else return std::string("modify font-family \"" + FontFamily.get() + "\"");
             },
             [this](){
-                if (get_font_size() == FontSize.get_commit()) return std::string("");
+                if (SVGElement::get_font_size() == FontSize.get_commit()) return std::string("");
                 FontSize.commit();
                 if (FontSize.get() == STR_NULL) return std::string("reset font-size");
                 else return std::string("modify font-size \"" + FontSize.get() + "\"");
             },
             [this](){
-                if (get_font_size_adjust() == FontSizeAdjust.get_commit()) return std::string("");
+                if (SVGElement::get_font_size_adjust() == FontSizeAdjust.get_commit()) return std::string("");
                 FontSizeAdjust.commit();
                 if (FontSizeAdjust.get() == STR_NULL) return std::string("reset font-size-adjust");
                 else return std::string("modify font-size-adjust \"" + FontSizeAdjust.get() + "\"");
             },
             [this](){
-                if (get_font_stretch() == FontStretch.get_commit()) return std::string("");
+                if (SVGElement::get_font_stretch() == FontStretch.get_commit()) return std::string("");
                 FontStretch.commit();
                 if (FontStretch.get() == STR_NULL) return std::string("reset font-stretch");
                 else return std::string("modify font-stretch \"" + FontStretch.get() + "\"");
             },
             [this](){
-                if (get_font_style() == FontStyle.get_commit()) return std::string("");
+                if (SVGElement::get_font_style() == FontStyle.get_commit()) return std::string("");
                 FontStyle.commit();
                 if (FontStyle.get() == STR_NULL) return std::string("reset font-style");
                 else return std::string("modify font-style \"" + FontStyle.get() + "\"");
             },
             [this](){
-                if (get_font_variant() == FontVariant.get_commit()) return std::string("");
+                if (SVGElement::get_font_variant() == FontVariant.get_commit()) return std::string("");
                 FontVariant.commit();
                 if (FontVariant.get() == STR_NULL) return std::string("reset font-variant");
                 else return std::string("modify font-variant \"" + FontVariant.get() + "\"");
             },
             [this](){
-                if (get_font_weight() == FontWeight.get_commit()) return std::string("");
+                if (SVGElement::get_font_weight() == FontWeight.get_commit()) return std::string("");
                 FontWeight.commit();
                 if (FontWeight.get() == STR_NULL) return std::string("reset font-weight");
                 else return std::string("modify font-weight \"" + FontWeight.get() + "\"");
             },
             [this](){
-                if (get_glyph_orientation_horizontal() == GlyphOrientationHorizontal.get_commit()) return std::string("");
+                if (SVGElement::get_glyph_orientation_horizontal() == GlyphOrientationHorizontal.get_commit()) return std::string("");
                 GlyphOrientationHorizontal.commit();
                 if (GlyphOrientationHorizontal.get() == STR_NULL) return std::string("reset glyph-orientation-horizontal");
                 else return std::string("modify glyph-orientation-horizontal \"" + GlyphOrientationHorizontal.get() + "\"");
             },
             [this](){
-                if (get_glyph_orientation_vertical() == GlyphOrientationVertical.get_commit()) return std::string("");
+                if (SVGElement::get_glyph_orientation_vertical() == GlyphOrientationVertical.get_commit()) return std::string("");
                 GlyphOrientationVertical.commit();
                 if (GlyphOrientationVertical.get() == STR_NULL) return std::string("reset glyph-orientation-vertical");
                 else return std::string("modify glyph-orientation-vertical \"" + GlyphOrientationVertical.get() + "\"");
             },
             [this](){
-                if (get_image_rendering() == ImageRendering.get_commit()) return std::string("");
+                if (SVGElement::get_image_rendering() == ImageRendering.get_commit()) return std::string("");
                 ImageRendering.commit();
                 if (ImageRendering.get() == STR_NULL) return std::string("reset image-rendering");
                 else return std::string("modify image-rendering \"" + ImageRendering.get() + "\"");
             },
             [this](){
-                if (get_kerning() == Kerning.get_commit()) return std::string("");
+                if (SVGElement::get_kerning() == Kerning.get_commit()) return std::string("");
                 Kerning.commit();
                 if (Kerning.get() == STR_NULL) return std::string("reset kerning");
                 else return std::string("modify kerning \"" + Kerning.get() + "\"");
             },
             [this](){
-                if (get_letter_spacing() == LetterSpacing.get_commit()) return std::string("");
+                if (SVGElement::get_letter_spacing() == LetterSpacing.get_commit()) return std::string("");
                 LetterSpacing.commit();
                 if (LetterSpacing.get() == STR_NULL) return std::string("reset letter-spacing");
                 else return std::string("modify letter-spacing \"" + LetterSpacing.get() + "\"");
             },
             [this](){
-                if (get_lighting_color() == LightingColor.get_commit()) return std::string("");
+                if (SVGElement::get_lighting_color() == LightingColor.get_commit()) return std::string("");
                 LightingColor.commit();
                 if (LightingColor.get() == STR_NULL) return std::string("reset lighting-color");
                 else return std::string("modify lighting-color \"" + LightingColor.get() + "\"");
             },
             [this](){
-                if (get_marker_end() == MarkerEnd.get_commit()) return std::string("");
+                if (SVGElement::get_marker_end() == MarkerEnd.get_commit()) return std::string("");
                 MarkerEnd.commit();
                 if (MarkerEnd.get() == STR_NULL) return std::string("reset marker-end");
                 else return std::string("modify marker-end \"" + MarkerEnd.get() + "\"");
             },
             [this](){
-                if (get_marker_mid() == MarkerMid.get_commit()) return std::string("");
+                if (SVGElement::get_marker_mid() == MarkerMid.get_commit()) return std::string("");
                 MarkerMid.commit();
                 if (MarkerMid.get() == STR_NULL) return std::string("reset marker-mid");
                 else return std::string("modify marker-mid \"" + MarkerMid.get() + "\"");
             },
             [this](){
-                if (get_marker_start() == MarkerStart.get_commit()) return std::string("");
+                if (SVGElement::get_marker_start() == MarkerStart.get_commit()) return std::string("");
                 MarkerStart.commit();
                 if (MarkerStart.get() == STR_NULL) return std::string("reset marker-start");
                 else return std::string("modify marker-start \"" + MarkerStart.get() + "\"");
             },
             [this](){
-                if (get_mask() == Mask.get_commit()) return std::string("");
+                if (SVGElement::get_mask() == Mask.get_commit()) return std::string("");
                 Mask.commit();
                 if (Mask.get() == STR_NULL) return std::string("reset mask");
                 else return std::string("modify mask \"" + Mask.get() + "\"");
             },
             [this](){
-                if (get_opacity() == Opacity.get_commit()) return std::string("");
+                if (SVGElement::get_opacity() == Opacity.get_commit()) return std::string("");
                 Opacity.commit();
                 if (Opacity.get() == STR_NULL) return std::string("reset opacity");
                 else return std::string("modify opacity \"" + Opacity.get() + "\"");
             },
             [this](){
-                if (get_overflow() == Overflow.get_commit()) return std::string("");
+                if (SVGElement::get_overflow() == Overflow.get_commit()) return std::string("");
                 Overflow.commit();
                 if (Overflow.get() == STR_NULL) return std::string("reset overflow");
                 else return std::string("modify overflow \"" + Overflow.get() + "\"");
             },
             [this](){
-                if (get_pointer_events() == PointerEvents.get_commit()) return std::string("");
+                if (SVGElement::get_pointer_events() == PointerEvents.get_commit()) return std::string("");
                 PointerEvents.commit();
                 if (PointerEvents.get() == STR_NULL) return std::string("reset pointer-events");
                 else return std::string("modify pointer-events \"" + PointerEvents.get() + "\"");
             },
             [this](){
-                if (get_shape_rendering() == ShapeRendering.get_commit()) return std::string("");
+                if (SVGElement::get_shape_rendering() == ShapeRendering.get_commit()) return std::string("");
                 ShapeRendering.commit();
                 if (ShapeRendering.get() == STR_NULL) return std::string("reset shape-rendering");
                 else return std::string("modify shape-rendering \"" + ShapeRendering.get() + "\"");
             },
             [this](){
-                if (get_solid_color() == SolidColor.get_commit()) return std::string("");
+                if (SVGElement::get_solid_color() == SolidColor.get_commit()) return std::string("");
                 SolidColor.commit();
                 if (SolidColor.get() == STR_NULL) return std::string("reset solid-color");
                 else return std::string("modify solid-color \"" + SolidColor.get() + "\"");
             },
             [this](){
-                if (get_solid_opacity() == SolidOpacity.get_commit()) return std::string("");
+                if (SVGElement::get_solid_opacity() == SolidOpacity.get_commit()) return std::string("");
                 SolidOpacity.commit();
                 if (SolidOpacity.get() == STR_NULL) return std::string("reset solid-opacity");
                 else return std::string("modify solid-opacity \"" + SolidOpacity.get() + "\"");
             },
             [this](){
-                if (get_stop_color() == StopColor.get_commit()) return std::string("");
+                if (SVGElement::get_stop_color() == StopColor.get_commit()) return std::string("");
                 StopColor.commit();
                 if (StopColor.get() == STR_NULL) return std::string("reset stop-color");
                 else return std::string("modify stop-color \"" + StopColor.get() + "\"");
             },
             [this](){
-                if (get_stop_opacity() == StopOpacity.get_commit()) return std::string("");
+                if (SVGElement::get_stop_opacity() == StopOpacity.get_commit()) return std::string("");
                 StopOpacity.commit();
                 if (StopOpacity.get() == STR_NULL) return std::string("reset stop-opacity");
                 else return std::string("modify stop-opacity \"" + StopOpacity.get() + "\"");
             },
             [this](){
-                if (get_stroke() == Stroke.get_commit()) return std::string("");
+                if (SVGElement::get_stroke() == Stroke.get_commit()) return std::string("");
                 Stroke.commit();
                 if (Stroke.get() == STR_NULL) return std::string("reset stroke");
                 else return std::string("modify stroke \"" + Stroke.get() + "\"");
             },
             [this](){
-                if (get_stroke_dasharray() == StrokeDasharray.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_dasharray() == StrokeDasharray.get_commit()) return std::string("");
                 StrokeDasharray.commit();
                 if (StrokeDasharray.get() == STR_NULL) return std::string("reset stroke-dasharray");
                 else return std::string("modify stroke-dasharray \"" + StrokeDasharray.get() + "\"");
             },
             [this](){
-                if (get_stroke_dashoffset() == StrokeDashoffset.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_dashoffset() == StrokeDashoffset.get_commit()) return std::string("");
                 StrokeDashoffset.commit();
                 if (StrokeDashoffset.get() == STR_NULL) return std::string("reset stroke-dashoffset");
                 else return std::string("modify stroke-dashoffset \"" + StrokeDashoffset.get() + "\"");
             },
             [this](){
-                if (get_stroke_linecap() == StrokeLinecap.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_linecap() == StrokeLinecap.get_commit()) return std::string("");
                 StrokeLinecap.commit();
                 if (StrokeLinecap.get() == STR_NULL) return std::string("reset stroke-linecap");
                 else return std::string("modify stroke-linecap \"" + StrokeLinecap.get() + "\"");
             },
             [this](){
-                if (get_stroke_linejoin() == StrokeLinejoin.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_linejoin() == StrokeLinejoin.get_commit()) return std::string("");
                 StrokeLinejoin.commit();
                 if (StrokeLinejoin.get() == STR_NULL) return std::string("reset stroke-linejoin");
                 else return std::string("modify stroke-linejoin \"" + StrokeLinejoin.get() + "\"");
             },
             [this](){
-                if (get_stroke_miterlimit() == StrokeMiterlimit.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_miterlimit() == StrokeMiterlimit.get_commit()) return std::string("");
                 StrokeMiterlimit.commit();
                 if (StrokeMiterlimit.get() == STR_NULL) return std::string("reset stroke-miterlimit");
                 else return std::string("modify stroke-miterlimit \"" + StrokeMiterlimit.get() + "\"");
             },
             [this](){
-                if (get_stroke_opacity() == StrokeOpacity.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_opacity() == StrokeOpacity.get_commit()) return std::string("");
                 StrokeOpacity.commit();
                 if (StrokeOpacity.get() == STR_NULL) return std::string("reset stroke-opacity");
                 else return std::string("modify stroke-opacity \"" + StrokeOpacity.get() + "\"");
             },
             [this](){
-                if (get_stroke_width() == StrokeWidth.get_commit()) return std::string("");
+                if (SVGElement::get_stroke_width() == StrokeWidth.get_commit()) return std::string("");
                 StrokeWidth.commit();
                 if (StrokeWidth.get() == STR_NULL) return std::string("reset stroke-width");
                 else return std::string("modify stroke-width \"" + StrokeWidth.get() + "\"");
             },
             [this](){
-                if (get_text_anchor() == TextAnchor.get_commit()) return std::string("");
+                if (SVGElement::get_text_anchor() == TextAnchor.get_commit()) return std::string("");
                 TextAnchor.commit();
                 if (TextAnchor.get() == STR_NULL) return std::string("reset text-anchor");
                 else return std::string("modify text-anchor \"" + TextAnchor.get() + "\"");
             },
             [this](){
-                if (get_text_decoration() == TextDecoration.get_commit()) return std::string("");
+                if (SVGElement::get_text_decoration() == TextDecoration.get_commit()) return std::string("");
                 TextDecoration.commit();
                 if (TextDecoration.get() == STR_NULL) return std::string("reset text-decoration");
                 else return std::string("modify text-decoration \"" + TextDecoration.get() + "\"");
             },
             [this](){
-                if (get_text_rendering() == TextRendering.get_commit()) return std::string("");
+                if (SVGElement::get_text_rendering() == TextRendering.get_commit()) return std::string("");
                 TextRendering.commit();
                 if (TextRendering.get() == STR_NULL) return std::string("reset text-rendering");
                 else return std::string("modify text-rendering \"" + TextRendering.get() + "\"");
             },
             [this](){
-                if (get_transform() == Transform.get_commit()) return std::string("");
+                if (SVGElement::get_transform() == Transform.get_commit()) return std::string("");
                 Transform.commit();
                 if (Transform.get() == STR_NULL) return std::string("reset transform");
                 else return std::string("modify transform \"" + Transform.get() + "\"");
             },
             [this](){
-                if (get_unicode_bidi() == UnicodeBidi.get_commit()) return std::string("");
+                if (SVGElement::get_unicode_bidi() == UnicodeBidi.get_commit()) return std::string("");
                 UnicodeBidi.commit();
                 if (UnicodeBidi.get() == STR_NULL) return std::string("reset unicode-bidi");
                 else return std::string("modify unicode-bidi \"" + UnicodeBidi.get() + "\"");
             },
             [this](){
-                if (get_vector_effect() == VectorEffect.get_commit()) return std::string("");
+                if (SVGElement::get_vector_effect() == VectorEffect.get_commit()) return std::string("");
                 VectorEffect.commit();
                 if (VectorEffect.get() == STR_NULL) return std::string("reset vector-effect");
                 else return std::string("modify vector-effect \"" + VectorEffect.get() + "\"");
             },
             [this](){
-                if (get_visibility() == Visibility.get_commit()) return std::string("");
+                if (SVGElement::get_visibility() == Visibility.get_commit()) return std::string("");
                 Visibility.commit();
                 if (Visibility.get() == STR_NULL) return std::string("reset visibility");
                 else return std::string("modify visibility \"" + Visibility.get() + "\"");
             },
             [this](){
-                if (get_word_spacing() == WordSpacing.get_commit()) return std::string("");
+                if (SVGElement::get_word_spacing() == WordSpacing.get_commit()) return std::string("");
                 WordSpacing.commit();
                 if (WordSpacing.get() == STR_NULL) return std::string("reset word-spacing");
                 else return std::string("modify word-spacing \"" + WordSpacing.get() + "\"");
             },
             [this](){
-                if (get_writing_mode() == WritingMode.get_commit()) return std::string("");
+                if (SVGElement::get_writing_mode() == WritingMode.get_commit()) return std::string("");
                 WritingMode.commit();
                 if (WritingMode.get() == STR_NULL) return std::string("reset writing-mode");
                 else return std::string("modify writing-mode \"" + WritingMode.get() + "\"");

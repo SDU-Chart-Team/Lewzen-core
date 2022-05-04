@@ -1334,7 +1334,11 @@ namespace Lewzen {
         if (_attributes != "") ss << _attributes;
 
         auto _inner_svg = inner_SVG();
-        ss << ">" << _inner_svg << "</" << get_tag() << ">";
+        if (_inner_svg == "") {
+            ss << "/>";
+        } else {
+            ss << ">" << _inner_svg << "</" << get_tag() << ">";
+        }
 
         return ss.str();
     }

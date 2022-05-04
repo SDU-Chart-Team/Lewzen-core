@@ -458,49 +458,49 @@ namespace Lewzen {
         };
         const std::array<std::function<const std::string()>, 8> _attr_commit = {
             [this](){
-                if (get_marker_height() == MarkerHeight.get_commit()) return std::string("");
+                if (SVGMarker::get_marker_height() == MarkerHeight.get_commit()) return std::string("");
                 MarkerHeight.commit();
                 if (MarkerHeight.get() == STR_NULL) return std::string("reset markerHeight");
                 else return std::string("modify markerHeight \"" + MarkerHeight.get() + "\"");
             },
             [this](){
-                if (get_marker_units() == MarkerUnits.get_commit()) return std::string("");
+                if (SVGMarker::get_marker_units() == MarkerUnits.get_commit()) return std::string("");
                 MarkerUnits.commit();
                 if (MarkerUnits.get() == STR_NULL) return std::string("reset markerUnits");
                 else return std::string("modify markerUnits \"" + MarkerUnits.get() + "\"");
             },
             [this](){
-                if (get_marker_width() == MarkerWidth.get_commit()) return std::string("");
+                if (SVGMarker::get_marker_width() == MarkerWidth.get_commit()) return std::string("");
                 MarkerWidth.commit();
                 if (MarkerWidth.get() == STR_NULL) return std::string("reset markerWidth");
                 else return std::string("modify markerWidth \"" + MarkerWidth.get() + "\"");
             },
             [this](){
-                if (get_orient() == Orient.get_commit()) return std::string("");
+                if (SVGMarker::get_orient() == Orient.get_commit()) return std::string("");
                 Orient.commit();
                 if (Orient.get() == STR_NULL) return std::string("reset orient");
                 else return std::string("modify orient \"" + Orient.get() + "\"");
             },
             [this](){
-                if (get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
+                if (SVGMarker::get_preserve_aspect_ratio() == PreserveAspectRatio.get_commit()) return std::string("");
                 PreserveAspectRatio.commit();
                 if (PreserveAspectRatio.get() == STR_NULL) return std::string("reset preserveAspectRatio");
                 else return std::string("modify preserveAspectRatio \"" + PreserveAspectRatio.get() + "\"");
             },
             [this](){
-                if (get_ref_x() == RefX.get_commit()) return std::string("");
+                if (SVGMarker::get_ref_x() == RefX.get_commit()) return std::string("");
                 RefX.commit();
                 if (RefX.get() == STR_NULL) return std::string("reset refX");
                 else return std::string("modify refX \"" + RefX.get() + "\"");
             },
             [this](){
-                if (get_ref_y() == RefY.get_commit()) return std::string("");
+                if (SVGMarker::get_ref_y() == RefY.get_commit()) return std::string("");
                 RefY.commit();
                 if (RefY.get() == STR_NULL) return std::string("reset refY");
                 else return std::string("modify refY \"" + RefY.get() + "\"");
             },
             [this](){
-                if (get_view_box() == ViewBox.get_commit()) return std::string("");
+                if (SVGMarker::get_view_box() == ViewBox.get_commit()) return std::string("");
                 ViewBox.commit();
                 if (ViewBox.get() == STR_NULL) return std::string("reset viewBox");
                 else return std::string("modify viewBox \"" + ViewBox.get() + "\"");

@@ -58,10 +58,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGCircle::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGCircle &SVGCircle::operator=(const SVGCircle &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _cx = element.get_cx();
         _cy = element.get_cy();

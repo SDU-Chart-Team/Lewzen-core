@@ -22,10 +22,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGG::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGG &SVGG::operator=(const SVGG &element) {
         SVGElement::operator=(element);
+        return *this;
 
         return *this;
     }

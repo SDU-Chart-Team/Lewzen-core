@@ -94,10 +94,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGImage::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGImage &SVGImage::operator=(const SVGImage &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _width = element.get_width();
         _height = element.get_height();

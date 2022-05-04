@@ -67,10 +67,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGLine::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGLine &SVGLine::operator=(const SVGLine &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _xQ = element.get_xQ();
         _xR = element.get_xR();

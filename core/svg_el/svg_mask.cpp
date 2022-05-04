@@ -76,10 +76,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGMask::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGMask &SVGMask::operator=(const SVGMask &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _height = element.get_height();
         _mask_content_units = element.get_mask_content_units();

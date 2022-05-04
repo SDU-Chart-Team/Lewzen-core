@@ -36,28 +36,28 @@ namespace Lewzen {
         *
         * @return the points
         */
-        const std::string get_points() const;
+        virtual const std::string get_points() const;
         /**
         * This attribute defines the list of points (pairs of x,y absolute coordinates) required to draw the polygon. 
         * Value type: <list-of-numbers> ; Default value: ""; Animatable: yes
         *
         * @param  the points
         */
-        void set_points(const std::string &points);
+        virtual void set_points(const std::string &points);
         /**
         * This attribute lets specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @return the pathLength
         */
-        const std::string get_path_length() const;
+        virtual const std::string get_path_length() const;
         /**
         * This attribute lets specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @param  the pathLength
         */
-        void set_path_length(const std::string &path_length);
+        virtual void set_path_length(const std::string &path_length);
 
         /// Attributes
     protected:

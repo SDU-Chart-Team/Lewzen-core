@@ -112,10 +112,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGPattern::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGPattern &SVGPattern::operator=(const SVGPattern &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _height = element.get_height();
         _href = element.get_href();

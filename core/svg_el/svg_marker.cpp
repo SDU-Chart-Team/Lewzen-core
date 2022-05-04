@@ -94,10 +94,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGMarker::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGMarker &SVGMarker::operator=(const SVGMarker &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _marker_height = element.get_marker_height();
         _marker_units = element.get_marker_units();

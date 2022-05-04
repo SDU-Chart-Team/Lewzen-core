@@ -85,10 +85,11 @@ namespace Lewzen {
         return cloned;
     }
     SVGElement &SVGRect::operator=(const SVGElement &element) {
-        SVGElement::operator=(element);
+        return SVGElement::operator=(element);
     }
     SVGRect &SVGRect::operator=(const SVGRect &element) {
         SVGElement::operator=(element);
+        return *this;
 
         _x = element.get_x();
         _y = element.get_y();

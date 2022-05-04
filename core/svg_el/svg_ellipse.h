@@ -42,70 +42,70 @@ namespace Lewzen {
         *
         * @return the cx
         */
-        const std::string get_cx() const;
+        virtual const std::string get_cx() const;
         /**
         * The x position of the ellipse. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the cx
         */
-        void set_cx(const std::string &cx);
+        virtual void set_cx(const std::string &cx);
         /**
         * The y position of the ellipse. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @return the cy
         */
-        const std::string get_cy() const;
+        virtual const std::string get_cy() const;
         /**
         * The y position of the ellipse. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the cy
         */
-        void set_cy(const std::string &cy);
+        virtual void set_cy(const std::string &cy);
         /**
         * The radius of the ellipse on the x axis. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the rx
         */
-        const std::string get_rx() const;
+        virtual const std::string get_rx() const;
         /**
         * The radius of the ellipse on the x axis. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the rx
         */
-        void set_rx(const std::string &rx);
+        virtual void set_rx(const std::string &rx);
         /**
         * The radius of the ellipse on the y axis. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the ry
         */
-        const std::string get_ry() const;
+        virtual const std::string get_ry() const;
         /**
         * The radius of the ellipse on the y axis. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the ry
         */
-        void set_ry(const std::string &ry);
+        virtual void set_ry(const std::string &ry);
         /**
         * This attribute lets specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @return the pathLength
         */
-        const std::string get_path_length() const;
+        virtual const std::string get_path_length() const;
         /**
         * This attribute lets specify the total length for the path, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @param  the pathLength
         */
-        void set_path_length(const std::string &path_length);
+        virtual void set_path_length(const std::string &path_length);
 
         /// Attributes
     protected:

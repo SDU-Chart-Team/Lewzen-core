@@ -46,98 +46,98 @@ namespace Lewzen {
         *
         * @return the x
         */
-        const std::string get_x() const;
+        virtual const std::string get_x() const;
         /**
         * The x coordinate of the rect. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the x
         */
-        void set_x(const std::string &x);
+        virtual void set_x(const std::string &x);
         /**
         * The y coordinate of the rect. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @return the y
         */
-        const std::string get_y() const;
+        virtual const std::string get_y() const;
         /**
         * The y coordinate of the rect. 
         * Value type: <length>|<percentage> ; Default value: 0; Animatable: yes
         *
         * @param  the y
         */
-        void set_y(const std::string &y);
+        virtual void set_y(const std::string &y);
         /**
         * The width of the rect. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the width
         */
-        const std::string get_width() const;
+        virtual const std::string get_width() const;
         /**
         * The width of the rect. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the width
         */
-        void set_width(const std::string &width);
+        virtual void set_width(const std::string &width);
         /**
         * The height of the rect. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the height
         */
-        const std::string get_height() const;
+        virtual const std::string get_height() const;
         /**
         * The height of the rect. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the height
         */
-        void set_height(const std::string &height);
+        virtual void set_height(const std::string &height);
         /**
         * The horizontal corner radius of the rect. Defaults to ry if it is specified. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the rx
         */
-        const std::string get_rx() const;
+        virtual const std::string get_rx() const;
         /**
         * The horizontal corner radius of the rect. Defaults to ry if it is specified. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the rx
         */
-        void set_rx(const std::string &rx);
+        virtual void set_rx(const std::string &rx);
         /**
         * The vertical corner radius of the rect. Defaults to rx if it is specified. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @return the ry
         */
-        const std::string get_ry() const;
+        virtual const std::string get_ry() const;
         /**
         * The vertical corner radius of the rect. Defaults to rx if it is specified. 
         * Value type: auto|<length>|<percentage> ; Default value: auto; Animatable: yes
         *
         * @param  the ry
         */
-        void set_ry(const std::string &ry);
+        virtual void set_ry(const std::string &ry);
         /**
         * The total length of the rectangle's perimeter, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @return the pathLength
         */
-        const std::string get_path_length() const;
+        virtual const std::string get_path_length() const;
         /**
         * The total length of the rectangle's perimeter, in user units. 
         * Value type: <number> ; Default value: none; Animatable: yes
         *
         * @param  the pathLength
         */
-        void set_path_length(const std::string &path_length);
+        virtual void set_path_length(const std::string &path_length);
 
         /// Attributes
     protected:

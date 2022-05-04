@@ -48,112 +48,112 @@ namespace Lewzen {
         *
         * @return the gradientUnits
         */
-        const std::string get_gradient_units() const;
+        virtual const std::string get_gradient_units() const;
         /**
         * This attribute defines the coordinate system for attributes x1, x2, y1, y2 
         * Value type: userSpaceOnUse|objectBoundingBox ; Default value: objectBoundingBox; Animatable: yes
         *
         * @param  the gradientUnits
         */
-        void set_gradient_units(const std::string &gradient_units);
+        virtual void set_gradient_units(const std::string &gradient_units);
         /**
         * This attribute provides additional transformation to the gradient coordinate system. 
         * Value type: <transform-list> ; Default value: identity transform; Animatable: yes
         *
         * @return the gradientTransform
         */
-        const std::string get_gradient_transform() const;
+        virtual const std::string get_gradient_transform() const;
         /**
         * This attribute provides additional transformation to the gradient coordinate system. 
         * Value type: <transform-list> ; Default value: identity transform; Animatable: yes
         *
         * @param  the gradientTransform
         */
-        void set_gradient_transform(const std::string &gradient_transform);
+        virtual void set_gradient_transform(const std::string &gradient_transform);
         /**
         * This attribute defines a reference to another <linearGradient> element that will be used as a template. 
         * Value type: <URL> ; Default value: none; Animatable: yes
         *
         * @return the href
         */
-        const std::string get_href() const;
+        virtual const std::string get_href() const;
         /**
         * This attribute defines a reference to another <linearGradient> element that will be used as a template. 
         * Value type: <URL> ; Default value: none; Animatable: yes
         *
         * @param  the href
         */
-        void set_href(const std::string &href);
+        virtual void set_href(const std::string &href);
         /**
         * This attribute indicates how the gradient behaves if it starts or ends inside the bounds of the shape containing the gradient. 
         * Value type: pad|reflect|repeat ; Default value: pad; Animatable: yes
         *
         * @return the spreadMethod
         */
-        const std::string get_spread_method() const;
+        virtual const std::string get_spread_method() const;
         /**
         * This attribute indicates how the gradient behaves if it starts or ends inside the bounds of the shape containing the gradient. 
         * Value type: pad|reflect|repeat ; Default value: pad; Animatable: yes
         *
         * @param  the spreadMethod
         */
-        void set_spread_method(const std::string &spread_method);
+        virtual void set_spread_method(const std::string &spread_method);
         /**
         * This attribute defines the x coordinate of the starting point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @return the x1
         */
-        const std::string get_xQ() const;
+        virtual const std::string get_xQ() const;
         /**
         * This attribute defines the x coordinate of the starting point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @param  the x1
         */
-        void set_xQ(const std::string &xQ);
+        virtual void set_xQ(const std::string &xQ);
         /**
         * This attribute defines the x coordinate of the ending point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 100%; Animatable: yes
         *
         * @return the x2
         */
-        const std::string get_xR() const;
+        virtual const std::string get_xR() const;
         /**
         * This attribute defines the x coordinate of the ending point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 100%; Animatable: yes
         *
         * @param  the x2
         */
-        void set_xR(const std::string &xR);
+        virtual void set_xR(const std::string &xR);
         /**
         * This attribute defines the y coordinate of the starting point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @return the y1
         */
-        const std::string get_yQ() const;
+        virtual const std::string get_yQ() const;
         /**
         * This attribute defines the y coordinate of the starting point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @param  the y1
         */
-        void set_yQ(const std::string &yQ);
+        virtual void set_yQ(const std::string &yQ);
         /**
         * This attribute defines the y coordinate of the ending point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @return the y2
         */
-        const std::string get_yR() const;
+        virtual const std::string get_yR() const;
         /**
         * This attribute defines the y coordinate of the ending point of the vector gradient along which the linear gradient is drawn. 
         * Value type: <length>|<percentage>|<number>; Default value: 0%; Animatable: yes
         *
         * @param  the y2
         */
-        void set_yR(const std::string &yR);
+        virtual void set_yR(const std::string &yR);
 
         /// Attributes
     protected:
