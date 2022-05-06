@@ -6,8 +6,9 @@ namespace Lewzen {
         _y = STR_NULL;
         _width = STR_NULL;
         _height = STR_NULL;
-        _preserve_aspect_ratio = STR_NULL;
-        _view_box = STR_NULL;
+        _rx = STR_NULL;
+        _ry = STR_NULL;
+        _path_length = STR_NULL;
     }
     const std::string SVGRect::get_tag() const {
         return "rect";
@@ -40,18 +41,25 @@ namespace Lewzen {
         _height = height;
         update_attribute_hash();
     }
-    const std::string SVGRect::get_preserve_aspect_ratio() const {
-        return _preserve_aspect_ratio;
+    const std::string SVGRect::get_rx() const {
+        return _rx;
     }
-    void SVGRect::set_preserve_aspect_ratio(const std::string &preserve_aspect_ratio) {
-        _preserve_aspect_ratio = preserve_aspect_ratio;
+    void SVGRect::set_rx(const std::string &rx) {
+        _rx = rx;
         update_attribute_hash();
     }
-    const std::string SVGRect::get_view_box() const {
-        return _view_box;
+    const std::string SVGRect::get_ry() const {
+        return _ry;
     }
-    void SVGRect::set_view_box(const std::string &view_box) {
-        _view_box = view_box;
+    void SVGRect::set_ry(const std::string &ry) {
+        _ry = ry;
+        update_attribute_hash();
+    }
+    const std::string SVGRect::get_path_length() const {
+        return _path_length;
+    }
+    void SVGRect::set_path_length(const std::string &path_length) {
+        _path_length = path_length;
         update_attribute_hash();
     }
     const std::string SVGRect::get_attributes() const {
@@ -61,8 +69,9 @@ namespace Lewzen {
         if (_y != STR_NULL) ss << " y=\"" << _y << "\"";
         if (_width != STR_NULL) ss << " width=\"" << _width << "\"";
         if (_height != STR_NULL) ss << " height=\"" << _height << "\"";
-        if (_preserve_aspect_ratio != STR_NULL) ss << " preserveAspectRatio=\"" << _preserve_aspect_ratio << "\"";
-        if (_view_box != STR_NULL) ss << " viewBox=\"" << _view_box << "\"";
+        if (_rx != STR_NULL) ss << " rx=\"" << _rx << "\"";
+        if (_ry != STR_NULL) ss << " ry=\"" << _ry << "\"";
+        if (_path_length != STR_NULL) ss << " pathLength=\"" << _path_length << "\"";
         ss << SVGElement::get_attributes();
 
         return ss.str();
@@ -86,8 +95,9 @@ namespace Lewzen {
         _y = element.get_y();
         _width = element.get_width();
         _height = element.get_height();
-        _preserve_aspect_ratio = element.get_preserve_aspect_ratio();
-        _view_box = element.get_view_box();
+        _rx = element.get_rx();
+        _ry = element.get_ry();
+        _path_length = element.get_path_length();
         return *this;
     }
     const std::string SVGRect::operator-(const SVGElement &element) const {
@@ -121,13 +131,17 @@ namespace Lewzen {
             if (_height == STR_NULL) ss << "reset height" << std::endl;
             else ss << "modify height \"" << _height << "\"" << std::endl;
         }
-        if (_preserve_aspect_ratio != element.get_preserve_aspect_ratio()) {
-            if (_preserve_aspect_ratio == STR_NULL) ss << "reset preserveAspectRatio" << std::endl;
-            else ss << "modify preserveAspectRatio \"" << _preserve_aspect_ratio << "\"" << std::endl;
+        if (_rx != element.get_rx()) {
+            if (_rx == STR_NULL) ss << "reset rx" << std::endl;
+            else ss << "modify rx \"" << _rx << "\"" << std::endl;
         }
-        if (_view_box != element.get_view_box()) {
-            if (_view_box == STR_NULL) ss << "reset viewBox" << std::endl;
-            else ss << "modify viewBox \"" << _view_box << "\"" << std::endl;
+        if (_ry != element.get_ry()) {
+            if (_ry == STR_NULL) ss << "reset ry" << std::endl;
+            else ss << "modify ry \"" << _ry << "\"" << std::endl;
+        }
+        if (_path_length != element.get_path_length()) {
+            if (_path_length == STR_NULL) ss << "reset pathLength" << std::endl;
+            else ss << "modify pathLength \"" << _path_length << "\"" << std::endl;
         }
 
         return ss.str();

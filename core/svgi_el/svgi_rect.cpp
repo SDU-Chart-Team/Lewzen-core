@@ -19,14 +19,18 @@ namespace Lewzen {
         std::function<void(const std::string &)> _setter_height = std::bind(&SVGRect::set_height, (SVGRect *)this, std::placeholders::_1);
         Height.set_getter(_getter_height), Height.set_setter(_setter_height);
         Height.callback_assign(_attr_on_assign[3]), Height.callback_bind_func(_attr_on_bind[3]), Height.callback_bind_ptr(_attr_on_bind[3]);
-        std::function<const std::string()> _getter_preserve_aspect_ratio = std::bind(&SVGRect::get_preserve_aspect_ratio, (SVGRect *)this);
-        std::function<void(const std::string &)> _setter_preserve_aspect_ratio = std::bind(&SVGRect::set_preserve_aspect_ratio, (SVGRect *)this, std::placeholders::_1);
-        PreserveAspectRatio.set_getter(_getter_preserve_aspect_ratio), PreserveAspectRatio.set_setter(_setter_preserve_aspect_ratio);
-        PreserveAspectRatio.callback_assign(_attr_on_assign[4]), PreserveAspectRatio.callback_bind_func(_attr_on_bind[4]), PreserveAspectRatio.callback_bind_ptr(_attr_on_bind[4]);
-        std::function<const std::string()> _getter_view_box = std::bind(&SVGRect::get_view_box, (SVGRect *)this);
-        std::function<void(const std::string &)> _setter_view_box = std::bind(&SVGRect::set_view_box, (SVGRect *)this, std::placeholders::_1);
-        ViewBox.set_getter(_getter_view_box), ViewBox.set_setter(_setter_view_box);
-        ViewBox.callback_assign(_attr_on_assign[5]), ViewBox.callback_bind_func(_attr_on_bind[5]), ViewBox.callback_bind_ptr(_attr_on_bind[5]);
+        std::function<const std::string()> _getter_rx = std::bind(&SVGRect::get_rx, (SVGRect *)this);
+        std::function<void(const std::string &)> _setter_rx = std::bind(&SVGRect::set_rx, (SVGRect *)this, std::placeholders::_1);
+        Rx.set_getter(_getter_rx), Rx.set_setter(_setter_rx);
+        Rx.callback_assign(_attr_on_assign[4]), Rx.callback_bind_func(_attr_on_bind[4]), Rx.callback_bind_ptr(_attr_on_bind[4]);
+        std::function<const std::string()> _getter_ry = std::bind(&SVGRect::get_ry, (SVGRect *)this);
+        std::function<void(const std::string &)> _setter_ry = std::bind(&SVGRect::set_ry, (SVGRect *)this, std::placeholders::_1);
+        Ry.set_getter(_getter_ry), Ry.set_setter(_setter_ry);
+        Ry.callback_assign(_attr_on_assign[5]), Ry.callback_bind_func(_attr_on_bind[5]), Ry.callback_bind_ptr(_attr_on_bind[5]);
+        std::function<const std::string()> _getter_path_length = std::bind(&SVGRect::get_path_length, (SVGRect *)this);
+        std::function<void(const std::string &)> _setter_path_length = std::bind(&SVGRect::set_path_length, (SVGRect *)this, std::placeholders::_1);
+        PathLength.set_getter(_getter_path_length), PathLength.set_setter(_setter_path_length);
+        PathLength.callback_assign(_attr_on_assign[6]), PathLength.callback_bind_func(_attr_on_bind[6]), PathLength.callback_bind_ptr(_attr_on_bind[6]);
         SVGIElement::_bind_getter_setter();
     }
     const std::string SVGIRect::get_tag() const {
@@ -74,8 +78,9 @@ namespace Lewzen {
         Y = element.Y;
         Width = element.Width;
         Height = element.Height;
-        PreserveAspectRatio = element.PreserveAspectRatio;
-        ViewBox = element.ViewBox;
+        Rx = element.Rx;
+        Ry = element.Ry;
+        PathLength = element.PathLength;
 
         _bind_getter_setter();
         return *this;

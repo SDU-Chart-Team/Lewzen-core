@@ -2305,7 +2305,7 @@ namespace Lewzen {
 #include "svg_el/svg_defs.h"
 #include "svg_el/svg_foreign_object.h"
 #include "svg_el/svg_linear_gradient.h"
-#include "svg_el/svg_rect.h"
+#include "svg_el/svg_svg.h"
 #include "svg_el/svg_stop.h"
 #include "svg_el/svg_use.h"
 #endif

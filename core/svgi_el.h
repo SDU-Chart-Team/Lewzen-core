@@ -3309,7 +3309,7 @@ namespace Lewzen {
 #include "svgi_el/svgi_defs.h"
 #include "svgi_el/svgi_foreign_object.h"
 #include "svgi_el/svgi_linear_gradient.h"
-#include "svgi_el/svgi_rect.h"
+#include "svgi_el/svgi_svg.h"
 #include "svgi_el/svgi_stop.h"
 #include "svgi_el/svgi_use.h"
 #endif

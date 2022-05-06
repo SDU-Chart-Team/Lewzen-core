@@ -15,17 +15,23 @@ namespace Lewzen {
         return _x;
     }
     void Point2D::set_x(const double &x) {
+        double last_x;
         _x = x;
+        if (!(x == last_x)) _callback();
     }
     double Point2D::get_y() const {
         return _y;
     }
     void Point2D::set_y(const double &y) {
+        double last_y;
         _y = y;
+        if (!(y == last_y)) _callback();
     }
     void Point2D::move(const double &dx, const double &dy) {
+        double last_x = _x, last_y = _y;
         _x += dx;
         _y += dy;
+        if (!(_x == last_x && _y == last_y)) _callback();
     }
     std::shared_ptr<Point2D> Point2D::clone() const {
         return std::make_shared<Point2D>(*this);
@@ -33,27 +39,33 @@ namespace Lewzen {
     bool Point2D::operator==(const Point2D &point) const {
         return _x == point.get_x() && _y == point.get_y() && get_coordinate_system() == point.get_coordinate_system();
     }
-    Point2D& Point2D::operator=(const Point2D& point) {
+    Point2D& Point2D::operator=(const Point2D &point) {
         if (get_coordinate_system() != point.get_coordinate_system()) {
             throw coordinate_system_mismatch("Two points are not in the same coordinate system");
         }
+        double last_x = _x, last_y = _y;
         _x = point.get_x();
         _y = point.get_y();
+        if (!(_x == last_x && _y == last_y)) _callback();
     }
     Point2D& Point2D::operator+= (const Point2D &point) {
         if (get_coordinate_system() != point.get_coordinate_system()) {
             throw coordinate_system_mismatch("Two points are not in the same coordinate system");
         }
+        double last_x = _x, last_y = _y;
         _x += point.get_x();
         _y += point.get_y();
+        if (!(_x == last_x && _y == last_y)) _callback();
         return *this;
     }
     Point2D& Point2D::operator-= (const Point2D &point) {
         if (get_coordinate_system() != point.get_coordinate_system()) {
             throw coordinate_system_mismatch("Two points are not in the same coordinate system");
         }
+        double last_x = _x, last_y = _y;
         _x -= point.get_x();
         _y -= point.get_y();
+        if (!(_x == last_x && _y == last_y)) _callback();
         return *this;
     }
     Point2D Point2D::operator+ (const Point2D &point) const {
@@ -70,5 +82,11 @@ namespace Lewzen {
     }
     Point2D Point2D::operator() (const CoordinateSystem &coordinate_system) const {
         return coordinate_system_convert(*this, coordinate_system);
+    }
+    void Point2D::on_update(const std::function<void()> callback) {
+         _callback = callback;
+    }
+    void Point2D::on_update() {
+         _callback = [](){};
     }
 }
