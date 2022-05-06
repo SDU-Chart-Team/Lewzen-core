@@ -2,6 +2,7 @@
 #define __LZ_POINT__
 #include <string>
 #include <memory>
+#include <functional>
 #include "coordinate_system.h"
 
 namespace Lewzen {
@@ -15,6 +16,8 @@ namespace Lewzen {
         double _x, _y;
         // corrdiante information
         std::shared_ptr<CoordinateSystem> _coordinate_system;
+        // callback
+        std::function<void()> _callback = [](){};
     public:
         /**
         * Constructor of SVG Element. The coordinate system is 'NULL'.
@@ -123,6 +126,17 @@ namespace Lewzen {
         * @relatesalso CoordinateSystem
         */
         Point2D operator() (const CoordinateSystem &coordinate_system) const;
+
+        /**
+        * Set update callback function.
+        *
+        * @param callback callback function
+        */
+        void on_update(const std::function<void()> callback);
+        /**
+        * Reset update callback function
+        */
+        void on_update();
     };
 }
 #endif

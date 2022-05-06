@@ -83,6 +83,19 @@ namespace Lewzen {
     * @throws Lewzen::coordinate_system_mismatch: thrown if two points are not in the same coordinate system.
     */
     Point2D center_zoom(const Point2D &p, const Point2D &c, double lambda);
+    /**
+    * Do center zoom transformation on 2D point.
+    *
+    * @param p the point.
+    * @param c zoom center, in the same coordinate system with point p.
+    * @param dx x-axis zoom rate.
+    * @param dy y-axis zoom rate.
+    * 
+    * @return center zoom point of p.
+    *
+    * @throws Lewzen::coordinate_system_mismatch: thrown if two points are not in the same coordinate system.
+    */
+    Point2D center_zoom(const Point2D &p, const Point2D &c, double dx, double dy);
 
     /**
     * Do rotate transformation on 2D point.
