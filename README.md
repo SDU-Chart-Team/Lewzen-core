@@ -12,7 +12,7 @@
 
     // Pointer
     #include <memory>
-    auto ptr = std::make_shared<SVGICircle>();
+    auto ptr = std::make_shared<Lewzen::SVGICircle>();
     ```
 
     Creating SVG Element Interface via object is not recommended because it is inherited from std::enable_shared_from_this which is used to maintain parent relationship. The safe way of initialization is std::make_shared.
@@ -20,7 +20,7 @@
 - Setting Attributes
 
     ```cpp
-    auto el = std::make_shared<SVGIMask>();
+    auto el = std::make_shared<Lewzen::SVGIMask>();
     auto &height = el->height;
 
     // Assignment
@@ -97,7 +97,7 @@
         Theres a shared pointer list of SVG Element Intefaces. You can add a new pointer to its tail or remove all same pointers from it:-
 
         ```cpp
-        auto p = std::make_shared<SVGICircle>();
+        auto p = std::make_shared<Lewzen::SVGICircle>();
         el->add(p); // add
         el->add(p, i); // add at index i
         el->remove(p); // remove by content
@@ -140,7 +140,7 @@
     You can also get a copy from itself:
 
     ```cpp
-    auto el = std::make_shared<SVGICircle>();
+    auto el = std::make_shared<Lewzen::SVGICircle>();
     auto copy1 = el->clone(); // std::shared_ptr<SVGElement>
     auto copy2 = el->clone(true); // std::shared_ptr<SVGICircle>
     ```
@@ -289,15 +289,153 @@
 ### Geometry
 
 - Point2D
+
+    A point class with coordinate system declared.
+
+    - Initialization
+
+        ```cpp
+        auto p_null = Point2D(0.5, -0.2); // null coordinate system
+        auto p_coord = Point2D(1, 0, Lewzen::CanvasCoordinateSystem()); // with specific coordinate system
+        auto p_canvas = Lewzen::canvas_point(100, 200); // with canvas coordinate system
+        auto p_compo = comp->create_point(200, -100); // with certain component coordinate system
+        ```
+
+    - Getters & Setters
+
+        ```cpp
+        p.get_x(), p.get_y(); // getters
+        p.set_x(x), p.set_y(y); // setters
+        ```
+
+        Change it's coordinate system is not allowed.
+
+    - Operations
+
+        1. Comparation
+
+            ```cpp
+            p1 == p2;
+            p1 != p2;
+            ```
+        2. Translation
+
+            ```cpp
+            p1 = p2;
+            p1 += p2;
+            p1 -= p2;
+            p1.move(x, y);
+            ```
+
+        3. Plus & Minus
+
+            ```cpp
+            p3 = p1 + p2;
+            p4 = p1 - p2;
+            ```
+            
+        4. Coordinate System Conversion
+
+            ```cpp
+            Lewzen::CanvasCoordinateSystem coord;
+            p2 = p1(coord);
+            ```
+
+    - Events
+
+        1. On Update
+
+            ```cpp
+            p.on_update([](const double &lx, const double &ly,
+                                             const double &x, const double &y) {
+                std::cout << "last position: " << lx << " " << ly << std::endl;
+                std::cout << "new position: " << x << " " << y << std::endl;
+                // do something
+            });
+            ```
+
+            On update event  won't emit unless x or y position is changed numerically.
+
+- Component Rotatable
+
+    ComponentRotatable is an abstract class used to describe rotation and parent relation. ComponentCoordinateSystem uses it to handle rotation.
+
+    - Abstract part
+
+        ```cpp
+        virtual std::weak_ptr<ComponentRotatable> get_parent() const = 0;
+        ```
+        
+        `get_parent` is abstract, you should maintain parent node manually in a derived class:
+
+        ```cpp
+        class MyComponent: public Lewzen::ComponentRotatable {
+        private:
+            std::vector<std::shared_ptr<MyComponent>> children;
+            std::weak_ptr<MyComponent> parent;
+        protected:
+            // Realization of get_parent
+            virtual std::weak_ptr<ComponentRotatable> get_parent() const {
+                return parent;
+            }
+        public:
+            // Empty Constructor
+            MyComponent(): ComponentRotatable() {}
+            // Construct with SVGI
+            MyComponent(const std::weak_ptr<Lewzen::SVGIElement> &svg_element_interface): ComponentRotatable(svg_element_interface) {}
+            // Add a new child
+            void add_child(const std::shared_ptr<MyComponent> &component) {
+                if (auto sp = component->parent.lock()) {
+                    sp->children.erase(std::remove(sp->children.begin(), sp->children.end(), component), sp->children.end());
+                }
+                component->parent = shared_from_base<MyComponent>();
+                children.push_back(component);
+            }
+        };
+        ```
+
+    - Rotation
+
+        1. Rotation Center
+
+            Rotation center is point in this component's coordinate system.
+
+            ```c++
+            component.get_rotate_center();
+            component.set_rotate_center(x, y); // by position
+            component.set_rotate_center(p); // by another point
+            ```
+
+        2. Theta
+
+            Theta is the radian of rotation (clockwise).
+
+            ```c++
+            component.get_theta();
+            component.set_theta(theta);
+            ```
+
+    - ComponentCoordinateSystem
+
+        Component uses itself to describte its ComponentCoordinateSystem, which contains rotation.
+
+        You can get this ComponentCoordinateSystem by `get_coordinate_system()`. To easily create points in this coordinate system, you can use `create_point(x, y)`. If coordiante conversion is need, `to_canvas()` and `from_canvas()` is also provided.
+
 - Coordinate Systems
+
+    - 
 - Built-in Point Functions
 
 ## Include & Build
 
 ### Include
 
+```cpp
+#include <lewzen-core/core.h>
+```
+
 ### Build
 
 ```shell
-g++ -o <your app> <your works> lewzen.lib 
+g++ -o <your out> <your works> lewzen.lib 
 ```
