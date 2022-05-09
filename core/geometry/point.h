@@ -17,7 +17,9 @@ namespace Lewzen {
         // corrdiante information
         std::shared_ptr<CoordinateSystem> _coordinate_system;
         // callback
-        std::function<void()> _callback = [](){};
+        std::function<void(const int &, const int &, const int &, const int &)> _callback = [](const int &lx, const int &ly, const int &x, const int &y){};
+        const double _epsilon = 1e-6;
+        bool _eq(const double &_, const double &__) { double _d =  _ - __; return (_d < 0) ? _d > -_epsilon : _d < _epsilon; }
     public:
         /**
         * Constructor of SVG Element. The coordinate system is 'NULL'.
@@ -132,7 +134,7 @@ namespace Lewzen {
         *
         * @param callback callback function
         */
-        void on_update(const std::function<void()> callback);
+        void on_update(const std::function<void(const int &, const int &, const int &, const int &)> callback);
         /**
         * Reset update callback function
         */

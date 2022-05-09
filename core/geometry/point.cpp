@@ -15,23 +15,23 @@ namespace Lewzen {
         return _x;
     }
     void Point2D::set_x(const double &x) {
-        double last_x;
+        double last_x = _x;
         _x = x;
-        if (!(x == last_x)) _callback();
+        if (!(_eq(x, last_x))) _callback(last_x, _y, _x, _y);
     }
     double Point2D::get_y() const {
         return _y;
     }
     void Point2D::set_y(const double &y) {
-        double last_y;
+        double last_y = _y;
         _y = y;
-        if (!(y == last_y)) _callback();
+        if (!(_eq(y, last_y))) _callback(_x, last_y, _x, _y);
     }
     void Point2D::move(const double &dx, const double &dy) {
         double last_x = _x, last_y = _y;
         _x += dx;
         _y += dy;
-        if (!(_x == last_x && _y == last_y)) _callback();
+        if (!(_eq(_x, last_x) && _eq(_y, last_y))) _callback(last_x, last_y, _x, _y);
     }
     std::shared_ptr<Point2D> Point2D::clone() const {
         return std::make_shared<Point2D>(*this);
@@ -46,7 +46,7 @@ namespace Lewzen {
         double last_x = _x, last_y = _y;
         _x = point.get_x();
         _y = point.get_y();
-        if (!(_x == last_x && _y == last_y)) _callback();
+        if (!(_eq(_x, last_x) || _eq(_y, last_y))) _callback(last_x, last_y, _x, _y);
     }
     Point2D& Point2D::operator+= (const Point2D &point) {
         if (get_coordinate_system() != point.get_coordinate_system()) {
@@ -55,7 +55,7 @@ namespace Lewzen {
         double last_x = _x, last_y = _y;
         _x += point.get_x();
         _y += point.get_y();
-        if (!(_x == last_x && _y == last_y)) _callback();
+        if (!(_eq(_x, last_x) && _eq(_y, last_y))) _callback(last_x, last_y, _x, _y);
         return *this;
     }
     Point2D& Point2D::operator-= (const Point2D &point) {
@@ -65,7 +65,7 @@ namespace Lewzen {
         double last_x = _x, last_y = _y;
         _x -= point.get_x();
         _y -= point.get_y();
-        if (!(_x == last_x && _y == last_y)) _callback();
+        if (!(_eq(_x, last_x) && _eq(_y, last_y))) _callback(last_x, last_y, _x, _y);
         return *this;
     }
     Point2D Point2D::operator+ (const Point2D &point) const {
@@ -83,10 +83,10 @@ namespace Lewzen {
     Point2D Point2D::operator() (const CoordinateSystem &coordinate_system) const {
         return coordinate_system_convert(*this, coordinate_system);
     }
-    void Point2D::on_update(const std::function<void()> callback) {
+    void Point2D::on_update(const std::function<void(const int &, const int &, const int &, const int &)> callback) {
          _callback = callback;
     }
     void Point2D::on_update() {
-         _callback = [](){};
+         _callback = [](const int &lx, const int &ly, const int &x, const int &y){};
     }
 }
