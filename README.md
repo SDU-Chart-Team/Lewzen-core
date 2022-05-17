@@ -327,11 +327,14 @@
             p1.move(x, y);
             ```
 
-        3. Plus & Minus
+        3. Arithmetic
 
             ```cpp
             p3 = p1 + p2;
             p4 = p1 - p2;
+            double dot = p1 * p2;
+            p7 = p1 * 2.0;
+            p8 = p2 * 0.2;
             ```
             
         4. Coordinate System Conversion

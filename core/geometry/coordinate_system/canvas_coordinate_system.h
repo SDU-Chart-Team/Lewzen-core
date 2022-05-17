@@ -10,6 +10,10 @@ namespace Lewzen {
     class CanvasCoordinateSystem: public CoordinateSystem {
     public:
         /**
+        * Static pointer of CanvasCoordinateSystem.
+        */
+        static std::shared_ptr<CanvasCoordinateSystem> canvas_coordinate_system;
+        /**
         * Constructor of CanvasCoordinateSystem.
         */
         CanvasCoordinateSystem();
@@ -22,7 +26,7 @@ namespace Lewzen {
         *
         * @relatesalso CoordinateSystem
         */
-        std::shared_ptr<CoordinateSystem> clone() const;
+        std::shared_ptr<CoordinateSystem> clone() const override;
         /**
         * Compare two coordinate systems.
         *

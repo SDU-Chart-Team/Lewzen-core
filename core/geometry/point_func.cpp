@@ -6,7 +6,7 @@
 
 namespace Lewzen {
     Point2D canvas_point(const double &x, const double &y) {
-        return Point2D(x, y, CanvasCoordinateSystem());
+        return Point2D(x, y, CanvasCoordinateSystem::canvas_coordinate_system);
     }
 
     /// Transformations
@@ -131,7 +131,7 @@ namespace Lewzen {
     }
 
     /// Coordinate System Conversion
-    Point2D coordinate_system_convert(const Point2D &p, const CoordinateSystem &coordinate_system) {
-        return coordinate_system.from_canvas(p.get_coordinate_system().to_canvas(p));
+    Point2D coordinate_system_convert(const Point2D &p, const std::shared_ptr<CoordinateSystem> &coordinate_system) {
+        return coordinate_system->from_canvas(p.get_coordinate_system()->to_canvas(p));
     }
 }

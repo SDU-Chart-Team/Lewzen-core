@@ -36,7 +36,7 @@ namespace Lewzen {
         *
         * @relatesalso CoordinateSystem
         */
-        std::shared_ptr<CoordinateSystem> clone() const;
+        std::shared_ptr<CoordinateSystem> clone() const override;
         /**
         * Compare two coordinate systems.
         *
