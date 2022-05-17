@@ -9,8 +9,9 @@ namespace Lewzen {
     /**
     * Rotatable Component part
     */
-    class ComponentRotatable: public std::enable_shared_from_this<ComponentRotatable>{
+    class ComponentRotatable {
     private:
+        std::shared_ptr<CoordinateSystem> _this_coordinate;
         double _theta;
         std::shared_ptr<Point2D> _rotate_center;
         std::shared_ptr<Point2D> _area_vertex;
@@ -19,10 +20,6 @@ namespace Lewzen {
     protected:
         virtual std::weak_ptr<ComponentRotatable> get_parent() const = 0;
         const std::string get_rotate() const;
-        template <typename T>
-        std::shared_ptr<T> shared_from_base() {
-            return std::static_pointer_cast<T>(shared_from_this());
-        }
     public:
         /**
         * Constructor of ComponentRotatable.
@@ -125,7 +122,7 @@ namespace Lewzen {
         *
         * @return corresponding coordinate system.
         */
-        const CoordinateSystem get_coordinate_system() const;
+        virtual const std::shared_ptr<CoordinateSystem> get_coordinate_system() const = 0;
         /**
         * Create a new point in this coordinate system.
         *

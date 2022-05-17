@@ -60,7 +60,7 @@ namespace Lewzen {
     }
 
     Point2D ComponentRotatable::from_canvas(const Point2D &p) const {
-        if (p.get_coordinate_system().get_type() != "CAN") {
+        if (p.get_coordinate_system()->get_type() != "CAN") {
             throw coordinate_system_mismatch("Point is not in canvas coordinate system");
         }
         auto pf = create_point(p.get_x(), p.get_y());
@@ -76,12 +76,9 @@ namespace Lewzen {
         }
         Point2D pf = center_rotate(p, (!_rotate_center) ? Point2D(0, 0, get_coordinate_system()) : *_rotate_center, -_theta);
         if (auto pp = get_parent().lock())return pp->to_canvas(pp->create_point(pf.get_x(), pf.get_y()));
-        return Point2D(pf.get_x(), pf.get_y(), CanvasCoordinateSystem());
+        return canvas_point(pf.get_x(), pf.get_y());
     }
 
-    const CoordinateSystem ComponentRotatable::get_coordinate_system() const {
-        return ComponentCoordinateSystem(shared_from_this());
-    }
     Point2D ComponentRotatable::create_point() const {
         return create_point(0, 0);
     }

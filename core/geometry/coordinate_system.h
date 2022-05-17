@@ -48,12 +48,18 @@ namespace Lewzen {
         * @relatesalso CoordinateSystem
         */
         virtual bool operator==(const CoordinateSystem &coordinate_system) const;
+        friend bool operator==(const std::shared_ptr<CoordinateSystem> &c1, const CoordinateSystem &c2);
+        friend bool operator==(const CoordinateSystem &c1, const std::shared_ptr<CoordinateSystem> &c2);
+        friend bool operator==(const std::shared_ptr<CoordinateSystem> &c1, const std::shared_ptr<CoordinateSystem> &c2);
         /**
         * Compare two coordinate systems.
         *
         * @relatesalso CoordinateSystem
         */
         virtual bool operator!=(const CoordinateSystem &coordinate_system) const;
+        friend bool operator!=(const std::shared_ptr<CoordinateSystem> &c1, const CoordinateSystem &c2);
+        friend bool operator!=(const CoordinateSystem &c1, const std::shared_ptr<CoordinateSystem> &c2);
+        friend bool operator!=(const std::shared_ptr<CoordinateSystem> &c1, const std::shared_ptr<CoordinateSystem> &c2);
         /**
         * Convert a point in CanvasCoordinateSystem to this coordinate system.
         *

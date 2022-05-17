@@ -3238,6 +3238,12 @@ namespace Lewzen {
         * @return outer SVG.
         */
         const std::string outer_SVG() const;
+        /**
+        * Get hash of outer SVG.
+        *
+        * @return hash of outer SVG.
+        */
+        const HASH_CODE hash() const;
 
         /// Operators
     public:

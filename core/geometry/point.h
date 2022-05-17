@@ -17,7 +17,7 @@ namespace Lewzen {
         // corrdiante information
         std::shared_ptr<CoordinateSystem> _coordinate_system;
         // callback
-        std::function<void(const int &, const int &, const int &, const int &)> _callback = [](const int &lx, const int &ly, const int &x, const int &y){};
+        std::function<void(const double &, const double &, const double &, const double &)> _callback = [](const double &lx, const double &ly, const double &x, const double &y){};
         const double _epsilon = 1e-6;
         bool _eq(const double &_, const double &__) { double _d =  _ - __; return (_d < 0) ? _d > -_epsilon : _d < _epsilon; }
     public:
@@ -35,7 +35,7 @@ namespace Lewzen {
         * @param y y position.
         * @param coordinate system coordinate system information.
         */
-        Point2D(const double &x, const double &y, const CoordinateSystem &coordinate_system);
+        Point2D(const double &x, const double &y, const std::shared_ptr<CoordinateSystem> &coordinate_system);
         /**
         * Deep copy of point.
         */
@@ -47,7 +47,7 @@ namespace Lewzen {
         *
         * @return coordinate system information.
         */
-        const CoordinateSystem &get_coordinate_system() const;
+        const std::shared_ptr<CoordinateSystem> get_coordinate_system() const;
         /**
         * Get x position.
         *
@@ -123,18 +123,36 @@ namespace Lewzen {
         */
         Point2D operator-(const Point2D &point) const;
         /**
+        * Dot. Two points should be in the same coordinate system.
+        *
+        * @relatesalso Point
+        */
+        friend double operator*(const Point2D &p1, const Point2D &p2);
+        /**
+        * Multiplication.
+        *
+        * @relatesalso Point
+        */
+        friend Point2D operator*(const double &c, const Point2D &p);
+        /**
+        * Multiplication.
+        *
+        * @relatesalso Point
+        */
+        friend Point2D operator*(const Point2D &p, const double &c);
+        /**
         * Convert this point to another coordinate.
         *
         * @relatesalso CoordinateSystem
         */
-        Point2D operator() (const CoordinateSystem &coordinate_system) const;
+        Point2D operator() (const std::shared_ptr<CoordinateSystem> &coordinate_system) const;
 
         /**
         * Set update callback function.
         *
         * @param callback callback function
         */
-        void on_update(const std::function<void(const int &, const int &, const int &, const int &)> callback);
+        void on_update(const std::function<void(const double &, const double &, const double &, const double &)> callback);
         /**
         * Reset update callback function
         */

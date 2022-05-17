@@ -154,6 +154,6 @@ namespace Lewzen {
     * 
     * @return weight balance point.
     */
-    Point2D coordinate_system_convert(const Point2D &p, const CoordinateSystem &coordinate_system);
+    Point2D coordinate_system_convert(const Point2D &p, const std::shared_ptr<CoordinateSystem> &coordinate_system);
 }
 #endif

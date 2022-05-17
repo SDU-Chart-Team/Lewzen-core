@@ -261,6 +261,9 @@ std::string SVGICPP() {
     ss << "    const std::string SVGIElement::outer_SVG() const {" << std::endl;
     ss << "        return SVGElement::outer_SVG();" << std::endl;
     ss << "    }" << std::endl;
+    ss << "    const HASH_CODE SVGIElement::hash() const {" << std::endl;
+    ss << "        return SVGElement::get_outer_hash();" << std::endl;
+    ss << "    }" << std::endl;
     ss << "" << std::endl;
     ss << "    const std::string SVGIElement::commit() {" << std::endl;
     ss << "        std::stringstream ss;" << std::endl;
@@ -597,6 +600,12 @@ std::string SVGIH(const std::vector<std::string> &tags) {
     ss << "        * @return outer SVG." << std::endl;
     ss << "        */" << std::endl;
     ss << "        const std::string outer_SVG() const;" << std::endl;
+    ss << "        /**" << std::endl;
+    ss << "        * Get hash of outer SVG." << std::endl;
+    ss << "        *" << std::endl;
+    ss << "        * @return hash of outer SVG." << std::endl;
+    ss << "        */" << std::endl;
+    ss << "        const HASH_CODE hash() const;" << std::endl;
     ss << "" << std::endl;
     ss << "        /// Operators" << std::endl;
     ss << "    public:" << std::endl;

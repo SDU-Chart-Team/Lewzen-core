@@ -172,6 +172,7 @@ std::string SVGCPP() {
     ss << "        _attribute_hash = 0;" << std::endl;
     ss << "        _inner_hash = 0;" << std::endl;
     ss << "        _outer_hash = 0;" << std::endl;
+    ss << "        update_outer_hash();" << std::endl;
     ss << "    }" << std::endl;
     ss << "" << std::endl;
     ss << "    const std::string SVGElement::get_tag() const {" << std::endl;

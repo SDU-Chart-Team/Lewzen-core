@@ -149,6 +149,7 @@ namespace Lewzen {
         _attribute_hash = 0;
         _inner_hash = 0;
         _outer_hash = 0;
+        update_outer_hash();
     }
 
     const std::string SVGElement::get_tag() const {

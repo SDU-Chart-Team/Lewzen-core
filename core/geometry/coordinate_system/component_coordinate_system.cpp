@@ -2,12 +2,8 @@
 #include "../point_func.h"
 
 namespace Lewzen {
-    ComponentCoordinateSystem::ComponentCoordinateSystem(const std::weak_ptr<const ComponentRotatable> &component): _component(component) {
-        new (this)CoordinateSystem("COM");
-    }
-    ComponentCoordinateSystem::ComponentCoordinateSystem(const ComponentCoordinateSystem &coordinate_system): _component(coordinate_system.get_component()) {
-        new (this)CoordinateSystem("COM");
-    }
+    ComponentCoordinateSystem::ComponentCoordinateSystem(const std::weak_ptr<const ComponentRotatable> &component): CoordinateSystem("COM"), _component(component) {}
+    ComponentCoordinateSystem::ComponentCoordinateSystem(const ComponentCoordinateSystem &coordinate_system): CoordinateSystem("COM"), _component(coordinate_system.get_component()) {}
     const std::weak_ptr<const ComponentRotatable> ComponentCoordinateSystem::get_component() const {
         return _component;
     }
@@ -32,12 +28,12 @@ namespace Lewzen {
             auto &p1 = sp->get_rotate_center();
             auto &p2 = sp->get_area_vertex();
             double dx = p2.get_x() - p1.get_x(), dy = p2.get_y() - p1.get_y();
-            return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, ComponentRelativeCoordinateSystem(sp));
+            return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, std::make_shared<ComponentRelativeCoordinateSystem>(sp));
         }
         throw std::runtime_error("Null pointer when converting ComponentCoordinateSystem to ComponentRelativeCoordinateSystem");
     }
     Point2D ComponentCoordinateSystem::from_canvas(const Point2D &p) const {
-        if (p.get_coordinate_system().get_type() != "CAN") {
+        if (p.get_coordinate_system()->get_type() != "CAN") {
             throw coordinate_system_mismatch("Point is not in canvas coordinate system");
         }
         if (auto sp = _component.lock()) {

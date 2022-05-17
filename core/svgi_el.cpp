@@ -612,6 +612,9 @@ namespace Lewzen {
     const std::string SVGIElement::outer_SVG() const {
         return SVGElement::outer_SVG();
     }
+    const HASH_CODE SVGIElement::hash() const {
+        return SVGElement::get_outer_hash();
+    }
 
     const std::string SVGIElement::commit() {
         std::stringstream ss;

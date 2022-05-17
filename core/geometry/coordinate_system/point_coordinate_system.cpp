@@ -2,16 +2,15 @@
 #include "point_relative_coordinate_system.h"
 
 namespace Lewzen {
-    PointCoordinateSystem::PointCoordinateSystem(const std::weak_ptr<Point2D> &origin): _origin(origin) {
+    PointCoordinateSystem::PointCoordinateSystem(const std::weak_ptr<Point2D> &origin): CoordinateSystem("POI"), _origin(origin) {
         if (auto sp = origin.lock()) {
             _vertex_default = std::make_shared<Point2D>(sp->get_x() + 1, sp->get_y() + 1, sp->get_coordinate_system());
             _vertex = _vertex_default;
         } else {
             throw std::runtime_error("Null pointer when initialization PointCoordinateSystem");
         }
-        new (this)CoordinateSystem("POI");
     }
-    PointCoordinateSystem::PointCoordinateSystem(const std::weak_ptr<Point2D> &origin, const std::weak_ptr<Point2D> &vertex): _origin(origin), _vertex(vertex) {
+    PointCoordinateSystem::PointCoordinateSystem(const std::weak_ptr<Point2D> &origin, const std::weak_ptr<Point2D> &vertex): CoordinateSystem("POI"), _origin(origin), _vertex(vertex) {
         auto sp1 = origin.lock(); auto sp2 = vertex.lock();
         if (sp1 && sp2) {
             if (sp1->get_coordinate_system() != sp2->get_coordinate_system()) {
@@ -20,11 +19,8 @@ namespace Lewzen {
         } else {
             throw std::runtime_error("Null pointer when initialization PointCoordinateSystem");
         }
-        new (this)CoordinateSystem("POI");
     }
-    PointCoordinateSystem::PointCoordinateSystem(const PointCoordinateSystem &coordinate_system): _origin(coordinate_system.get_origin()), _vertex(coordinate_system.get_vertex()) {
-        new (this)CoordinateSystem("POI");
-    }
+    PointCoordinateSystem::PointCoordinateSystem(const PointCoordinateSystem &coordinate_system): CoordinateSystem("POI"), _origin(coordinate_system.get_origin()), _vertex(coordinate_system.get_vertex()) {}
     const std::weak_ptr<Point2D> PointCoordinateSystem::get_origin() const {
         return _origin;
     }
@@ -63,19 +59,19 @@ namespace Lewzen {
         auto sp1 = _origin.lock(); auto sp2 = _vertex.lock();
         if (sp1 && sp2) {
             double dx = sp2->get_x() - sp1->get_x(), dy = sp2->get_y() - sp1->get_y();
-            return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, PointRelativeCoordinateSystem(sp1, sp2));
+            return Point2D((dx == 0) ? 0 : p.get_x() / dx, (dy == 0) ? 0 : p.get_y() / dy, std::make_shared<PointRelativeCoordinateSystem>(sp1, sp2));
         } else {
             throw std::runtime_error("Null pointer when converting PointCoordinateSystem to PointRelativeCoordinateSystem");
         }
     }
     Point2D PointCoordinateSystem::from_canvas(const Point2D &p) const {
-       if (p.get_coordinate_system().get_type() != "CAN") {
+       if (p.get_coordinate_system()->get_type() != "CAN") {
             throw coordinate_system_mismatch("Point is not in canvas coordinate system");
         }
         auto sp1 = _origin.lock(); auto sp2 = _vertex.lock();
         if (sp1 && sp2) {
-            const Point2D &pf = sp1->get_coordinate_system().from_canvas(p);
-            return Point2D(pf.get_x() - sp1->get_x(), pf.get_y() - sp2->get_y(), *this);
+            const Point2D &pf = sp1->get_coordinate_system()->from_canvas(p);
+            return Point2D(pf.get_x() - sp1->get_x(), pf.get_y() - sp2->get_y(), std::make_shared<PointRelativeCoordinateSystem>(sp1, sp2));
         } else {
             throw std::runtime_error("Null pointer when converting CanvasCoordinateSystem to PointCoordinateSystem");
         }
@@ -87,7 +83,7 @@ namespace Lewzen {
         auto sp1 = _origin.lock(); auto sp2 = _vertex.lock();
         if (sp1 && sp2) {
             const Point2D &pf = Point2D(p.get_x() + sp1->get_x(), p.get_y() + sp1->get_y(), sp1->get_coordinate_system());
-            return sp1->get_coordinate_system().to_canvas(pf);
+            return sp1->get_coordinate_system()->to_canvas(pf);
         } else {
             throw std::runtime_error("Null pointer when converting PointCoordinateSystem to CanvasCoordinateSystem");
         }
