@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <map>
 #include <unordered_map>
+#include <cstdio>
 #include "svg_el.h"
 
 namespace Lewzen {
@@ -148,8 +149,7 @@ namespace Lewzen {
 
         _attribute_hash = 0;
         _inner_hash = 0;
-        _outer_hash = 0;
-        update_outer_hash();
+        _outer_hash = rand();
     }
 
     const std::string SVGElement::get_tag() const {
