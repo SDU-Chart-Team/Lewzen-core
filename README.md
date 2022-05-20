@@ -369,10 +369,10 @@
         virtual std::weak_ptr<ComponentRotatable> get_parent() const = 0;
         ```
         
-        `get_parent` is abstract, you should maintain parent node manually in a derived class:
+        `get_parent` and `get_coordinate_system` is abstract, you should maintain parent node manually in a derived class:
 
         ```cpp
-        class MyComponent: public Lewzen::ComponentRotatable {
+        class MyComponent: public Lewzen::ComponentRotatable, public std::enable_shared_from_this<MyComponent> {
         private:
             std::vector<std::shared_ptr<MyComponent>> children;
             std::weak_ptr<MyComponent> parent;
@@ -393,6 +393,10 @@
                 }
                 component->parent = shared_from_base<MyComponent>();
                 children.push_back(component);
+            }
+            // Define Coordinate system
+            virtual const std::shared_ptr<Lewzen::CoordinateSystem> get_coordinate_system() const {
+                return std::make_shared<Lewzen::ComponentCoordinateSystem>(shared_from_this());
             }
         };
         ```
@@ -426,8 +430,65 @@
 
 - Coordinate Systems
 
-    - 
+    - CanvasCoordinateSystem
+
+        A static public coordinate system. Used as the most basic absolute coordinate system.
+
+        In frondend view, this is the coordinate system of `\<svg\>` element.
+
+    - ComponentCoordinateSystem/ComponentRelativeCoordinateSystem
+
+        The coordinate system of component. Components can be formed as a tree, where each component is rotatable.
+
+    - PointCoordinateSystem/PointRelativeCoordinateSystem
+
+        A coordinate system defined by two points. One indicates the origin, another indicates the (1, 1).
+
+    - VectorCoordinateSystem/VectorRelativeCoordinateSystem
+
+        A coordinate system defined by two points. One indicates the origin, another indicates the (1, 0).
+
 - Built-in Point Functions
+
+    - canvas_point
+
+        Create a point in CanvasCoordinateSystem.
+
+    - linear_transform
+
+        Perform linear tranformation on a point.
+
+    - line_symmetric
+
+        Find the symmetric point to a point about a line.
+
+    - center_symmetric
+
+        Find the symmetric point to a point about a point.
+
+    - center_zoom
+
+        Find the zoomed point with rate lambda to a point about a point.
+
+    - center_rotate
+
+        Find the rotated point with angle theta to a point about a point.
+
+    - geometry_centroid
+
+        Get geometry centroid of a set of points.
+
+    - polygon_centroid
+
+        Get polygon centroid of a set of points.
+
+    - weight_balance
+
+        Get balance point of a set of points with given weights.
+
+    - coordinate_system_convert
+
+        Conver point to another coordinate system.
 
 ## Include & Build
 
@@ -440,5 +501,5 @@
 ### Build
 
 ```shell
-g++ -o <your out> <your works> lewzen.lib 
+$(cc) -o <your out> <your works> lewzen.lib 
 ```

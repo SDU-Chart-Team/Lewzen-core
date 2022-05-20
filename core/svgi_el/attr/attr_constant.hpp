@@ -1,7 +1,10 @@
 #ifndef __LZ_ATTR_CONSTANT__
 #define __LZ_ATTR_CONSTANT__
 #include <sstream>
-#include "../attr.hpp"
+#include "../../utils.h"
+#include <sstream>
+#include <functional>
+#include <memory>
 
 namespace Lewzen {
     template<char const *const_val>
@@ -349,8 +352,6 @@ namespace Lewzen {
     using AttrConstEnd = AttrConstant<_const_End>;
     static const char _const_Evenodd[] = "evenodd";
     using AttrConstEvenodd = AttrConstant<_const_Evenodd>;
-    static const char _const_Event[] = "event";
-    using AttrConstEvent = AttrConstant<_const_Event>;
     static const char _const_Fill[] = "fill";
     using AttrConstFill = AttrConstant<_const_Fill>;
     static const char _const_GeometricPrecision[] = "geometricPrecision";

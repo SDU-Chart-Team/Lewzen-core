@@ -20,13 +20,9 @@
 
 #### 内容
 
-- 内容文本
+内容是一个SVG元素列表。由此SVG元素间形成了一颗树形结构。
 
-    允许内容是任意文本。规定仅含一个。当内容中含有其他SVG元素时，文本优先被呈现。
-
-- 内容元素
-
-    允许内容是一个SVG元素列表。由此SVG元素间形成了一颗树形结构。
+若被设置原生HTML，则使用原生HTML替代所有内容。
 
 ### 接口
 
@@ -42,15 +38,15 @@
 
 #### 内容
 
-- 内容文本
-
-    `get_inner_text(), set_inner_text()`：提供读写。参数与返回值均为字符串。
-
 - 内容元素
 
     `add_inner_element(), remove_inner_element()`：提供增删。参数与返回值均为SVGElement指针。
 
     `get_inner_elements(), set_inner_elements()`：可读取与设置整个内部元素的列表。列表类型为存储SVGElement指针的vector。
+
+- 原声HTML
+
+    `set_raw_HTML(), get_raw_HTML`：设置元素的原声HTML。
 
 #### XML文本
 

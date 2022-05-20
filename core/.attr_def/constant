@@ -31,7 +31,6 @@ currentcolor
 default
 end
 evenodd
-event
 fill
 geometricPrecision
 hanging
