@@ -219,12 +219,15 @@ const std::string AttributeHPP(const std::vector<std::string> &tags) {
     return ss.str();
 }
 
-const std::string ConstantHPP() {
+const std::string ConstantHPP(const std::set<std::string> &cset) {
     std::stringstream ss;
     ss << "#ifndef __LZ_ATTR_CONSTANT__" << std::endl;
     ss << "#define __LZ_ATTR_CONSTANT__" << std::endl;
     ss << "#include <sstream>" << std::endl;
-    ss << "#include \"../attr.hpp\"" << std::endl;
+    ss << "#include \"../../utils.h\"" << std::endl;
+    ss << "#include <sstream>" << std::endl;
+    ss << "#include <functional>" << std::endl;
+    ss << "#include <memory>" << std::endl;
     ss << "" << std::endl;
     ss << "namespace Lewzen {" << std::endl;
     ss << "    template<char const *const_val>" << std::endl;
@@ -506,17 +509,9 @@ const std::string ConstantHPP() {
     ss << "            void callback_bind_ptr() { _on_bind_ptr = [](){}; }" << std::endl;
     ss << "    };" << std::endl;
     ss << "" << std::endl;
-    std::ifstream file(json_dir + "/constant");
-    std::set<std::string> cset;
-    if (file.is_open()) {
-        std::string line;
-        while (std::getline(file, line)) {
-            if (cset.count(line)) continue;
-            cset.insert(line);
-            ss << "    static const char _const_" << dom_to_pascal(line) << "[] = \"" << line << "\";" << std::endl;
-            ss << "    using AttrConst" << dom_to_pascal(line) << " = AttrConstant<_const_" << dom_to_pascal(line) << ">;" << std::endl;
-        }
-        file.close();
+    for (auto &line: cset) {
+        ss << "    static const char _const_" << dom_to_pascal(line) << "[] = \"" << line << "\";" << std::endl;
+        ss << "    using AttrConst" << dom_to_pascal(line) << " = AttrConstant<_const_" << dom_to_pascal(line) << ">;" << std::endl;
     }
     ss << "}" << std::endl;
     ss << "#endif" << std::endl;
@@ -584,12 +579,12 @@ const std::string EnumerateHPP(const std::vector<std::string> &tags) {
     ss << "        }" << std::endl;
     ss << "        template<std::size_t i, typename L>" << std::endl;
     ss << "        void _Enumerate(std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {" << std::endl;
-    ss << "            auto u = std::get<i>(_tuple);" << std::endl;
+    ss << "            auto &u = std::get<i>(_tuple);" << std::endl;
     ss << "            _EnumerateImpl(u, getter, setter);" << std::endl;
     ss << "        }" << std::endl;
     ss << "        template<std::size_t i, typename F, typename S, typename ...R>" << std::endl;
     ss << "        void _Enumerate(std::function<const std::string()> getter, std::function<void(const std::string &)> setter) {" << std::endl;
-    ss << "            auto u = std::get<i>(_tuple);" << std::endl;
+    ss << "            auto &u = std::get<i>(_tuple);" << std::endl;
     ss << "            _EnumerateImpl(u, getter, setter);" << std::endl;
     ss << "            _Enumerate<i + 1, S, R...>(getter, setter);" << std::endl;
     ss << "        }" << std::endl;
@@ -1539,20 +1534,21 @@ const std::string json_to_source(const std::string &path) {
 const std::string Makefile(const std::vector<std::string> &tags) {
     std::stringstream ss;
     ss << "objects = \\" << std::endl;
-    ss << "\tattr_constant.hpp.gch\\" << std::endl;
     ss << "\tattr_tuple.hpp.gch\\" << std::endl;
     ss << "\tattr_enumerate.hpp.gch\\" << std::endl;
     for (int i = 0; i < tags.size(); i++) {
-        ss << "\tattr_" << tags[i] << ".hpp.gch";
-        if (i < tags.size() - 1) ss << "\\";
+        ss << "\tattr_" << tags[i] << ".hpp.gch\\";
         ss << std::endl;
     }
+    ss << "\tattr_constant.hpp.gch" << std::endl;
     ss << "cc = g++" << std::endl;
     ss << std::endl;
     ss << ".PHONY: all" << std::endl;
     ss << "all: $(objects)" << std::endl;
     ss << std::endl;
-    for (auto &tag : tags) ss << "attr_" << tag << ".hpp.gch: attr_" << tag << ".hpp" << std::endl << "\t$(cc) -c attr_" << tag << ".hpp" << std::endl;
+    for (auto &tag : tags) {
+        ss << "attr_" << tag << ".hpp.gch: attr_" << tag << ".hpp" << std::endl << "\t$(cc) -c attr_" << tag << ".hpp" << std::endl;
+    }
     ss << "attr_constant.hpp.gch: attr_constant.hpp" << std::endl << "\t$(cc) -c attr_constant.hpp" << std::endl;
     ss << "attr_tuple.hpp.gch: attr_tuple.hpp" << std::endl << "\t$(cc) -c attr_tuple.hpp" << std::endl;
     ss << "attr_enumerate.hpp.gch: attr_enumerate.hpp" << std::endl << "\t$(cc) -c attr_enumerate.hpp" << std::endl;
@@ -1565,11 +1561,24 @@ const std::string Makefile(const std::vector<std::string> &tags) {
 
 int main(int argc, char **argv) {
     std::vector<std::string> tags;
+    std::vector<std::string> files;
+    std::set<std::string> cset;
 
     for (const auto &file : fs::directory_iterator(json_dir)) {
         auto tag = json_to_source(file.path());
         if (tag == "") continue;
         tags.push_back(tag);
+        files.push_back(tag);
+    }
+    std::ifstream file(json_dir + "/constant");
+    if (file.is_open()) {
+        std::string line;
+        while (std::getline(file, line)) {
+            if (cset.count(line)) continue;
+            cset.insert(line);
+            tags.push_back("const-" + line);
+        }
+        file.close();
     }
 
     std::ofstream o(out_dir + "/attr_tuple.hpp");
@@ -1579,14 +1588,14 @@ int main(int argc, char **argv) {
     o << EnumerateHPP(tags);
     std::cout << "done : enumerate" << std::endl;
     o = std::ofstream(out_dir + "/attr_constant.hpp");
-    o << ConstantHPP();
+    o << ConstantHPP(cset);
     std::cout << "done : constant" << std::endl;
     o = std::ofstream(base_dir + "/attr.hpp");
-    o << AttributeHPP(tags);
+    o << AttributeHPP(files);
     std::cout << "done : attr" << std::endl;
 
     std::ofstream o1(out_dir + "/Makefile");
-    o1 << Makefile(tags);
+    o1 << Makefile(files);
     std::cout << "Makefile done." << std::endl;
 
     std::cout << "includes.out done." << std::endl;

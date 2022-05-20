@@ -5,6 +5,7 @@
 #include <memory>
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include "../../utils.h"
 
 namespace Lewzen {

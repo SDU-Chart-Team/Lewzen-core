@@ -1,7 +1,8 @@
 {
     "type": "list-of-numbers",
     "includes": [
-        "sstream"
+        "sstream",
+        "vector"
     ],
     "comment": "A list consists of a separated sequence of values. Unless explicitly described differently, lists within SVG's XML attributes can be either comma-separated (with optional white space before or after the comma), or white space-separated.",
     "accepts": [

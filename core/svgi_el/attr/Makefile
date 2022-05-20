@@ -1,5 +1,4 @@
 objects = \
-	attr_constant.hpp.gch\
 	attr_tuple.hpp.gch\
 	attr_enumerate.hpp.gch\
 	attr_color.hpp.gch\
@@ -17,7 +16,8 @@ objects = \
 	attr_angle.hpp.gch\
 	attr_opacity-value.hpp.gch\
 	attr_number.hpp.gch\
-	attr_FuncIRI.hpp.gch
+	attr_FuncIRI.hpp.gch\
+	attr_constant.hpp.gch
 cc = g++
 
 .PHONY: all
