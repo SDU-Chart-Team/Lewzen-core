@@ -47,6 +47,7 @@ namespace Lewzen {
         _x = point.get_x();
         _y = point.get_y();
         if (!(_eq(_x, last_x) || _eq(_y, last_y))) _callback(last_x, last_y, _x, _y);
+        return *this;
     }
     Point2D& Point2D::operator+= (const Point2D &point) {
         if (get_coordinate_system() != point.get_coordinate_system()) {
