@@ -30,6 +30,7 @@ del .\svgi_el\attr\Makefile
 
 cd ..\..
 
+del /s /q /f *.o
 7z a -t7z -r ..\lewzen-core-win-clang++-%ver%.7z release\*
 
 del .\release\ /s /q
