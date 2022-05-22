@@ -14,6 +14,10 @@ elif [ "$platform" = "linux-clang++" ]
 then
     cd core
     make cc=clang++ ar=llvm-ar
+elif [ "$platform" = "linux-em++" ]
+then
+    cd core
+    make cc=em++ ar=emar
 else
     echo unsupported platform.
     exit 1
@@ -55,6 +59,10 @@ then
 elif [ "$platform" = "linux-clang++" ]
 then
     tar -czvf ../lewzen-core-linux-clang++-${ver}.tar.gz release/*
+    rm release/ -rf
+elif [ "$platform" = "linux-em++" ]
+then
+    tar -czvf ../lewzen-core-linux-em++-${ver}.tar.gz release/*
     rm release/ -rf
 else
     echo unsupported platform.
