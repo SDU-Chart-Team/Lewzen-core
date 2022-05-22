@@ -1,6 +1,11 @@
+set platform=%1
 set ver=%date:~0,4%-%date:~5,2%-%date:~8,2%
 cd core
-make cc=clang++ ar=llvm-ar
+if [%platform%]==[wasm] (
+    make cc=em++ ar=emar
+) else (
+    emmake make cc=clang++ ar=llvm-ar
+)
 make clean
 cd ..
 if not exist ".\release" mkdir .\release
@@ -31,7 +36,11 @@ del .\svgi_el\attr\Makefile
 cd ..\..
 
 del /s /q /f *.o
-7z a -t7z -r ..\lewzen-core-win-clang++-%ver%.7z release\*
+if [%platform%]==[wasm] (
+    7z a -t7z -r ..\lewzen-core-win-em++-%ver%.7z release\*
+) else (
+    7z a -t7z -r ..\lewzen-core-win-clang++-%ver%.7z release\*
+)
 
 del .\release\ /s /q
 rmdir .\release\ /s /q
