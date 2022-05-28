@@ -1146,7 +1146,7 @@ namespace Lewzen {
         update_inner_hash();
     }
     void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element, bool remove_all) {
-        bool success = true;
+        bool success = false;
         std::vector<std::shared_ptr<SVGElement>> removed;
         _inner_elements.erase(std::remove_if(_inner_elements.begin(), _inner_elements.end(),
                                 [&](const std::shared_ptr<SVGElement>& _inner_element) { 

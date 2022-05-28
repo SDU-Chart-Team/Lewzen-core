@@ -579,7 +579,7 @@ namespace Lewzen {
         else _inner_elements_commit.insert(_inner_elements_commit.begin() + index, element);
     }
     void SVGIElement::remove(const std::shared_ptr<SVGIElement> &element, bool remove_all) {
-        bool success = true;
+        bool success = false;
         std::vector<std::shared_ptr<SVGIElement>> removed;
         _inner_elements_commit.erase(std::remove_if(_inner_elements_commit.begin(), _inner_elements_commit.end(),
                                 [&](const std::shared_ptr<SVGIElement>& _inner_element) { 
