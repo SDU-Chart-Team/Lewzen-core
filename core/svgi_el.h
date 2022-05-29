@@ -3254,6 +3254,12 @@ namespace Lewzen {
         */
         virtual const std::string commit();
         /**
+        * Commit all changes in this element and get DOM commands. (ignoring children)
+        *
+        * @relatesalso SVGIElement
+        */
+        virtual const std::string commit_this();
+        /**
         * Deep copy this SVG element.
         *
         * @relatesalso SVGIElement

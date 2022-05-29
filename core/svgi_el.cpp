@@ -579,7 +579,7 @@ namespace Lewzen {
         else _inner_elements_commit.insert(_inner_elements_commit.begin() + index, element);
     }
     void SVGIElement::remove(const std::shared_ptr<SVGIElement> &element, bool remove_all) {
-        bool success = false;
+        bool success;
         std::vector<std::shared_ptr<SVGIElement>> removed;
         _inner_elements_commit.erase(std::remove_if(_inner_elements_commit.begin(), _inner_elements_commit.end(),
                                 [&](const std::shared_ptr<SVGIElement>& _inner_element) { 
@@ -683,6 +683,35 @@ namespace Lewzen {
             ss << "\"" << std::endl;
         }
         delete[] removed; delete[] indices;
+
+        // commit inner changes
+        _inner_elements_last.clear();
+        SVGElement::set_inner_elements({});
+        for (auto &p : _inner_elements_commit) {
+            if (p->_updated_raw_html) p->_updated_raw_html = false;
+            _inner_elements_last.push_back(p);
+            SVGElement::add_inner_element(p);
+        }
+
+        return ss.str();
+    }
+    const std::string SVGIElement::commit_this() {
+        std::stringstream ss;
+
+        _updated_raw_html = get_raw_HTML() != RawHTML.get_commit();
+        RawHTML.commit();
+        if (get_raw_HTML() != STR_NULL) return "";
+
+        // attribute differ
+        for (auto &i : bound) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
+        for (auto &i : modified) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
+        modified.clear();
 
         // commit inner changes
         _inner_elements_last.clear();
