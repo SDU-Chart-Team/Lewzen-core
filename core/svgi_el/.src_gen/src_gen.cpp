@@ -228,7 +228,7 @@ std::string SVGICPP() {
     ss << "        else _inner_elements_commit.insert(_inner_elements_commit.begin() + index, element);" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGIElement::remove(const std::shared_ptr<SVGIElement> &element, bool remove_all) {" << std::endl;
-    ss << "        bool success;" << std::endl;
+    ss << "        bool success = false;" << std::endl;
     ss << "        std::vector<std::shared_ptr<SVGIElement>> removed;" << std::endl;
     ss << "        _inner_elements_commit.erase(std::remove_if(_inner_elements_commit.begin(), _inner_elements_commit.end()," << std::endl;
     ss << "                                [&](const std::shared_ptr<SVGIElement>& _inner_element) { " << std::endl;
@@ -306,7 +306,8 @@ std::string SVGICPP() {
     ss << "        // changed" << std::endl;
     ss << "        for (auto &c : unchanged) {" << std::endl;
     ss << "            auto &a = c.first; auto &b = c.second;" << std::endl;
-    ss << "            auto &s = changed[a];" << std::endl;
+    ss << "            auto s = changed[a];" << std::endl;
+    ss << "            if (s == STR_NULL) s = *_inner_elements_commit[b] - *_inner_elements_last[a]; // try differ" << std::endl;
     ss << "            if (s == STR_NULL) continue;" << std::endl;
     ss << "            ss << \"child \" << b - removed[b] << std::endl;" << std::endl;
     ss << "            ss << s;" << std::endl;
