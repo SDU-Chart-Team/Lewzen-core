@@ -516,6 +516,12 @@ namespace Lewzen {
         */
         virtual const std::string commit() override;
         /**
+        * Commit all changes in this element and get DOM commands. (ignoring children)
+        *
+        * @relatesalso SVGIElement
+        */
+        virtual const std::string commit_this() override;
+        /**
         * Deep copy this SVG element.
         *
         * @relatesalso SVGIElement

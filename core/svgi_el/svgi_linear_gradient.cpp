@@ -62,6 +62,25 @@ namespace Lewzen {
 
         return ss.str();
     }
+    const std::string SVGILinearGradient::commit_this() {
+        std::stringstream ss;
+
+        // attribute differ
+        for (auto &i : bound) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
+        for (auto &i : modified) {
+            auto &cmd = _attr_commit[i]();
+            if (cmd != STR_NULL) ss << cmd  << std::endl;
+        }
+        modified.clear();
+
+        // base class
+        ss << SVGIElement::commit_this();
+
+        return ss.str();
+    }
     std::shared_ptr<SVGElement> SVGILinearGradient::clone() const {
         auto cloned = std::make_shared<SVGElement>();
         cloned->SVGElement::operator=(*this);

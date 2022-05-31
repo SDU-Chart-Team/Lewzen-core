@@ -231,7 +231,8 @@ std::string SVGCPP() {
     ss << "        return _inner_elements;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {" << std::endl;
-    ss << "        while (_inner_elements.size() > 0) remove_inner_element(0);" << std::endl;
+    ss << "        for (auto &el : _inner_elements) el->_parent_element = std::weak_ptr<SVGElement>();" << std::endl;
+    ss << "        _inner_elements.clear();" << std::endl;
     ss << "        for (auto p : inner_elements) add_inner_element(p);" << std::endl;
     ss << "        update_inner_hash();" << std::endl;
     ss << "    }" << std::endl;
