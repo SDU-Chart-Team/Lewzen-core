@@ -254,7 +254,8 @@ std::string SVGICPP() {
     ss << "        return _inner_elements_commit;" << std::endl;
     ss << "    }" << std::endl;
     ss << "    void SVGIElement::children(const std::vector<std::shared_ptr<SVGIElement>> &elements) {" << std::endl;
-    ss << "        while (_inner_elements_commit.size() > 0) remove(0);" << std::endl;
+    ss << "        for (auto &el : _inner_elements_commit) el->_parent_element = std::weak_ptr<SVGIElement>();" << std::endl;
+    ss << "        _inner_elements_commit.clear();" << std::endl;
     ss << "        for (auto p : elements) add(p);" << std::endl;
     ss << "    }" << std::endl;
     ss << "" << std::endl;

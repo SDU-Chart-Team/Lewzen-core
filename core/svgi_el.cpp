@@ -605,7 +605,8 @@ namespace Lewzen {
         return _inner_elements_commit;
     }
     void SVGIElement::children(const std::vector<std::shared_ptr<SVGIElement>> &elements) {
-        while (_inner_elements_commit.size() > 0) remove(0);
+        for (auto &el : _inner_elements_commit) el->_parent_element = std::weak_ptr<SVGIElement>();
+        _inner_elements_commit.clear();
         for (auto p : elements) add(p);
     }
 

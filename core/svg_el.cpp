@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <map>
 #include <unordered_map>
-#include <cstdio>
 #include "svg_el.h"
 
 namespace Lewzen {
@@ -149,7 +148,7 @@ namespace Lewzen {
 
         _attribute_hash = 0;
         _inner_hash = 0;
-        _outer_hash = rand();
+        _outer_hash = 0;
     }
 
     const std::string SVGElement::get_tag() const {
@@ -1146,7 +1145,7 @@ namespace Lewzen {
         update_inner_hash();
     }
     void SVGElement::remove_inner_element(const std::shared_ptr<SVGElement> &inner_element, bool remove_all) {
-        bool success = false;
+        bool success;
         std::vector<std::shared_ptr<SVGElement>> removed;
         _inner_elements.erase(std::remove_if(_inner_elements.begin(), _inner_elements.end(),
                                 [&](const std::shared_ptr<SVGElement>& _inner_element) { 
@@ -1174,7 +1173,8 @@ namespace Lewzen {
         return _inner_elements;
     }
     void SVGElement::set_inner_elements(const std::vector<std::shared_ptr<SVGElement>> &inner_elements) {
-        while (_inner_elements.size() > 0) remove_inner_element(0);
+        for (auto &el : _inner_elements) el->_parent_element = std::weak_ptr<SVGElement>();
+        _inner_elements.clear();
         for (auto p : inner_elements) add_inner_element(p);
         update_inner_hash();
     }
@@ -1335,7 +1335,11 @@ namespace Lewzen {
         if (_attributes != "") ss << _attributes;
 
         auto _inner_svg = inner_SVG();
-        ss << ">" << _inner_svg << "</" << get_tag() << ">";
+        if (_inner_svg == "") {
+            ss << "/>";
+        } else {
+            ss << ">" << _inner_svg << "</" << get_tag() << ">";
+        }
 
         return ss.str();
     }
